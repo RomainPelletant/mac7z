@@ -1,0 +1,120 @@
+{
+  "@@locale": "da",
+  "dropZoneDrop": "Slip et arkiv",
+  "dropZoneRelease": "Slip for at åbne",
+  "dropZoneSubtitle": "eller klik for at vælge\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fil} other{{count} filer}}",
+  "passwordDialogTitle": "Beskyttet arkiv",
+  "passwordDialogSubtitle": "Indtast adgangskoden",
+  "passwordDialogHint": "Adgangskode…",
+  "cancel": "Annuller",
+  "confirm": "Bekræft",
+  "logPanelTitle": "Log",
+  "logPanelEntryCount": "{count, plural, one{{count} indgang} other{{count} indgange}}",
+  "logPanelEmpty": "Ingen aktivitet",
+  "progressExtracting": "Udpakker…",
+  "progressDone": "Udpakning udført!",
+  "treeLoading": "Læser arkiv…",
+  "treeError": "Fejl",
+  "treeEmpty": "Intet arkiv indlæst",
+  "treeEmptyHint": "Slip en fil for at se dens indhold",
+  "treeSearch": "Søg…",
+  "treeColName": "Navn",
+  "treeColSize": "Størrelse",
+  "treeColModified": "Ændret",
+  "treeOpenTooltip": "Dobbeltklik for at åbne",
+  "treeItems": "{count, plural, one{{count} element} other{{count} elementer}}",
+  "sectionDestination": "Destination",
+  "sectionSecurity": "Sikkerhed",
+  "destinationSameFolder": "Samme mappe som arkivet",
+  "subfolderCreate": "Udpak til en undermappe",
+  "subfolderDefault": "navngivet efter arkivet",
+  "passwordNone": "Ingen adgangskode",
+  "passwordSetLabel": "Adgangskode er angivet",
+  "passwordEdit": "Rediger",
+  "passwordDefine": "Angiv",
+  "btnExtract": "Udpak",
+  "btnExtracting": "Udpakker...",
+  "btnDone": "Udført ✓",
+  "btnReset": "Nulstil",
+  "binaryWarning": "7zip ikke fundet. Installer det: {cmd}",
+  "pickFileDialogTitle": "Åbn et arkiv",
+  "pickOutputDialogTitle": "Vælg destinationsmappe",
+  "logBinaryFound": "7zip fundet: {path}",
+  "logBinaryNotFound": "⚠️ 7zip ikke fundet. Installér via Homebrew (macOS) eller 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Intet genkendt arkiv i slupne filer.",
+  "logUnsupportedFormat": "Format, der ikke understøttes: {name}",
+  "logReadingArchive": "Læser arkiv: {name}",
+  "logEntriesFound": "{count, plural, one{1 indgang fundet i arkiv.} other{{count} indgange fundet i arkiv.}}",
+  "logPasswordRequired": "Krypteret arkiv — adgangskode krævet.",
+  "logFilePasswordRequired": "Krypteret fil — adgangskode krævet.",
+  "logPasswordDefined": "Adgangskode angivet.",
+  "logCancelled": "Annulleret.",
+  "logDestination": "Destination: {path}",
+  "logExtractionStarted": "Udpakker til: {path}",
+  "logExtractionDone": "✅ Udpakning fuldført i: {path}",
+  "logReset": "Nulstillet.",
+  "logOpening": "Åbner {name}…",
+  "logOpened": "Åbnet: {name}",
+  "logOpenError": "Fejl ved åbning: {error}",
+  "logExtractionError": "Udpakningsfejl: {error}",
+  "logError": "Fejl: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Ufuldstændigt opdelt arkiv — manglende dele. Kan ikke vise indhold.",
+  "logSplitIncompletePartial": "⚠️ Ufuldstændigt opdelt arkiv — manglende dele. Vist indhold kan være ufuldstændigt.",
+  "logExtractionSplitError": "Udpakning mislykkedes: manglende dele.",
+  "errorSplitArchive": "⚠️ Ufuldstændigt opdelt arkiv — sørg for, at alle dele er i samme mappe.",
+  "tabDecompression": "Dekomprimering",
+  "tabCompression": "Komprimering",
+  "tabConsoleApi": "Konsol-API",
+  "tabComingSoon": "Kommer snart",
+  "compLabelArchiveName": "Arkivnavn",
+  "compLabelDestination": "Destination",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Kompressionsniveau",
+  "compLabelSecurity": "Sikkerhed",
+  "compLabelAdvanced": "Avancerede indstillinger",
+  "compLabelSplit": "Del",
+  "compSizeFolder": "mappe",
+  "compDestSameFolder": "Samme mappe som filerne",
+  "compLevelNotApplicable": "Ikke gørligt for .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Header-kryptering aktiveret",
+  "compSplitNone": "Ingen",
+  "compBtnCompress": "Komprimer",
+  "compBtnCompressing": "Komprimerer…",
+  "compAddFiles": "Tilføj filer",
+  "compAddFolder": "Tilføj mappe",
+  "compDropToAdd": "Slip for at tilføje",
+  "compDropHint": "Slip filer eller mapper her",
+  "compDropSubtitle": "Filer tilføjes til arkivet",
+  "compItemCount": "{count, plural, one{1 element} other{{count} elementer}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Komprimerer → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arkiv oprettet: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

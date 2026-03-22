@@ -1,0 +1,120 @@
+{
+  "@@locale": "ko",
+  "dropZoneDrop": "아카이브 드롭",
+  "dropZoneRelease": "드롭하여 열기",
+  "dropZoneSubtitle": "또는 클릭하여 선택\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, other{{count}개 파일}}",
+  "passwordDialogTitle": "보호된 아카이브",
+  "passwordDialogSubtitle": "비밀번호 입력",
+  "passwordDialogHint": "비밀번호…",
+  "cancel": "취소",
+  "confirm": "확인",
+  "logPanelTitle": "로그",
+  "logPanelEntryCount": "{count, plural, other{{count}개 항목}}",
+  "logPanelEmpty": "활동 없음",
+  "progressExtracting": "추출 중…",
+  "progressDone": "추출 완료!",
+  "treeLoading": "아카이브 읽는 중…",
+  "treeError": "오류",
+  "treeEmpty": "로드된 아카이브 없음",
+  "treeEmptyHint": "파일을 드롭하여 내용 보기",
+  "treeSearch": "검색…",
+  "treeColName": "이름",
+  "treeColSize": "크기",
+  "treeColModified": "수정됨",
+  "treeOpenTooltip": "두 번 클릭하여 열기",
+  "treeItems": "{count, plural, other{{count}개 항목}}",
+  "sectionDestination": "대상",
+  "sectionSecurity": "보안",
+  "destinationSameFolder": "아카이브와 같은 폴더",
+  "subfolderCreate": "하위 폴더로 추출",
+  "subfolderDefault": "아카이브 이름으로 지정",
+  "passwordNone": "비밀번호 없음",
+  "passwordSetLabel": "비밀번호 설정됨",
+  "passwordEdit": "편집",
+  "passwordDefine": "설정",
+  "btnExtract": "추출",
+  "btnExtracting": "추출 중...",
+  "btnDone": "완료 ✓",
+  "btnReset": "재설정",
+  "binaryWarning": "7zip을 찾을 수 없습니다. 설치: {cmd}",
+  "pickFileDialogTitle": "아카이브 열기",
+  "pickOutputDialogTitle": "대상 폴더 선택",
+  "logBinaryFound": "7zip 찾음: {path}",
+  "logBinaryNotFound": "⚠️ 7zip을 찾을 수 없습니다. Homebrew (macOS) 또는 7-zip.org (Windows)에서 설치하세요.",
+  "logNoArchiveRecognized": "드롭된 파일에서 인식된 아카이브가 없습니다.",
+  "logUnsupportedFormat": "지원되지 않는 형식: {name}",
+  "logReadingArchive": "아카이브 읽는 중: {name}",
+  "logEntriesFound": "{count, plural, other{아카이브에서 {count}개 항목을 찾았습니다.}}",
+  "logPasswordRequired": "암호화된 아카이브 — 비밀번호 필요.",
+  "logFilePasswordRequired": "암호화된 파일 — 비밀번호 필요.",
+  "logPasswordDefined": "비밀번호 설정됨.",
+  "logCancelled": "취소됨.",
+  "logDestination": "대상: {path}",
+  "logExtractionStarted": "추출 대상: {path}",
+  "logExtractionDone": "✅ 추출 완료: {path}",
+  "logReset": "재설정됨.",
+  "logOpening": "{name} 열는 중…",
+  "logOpened": "열림: {name}",
+  "logOpenError": "열기 오류: {error}",
+  "logExtractionError": "추출 오류: {error}",
+  "logError": "오류: {error}",
+  "logSplitIncompleteEmpty": "⚠️ 불완전한 분할 아카이브 — 누락된 부분. 내용을 표시할 수 없습니다.",
+  "logSplitIncompletePartial": "⚠️ 불완전한 분할 아카이브 — 누락된 부분. 표시된 내용이 불완전할 수 있습니다.",
+  "logExtractionSplitError": "추출 실패: 누락된 부분.",
+  "errorSplitArchive": "⚠️ 불완전한 분할 아카이브 — 모든 부분이 같은 폴더에 있는지 확인하세요.",
+  "tabDecompression": "압축 해제",
+  "tabCompression": "압축",
+  "tabConsoleApi": "콘솔 API",
+  "tabComingSoon": "출시 예정",
+  "compLabelArchiveName": "아카이브 이름",
+  "compLabelDestination": "대상",
+  "compLabelFormat": "형식",
+  "compLabelCompression": "압축 수준",
+  "compLabelSecurity": "보안",
+  "compLabelAdvanced": "고급 옵션",
+  "compLabelSplit": "분할",
+  "compSizeFolder": "폴더",
+  "compDestSameFolder": "파일과 같은 폴더",
+  "compLevelNotApplicable": ".{format}에는 적용되지 않음",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "헤더 암호화 활성화",
+  "compSplitNone": "없음",
+  "compBtnCompress": "압축",
+  "compBtnCompressing": "압축 중…",
+  "compAddFiles": "파일 추가",
+  "compAddFolder": "폴더 추가",
+  "compDropToAdd": "드래그하여 추가",
+  "compDropHint": "파일 또는 폴더를 여기로 드래그",
+  "compDropSubtitle": "파일이 아카이브에 추가됩니다",
+  "compItemCount": "{count, plural, other{{count}개 항목}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "압축 중 → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ 아카이브 생성: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

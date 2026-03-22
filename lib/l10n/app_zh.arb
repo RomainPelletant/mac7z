@@ -1,0 +1,120 @@
+{
+  "@@locale": "zh",
+  "dropZoneDrop": "放置存档",
+  "dropZoneRelease": "释放以打开",
+  "dropZoneSubtitle": "或点击选择\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, other{{count} 个文件}}",
+  "passwordDialogTitle": "受保护的存档",
+  "passwordDialogSubtitle": "输入密码",
+  "passwordDialogHint": "密码…",
+  "cancel": "取消",
+  "confirm": "确认",
+  "logPanelTitle": "日志",
+  "logPanelEntryCount": "{count, plural, other{{count} 条条目}}",
+  "logPanelEmpty": "无活动",
+  "progressExtracting": "提取中…",
+  "progressDone": "提取完成!",
+  "treeLoading": "正在读取存档…",
+  "treeError": "错误",
+  "treeEmpty": "未加载存档",
+  "treeEmptyHint": "放置文件查看其内容",
+  "treeSearch": "搜索…",
+  "treeColName": "名称",
+  "treeColSize": "大小",
+  "treeColModified": "修改于",
+  "treeOpenTooltip": "双击打开",
+  "treeItems": "{count, plural, other{{count} 项}}",
+  "sectionDestination": "目标",
+  "sectionSecurity": "安全性",
+  "destinationSameFolder": "与存档相同的文件夹",
+  "subfolderCreate": "提取到子文件夹",
+  "subfolderDefault": "以存档名称命名",
+  "passwordNone": "无密码",
+  "passwordSetLabel": "已设置密码",
+  "passwordEdit": "编辑",
+  "passwordDefine": "设置",
+  "btnExtract": "提取",
+  "btnExtracting": "提取中...",
+  "btnDone": "完成 ✓",
+  "btnReset": "重置",
+  "binaryWarning": "未找到 7zip。安装: {cmd}",
+  "pickFileDialogTitle": "打开存档",
+  "pickOutputDialogTitle": "选择目标文件夹",
+  "logBinaryFound": "找到 7zip: {path}",
+  "logBinaryNotFound": "⚠️ 未找到 7zip。通过 Homebrew (macOS) 或 7-zip.org (Windows) 安装。",
+  "logNoArchiveRecognized": "放置的文件中未识别到任何存档。",
+  "logUnsupportedFormat": "不支持的格式: {name}",
+  "logReadingArchive": "正在读取存档: {name}",
+  "logEntriesFound": "{count, plural, other{存档中找到 {count} 个条目。}}",
+  "logPasswordRequired": "加密存档 — 需要密码。",
+  "logFilePasswordRequired": "加密文件 — 需要密码。",
+  "logPasswordDefined": "密码已设置。",
+  "logCancelled": "已取消。",
+  "logDestination": "目标: {path}",
+  "logExtractionStarted": "提取到: {path}",
+  "logExtractionDone": "✅ 提取完成: {path}",
+  "logReset": "已重置。",
+  "logOpening": "打开 {name}…",
+  "logOpened": "已打开: {name}",
+  "logOpenError": "打开错误: {error}",
+  "logExtractionError": "提取错误: {error}",
+  "logError": "错误: {error}",
+  "logSplitIncompleteEmpty": "⚠️ 不完整的分割存档 — 缺少部分。无法显示内容。",
+  "logSplitIncompletePartial": "⚠️ 不完整的分割存档 — 缺少部分。显示的内容可能不完整。",
+  "logExtractionSplitError": "提取失败: 缺少部分。",
+  "errorSplitArchive": "⚠️ 不完整的分割存档 — 确保所有部分都在同一文件夹中。",
+  "tabDecompression": "解压",
+  "tabCompression": "压缩",
+  "tabConsoleApi": "控制台 API",
+  "tabComingSoon": "即将推出",
+  "compLabelArchiveName": "存档名称",
+  "compLabelDestination": "目标",
+  "compLabelFormat": "格式",
+  "compLabelCompression": "压缩级别",
+  "compLabelSecurity": "安全性",
+  "compLabelAdvanced": "高级选项",
+  "compLabelSplit": "分割",
+  "compSizeFolder": "文件夹",
+  "compDestSameFolder": "与文件相同的文件夹",
+  "compLevelNotApplicable": "不适用于 .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "标头加密已启用",
+  "compSplitNone": "无",
+  "compBtnCompress": "压缩",
+  "compBtnCompressing": "压缩中…",
+  "compAddFiles": "添加文件",
+  "compAddFolder": "添加文件夹",
+  "compDropToAdd": "拖放以添加",
+  "compDropHint": "在此放置文件或文件夹",
+  "compDropSubtitle": "文件将添加到存档中",
+  "compItemCount": "{count, plural, other{{count} 项}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "压缩中 → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ 存档已创建: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

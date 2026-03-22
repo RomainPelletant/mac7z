@@ -1,0 +1,120 @@
+{
+  "@@locale": "pl",
+  "dropZoneDrop": "Przeciągnij archiwum",
+  "dropZoneRelease": "Zwolnij, aby otworzyć",
+  "dropZoneSubtitle": "lub kliknij, aby wybrać\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} plik} few{{count} pliki} many{{count} plików} other{{count} pliku}}",
+  "passwordDialogTitle": "Chronione archiwum",
+  "passwordDialogSubtitle": "Podaj hasło",
+  "passwordDialogHint": "Hasło…",
+  "cancel": "Anuluj",
+  "confirm": "Potwierdź",
+  "logPanelTitle": "Dziennik",
+  "logPanelEntryCount": "{count, plural, one{{count} wpis} few{{count} wpisy} many{{count} wpisów} other{{count} wpisu}}",
+  "logPanelEmpty": "Brak aktywności",
+  "progressExtracting": "Rozpakowywanie…",
+  "progressDone": "Rozpakowanie ukończone!",
+  "treeLoading": "Czytanie archiwum…",
+  "treeError": "Błąd",
+  "treeEmpty": "Brak załadowanego archiwum",
+  "treeEmptyHint": "Przeciągnij plik, aby zobaczyć jego zawartość",
+  "treeSearch": "Wyszukaj…",
+  "treeColName": "Nazwa",
+  "treeColSize": "Rozmiar",
+  "treeColModified": "Zmodyfikowano",
+  "treeOpenTooltip": "Kliknij dwukrotnie, aby otworzyć",
+  "treeItems": "{count, plural, one{{count} element} few{{count} elementy} many{{count} elementów} other{{count} elementu}}",
+  "sectionDestination": "Cel",
+  "sectionSecurity": "Bezpieczeństwo",
+  "destinationSameFolder": "Ten sam folder co archiwum",
+  "subfolderCreate": "Rozpakuj do podfolderu",
+  "subfolderDefault": "o nazwie archiwum",
+  "passwordNone": "Brak hasła",
+  "passwordSetLabel": "Hasło ustawione",
+  "passwordEdit": "Edytuj",
+  "passwordDefine": "Ustaw",
+  "btnExtract": "Rozpakuj",
+  "btnExtracting": "Rozpakowywanie...",
+  "btnDone": "Gotowe ✓",
+  "btnReset": "Zresetuj",
+  "binaryWarning": "7zip nie znaleziony. Zainstaluj go: {cmd}",
+  "pickFileDialogTitle": "Otwórz archiwum",
+  "pickOutputDialogTitle": "Wybierz folder docelowy",
+  "logBinaryFound": "7zip znaleziony: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nie znaleziony. Zainstaluj za pośrednictwem Homebrew (macOS) lub 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Brak rozpoznanego archiwum w przeciągniętych plikach.",
+  "logUnsupportedFormat": "Nieobsługiwany format: {name}",
+  "logReadingArchive": "Czytanie archiwum: {name}",
+  "logEntriesFound": "{count, plural, one{Znaleziono 1 wpis w archiwum.} few{Znaleziono {count} wpisy w archiwum.} many{Znaleziono {count} wpisów w archiwum.} other{Znaleziono {count} wpisu w archiwum.}}",
+  "logPasswordRequired": "Zaszyfrowane archiwum — wymagane hasło.",
+  "logFilePasswordRequired": "Zaszyfrowany plik — wymagane hasło.",
+  "logPasswordDefined": "Hasło ustawione.",
+  "logCancelled": "Anulowano.",
+  "logDestination": "Cel: {path}",
+  "logExtractionStarted": "Rozpakowywanie do: {path}",
+  "logExtractionDone": "✅ Rozpakowanie ukończone w: {path}",
+  "logReset": "Zresetowano.",
+  "logOpening": "Otwieranie {name}…",
+  "logOpened": "Otwarte: {name}",
+  "logOpenError": "Błąd podczas otwierania: {error}",
+  "logExtractionError": "Błąd rozpakowania: {error}",
+  "logError": "Błąd: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Niekompletne archiwum podzielone — brakujące części. Nie można wyświetlić zawartości.",
+  "logSplitIncompletePartial": "⚠️ Niekompletne archiwum podzielone — brakujące części. Wyświetlona zawartość może być niekompletna.",
+  "logExtractionSplitError": "Rozpakowanie nie powiodło się: brakujące części.",
+  "errorSplitArchive": "⚠️ Niekompletne archiwum podzielone — upewnij się, że wszystkie części znajdują się w tym samym folderze.",
+  "tabDecompression": "Dekompresja",
+  "tabCompression": "Kompresja",
+  "tabConsoleApi": "Konsola API",
+  "tabComingSoon": "Wkrótce",
+  "compLabelArchiveName": "Nazwa archiwum",
+  "compLabelDestination": "Cel",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Poziom kompresji",
+  "compLabelSecurity": "Bezpieczeństwo",
+  "compLabelAdvanced": "Opcje zaawansowane",
+  "compLabelSplit": "Podziel",
+  "compSizeFolder": "folder",
+  "compDestSameFolder": "Ten sam folder co pliki",
+  "compLevelNotApplicable": "Nie dotyczy dla .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Szyfrowanie nagłówka włączone",
+  "compSplitNone": "Brak",
+  "compBtnCompress": "Kompresuj",
+  "compBtnCompressing": "Kompresowanie…",
+  "compAddFiles": "Dodaj pliki",
+  "compAddFolder": "Dodaj folder",
+  "compDropToAdd": "Przeciągnij, aby dodać",
+  "compDropHint": "Przeciągnij tutaj pliki lub foldery",
+  "compDropSubtitle": "Pliki będą dodane do archiwum",
+  "compItemCount": "{count, plural, one{1 element} few{{count} elementy} many{{count} elementów} other{{count} elementu}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Kompresowanie → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archiwum utworzone: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

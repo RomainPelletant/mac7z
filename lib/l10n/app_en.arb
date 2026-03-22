@@ -1,0 +1,232 @@
+{
+  "@@locale": "en",
+  "dropZoneDrop": "Drop an archive",
+  "dropZoneRelease": "Release to open",
+  "dropZoneSubtitle": "or click to select\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} file} other{{count} files}}",
+  "@dropZoneFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "passwordDialogTitle": "Protected archive",
+  "passwordDialogSubtitle": "Enter the password",
+  "passwordDialogHint": "Password…",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "logPanelTitle": "Log",
+  "logPanelEntryCount": "{count, plural, one{{count} entry} other{{count} entries}}",
+  "@logPanelEntryCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "logPanelEmpty": "No activity",
+  "progressExtracting": "Extracting…",
+  "progressDone": "Extraction complete!",
+  "treeLoading": "Reading archive…",
+  "treeError": "Error",
+  "treeEmpty": "No archive loaded",
+  "treeEmptyHint": "Drop a file to see its contents",
+  "treeSearch": "Search…",
+  "treeColName": "Name",
+  "treeColSize": "Size",
+  "treeColModified": "Modified",
+  "treeOpenTooltip": "Double-click to open",
+  "treeItems": "{count, plural, one{{count} item} other{{count} items}}",
+  "@treeItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sectionDestination": "Destination",
+  "sectionSecurity": "Security",
+  "destinationSameFolder": "Same folder as archive",
+  "subfolderCreate": "Extract to a subfolder",
+  "subfolderDefault": "named after the archive",
+  "passwordNone": "No password",
+  "passwordSetLabel": "Password set",
+  "passwordEdit": "Edit",
+  "passwordDefine": "Set",
+  "btnExtract": "Extract",
+  "btnExtracting": "Extracting...",
+  "btnDone": "Done ✓",
+  "btnReset": "Reset",
+  "binaryWarning": "7zip not found. Install it: {cmd}",
+  "@binaryWarning": {
+    "placeholders": {
+      "cmd": {
+        "type": "String"
+      }
+    }
+  },
+  "pickFileDialogTitle": "Open an archive",
+  "pickOutputDialogTitle": "Choose destination folder",
+  "logBinaryFound": "7zip found: {path}",
+  "@logBinaryFound": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logBinaryNotFound": "⚠️ 7zip not found. Install it via Homebrew (macOS) or 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "No recognized archive in dropped files.",
+  "logUnsupportedFormat": "Unsupported format: {name}",
+  "@logUnsupportedFormat": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "logReadingArchive": "Reading archive: {name}",
+  "@logReadingArchive": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "logEntriesFound": "{count, plural, one{1 entry found in archive.} other{{count} entries found in archive.}}",
+  "@logEntriesFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "logPasswordRequired": "Encrypted archive — password required.",
+  "logFilePasswordRequired": "Encrypted file — password required.",
+  "logPasswordDefined": "Password set.",
+  "logCancelled": "Cancelled.",
+  "logDestination": "Destination: {path}",
+  "@logDestination": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logExtractionStarted": "Extracting to: {path}",
+  "@logExtractionStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logExtractionDone": "✅ Extraction complete in: {path}",
+  "@logExtractionDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logReset": "Reset.",
+  "logOpening": "Opening {name}…",
+  "@logOpening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "logOpened": "Opened: {name}",
+  "@logOpened": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "logOpenError": "Error opening: {error}",
+  "@logOpenError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "logExtractionError": "Extraction error: {error}",
+  "@logExtractionError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "logError": "Error: {error}",
+  "@logError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "logSplitIncompleteEmpty": "⚠️ Incomplete split archive — missing parts. Cannot display contents.",
+  "logSplitIncompletePartial": "⚠️ Incomplete split archive — missing parts. Displayed content may be partial.",
+  "logExtractionSplitError": "Extraction failed: missing parts.",
+  "errorSplitArchive": "⚠️ Incomplete split archive — make sure all parts are in the same folder.",
+  "tabDecompression": "Decompression",
+  "tabCompression": "Compression",
+  "tabConsoleApi": "Console API",
+  "tabComingSoon": "Coming soon",
+  "compLabelArchiveName": "Archive name",
+  "compLabelDestination": "Destination",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Compression level",
+  "compLabelSecurity": "Security",
+  "compLabelAdvanced": "Advanced options",
+  "compLabelSplit": "Split",
+  "compSizeFolder": "folder",
+  "compDestSameFolder": "Same folder as files",
+  "compLevelNotApplicable": "Not applicable for .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Header encryption enabled",
+  "compSplitNone": "None",
+  "compBtnCompress": "Compress",
+  "compBtnCompressing": "Compressing…",
+  "compAddFiles": "Add files",
+  "compAddFolder": "Add folder",
+  "compDropToAdd": "Drop to add",
+  "compDropHint": "Drop files or folders here",
+  "compDropSubtitle": "Files will be added to the archive",
+  "compItemCount": "{count, plural, one{1 item} other{{count} items}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Compressing → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archive created: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "@@locale": "el",
+  "dropZoneDrop": "Ρίξτε ένα αρχείο",
+  "dropZoneRelease": "Απελευθερώστε για άνοιγμα",
+  "dropZoneSubtitle": "ή κάντε κλικ για επιλογή\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} αρχείο} other{{count} αρχεία}}",
+  "passwordDialogTitle": "Προστατευμένο αρχείο",
+  "passwordDialogSubtitle": "Εισάγετε τον κωδικό πρόσβασης",
+  "passwordDialogHint": "Κωδικός πρόσβασης…",
+  "cancel": "Ακύρωση",
+  "confirm": "Επιβεβαίωση",
+  "logPanelTitle": "Ημερολόγιο",
+  "logPanelEntryCount": "{count, plural, one{{count} εγγραφή} other{{count} εγγραφές}}",
+  "logPanelEmpty": "Καμία δραστηριότητα",
+  "progressExtracting": "Εξαγωγή…",
+  "progressDone": "Ολοκλήρωση εξαγωγής!",
+  "treeLoading": "Ανάγνωση αρχείου…",
+  "treeError": "Σφάλμα",
+  "treeEmpty": "Κανένα αρχείο φορτωμένο",
+  "treeEmptyHint": "Ρίξτε ένα αρχείο για να δείτε το περιεχόμενό του",
+  "treeSearch": "Αναζήτηση…",
+  "treeColName": "Όνομα",
+  "treeColSize": "Μέγεθος",
+  "treeColModified": "Τροποποιήθηκε",
+  "treeOpenTooltip": "Διπλό κλικ για άνοιγμα",
+  "treeItems": "{count, plural, one{{count} στοιχείο} other{{count} στοιχεία}}",
+  "sectionDestination": "Προορισμός",
+  "sectionSecurity": "Ασφάλεια",
+  "destinationSameFolder": "Ίδιος φάκελος με το αρχείο",
+  "subfolderCreate": "Εξαγωγή σε υποφάκελο",
+  "subfolderDefault": "με όνομα από το αρχείο",
+  "passwordNone": "Χωρίς κωδικό πρόσβασης",
+  "passwordSetLabel": "Κωδικός πρόσβασης ορίστηκε",
+  "passwordEdit": "Επεξεργασία",
+  "passwordDefine": "Ορισμός",
+  "btnExtract": "Εξαγωγή",
+  "btnExtracting": "Εξαγωγή...",
+  "btnDone": "Ολοκληρώθη ✓",
+  "btnReset": "Επαναφορά",
+  "binaryWarning": "7zip δεν βρέθηκε. Εγκαταστήστε το: {cmd}",
+  "pickFileDialogTitle": "Άνοιγμα αρχείου",
+  "pickOutputDialogTitle": "Επιλέξτε φάκελο προορισμού",
+  "logBinaryFound": "7zip βρέθηκε: {path}",
+  "logBinaryNotFound": "⚠️ 7zip δεν βρέθηκε. Εγκαταστήστε μέσω Homebrew (macOS) ή 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Κανένα αναγνωρισμένο αρχείο στα ριγμένα αρχεία.",
+  "logUnsupportedFormat": "Μη υποστηριζόμενη μορφή: {name}",
+  "logReadingArchive": "Ανάγνωση αρχείου: {name}",
+  "logEntriesFound": "{count, plural, one{1 εγγραφή βρέθηκε στο αρχείο.} other{{count} εγγραφές βρέθηκαν στο αρχείο.}}",
+  "logPasswordRequired": "Κρυπτογραφημένο αρχείο — απαιτείται κωδικός πρόσβασης.",
+  "logFilePasswordRequired": "Κρυπτογραφημένο αρχείο — απαιτείται κωδικός πρόσβασης.",
+  "logPasswordDefined": "Κωδικός πρόσβασης ορίστηκε.",
+  "logCancelled": "Ακυρώθηκε.",
+  "logDestination": "Προορισμός: {path}",
+  "logExtractionStarted": "Εξαγωγή σε: {path}",
+  "logExtractionDone": "✅ Εξαγωγή ολοκληρώθηκε σε: {path}",
+  "logReset": "Επαναφορά.",
+  "logOpening": "Άνοιγμα {name}…",
+  "logOpened": "Ανοίχθηκε: {name}",
+  "logOpenError": "Σφάλμα κατά το άνοιγμα: {error}",
+  "logExtractionError": "Σφάλμα εξαγωγής: {error}",
+  "logError": "Σφάλμα: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Ελλιπές διαχωρισμένο αρχείο — ελλείπουσα μέρη. Δεν είναι δυνατή η εμφάνιση περιεχομένου.",
+  "logSplitIncompletePartial": "⚠️ Ελλιπές διαχωρισμένο αρχείο — ελλείπουσα μέρη. Το εμφανιζόμενο περιεχόμενο ενδέχεται να είναι ελλιπές.",
+  "logExtractionSplitError": "Η εξαγωγή απέτυχε: ελλείπουσα μέρη.",
+  "errorSplitArchive": "⚠️ Ελλιπές διαχωρισμένο αρχείο — βεβαιωθείτε ότι όλα τα μέρη είναι στον ίδιο φάκελο.",
+  "tabDecompression": "Αποσυμπίεση",
+  "tabCompression": "Συμπίεση",
+  "tabConsoleApi": "Κονσόλα API",
+  "tabComingSoon": "Σύντομα",
+  "compLabelArchiveName": "Όνομα αρχείου",
+  "compLabelDestination": "Προορισμός",
+  "compLabelFormat": "Μορφή",
+  "compLabelCompression": "Επίπεδο συμπίεσης",
+  "compLabelSecurity": "Ασφάλεια",
+  "compLabelAdvanced": "Σύνθετες επιλογές",
+  "compLabelSplit": "Διαχωρισμός",
+  "compSizeFolder": "φάκελος",
+  "compDestSameFolder": "Ίδιος φάκελος με τα αρχεία",
+  "compLevelNotApplicable": "Δεν ισχύει για .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Κρυπτογράφηση κεφαλίδας ενεργοποιημένη",
+  "compSplitNone": "Κανένα",
+  "compBtnCompress": "Συμπίεση",
+  "compBtnCompressing": "Συμπίεση…",
+  "compAddFiles": "Προσθήκη αρχείων",
+  "compAddFolder": "Προσθήκη φακέλου",
+  "compDropToAdd": "Ρίξτε για προσθήκη",
+  "compDropHint": "Ρίξτε αρχεία ή φακέλους εδώ",
+  "compDropSubtitle": "Τα αρχεία θα προστεθούν στο αρχείο",
+  "compItemCount": "{count, plural, one{1 στοιχείο} other{{count} στοιχεία}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Συμπίεση → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Αρχείο δημιουργήθηκε: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "@@locale": "nl",
+  "dropZoneDrop": "Sleep een archief",
+  "dropZoneRelease": "Loslaten om te openen",
+  "dropZoneSubtitle": "of klik om te selecteren\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} bestand} other{{count} bestanden}}",
+  "passwordDialogTitle": "Beveiligd archief",
+  "passwordDialogSubtitle": "Voer het wachtwoord in",
+  "passwordDialogHint": "Wachtwoord…",
+  "cancel": "Annuleren",
+  "confirm": "Bevestigen",
+  "logPanelTitle": "Logboek",
+  "logPanelEntryCount": "{count, plural, one{{count} item} other{{count} items}}",
+  "logPanelEmpty": "Geen activiteit",
+  "progressExtracting": "Extracting…",
+  "progressDone": "Extractie voltooid!",
+  "treeLoading": "Archief lezen…",
+  "treeError": "Fout",
+  "treeEmpty": "Geen archief geladen",
+  "treeEmptyHint": "Sleep een bestand om de inhoud te zien",
+  "treeSearch": "Zoeken…",
+  "treeColName": "Naam",
+  "treeColSize": "Grootte",
+  "treeColModified": "Gewijzigd",
+  "treeOpenTooltip": "Dubbelklik om te openen",
+  "treeItems": "{count, plural, one{{count} item} other{{count} items}}",
+  "sectionDestination": "Bestemming",
+  "sectionSecurity": "Beveiliging",
+  "destinationSameFolder": "Dezelfde map als het archief",
+  "subfolderCreate": "Uitpakken in een submap",
+  "subfolderDefault": "genoemd naar het archief",
+  "passwordNone": "Geen wachtwoord",
+  "passwordSetLabel": "Wachtwoord ingesteld",
+  "passwordEdit": "Bewerken",
+  "passwordDefine": "Instellen",
+  "btnExtract": "Uitpakken",
+  "btnExtracting": "Uitpakken...",
+  "btnDone": "Klaar ✓",
+  "btnReset": "Resetten",
+  "binaryWarning": "7zip niet gevonden. Installeer het: {cmd}",
+  "pickFileDialogTitle": "Archief openen",
+  "pickOutputDialogTitle": "Kies doelmap",
+  "logBinaryFound": "7zip gevonden: {path}",
+  "logBinaryNotFound": "⚠️ 7zip niet gevonden. Installeer via Homebrew (macOS) of 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Geen herkend archief in de verplaatste bestanden.",
+  "logUnsupportedFormat": "Niet-ondersteund formaat: {name}",
+  "logReadingArchive": "Archief lezen: {name}",
+  "logEntriesFound": "{count, plural, one{1 item gevonden in archief.} other{{count} items gevonden in archief.}}",
+  "logPasswordRequired": "Versleuteld archief — wachtwoord vereist.",
+  "logFilePasswordRequired": "Versleuteld bestand — wachtwoord vereist.",
+  "logPasswordDefined": "Wachtwoord ingesteld.",
+  "logCancelled": "Geannuleerd.",
+  "logDestination": "Bestemming: {path}",
+  "logExtractionStarted": "Uitpakken naar: {path}",
+  "logExtractionDone": "✅ Extractie voltooid in: {path}",
+  "logReset": "Gereset.",
+  "logOpening": "Opening {name}…",
+  "logOpened": "Geopend: {name}",
+  "logOpenError": "Fout bij openen: {error}",
+  "logExtractionError": "Extractiefout: {error}",
+  "logError": "Fout: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Onvolledig split-archief — ontbrekende onderdelen. Kan inhoud niet weergeven.",
+  "logSplitIncompletePartial": "⚠️ Onvolledig split-archief — ontbrekende onderdelen. Weergegeven inhoud is mogelijk onvolledig.",
+  "logExtractionSplitError": "Extractie mislukt: ontbrekende onderdelen.",
+  "errorSplitArchive": "⚠️ Onvolledig split-archief — zorg ervoor dat alle onderdelen in dezelfde map staan.",
+  "tabDecompression": "Decompressie",
+  "tabCompression": "Compressie",
+  "tabConsoleApi": "Console API",
+  "tabComingSoon": "Binnenkort",
+  "compLabelArchiveName": "Archiefnaam",
+  "compLabelDestination": "Bestemming",
+  "compLabelFormat": "Formaat",
+  "compLabelCompression": "Compressieniveau",
+  "compLabelSecurity": "Beveiliging",
+  "compLabelAdvanced": "Geavanceerde opties",
+  "compLabelSplit": "Splitsen",
+  "compSizeFolder": "map",
+  "compDestSameFolder": "Dezelfde map als bestanden",
+  "compLevelNotApplicable": "Niet van toepassing voor .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Header-versleuteling ingeschakeld",
+  "compSplitNone": "Geen",
+  "compBtnCompress": "Comprimeren",
+  "compBtnCompressing": "Comprimeren…",
+  "compAddFiles": "Bestanden toevoegen",
+  "compAddFolder": "Map toevoegen",
+  "compDropToAdd": "Slepen om toe te voegen",
+  "compDropHint": "Sleep bestanden of mappen hier",
+  "compDropSubtitle": "Bestanden worden aan het archief toegevoegd",
+  "compItemCount": "{count, plural, one{1 item} other{{count} items}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Comprimeren → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archief gemaakt: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

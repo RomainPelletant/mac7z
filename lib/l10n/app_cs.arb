@@ -1,0 +1,120 @@
+{
+  "@@locale": "cs",
+  "dropZoneDrop": "Přetáhněte archiv",
+  "dropZoneRelease": "Uvolněte pro otevření",
+  "dropZoneSubtitle": "nebo klikněte pro výběr\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} soubor} few{{count} soubory} many{{count} souborů} other{{count} souboru}}",
+  "passwordDialogTitle": "Chráněný archiv",
+  "passwordDialogSubtitle": "Zadejte heslo",
+  "passwordDialogHint": "Heslo…",
+  "cancel": "Zrušit",
+  "confirm": "Potvrdit",
+  "logPanelTitle": "Protokol",
+  "logPanelEntryCount": "{count, plural, one{{count} položka} few{{count} položky} many{{count} položek} other{{count} položky}}",
+  "logPanelEmpty": "Žádná aktivita",
+  "progressExtracting": "Rozpakování…",
+  "progressDone": "Rozpakování dokončeno!",
+  "treeLoading": "Čtení archivu…",
+  "treeError": "Chyba",
+  "treeEmpty": "Žádný archiv načten",
+  "treeEmptyHint": "Přetáhněte soubor pro zobrazení obsahu",
+  "treeSearch": "Hledat…",
+  "treeColName": "Název",
+  "treeColSize": "Velikost",
+  "treeColModified": "Změněno",
+  "treeOpenTooltip": "Dvojklikněte pro otevření",
+  "treeItems": "{count, plural, one{{count} prvek} few{{count} prvky} many{{count} prvků} other{{count} prvku}}",
+  "sectionDestination": "Cíl",
+  "sectionSecurity": "Bezpečnost",
+  "destinationSameFolder": "Stejná složka jako archiv",
+  "subfolderCreate": "Rozbalit do podsložky",
+  "subfolderDefault": "pojmenované podle archivu",
+  "passwordNone": "Bez hesla",
+  "passwordSetLabel": "Heslo nastaveno",
+  "passwordEdit": "Upravit",
+  "passwordDefine": "Nastavit",
+  "btnExtract": "Rozbalit",
+  "btnExtracting": "Rozpakování...",
+  "btnDone": "Hotovo ✓",
+  "btnReset": "Obnovit",
+  "binaryWarning": "7zip nenalezen. Nainstalujte jej: {cmd}",
+  "pickFileDialogTitle": "Otevřít archiv",
+  "pickOutputDialogTitle": "Zvolte cílovou složku",
+  "logBinaryFound": "7zip nalezen: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nenalezen. Nainstalujte přes Homebrew (macOS) nebo 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "V přetažených souborech není rozpoznán žádný archiv.",
+  "logUnsupportedFormat": "Nepodporovaný formát: {name}",
+  "logReadingArchive": "Čtení archivu: {name}",
+  "logEntriesFound": "{count, plural, one{V archivu nalezena 1 položka.} few{V archivu nalezeny {count} položky.} many{V archivu nalezeno {count} položek.} other{V archivu nalezena {count} položka.}}",
+  "logPasswordRequired": "Šifrovaný archiv — vyžadováno heslo.",
+  "logFilePasswordRequired": "Šifrovaný soubor — vyžadováno heslo.",
+  "logPasswordDefined": "Heslo nastaveno.",
+  "logCancelled": "Zrušeno.",
+  "logDestination": "Cíl: {path}",
+  "logExtractionStarted": "Rozpakování do: {path}",
+  "logExtractionDone": "✅ Rozpakování dokončeno v: {path}",
+  "logReset": "Obnoveno.",
+  "logOpening": "Otevírání {name}…",
+  "logOpened": "Otevřeno: {name}",
+  "logOpenError": "Chyba při otevírání: {error}",
+  "logExtractionError": "Chyba rozpakování: {error}",
+  "logError": "Chyba: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Neúplný rozdělený archiv — chybějící části. Nelze zobrazit obsah.",
+  "logSplitIncompletePartial": "⚠️ Neúplný rozdělený archiv — chybějící části. Zobrazený obsah může být neúplný.",
+  "logExtractionSplitError": "Rozpakování selhalo: chybějící části.",
+  "errorSplitArchive": "⚠️ Neúplný rozdělený archiv — ujistěte se, že všechny části jsou ve stejné složce.",
+  "tabDecompression": "Dekomprimace",
+  "tabCompression": "Komprimace",
+  "tabConsoleApi": "Konzole API",
+  "tabComingSoon": "Připravujeme",
+  "compLabelArchiveName": "Název archivu",
+  "compLabelDestination": "Cíl",
+  "compLabelFormat": "Formát",
+  "compLabelCompression": "Úroveň komprese",
+  "compLabelSecurity": "Bezpečnost",
+  "compLabelAdvanced": "Pokročilé možnosti",
+  "compLabelSplit": "Rozdělit",
+  "compSizeFolder": "složka",
+  "compDestSameFolder": "Stejná složka jako soubory",
+  "compLevelNotApplicable": "Nepoužívá se pro .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Šifrování záhlaví povoleno",
+  "compSplitNone": "Žádné",
+  "compBtnCompress": "Komprimovat",
+  "compBtnCompressing": "Komprimace…",
+  "compAddFiles": "Přidat soubory",
+  "compAddFolder": "Přidat složku",
+  "compDropToAdd": "Přetáhněte pro přidání",
+  "compDropHint": "Přetáhněte sem soubory nebo složky",
+  "compDropSubtitle": "Soubory budou přidány do archivu",
+  "compItemCount": "{count, plural, one{1 prvek} few{{count} prvky} many{{count} prvků} other{{count} prvku}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Komprimace → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archiv vytvořen: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

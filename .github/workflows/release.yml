@@ -1,0 +1,152 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+
+  # ── macOS → .dmg (matrix: arm64 + x86_64) ───────────────────────────────────
+  build-macos:
+    name: Build macOS (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: arm64
+            runner: macos-latest  # Apple Silicon (M1/M2/M3)
+            suffix: macos-arm64
+          - arch: x86_64
+            runner: macos-15-intel      # Intel
+            suffix: macos-intel
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Download 7zz binary
+        run: bash scripts/setup.sh
+
+      - name: Build macOS release
+        run: flutter build macos --release
+
+      - name: Ad-hoc code sign
+        run: |
+          APP="build/macos/Build/Products/Release/mac7z.app"
+          codesign --deep --force --sign - "$APP"
+          codesign --verify --deep --strict "$APP"
+
+      - name: Create DMG
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          DMG_STAGING="/tmp/mac7z_dmg_staging"
+          mkdir -p "$DMG_STAGING"
+          cp -R "build/macos/Build/Products/Release/mac7z.app" "$DMG_STAGING/"
+          ln -s /Applications "$DMG_STAGING/Applications"
+          hdiutil create \
+            -volname "mac7z" \
+            -srcfolder "$DMG_STAGING" \
+            -ov -format UDZO -fs HFS+ \
+            "mac7z-${VERSION}-${{ matrix.suffix }}.dmg"
+
+      - name: Upload DMG artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-dmg-${{ matrix.arch }}
+          path: mac7z-*-${{ matrix.suffix }}.dmg
+
+  # ── GitHub Release ───────────────────────────────────────────────────────────
+  publish:
+    needs: [build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "mac7z v${{ steps.version.outputs.version }}"
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          body: |
+            ## mac7z v${{ steps.version.outputs.version }}
+
+            ### macOS
+
+            | Architecture | File |
+            |---|---|
+            | Apple Silicon (M1-5) | `mac7z-${{ steps.version.outputs.version }}-macos-arm64.dmg` |
+            | Intel (x86_64) | `mac7z-${{ steps.version.outputs.version }}-macos-intel.dmg` |
+
+            1. Download DMG file according to your Mac CPU platform
+            2. Open the DMG file and drop mac7z into Applications
+            3. First launch : Right click → Open (signature ad-hoc)
+
+            ### Prereq.
+            - macOS 11.0+
+          files: artifacts/**
+
+  # ── Homebrew tap update ──────────────────────────────────────────────────────
+  update-homebrew:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract version
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Compute DMG SHA256 (arm64)
+        id: sha256
+        run: |
+          DMG_URL="https://github.com/romainpelletant/mac7z/releases/download/${{ github.ref_name }}/mac7z-${{ steps.version.outputs.version }}-macos-arm64.dmg"
+          SHA=$(curl -sL "$DMG_URL" | shasum -a 256 | awk '{print $1}')
+          echo "sha256=$SHA" >> $GITHUB_OUTPUT
+
+      - name: Checkout homebrew tap
+        uses: actions/checkout@v4
+        with:
+          repository: romainpelletant/homebrew-mac7z
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          path: homebrew-tap
+
+      - name: Update cask version & sha256
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          SHA="${{ steps.sha256.outputs.sha256 }}"
+          CASK="homebrew-tap/Casks/mac7z.rb"
+
+          sed -i "s/version \".*\"/version \"$VERSION\"/" "$CASK"
+          sed -i "s/sha256 \".*\"/sha256 \"$SHA\"/" "$CASK"
+
+      - name: Commit & push cask update
+        run: |
+          cd homebrew-tap
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Casks/mac7z.rb
+          git commit -m "chore: bump mac7z to ${{ steps.version.outputs.version }}"
+          git push

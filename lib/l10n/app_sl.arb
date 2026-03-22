@@ -1,0 +1,119 @@
+{
+  "@@locale": "sl",
+  "dropZoneDrop": "Spustite arhiv",
+  "dropZoneRelease": "Spustite za odpiranje",
+  "dropZoneSubtitle": "ali kliknite za izbiro\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} datoteka} two{{count} datoteki} few{{count} datoteke} other{{count} datotek}}",
+  "passwordDialogTitle": "Zaščiteni arhiv",
+  "passwordDialogSubtitle": "Vnesite geslo",
+  "passwordDialogHint": "Geslo…",
+  "cancel": "Prekliči",
+  "confirm": "Potrdi",
+  "logPanelTitle": "Dnevnik",
+  "logPanelEntryCount": "{count, plural, one{{count} vnos} two{{count} vnosa} few{{count} vnosi} other{{count} vnosov}}",
+  "logPanelEmpty": "Brez dejavnosti",
+  "progressExtracting": "Razpakiranje…",
+  "progressDone": "Razpakiranje končano!",
+  "treeLoading": "Branje arhiva…",
+  "treeError": "Napaka",
+  "treeEmpty": "Noben arhiv ni naložen",
+  "treeEmptyHint": "Spustite datoteko, da vidite njeno vsebino",
+  "treeSearch": "Iskanje…",
+  "treeColName": "Ime",
+  "treeColSize": "Velikost",
+  "treeColModified": "Spremenjeno",
+  "treeOpenTooltip": "Dvojni klik za odpiranje",
+  "treeItems": "{count, plural, one{{count} element} two{{count} elementa} few{{count} elementi} other{{count} elementov}}",
+  "sectionDestination": "Cilj",
+  "sectionSecurity": "Varnost",
+  "destinationSameFolder": "Ista mapa kot arhiv",
+  "subfolderCreate": "Razpakuj v podmapo",
+  "subfolderDefault": "poimenovan po arhivu",
+  "passwordNone": "Brez gesla",
+  "passwordSetLabel": "Geslo je nastavljeno",
+  "passwordEdit": "Uredi",
+  "passwordDefine": "Nastavi",
+  "btnExtract": "Razpakuj",
+  "btnExtracting": "Razpakiranje...",
+  "btnDone": "Gotovo ✓",
+  "btnReset": "Ponastavi",
+  "binaryWarning": "7zip ni najden. Instalirajte ga: {cmd}",
+  "pickFileDialogTitle": "Odpri arhiv",
+  "pickOutputDialogTitle": "Izberite ciljno mapo",
+  "logBinaryFound": "7zip najden: {path}",
+  "logBinaryNotFound": "⚠️ 7zip ni najden. Instalirajte ga prek Homebrew (macOS) ali 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "V spuščenih datotekah ni prepoznanega arhiva.",
+  "logUnsupportedFormat": "Nepodprta oblika: {name}",
+  "logReadingArchive": "Branje arhiva: {name}",
+  "logEntriesFound": "{count, plural, one{1 vnos najden v arhivu.} two{{count} vnosa najdena v arhivu.} few{{count} vnosi najdeni v arhivu.} other{{count} vnosov najdenih v arhivu.}}",
+  "logPasswordRequired": "Šifriran arhiv — geslo je obvezno.",
+  "logFilePasswordRequired": "Šifrirana datoteka — geslo je obvezno.",
+  "logPasswordDefined": "Geslo je nastavljeno.",
+  "logCancelled": "Prekliknjena.",
+  "logDestination": "Cilj: {path}",
+  "logExtractionStarted": "Razpakiranje v: {path}",
+  "logExtractionDone": "✅ Razpakiranje končano v: {path}",
+  "logReset": "Ponastavljeno.",
+  "logOpening": "Odpiranje {name}…",
+  "logOpened": "Odprto: {name}",
+  "logOpenError": "Napaka pri odpiranju: {error}",
+  "logExtractionError": "Napaka pri razpakiranju: {error}",
+  "logError": "Napaka: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Nepopoln razdeljeni arhiv — manjkajoči deli. Vsebine ni mogoče prikazati.",
+  "logSplitIncompletePartial": "⚠️ Nepopoln razdeljeni arhiv — manjkajoči deli. Prikazana vsebina je lahko nepopolna.",
+  "logExtractionSplitError": "Razpakiranje je neuspešno: manjkajoči deli.",
+  "errorSplitArchive": "⚠️ Nepopoln razdeljeni arhiv — prepričajte se, da so vsi deli v isti mapi.",
+  "tabDecompression": "Dekompresija",
+  "tabCompression": "Kompresija",
+  "tabConsoleApi": "Konzola API",
+  "tabComingSoon": "Kmalu",
+  "compLabelArchiveName": "Ime arhiva",
+  "compLabelDestination": "Cilj",
+  "compLabelFormat": "Oblika",
+  "compLabelCompression": "Raven stiskanja",
+  "compLabelSecurity": "Varnost",
+  "compLabelSplit": "Deli",
+  "compSizeFolder": "mapa",
+  "compDestSameFolder": "Ista mapa kot datoteke",
+  "compLevelNotApplicable": "Ne velja za .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Šifriranje glave omogočeno",
+  "compSplitNone": "Noben",
+  "compBtnCompress": "Stisnit",
+  "compBtnCompressing": "Stiskanje…",
+  "compAddFiles": "Dodaj datoteke",
+  "compAddFolder": "Dodaj mapo",
+  "compDropToAdd": "Spusti za dodajanje",
+  "compDropHint": "Spusti datoteke ali mape tukaj",
+  "compDropSubtitle": "Datoteke bodo dodane v arhiv",
+  "compItemCount": "{count, plural, one{1 element} two{{count} elementa} few{{count} elementi} other{{count} elementov}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Stiskanje → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arhiv ustvarjen: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

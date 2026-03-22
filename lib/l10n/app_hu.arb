@@ -1,0 +1,120 @@
+{
+  "@@locale": "hu",
+  "dropZoneDrop": "Húzza ide az archívumot",
+  "dropZoneRelease": "Engedje el a megnyitáshoz",
+  "dropZoneSubtitle": "vagy kattintson a kiválasztáshoz\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fájl} other{{count} fájl}}",
+  "passwordDialogTitle": "Védett archívum",
+  "passwordDialogSubtitle": "Adja meg a jelszót",
+  "passwordDialogHint": "Jelszó…",
+  "cancel": "Mégse",
+  "confirm": "Megerősítés",
+  "logPanelTitle": "Napló",
+  "logPanelEntryCount": "{count, plural, one{{count} bejegyzés} other{{count} bejegyzés}}",
+  "logPanelEmpty": "Nincs tevékenység",
+  "progressExtracting": "Kicsomagolás…",
+  "progressDone": "Kicsomagolás befejezve!",
+  "treeLoading": "Archívum olvasása…",
+  "treeError": "Hiba",
+  "treeEmpty": "Nincs archívum betöltve",
+  "treeEmptyHint": "Húzza ide a fájlt a tartalmának megtekintéséhez",
+  "treeSearch": "Keresés…",
+  "treeColName": "Név",
+  "treeColSize": "Méret",
+  "treeColModified": "Módosítva",
+  "treeOpenTooltip": "Dupla kattintás a megnyitáshoz",
+  "treeItems": "{count, plural, one{{count} elem} other{{count} elem}}",
+  "sectionDestination": "Cél",
+  "sectionSecurity": "Biztonság",
+  "destinationSameFolder": "Az archívummal azonos mappában",
+  "subfolderCreate": "Kicsomagolás alkönyvtárba",
+  "subfolderDefault": "az archívum nevéről",
+  "passwordNone": "Nincs jelszó",
+  "passwordSetLabel": "Jelszó beállítva",
+  "passwordEdit": "Szerkesztés",
+  "passwordDefine": "Beállítás",
+  "btnExtract": "Kicsomagolás",
+  "btnExtracting": "Kicsomagolás...",
+  "btnDone": "Kész ✓",
+  "btnReset": "Alaphelyzetbe",
+  "binaryWarning": "7zip nem található. Telepítse: {cmd}",
+  "pickFileDialogTitle": "Archívum megnyitása",
+  "pickOutputDialogTitle": "Válassza ki a célmappát",
+  "logBinaryFound": "7zip megtalálva: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nem található. Telepítse a Homebrew (macOS) vagy a 7-zip.org (Windows) segítségével.",
+  "logNoArchiveRecognized": "Nincs felismert archívum az ejtett fájlok között.",
+  "logUnsupportedFormat": "Nem támogatott formátum: {name}",
+  "logReadingArchive": "Archívum olvasása: {name}",
+  "logEntriesFound": "{count, plural, one{1 bejegyzés található az archívumban.} other{{count} bejegyzés található az archívumban.}}",
+  "logPasswordRequired": "Titkosított archívum — jelszó szükséges.",
+  "logFilePasswordRequired": "Titkosított fájl — jelszó szükséges.",
+  "logPasswordDefined": "Jelszó beállítva.",
+  "logCancelled": "Visszavonva.",
+  "logDestination": "Cél: {path}",
+  "logExtractionStarted": "Kicsomagolás erre: {path}",
+  "logExtractionDone": "✅ Kicsomagolás befejeződött itt: {path}",
+  "logReset": "Alaphelyzetbe állítva.",
+  "logOpening": "{name} megnyitása…",
+  "logOpened": "Megnyitva: {name}",
+  "logOpenError": "Hiba a megnyitásakor: {error}",
+  "logExtractionError": "Kicsomagolási hiba: {error}",
+  "logError": "Hiba: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Hiányos felosztott archívum — hiányzó részek. Nem lehet megjeleníteni a tartalmat.",
+  "logSplitIncompletePartial": "⚠️ Hiányos felosztott archívum — hiányzó részek. A megjelenített tartalom lehet hiányos.",
+  "logExtractionSplitError": "A kicsomagolás sikertelen: hiányzó részek.",
+  "errorSplitArchive": "⚠️ Hiányos felosztott archívum — győződjön meg róla, hogy az összes rész ugyanabban a mappában van.",
+  "tabDecompression": "Kicsomagolás",
+  "tabCompression": "Tömörítés",
+  "tabConsoleApi": "Konzol API",
+  "tabComingSoon": "Hamarosan",
+  "compLabelArchiveName": "Archívum neve",
+  "compLabelDestination": "Cél",
+  "compLabelFormat": "Formátum",
+  "compLabelCompression": "Tömörítési szint",
+  "compLabelSecurity": "Biztonság",
+  "compLabelAdvanced": "Speciális beállítások",
+  "compLabelSplit": "Felosztás",
+  "compSizeFolder": "mappa",
+  "compDestSameFolder": "A fájlokkal azonos mappa",
+  "compLevelNotApplicable": "Nem alkalmazható .{format} fájlokra",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Fejléc titkosítás engedélyezve",
+  "compSplitNone": "Nincs",
+  "compBtnCompress": "Tömörítés",
+  "compBtnCompressing": "Tömörítés…",
+  "compAddFiles": "Fájlok hozzáadása",
+  "compAddFolder": "Mappa hozzáadása",
+  "compDropToAdd": "Húzza a hozzáadáshoz",
+  "compDropHint": "Húzzon ide fájlokat vagy mappákat",
+  "compDropSubtitle": "A fájlok hozzáadódnak az archívumhoz",
+  "compItemCount": "{count, plural, one{1 elem} other{{count} elem}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Tömörítés → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archívum létrehozva: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

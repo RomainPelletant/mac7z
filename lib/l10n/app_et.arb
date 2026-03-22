@@ -1,0 +1,119 @@
+{
+  "@@locale": "et",
+  "dropZoneDrop": "Lohistage arhiiv",
+  "dropZoneRelease": "Lahti laskmine avamiseks",
+  "dropZoneSubtitle": "või klõpsake valimiseks\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fail} other{{count} faili}}",
+  "passwordDialogTitle": "Kaitstud arhiiv",
+  "passwordDialogSubtitle": "Sisestage parool",
+  "passwordDialogHint": "Parool…",
+  "cancel": "Tühista",
+  "confirm": "Kinnita",
+  "logPanelTitle": "Logi",
+  "logPanelEntryCount": "{count, plural, one{{count} kirje} other{{count} kirjet}}",
+  "logPanelEmpty": "Tegevust pole",
+  "progressExtracting": "Pakitakse lahti…",
+  "progressDone": "Lahtipakkimine lõpule viidud!",
+  "treeLoading": "Arhiivi lugemine…",
+  "treeError": "Viga",
+  "treeEmpty": "Archiiviid pole laaditud",
+  "treeEmptyHint": "Lohistage fail selle sisu nägemiseks",
+  "treeSearch": "Otsing…",
+  "treeColName": "Nimi",
+  "treeColSize": "Suurus",
+  "treeColModified": "Muudetud",
+  "treeOpenTooltip": "Avamiseks topeltklõps",
+  "treeItems": "{count, plural, one{{count} element} other{{count} elementi}}",
+  "sectionDestination": "Sihtkoht",
+  "sectionSecurity": "Turvalisus",
+  "destinationSameFolder": "Sama kaust kui arhiiv",
+  "subfolderCreate": "Paki lahti alamkausta",
+  "subfolderDefault": "arhiivi nimega",
+  "passwordNone": "Parooliga pole",
+  "passwordSetLabel": "Parool on määratud",
+  "passwordEdit": "Redigeeri",
+  "passwordDefine": "Määra",
+  "btnExtract": "Paki lahti",
+  "btnExtracting": "Pakitakse lahti...",
+  "btnDone": "Valmis ✓",
+  "btnReset": "Lähtesta",
+  "binaryWarning": "7zip ei leitud. Installige see: {cmd}",
+  "pickFileDialogTitle": "Avage arhiiv",
+  "pickOutputDialogTitle": "Valige sihtkausta",
+  "logBinaryFound": "7zip leitud: {path}",
+  "logBinaryNotFound": "⚠️ 7zip ei leitud. Installige Homebrew (macOS) või 7-zip.org (Windows) kaudu.",
+  "logNoArchiveRecognized": "Lohistatud failide seas ei ole tunnistatud arhiiviid.",
+  "logUnsupportedFormat": "Toetamata vorming: {name}",
+  "logReadingArchive": "Arhiivi lugemine: {name}",
+  "logEntriesFound": "{count, plural, one{1 kirje leitud arhiivist.} other{{count} kirjet leitud arhiivist.}}",
+  "logPasswordRequired": "Krüptitud arhiiv — parool nõutav.",
+  "logFilePasswordRequired": "Krüptitud fail — parool nõutav.",
+  "logPasswordDefined": "Parool on määratud.",
+  "logCancelled": "Tühistatud.",
+  "logDestination": "Sihtkoht: {path}",
+  "logExtractionStarted": "Pakitakse lahti: {path}",
+  "logExtractionDone": "✅ Lahtipakkimine lõpule viidud: {path}",
+  "logReset": "Lähtestatud.",
+  "logOpening": "Avanud {name}…",
+  "logOpened": "Avatud: {name}",
+  "logOpenError": "Viga avamisel: {error}",
+  "logExtractionError": "Lahtipakkimise viga: {error}",
+  "logError": "Viga: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Mittetäielik jagatud arhiiv — puuduvad osad. Sisu ei ole võimalik kuvada.",
+  "logSplitIncompletePartial": "⚠️ Mittetäielik jagatud arhiiv — puuduvad osad. Kuvatav sisu võib olla mittetäielik.",
+  "logExtractionSplitError": "Lahtipakkimine ebaõnnestus: puuduvad osad.",
+  "errorSplitArchive": "⚠️ Mittetäielik jagatud arhiiv — veenduge, et kõik osad on samas kaustas.",
+  "tabDecompression": "Lahtipakkimine",
+  "tabCompression": "Pakkimine",
+  "tabConsoleApi": "Konsool API",
+  "tabComingSoon": "Peagi saadaval",
+  "compLabelArchiveName": "Arhiivi nimi",
+  "compLabelDestination": "Sihtkoht",
+  "compLabelFormat": "Vorming",
+  "compLabelCompression": "Tihenduse tase",
+  "compLabelSecurity": "Turvalisus",
+  "compLabelSplit": "Jaga",
+  "compSizeFolder": "kaust",
+  "compDestSameFolder": "Sama kaust kui failid",
+  "compLevelNotApplicable": "Pole kehtiv .{format}ile",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Päise krüptimine lubatud",
+  "compSplitNone": "Puudub",
+  "compBtnCompress": "Pakka",
+  "compBtnCompressing": "Pakitakse…",
+  "compAddFiles": "Lisage failid",
+  "compAddFolder": "Lisage kaust",
+  "compDropToAdd": "Lohistage lisamiseks",
+  "compDropHint": "Lohistage failid või kaustid siia",
+  "compDropSubtitle": "Failid lisatakse arhiivile",
+  "compItemCount": "{count, plural, one{1 element} other{{count} elementi}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Pakitakse → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arhiiv loodud: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

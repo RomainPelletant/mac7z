@@ -1,0 +1,120 @@
+{
+  "@@locale": "sk",
+  "dropZoneDrop": "Presuňte archív",
+  "dropZoneRelease": "Uvoľnite na otvorenie",
+  "dropZoneSubtitle": "alebo kliknutím vyberte\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} súbor} few{{count} súbory} many{{count} súborov} other{{count} súboru}}",
+  "passwordDialogTitle": "Chránený archív",
+  "passwordDialogSubtitle": "Zadajte heslo",
+  "passwordDialogHint": "Heslo…",
+  "cancel": "Zrušiť",
+  "confirm": "Potvrdiť",
+  "logPanelTitle": "Protokol",
+  "logPanelEntryCount": "{count, plural, one{{count} položka} few{{count} položky} many{{count} položiek} other{{count} položky}}",
+  "logPanelEmpty": "Žiadna aktivita",
+  "progressExtracting": "Rozbaľovanie…",
+  "progressDone": "Rozbaľovanie hotové!",
+  "treeLoading": "Čítanie archívu…",
+  "treeError": "Chyba",
+  "treeEmpty": "Žiadny archív nenačítaný",
+  "treeEmptyHint": "Presuňte súbor, aby ste videli jeho obsah",
+  "treeSearch": "Hľadať…",
+  "treeColName": "Názov",
+  "treeColSize": "Veľkosť",
+  "treeColModified": "Zmenené",
+  "treeOpenTooltip": "Dvojitým kliknutím otvorte",
+  "treeItems": "{count, plural, one{{count} prvok} few{{count} prvky} many{{count} prvkov} other{{count} prvku}}",
+  "sectionDestination": "Cieľ",
+  "sectionSecurity": "Bezpečnosť",
+  "destinationSameFolder": "Rovnaký priečinok ako archív",
+  "subfolderCreate": "Rozbaliť do podpriečinku",
+  "subfolderDefault": "pomenovaný podľa archívu",
+  "passwordNone": "Bez hesla",
+  "passwordSetLabel": "Heslo je nastavené",
+  "passwordEdit": "Upraviť",
+  "passwordDefine": "Nastaviť",
+  "btnExtract": "Rozbaliť",
+  "btnExtracting": "Rozbaľovanie...",
+  "btnDone": "Hotovo ✓",
+  "btnReset": "Obnoviť",
+  "binaryWarning": "7zip nenájdený. Nainštalujte ho: {cmd}",
+  "pickFileDialogTitle": "Otvoriť archív",
+  "pickOutputDialogTitle": "Vyberte cieľový priečinok",
+  "logBinaryFound": "7zip nájdený: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nenájdený. Nainštalujte cez Homebrew (macOS) alebo 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "V presunutých súboroch nie je rozpoznaný žiadny archív.",
+  "logUnsupportedFormat": "Nepodporovaný formát: {name}",
+  "logReadingArchive": "Čítanie archívu: {name}",
+  "logEntriesFound": "{count, plural, one{V archíve nájdená 1 položka.} few{V archíve nájdené {count} položky.} many{V archíve nájdených {count} položiek.} other{V archíve nájdená {count} položka.}}",
+  "logPasswordRequired": "Šifrovaný archív — vyžaduje sa heslo.",
+  "logFilePasswordRequired": "Šifrovaný súbor — vyžaduje sa heslo.",
+  "logPasswordDefined": "Heslo je nastavené.",
+  "logCancelled": "Zrušené.",
+  "logDestination": "Cieľ: {path}",
+  "logExtractionStarted": "Rozbaľovanie do: {path}",
+  "logExtractionDone": "✅ Rozbaľovanie hotové v: {path}",
+  "logReset": "Obnovené.",
+  "logOpening": "Otvorenie {name}…",
+  "logOpened": "Otvorené: {name}",
+  "logOpenError": "Chyba pri otváraní: {error}",
+  "logExtractionError": "Chyba pri rozbaľovaní: {error}",
+  "logError": "Chyba: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Nekompletný rozdelený archív — chýbajúce časti. Nie je možné zobraziť obsah.",
+  "logSplitIncompletePartial": "⚠️ Nekompletný rozdelený archív — chýbajúce časti. Zobrazený obsah môže byť nekompletný.",
+  "logExtractionSplitError": "Rozbaľovanie zlyhalo: chýbajúce časti.",
+  "errorSplitArchive": "⚠️ Nekompletný rozdelený archív — uistite sa, že všetky časti sú v rovnakom priečinku.",
+  "tabDecompression": "Dekomprimácia",
+  "tabCompression": "Komprimácia",
+  "tabConsoleApi": "Konzola API",
+  "tabComingSoon": "Čoskoro",
+  "compLabelArchiveName": "Názov archívu",
+  "compLabelDestination": "Cieľ",
+  "compLabelFormat": "Formát",
+  "compLabelCompression": "Úroveň kompresie",
+  "compLabelSecurity": "Bezpečnosť",
+  "compLabelAdvanced": "Pokročilé možnosti",
+  "compLabelSplit": "Rozdeliť",
+  "compSizeFolder": "priečinok",
+  "compDestSameFolder": "Rovnaký priečinok ako súbory",
+  "compLevelNotApplicable": "Nepoužiteľné pre .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Šifrovanie hlavičky je povolené",
+  "compSplitNone": "Žiadne",
+  "compBtnCompress": "Komprimovať",
+  "compBtnCompressing": "Kompresia…",
+  "compAddFiles": "Pridať súbory",
+  "compAddFolder": "Pridať priečinok",
+  "compDropToAdd": "Presuňte na pridanie",
+  "compDropHint": "Presuňte sem súbory alebo priečinky",
+  "compDropSubtitle": "Súbory budú pridané do archívu",
+  "compItemCount": "{count, plural, one{1 prvok} few{{count} prvky} many{{count} prvkov} other{{count} prvku}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Kompresia → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archív vytvorený: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

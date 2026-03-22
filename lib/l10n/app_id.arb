@@ -1,0 +1,120 @@
+{
+  "@@locale": "id",
+  "dropZoneDrop": "Lepaskan arsip",
+  "dropZoneRelease": "Lepaskan untuk membuka",
+  "dropZoneSubtitle": "atau klik untuk memilih\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, other{{count} file}}",
+  "passwordDialogTitle": "Arsip yang dilindungi",
+  "passwordDialogSubtitle": "Masukkan sandi",
+  "passwordDialogHint": "Sandi…",
+  "cancel": "Batal",
+  "confirm": "Konfirmasi",
+  "logPanelTitle": "Log",
+  "logPanelEntryCount": "{count, plural, other{{count} entri}}",
+  "logPanelEmpty": "Tidak ada aktivitas",
+  "progressExtracting": "Mengekstrak…",
+  "progressDone": "Ekstraksi selesai!",
+  "treeLoading": "Membaca arsip…",
+  "treeError": "Kesalahan",
+  "treeEmpty": "Tidak ada arsip yang dimuat",
+  "treeEmptyHint": "Lepaskan file untuk melihat isinya",
+  "treeSearch": "Cari…",
+  "treeColName": "Nama",
+  "treeColSize": "Ukuran",
+  "treeColModified": "Diubah",
+  "treeOpenTooltip": "Klik dua kali untuk membuka",
+  "treeItems": "{count, plural, other{{count} item}}",
+  "sectionDestination": "Tujuan",
+  "sectionSecurity": "Keamanan",
+  "destinationSameFolder": "Folder yang sama dengan arsip",
+  "subfolderCreate": "Ekstrak ke subfolder",
+  "subfolderDefault": "bernama menurut arsip",
+  "passwordNone": "Tanpa sandi",
+  "passwordSetLabel": "Sandi telah ditetapkan",
+  "passwordEdit": "Edit",
+  "passwordDefine": "Tetapkan",
+  "btnExtract": "Ekstrak",
+  "btnExtracting": "Mengekstrak...",
+  "btnDone": "Selesai ✓",
+  "btnReset": "Setel Ulang",
+  "binaryWarning": "7zip tidak ditemukan. Instal: {cmd}",
+  "pickFileDialogTitle": "Buka arsip",
+  "pickOutputDialogTitle": "Pilih folder tujuan",
+  "logBinaryFound": "7zip ditemukan: {path}",
+  "logBinaryNotFound": "⚠️ 7zip tidak ditemukan. Instal melalui Homebrew (macOS) atau 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Tidak ada arsip yang dikenali dalam file yang dilepaskan.",
+  "logUnsupportedFormat": "Format tidak didukung: {name}",
+  "logReadingArchive": "Membaca arsip: {name}",
+  "logEntriesFound": "{count, plural, other{{count} entri ditemukan dalam arsip.}}",
+  "logPasswordRequired": "Arsip terenkripsi — sandi diperlukan.",
+  "logFilePasswordRequired": "File terenkripsi — sandi diperlukan.",
+  "logPasswordDefined": "Sandi telah ditetapkan.",
+  "logCancelled": "Dibatalkan.",
+  "logDestination": "Tujuan: {path}",
+  "logExtractionStarted": "Mengekstrak ke: {path}",
+  "logExtractionDone": "✅ Ekstraksi selesai di: {path}",
+  "logReset": "Setel ulang.",
+  "logOpening": "Membuka {name}…",
+  "logOpened": "Dibuka: {name}",
+  "logOpenError": "Kesalahan saat membuka: {error}",
+  "logExtractionError": "Kesalahan ekstraksi: {error}",
+  "logError": "Kesalahan: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Arsip terpisah yang tidak lengkap — bagian hilang. Tidak dapat menampilkan konten.",
+  "logSplitIncompletePartial": "⚠️ Arsip terpisah yang tidak lengkap — bagian hilang. Konten yang ditampilkan mungkin tidak lengkap.",
+  "logExtractionSplitError": "Ekstraksi gagal: bagian hilang.",
+  "errorSplitArchive": "⚠️ Arsip terpisah yang tidak lengkap — pastikan semua bagian ada di folder yang sama.",
+  "tabDecompression": "Dekompresi",
+  "tabCompression": "Kompresi",
+  "tabConsoleApi": "Konsol API",
+  "tabComingSoon": "Segera hadir",
+  "compLabelArchiveName": "Nama arsip",
+  "compLabelDestination": "Tujuan",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Tingkat kompresi",
+  "compLabelSecurity": "Keamanan",
+  "compLabelAdvanced": "Opsi lanjutan",
+  "compLabelSplit": "Pisahkan",
+  "compSizeFolder": "folder",
+  "compDestSameFolder": "Folder yang sama dengan file",
+  "compLevelNotApplicable": "Tidak berlaku untuk .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Enkripsi header diaktifkan",
+  "compSplitNone": "Tidak ada",
+  "compBtnCompress": "Kompres",
+  "compBtnCompressing": "Mengompresi…",
+  "compAddFiles": "Tambah file",
+  "compAddFolder": "Tambah folder",
+  "compDropToAdd": "Lepas untuk menambah",
+  "compDropHint": "Lepas file atau folder di sini",
+  "compDropSubtitle": "File akan ditambahkan ke arsip",
+  "compItemCount": "{count, plural, other{{count} item}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Mengompresi → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arsip dibuat: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

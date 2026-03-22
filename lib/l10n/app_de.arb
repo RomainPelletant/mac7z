@@ -1,0 +1,120 @@
+{
+  "@@locale": "de",
+  "dropZoneDrop": "Archiv ablegen",
+  "dropZoneRelease": "Zum Öffnen loslassen",
+  "dropZoneSubtitle": "oder klicken zum Auswählen\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} Datei} other{{count} Dateien}}",
+  "passwordDialogTitle": "Geschütztes Archiv",
+  "passwordDialogSubtitle": "Geben Sie das Passwort ein",
+  "passwordDialogHint": "Passwort…",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "logPanelTitle": "Protokoll",
+  "logPanelEntryCount": "{count, plural, one{{count} Eintrag} other{{count} Einträge}}",
+  "logPanelEmpty": "Keine Aktivität",
+  "progressExtracting": "Wird extrahiert…",
+  "progressDone": "Extraktion abgeschlossen!",
+  "treeLoading": "Lese Archiv…",
+  "treeError": "Fehler",
+  "treeEmpty": "Kein Archiv geladen",
+  "treeEmptyHint": "Datei ablegen, um ihren Inhalt zu sehen",
+  "treeSearch": "Suchen…",
+  "treeColName": "Name",
+  "treeColSize": "Größe",
+  "treeColModified": "Geändert",
+  "treeOpenTooltip": "Doppelklick zum Öffnen",
+  "treeItems": "{count, plural, one{{count} Element} other{{count} Elemente}}",
+  "sectionDestination": "Ziel",
+  "sectionSecurity": "Sicherheit",
+  "destinationSameFolder": "Gleicher Ordner wie das Archiv",
+  "subfolderCreate": "In einen Unterordner extrahieren",
+  "subfolderDefault": "benannt nach dem Archiv",
+  "passwordNone": "Kein Passwort",
+  "passwordSetLabel": "Passwort gesetzt",
+  "passwordEdit": "Bearbeiten",
+  "passwordDefine": "Festlegen",
+  "btnExtract": "Extrahieren",
+  "btnExtracting": "Wird extrahiert...",
+  "btnDone": "Fertig ✓",
+  "btnReset": "Zurücksetzen",
+  "binaryWarning": "7zip nicht gefunden. Installieren Sie es: {cmd}",
+  "pickFileDialogTitle": "Archiv öffnen",
+  "pickOutputDialogTitle": "Zielordner auswählen",
+  "logBinaryFound": "7zip gefunden: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nicht gefunden. Installieren Sie es über Homebrew (macOS) oder 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Kein erkanntes Archiv in den abgelegten Dateien.",
+  "logUnsupportedFormat": "Nicht unterstütztes Format: {name}",
+  "logReadingArchive": "Lese Archiv: {name}",
+  "logEntriesFound": "{count, plural, one{1 Eintrag im Archiv gefunden.} other{{count} Einträge im Archiv gefunden.}}",
+  "logPasswordRequired": "Verschlüsseltes Archiv — Passwort erforderlich.",
+  "logFilePasswordRequired": "Verschlüsselte Datei — Passwort erforderlich.",
+  "logPasswordDefined": "Passwort gesetzt.",
+  "logCancelled": "Abgebrochen.",
+  "logDestination": "Ziel: {path}",
+  "logExtractionStarted": "Extrahiere zu: {path}",
+  "logExtractionDone": "✅ Extraktion abgeschlossen in: {path}",
+  "logReset": "Zurückgesetzt.",
+  "logOpening": "Öffne {name}…",
+  "logOpened": "Geöffnet: {name}",
+  "logOpenError": "Fehler beim Öffnen: {error}",
+  "logExtractionError": "Extraktionsfehler: {error}",
+  "logError": "Fehler: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Unvollständiges Splittarchiv — fehlende Teile. Inhalt kann nicht angezeigt werden.",
+  "logSplitIncompletePartial": "⚠️ Unvollständiges Splittarchiv — fehlende Teile. Der angezeigte Inhalt kann unvollständig sein.",
+  "logExtractionSplitError": "Extraktion fehlgeschlagen: fehlende Teile.",
+  "errorSplitArchive": "⚠️ Unvollständiges Splittarchiv — stellen Sie sicher, dass alle Teile im selben Ordner sind.",
+  "tabDecompression": "Entpacken",
+  "tabCompression": "Packen",
+  "tabConsoleApi": "Konsolen-API",
+  "tabComingSoon": "Demnächst verfügbar",
+  "compLabelArchiveName": "Archivname",
+  "compLabelDestination": "Ziel",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Kompressionsstufe",
+  "compLabelSecurity": "Sicherheit",
+  "compLabelAdvanced": "Erweiterte Optionen",
+  "compLabelSplit": "Splitten",
+  "compSizeFolder": "Ordner",
+  "compDestSameFolder": "Gleicher Ordner wie die Dateien",
+  "compLevelNotApplicable": "Nicht anwendbar für .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Header-Verschlüsselung aktiviert",
+  "compSplitNone": "Keine",
+  "compBtnCompress": "Komprimieren",
+  "compBtnCompressing": "Wird komprimiert…",
+  "compAddFiles": "Dateien hinzufügen",
+  "compAddFolder": "Ordner hinzufügen",
+  "compDropToAdd": "Ablegen zum Hinzufügen",
+  "compDropHint": "Dateien oder Ordner hier ablegen",
+  "compDropSubtitle": "Dateien werden zum Archiv hinzugefügt",
+  "compItemCount": "{count, plural, one{1 Element} other{{count} Elemente}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Wird komprimiert → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archiv erstellt: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

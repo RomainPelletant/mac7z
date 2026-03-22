@@ -1,0 +1,31 @@
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+pubspec.lock
+
+# Xcode
+macos/Pods/
+macos/*.xcworkspace/xcuserdata/
+macos/*.xcodeproj/xcuserdata/
+*.xcuserstate
+
+# macOS
+.DS_Store
+macos/.DS_Store
+macos/Runner/.DS_Store
+macos/Runner/Assets.xcassets/.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Releases
+release/
+
+# 7zz binary — télécharger via ./scripts/setup.sh
+# Source : https://7-zip.org (GNU LGPL v2.1)
+macos/Resources/7zz

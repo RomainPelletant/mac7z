@@ -1,0 +1,119 @@
+{
+  "@@locale": "lv",
+  "dropZoneDrop": "Velciet arhīvu",
+  "dropZoneRelease": "Atlaidiet, lai atvērtu",
+  "dropZoneSubtitle": "vai noklikšķiniet, lai atlasītu\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, zero{{count} faili} one{{count} fails} other{{count} faili}}",
+  "passwordDialogTitle": "Aizsargātais arhīvs",
+  "passwordDialogSubtitle": "Ievadiet paroli",
+  "passwordDialogHint": "Parole…",
+  "cancel": "Atcelt",
+  "confirm": "Apstiprināt",
+  "logPanelTitle": "Žurnāls",
+  "logPanelEntryCount": "{count, plural, zero{{count} ieraksti} one{{count} ieraksts} other{{count} ieraksti}}",
+  "logPanelEmpty": "Nav aktivitātes",
+  "progressExtracting": "Izpakošana…",
+  "progressDone": "Izpakoš complēts!",
+  "treeLoading": "Arhīva nolasīšana…",
+  "treeError": "Kļūda",
+  "treeEmpty": "Neviens arhīvs nav ielādēts",
+  "treeEmptyHint": "Velciet failu, lai redzētu tā saturu",
+  "treeSearch": "Meklēt…",
+  "treeColName": "Nosaukums",
+  "treeColSize": "Izmērs",
+  "treeColModified": "Modificēts",
+  "treeOpenTooltip": "Dubultkliks, lai atvērtu",
+  "treeItems": "{count, plural, zero{{count} vienības} one{{count} vienība} other{{count} vienības}}",
+  "sectionDestination": "Galapunkts",
+  "sectionSecurity": "Drošība",
+  "destinationSameFolder": "Tā pati mape kā arhīvs",
+  "subfolderCreate": "Izpakot apakšmapē",
+  "subfolderDefault": "nosaukts pēc arhīva",
+  "passwordNone": "Bez paroles",
+  "passwordSetLabel": "Parole ir iestatīta",
+  "passwordEdit": "Rediģēt",
+  "passwordDefine": "Iestatīt",
+  "btnExtract": "Izpakot",
+  "btnExtracting": "Izpakošana...",
+  "btnDone": "Gatavs ✓",
+  "btnReset": "Atiestatīt",
+  "binaryWarning": "7zip netika atrasts. Instalējiet to: {cmd}",
+  "pickFileDialogTitle": "Atveriet arhīvu",
+  "pickOutputDialogTitle": "Atlasiet galapunkta mapi",
+  "logBinaryFound": "7zip atrasts: {path}",
+  "logBinaryNotFound": "⚠️ 7zip netika atrasts. Instalējiet caur Homebrew (macOS) vai 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Velto failus neatpazīti arhīvi.",
+  "logUnsupportedFormat": "Neatbalstīts formāts: {name}",
+  "logReadingArchive": "Arhīva nolasīšana: {name}",
+  "logEntriesFound": "{count, plural, zero{{count} ieraksti atrasti arhīvā.} one{1 ieraksts atrasts arhīvā.} other{{count} ieraksti atrasti arhīvā.}}",
+  "logPasswordRequired": "Šifrēts arhīvs — parole ir obligāta.",
+  "logFilePasswordRequired": "Šifrēts fails — parole ir obligāta.",
+  "logPasswordDefined": "Parole ir iestatīta.",
+  "logCancelled": "Atcelts.",
+  "logDestination": "Galapunkts: {path}",
+  "logExtractionStarted": "Izpakošana uz: {path}",
+  "logExtractionDone": "✅ Izpakošana pabeigta: {path}",
+  "logReset": "Atiestatīts.",
+  "logOpening": "Atver {name}…",
+  "logOpened": "Atvērts: {name}",
+  "logOpenError": "Kļūda, atverot: {error}",
+  "logExtractionError": "Izpakoš kļūda: {error}",
+  "logError": "Kļūda: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Nepilnīgs sadalīts arhīvs — trūkst daļu. Nevar parādīt saturu.",
+  "logSplitIncompletePartial": "⚠️ Nepilnīgs sadalīts arhīvs — trūkst daļu. Parādītais saturs var būt nepilnīgs.",
+  "logExtractionSplitError": "Izpakošana neizdevās: trūkst daļu.",
+  "errorSplitArchive": "⚠️ Nepilnīgs sadalīts arhīvs — pārliecinieties, ka visas daļas atrodas vienā mapē.",
+  "tabDecompression": "Dekompresija",
+  "tabCompression": "Kompresija",
+  "tabConsoleApi": "Konsoles API",
+  "tabComingSoon": "Drīzumā",
+  "compLabelArchiveName": "Arhīva nosaukums",
+  "compLabelDestination": "Galapunkts",
+  "compLabelFormat": "Formāts",
+  "compLabelCompression": "Saspiešanas līmenis",
+  "compLabelSecurity": "Drošība",
+  "compLabelSplit": "Dalīt",
+  "compSizeFolder": "mape",
+  "compDestSameFolder": "Tā pati mape kā faili",
+  "compLevelNotApplicable": "Nav piemērojams .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Galvenes šifrēšana iespējota",
+  "compSplitNone": "Nē",
+  "compBtnCompress": "Saspiest",
+  "compBtnCompressing": "Saspiesšana…",
+  "compAddFiles": "Pievienot failus",
+  "compAddFolder": "Pievienot mapi",
+  "compDropToAdd": "Velciet, lai pievienotu",
+  "compDropHint": "Velciet failus vai mapes šeit",
+  "compDropSubtitle": "Faili tiks pievienoti arhīvam",
+  "compItemCount": "{count, plural, zero{{count} vienības} one{{count} vienība} other{{count} vienības}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Saspiesšana → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arhīvs izveidots: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "@@locale": "lt",
+  "dropZoneDrop": "Paleiskite archyvą",
+  "dropZoneRelease": "Atlaisvinkite, kad atidaryti",
+  "dropZoneSubtitle": "arba spustelėkite, kad pasirinkti\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} failas} few{{count} failai} many{{count} failų} other{{count} failo}}",
+  "passwordDialogTitle": "Apsaugota archyva",
+  "passwordDialogSubtitle": "Įveskite slaptažodį",
+  "passwordDialogHint": "Slaptažodis…",
+  "cancel": "Atšaukti",
+  "confirm": "Patvirtinti",
+  "logPanelTitle": "Žurnalas",
+  "logPanelEntryCount": "{count, plural, one{{count} įrašas} few{{count} įrašai} many{{count} įrašų} other{{count} įrašo}}",
+  "logPanelEmpty": "Nėra veiklos",
+  "progressExtracting": "Išpakuojama…",
+  "progressDone": "Išpakavimas baigtas!",
+  "treeLoading": "Skaitoma archyva…",
+  "treeError": "Klaida",
+  "treeEmpty": "Nėra įkeltos archyvos",
+  "treeEmptyHint": "Paleiskite failą, norint matyti jo turinį",
+  "treeSearch": "Paieška…",
+  "treeColName": "Vardas",
+  "treeColSize": "Dydis",
+  "treeColModified": "Pakeista",
+  "treeOpenTooltip": "Dvigubai spustelėkite, norint atidaryti",
+  "treeItems": "{count, plural, one{{count} elementas} few{{count} elementai} many{{count} elementų} other{{count} elemento}}",
+  "sectionDestination": "Vieta",
+  "sectionSecurity": "Saugumas",
+  "destinationSameFolder": "Tame pačiame aplanke kaip archyva",
+  "subfolderCreate": "Išpakuoti į potlanką",
+  "subfolderDefault": "pavadintą pagal archyvą",
+  "passwordNone": "Be slaptažodžio",
+  "passwordSetLabel": "Slaptažodis nustatytas",
+  "passwordEdit": "Redaguoti",
+  "passwordDefine": "Nustatyti",
+  "btnExtract": "Išpakuoti",
+  "btnExtracting": "Išpakuojama...",
+  "btnDone": "Padaryta ✓",
+  "btnReset": "Iš naujo nustatyti",
+  "binaryWarning": "7zip nerastas. Įdiekite: {cmd}",
+  "pickFileDialogTitle": "Atidaryti archyvą",
+  "pickOutputDialogTitle": "Pasirinkite paskirties aplanką",
+  "logBinaryFound": "7zip rastas: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nerastas. Įdiekite naudodami Homebrew (macOS) arba 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Nėra atpažintų archyvų paleistuose failuose.",
+  "logUnsupportedFormat": "Nepalaikomas formatas: {name}",
+  "logReadingArchive": "Skaitoma archyva: {name}",
+  "logEntriesFound": "{count, plural, one{1 įrašas rastas archyvoje.} few{{count} įrašai rasti archyvoje.} many{{count} įrašų rastas archyvoje.} other{{count} įrašo rastas archyvoje.}}",
+  "logPasswordRequired": "Šifrota archyva — slaptažodis būtinas.",
+  "logFilePasswordRequired": "Šifruotas failas — slaptažodis būtinas.",
+  "logPasswordDefined": "Slaptažodis nustatytas.",
+  "logCancelled": "Atšaukta.",
+  "logDestination": "Vieta: {path}",
+  "logExtractionStarted": "Išpakuojama į: {path}",
+  "logExtractionDone": "✅ Išpakavimas baigtas: {path}",
+  "logReset": "Iš naujo nustatytas.",
+  "logOpening": "Atidaromi {name}…",
+  "logOpened": "Atidarytas: {name}",
+  "logOpenError": "Klaida atidarant: {error}",
+  "logExtractionError": "Išpakavimo klaida: {error}",
+  "logError": "Klaida: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Nebaigta padalyta archyva — trūksta dalių. Negalima rodyti turinio.",
+  "logSplitIncompletePartial": "⚠️ Nebaigta padalyta archyva — trūksta dalių. Rodomas turinys gali būti nepilnas.",
+  "logExtractionSplitError": "Išpakavimas nepavyko: trūksta dalių.",
+  "errorSplitArchive": "⚠️ Nebaigta padalyta archyva — įsitikinkite, kad visos dalys yra tame pačiame aplanke.",
+  "tabDecompression": "Išpakavimas",
+  "tabCompression": "Pakavimas",
+  "tabConsoleApi": "Konsolė API",
+  "tabComingSoon": "Netrukus",
+  "compLabelArchiveName": "Archyvo pavadinimas",
+  "compLabelDestination": "Vieta",
+  "compLabelFormat": "Formatas",
+  "compLabelCompression": "Glaudinimo lygis",
+  "compLabelSecurity": "Saugumas",
+  "compLabelSplit": "Skaidyti",
+  "compSizeFolder": "aplankas",
+  "compDestSameFolder": "Tas pats aplankas kaip failai",
+  "compLevelNotApplicable": "Netaikytina .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Antraštės šifravimas įjungtas",
+  "compSplitNone": "Nė vienas",
+  "compBtnCompress": "Pakuoti",
+  "compBtnCompressing": "Pakaviimas…",
+  "compAddFiles": "Pridėti failus",
+  "compAddFolder": "Pridėti aplanką",
+  "compDropToAdd": "Vilkite, norėdami pridėti",
+  "compDropHint": "Vilkite failus arba aplankus čia",
+  "compDropSubtitle": "Failai bus pridėti prie archyvo",
+  "compItemCount": "{count, plural, one{1 elementas} few{{count} elementai} many{{count} elementų} other{{count} elemento}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Pakaviimas → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archyvas sukurtas: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

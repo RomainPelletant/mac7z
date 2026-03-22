@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>$(PRODUCT_COPYRIGHT)</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+
+	<!-- ═══════════════════════════════════════════════════════════
+	     Document types: files mac7z can open (shown in Finder's
+	     "Open With" menu and used for default-app association)
+	     ═══════════════════════════════════════════════════════════ -->
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<!-- ── 7-Zip ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>7-Zip Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.7-zip.7-zip-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array><string>7z</string></array>
+		</dict>
+		<!-- ── ZIP ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>ZIP Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.zip-archive</string>
+				<string>com.pkware.zip-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array><string>zip</string></array>
+		</dict>
+		<!-- ── TAR ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>TAR Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.tar-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array><string>tar</string></array>
+		</dict>
+		<!-- ── TAR.GZ / TGZ ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Gzipped TAR Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.gnu.gnu-zip-tar-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>tar.gz</string>
+				<string>tgz</string>
+			</array>
+		</dict>
+		<!-- ── TAR.BZ2 / TBZ2 ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Bzip2 TAR Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.tar-bzip2-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>tar.bz2</string>
+				<string>tbz2</string>
+				<string>tbz</string>
+			</array>
+		</dict>
+		<!-- ── TAR.XZ / TXZ ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>XZ TAR Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.tukaani.xz-archive</string>
+				<string>com.mac7z.tar-xz-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>tar.xz</string>
+				<string>txz</string>
+				<string>xz</string>
+			</array>
+		</dict>
+		<!-- ── RAR ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>RAR Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.rarlab.rar-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array><string>rar</string></array>
+		</dict>
+		<!-- ── GZ ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Gzip Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.gnu.gnu-zip-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array><string>gz</string></array>
+		</dict>
+		<!-- ── BZ2 ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Bzip2 Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.bzip2-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array><string>bz2</string></array>
+		</dict>
+		<!-- ── ZST ── -->
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Zstandard Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.facebook.zstandard-archive</string>
+				<string>com.mac7z.zst-archive</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>zst</string>
+				<string>tar.zst</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- ═══════════════════════════════════════════════════════════
+	     Custom URL scheme — used by the Finder Sync Extension to
+	     send selected paths back to the main app.
+	     mac7z://extract?b64=<base64_paths>
+	     mac7z://compress?b64=<base64_paths>
+	     ═══════════════════════════════════════════════════════════ -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>mac7z URL</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mac7z</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- ═══════════════════════════════════════════════════════════
+	     Services: items added to Finder's right-click > Services menu
+	     ═══════════════════════════════════════════════════════════ -->
+	<key>NSServices</key>
+	<array>
+		<!-- ── Extract service: shown for recognised archive files ── -->
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Extract with mac7z</string>
+				<key>fr</key>
+				<string>Extraire avec mac7z</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>extractWithMac7z</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<!-- Only show for archive file types -->
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>org.7-zip.7-zip-archive</string>
+				<string>public.zip-archive</string>
+				<string>com.pkware.zip-archive</string>
+				<string>public.tar-archive</string>
+				<string>org.gnu.gnu-zip-tar-archive</string>
+				<string>public.tar-bzip2-archive</string>
+				<string>org.tukaani.xz-archive</string>
+				<string>com.mac7z.tar-xz-archive</string>
+				<string>com.rarlab.rar-archive</string>
+				<string>org.gnu.gnu-zip-archive</string>
+				<string>public.bzip2-archive</string>
+				<string>com.mac7z.zst-archive</string>
+			</array>
+		</dict>
+		<!-- ── Compress service: shown for any file or folder ── -->
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Compress with mac7z</string>
+				<key>fr</key>
+				<string>Compresser avec mac7z</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>compressWithMac7z</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- ═══════════════════════════════════════════════════════════
+	     UTI declarations for formats macOS doesn't know natively
+	     (7z, xz, zst) so Finder can identify them correctly
+	     ═══════════════════════════════════════════════════════════ -->
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.7-zip.7-zip-archive</string>
+			<key>UTTypeDescription</key>
+			<string>7-Zip Archive</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array><string>7z</string></array>
+				<key>public.mime-type</key>
+				<array><string>application/x-7z-compressed</string></array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.mac7z.tar-xz-archive</string>
+			<key>UTTypeDescription</key>
+			<string>XZ Compressed TAR Archive</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xz</string>
+					<string>txz</string>
+				</array>
+				<key>public.mime-type</key>
+				<array><string>application/x-xz</string></array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.mac7z.zst-archive</string>
+			<key>UTTypeDescription</key>
+			<string>Zstandard Archive</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array><string>zst</string></array>
+				<key>public.mime-type</key>
+				<array><string>application/zstd</string></array>
+			</dict>
+		</dict>
+	</array>
+
+</dict>
+</plist>

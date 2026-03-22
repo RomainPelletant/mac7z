@@ -1,0 +1,120 @@
+{
+  "@@locale": "ru",
+  "dropZoneDrop": "Перетащите архив",
+  "dropZoneRelease": "Отпустите, чтобы открыть",
+  "dropZoneSubtitle": "или нажмите, чтобы выбрать\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} файл} few{{count} файла} many{{count} файлов} other{{count} файла}}",
+  "passwordDialogTitle": "Защищённый архив",
+  "passwordDialogSubtitle": "Введите пароль",
+  "passwordDialogHint": "Пароль…",
+  "cancel": "Отмена",
+  "confirm": "Подтвердить",
+  "logPanelTitle": "Журнал",
+  "logPanelEntryCount": "{count, plural, one{{count} запись} few{{count} записи} many{{count} записей} other{{count} записи}}",
+  "logPanelEmpty": "Нет активности",
+  "progressExtracting": "Распаковка…",
+  "progressDone": "Распаковка завершена!",
+  "treeLoading": "Чтение архива…",
+  "treeError": "Ошибка",
+  "treeEmpty": "Архив не загружен",
+  "treeEmptyHint": "Перетащите файл, чтобы увидеть его содержимое",
+  "treeSearch": "Поиск…",
+  "treeColName": "Имя",
+  "treeColSize": "Размер",
+  "treeColModified": "Изменено",
+  "treeOpenTooltip": "Дважды щелкните, чтобы открыть",
+  "treeItems": "{count, plural, one{{count} элемент} few{{count} элемента} many{{count} элементов} other{{count} элемента}}",
+  "sectionDestination": "Назначение",
+  "sectionSecurity": "Безопасность",
+  "destinationSameFolder": "В папку архива",
+  "subfolderCreate": "Распаковать в подпапку",
+  "subfolderDefault": "с именем архива",
+  "passwordNone": "Без пароля",
+  "passwordSetLabel": "Пароль установлен",
+  "passwordEdit": "Изменить",
+  "passwordDefine": "Установить",
+  "btnExtract": "Распаковать",
+  "btnExtracting": "Распаковка...",
+  "btnDone": "Готово ✓",
+  "btnReset": "Сброс",
+  "binaryWarning": "7zip не найден. Установите его: {cmd}",
+  "pickFileDialogTitle": "Открыть архив",
+  "pickOutputDialogTitle": "Выберите папку назначения",
+  "logBinaryFound": "7zip найден: {path}",
+  "logBinaryNotFound": "⚠️ 7zip не найден. Установите через Homebrew (macOS) или 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Не найдено распознанных архивов в перетащенных файлах.",
+  "logUnsupportedFormat": "Неподдерживаемый формат: {name}",
+  "logReadingArchive": "Чтение архива: {name}",
+  "logEntriesFound": "{count, plural, one{В архиве найдена 1 запись.} few{В архиве найдено {count} записи.} many{В архиве найдено {count} записей.} other{В архиве найдена {count} запись.}}",
+  "logPasswordRequired": "Зашифрованный архив — требуется пароль.",
+  "logFilePasswordRequired": "Зашифрованный файл — требуется пароль.",
+  "logPasswordDefined": "Пароль установлен.",
+  "logCancelled": "Отменено.",
+  "logDestination": "Назначение: {path}",
+  "logExtractionStarted": "Распаковка в: {path}",
+  "logExtractionDone": "✅ Распаковка завершена в: {path}",
+  "logReset": "Сброс.",
+  "logOpening": "Открытие {name}…",
+  "logOpened": "Открыто: {name}",
+  "logOpenError": "Ошибка при открытии: {error}",
+  "logExtractionError": "Ошибка распаковки: {error}",
+  "logError": "Ошибка: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Неполный разделённый архив — отсутствуют части. Не удаётся отобразить содержимое.",
+  "logSplitIncompletePartial": "⚠️ Неполный разделённый архив — отсутствуют части. Отображаемое содержимое может быть неполным.",
+  "logExtractionSplitError": "Распаковка не удалась: отсутствуют части.",
+  "errorSplitArchive": "⚠️ Неполный разделённый архив — убедитесь, что все части находятся в одной папке.",
+  "tabDecompression": "Распаковка",
+  "tabCompression": "Упаковка",
+  "tabConsoleApi": "Консоль API",
+  "tabComingSoon": "Скоро",
+  "compLabelArchiveName": "Имя архива",
+  "compLabelDestination": "Назначение",
+  "compLabelFormat": "Формат",
+  "compLabelCompression": "Уровень сжатия",
+  "compLabelSecurity": "Безопасность",
+  "compLabelAdvanced": "Дополнительные параметры",
+  "compLabelSplit": "Разделить",
+  "compSizeFolder": "папка",
+  "compDestSameFolder": "В папку файлов",
+  "compLevelNotApplicable": "Недоступно для .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Шифрование заголовка включено",
+  "compSplitNone": "Нет",
+  "compBtnCompress": "Сжать",
+  "compBtnCompressing": "Сжатие…",
+  "compAddFiles": "Добавить файлы",
+  "compAddFolder": "Добавить папку",
+  "compDropToAdd": "Перетащите для добавления",
+  "compDropHint": "Перетащите файлы или папки сюда",
+  "compDropSubtitle": "Файлы будут добавлены в архив",
+  "compItemCount": "{count, plural, one{1 элемент} few{{count} элемента} many{{count} элементов} other{{count} элемента}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Сжатие → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Архив создан: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

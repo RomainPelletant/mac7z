@@ -1,0 +1,120 @@
+{
+  "@@locale": "fi",
+  "dropZoneDrop": "Pudota arkisto",
+  "dropZoneRelease": "Vapauta avataksesi",
+  "dropZoneSubtitle": "tai napsauta valitaksesi\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} tiedosto} other{{count} tiedostoa}}",
+  "passwordDialogTitle": "Suojattu arkisto",
+  "passwordDialogSubtitle": "Syötä salasana",
+  "passwordDialogHint": "Salasana…",
+  "cancel": "Peruuta",
+  "confirm": "Vahvista",
+  "logPanelTitle": "Loki",
+  "logPanelEntryCount": "{count, plural, one{{count} merkintä} other{{count} merkintää}}",
+  "logPanelEmpty": "Ei aktiviteettia",
+  "progressExtracting": "Puretaan…",
+  "progressDone": "Purku valmis!",
+  "treeLoading": "Luetaan arkistoa…",
+  "treeError": "Virhe",
+  "treeEmpty": "Arkistoa ei ole ladattu",
+  "treeEmptyHint": "Pudota tiedosto nähdäksesi sen sisällön",
+  "treeSearch": "Etsi…",
+  "treeColName": "Nimi",
+  "treeColSize": "Koko",
+  "treeColModified": "Muokattu",
+  "treeOpenTooltip": "Avaa kaksoisnapsautuksella",
+  "treeItems": "{count, plural, one{{count} kohde} other{{count} kohdetta}}",
+  "sectionDestination": "Kohde",
+  "sectionSecurity": "Turvallisuus",
+  "destinationSameFolder": "Sama kansio kuin arkisto",
+  "subfolderCreate": "Pura alikansiooon",
+  "subfolderDefault": "arkiston nimellä",
+  "passwordNone": "Ei salasanaa",
+  "passwordSetLabel": "Salasana asetettu",
+  "passwordEdit": "Muokkaa",
+  "passwordDefine": "Aseta",
+  "btnExtract": "Pura",
+  "btnExtracting": "Puretaan...",
+  "btnDone": "Valmis ✓",
+  "btnReset": "Nollaa",
+  "binaryWarning": "7zip ei löytynyt. Asenna se: {cmd}",
+  "pickFileDialogTitle": "Avaa arkisto",
+  "pickOutputDialogTitle": "Valitse kohdekansiо",
+  "logBinaryFound": "7zip löytyi: {path}",
+  "logBinaryNotFound": "⚠️ 7zip ei löytynyt. Asenna Homebrewin (macOS) tai 7-zip.org:n (Windows) kautta.",
+  "logNoArchiveRecognized": "Ei tunnistettu arkistoja pudotetuissa tiedostoissa.",
+  "logUnsupportedFormat": "Ei-tuettu muoto: {name}",
+  "logReadingArchive": "Luetaan arkistoa: {name}",
+  "logEntriesFound": "{count, plural, one{1 merkintä löytyi arkistosta.} other{{count} merkintää löytyi arkistosta.}}",
+  "logPasswordRequired": "Salattu arkisto — salasana vaaditaan.",
+  "logFilePasswordRequired": "Salattu tiedosto — salasana vaaditaan.",
+  "logPasswordDefined": "Salasana asetettu.",
+  "logCancelled": "Peruutettu.",
+  "logDestination": "Kohde: {path}",
+  "logExtractionStarted": "Puretaan: {path}",
+  "logExtractionDone": "✅ Purku valmis: {path}",
+  "logReset": "Nollattu.",
+  "logOpening": "Avataan {name}…",
+  "logOpened": "Avattu: {name}",
+  "logOpenError": "Virhe avattaessa: {error}",
+  "logExtractionError": "Purku virhe: {error}",
+  "logError": "Virhe: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Epätäydellinen jaettu arkisto — puuttuvat osat. Sisältöä ei voida näyttää.",
+  "logSplitIncompletePartial": "⚠️ Epätäydellinen jaettu arkisto — puuttuvat osat. Näytetty sisältö voi olla puutteellinen.",
+  "logExtractionSplitError": "Purku epäonnistui: puuttuvat osat.",
+  "errorSplitArchive": "⚠️ Epätäydellinen jaettu arkisto — varmista, että kaikki osat ovat samassa kansiossa.",
+  "tabDecompression": "Purkaminen",
+  "tabCompression": "Pakkaaminen",
+  "tabConsoleApi": "Konsoli-API",
+  "tabComingSoon": "Tulossa pian",
+  "compLabelArchiveName": "Arkiston nimi",
+  "compLabelDestination": "Kohde",
+  "compLabelFormat": "Muoto",
+  "compLabelCompression": "Pakkauksen taso",
+  "compLabelSecurity": "Turvallisuus",
+  "compLabelAdvanced": "Lisäasetukset",
+  "compLabelSplit": "Jaa",
+  "compSizeFolder": "kansio",
+  "compDestSameFolder": "Sama kansio kuin tiedostot",
+  "compLevelNotApplicable": "Ei ole käytettävissä .{format}:ille",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Otsikon salaus käytössä",
+  "compSplitNone": "Ei mitään",
+  "compBtnCompress": "Pakkaa",
+  "compBtnCompressing": "Pakkaaminen…",
+  "compAddFiles": "Lisää tiedostoja",
+  "compAddFolder": "Lisää kansio",
+  "compDropToAdd": "Pudota lisätäksesi",
+  "compDropHint": "Pudota tiedostot tai kansiot tähän",
+  "compDropSubtitle": "Tiedostot lisätään arkistoon",
+  "compItemCount": "{count, plural, one{1 kohde} other{{count} kohdetta}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Pakkaaminen → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arkisto luotu: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

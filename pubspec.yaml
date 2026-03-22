@@ -1,0 +1,32 @@
+name: mac7z
+description: A macOS 7zip archive manager with drag & drop support.
+publish_to: 'none'
+version: 0.9.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  desktop_drop: ^0.4.4
+  file_picker: ^6.1.1
+  path: ^1.9.0
+  path_provider: ^2.1.2
+  flutter_animate: ^4.5.0
+  archive: ^3.4.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true

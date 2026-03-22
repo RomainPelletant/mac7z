@@ -1,0 +1,120 @@
+{
+  "@@locale": "ja",
+  "dropZoneDrop": "アーカイブをドロップ",
+  "dropZoneRelease": "ドロップして開く",
+  "dropZoneSubtitle": "または選択するにはクリック\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, other{{count} ファイル}}",
+  "passwordDialogTitle": "保護されたアーカイブ",
+  "passwordDialogSubtitle": "パスワードを入力",
+  "passwordDialogHint": "パスワード…",
+  "cancel": "キャンセル",
+  "confirm": "確認",
+  "logPanelTitle": "ログ",
+  "logPanelEntryCount": "{count, plural, other{{count} エントリ}}",
+  "logPanelEmpty": "アクティビティなし",
+  "progressExtracting": "抽出中…",
+  "progressDone": "抽出完了!",
+  "treeLoading": "アーカイブを読み込み中…",
+  "treeError": "エラー",
+  "treeEmpty": "アーカイブが読み込まれていません",
+  "treeEmptyHint": "ファイルをドロップして内容を表示",
+  "treeSearch": "検索…",
+  "treeColName": "名前",
+  "treeColSize": "サイズ",
+  "treeColModified": "変更日",
+  "treeOpenTooltip": "ダブルクリックして開く",
+  "treeItems": "{count, plural, other{{count} アイテム}}",
+  "sectionDestination": "保存先",
+  "sectionSecurity": "セキュリティ",
+  "destinationSameFolder": "アーカイブと同じフォルダ",
+  "subfolderCreate": "サブフォルダに抽出",
+  "subfolderDefault": "アーカイブ名で名付け",
+  "passwordNone": "パスワードなし",
+  "passwordSetLabel": "パスワード設定済み",
+  "passwordEdit": "編集",
+  "passwordDefine": "設定",
+  "btnExtract": "抽出",
+  "btnExtracting": "抽出中...",
+  "btnDone": "完了 ✓",
+  "btnReset": "リセット",
+  "binaryWarning": "7zip が見つかりません。インストール: {cmd}",
+  "pickFileDialogTitle": "アーカイブを開く",
+  "pickOutputDialogTitle": "保存先フォルダを選択",
+  "logBinaryFound": "7zip が見つかりました: {path}",
+  "logBinaryNotFound": "⚠️ 7zip が見つかりません。Homebrew (macOS) または 7-zip.org (Windows) からインストール。",
+  "logNoArchiveRecognized": "ドロップされたファイルに認識されたアーカイブがありません。",
+  "logUnsupportedFormat": "サポートされていない形式: {name}",
+  "logReadingArchive": "アーカイブを読み込み中: {name}",
+  "logEntriesFound": "{count, plural, other{{count} 個のエントリがアーカイブで見つかりました。}}",
+  "logPasswordRequired": "暗号化されたアーカイブ — パスワードが必要です。",
+  "logFilePasswordRequired": "暗号化されたファイル — パスワードが必要です。",
+  "logPasswordDefined": "パスワード設定済み。",
+  "logCancelled": "キャンセル。",
+  "logDestination": "保存先: {path}",
+  "logExtractionStarted": "抽出先: {path}",
+  "logExtractionDone": "✅ 抽出完了: {path}",
+  "logReset": "リセット。",
+  "logOpening": "{name} を開く中…",
+  "logOpened": "開きました: {name}",
+  "logOpenError": "開く際エラー: {error}",
+  "logExtractionError": "抽出エラー: {error}",
+  "logError": "エラー: {error}",
+  "logSplitIncompleteEmpty": "⚠️ 不完全な分割アーカイブ — 欠落部分があります。コンテンツを表示できません。",
+  "logSplitIncompletePartial": "⚠️ 不完全な分割アーカイブ — 欠落部分があります。表示されるコンテンツは不完全な可能性があります。",
+  "logExtractionSplitError": "抽出失敗: 欠落部分があります。",
+  "errorSplitArchive": "⚠️ 不完全な分割アーカイブ — すべての部分が同じフォルダに存在することを確認。",
+  "tabDecompression": "解凍",
+  "tabCompression": "圧縮",
+  "tabConsoleApi": "コンソール API",
+  "tabComingSoon": "近日公開",
+  "compLabelArchiveName": "アーカイブ名",
+  "compLabelDestination": "保存先",
+  "compLabelFormat": "フォーマット",
+  "compLabelCompression": "圧縮レベル",
+  "compLabelSecurity": "セキュリティ",
+  "compLabelAdvanced": "詳細オプション",
+  "compLabelSplit": "分割",
+  "compSizeFolder": "フォルダ",
+  "compDestSameFolder": "ファイルと同じフォルダ",
+  "compLevelNotApplicable": ".{format} には適用されません",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "ヘッダ暗号化が有効",
+  "compSplitNone": "なし",
+  "compBtnCompress": "圧縮",
+  "compBtnCompressing": "圧縮中…",
+  "compAddFiles": "ファイルを追加",
+  "compAddFolder": "フォルダを追加",
+  "compDropToAdd": "ドラッグして追加",
+  "compDropHint": "ここにファイルやフォルダをドロップ",
+  "compDropSubtitle": "ファイルがアーカイブに追加されます",
+  "compItemCount": "{count, plural, other{{count} 個}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "圧縮中 → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ アーカイブを作成: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}
