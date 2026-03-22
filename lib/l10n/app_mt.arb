@@ -1,0 +1,119 @@
+{
+  "@@locale": "mt",
+  "dropZoneDrop": "Oqgħod arkivju",
+  "dropZoneRelease": "Ħalli biex tiftaħ",
+  "dropZoneSubtitle": "jew ikklikkja biex tagħżel\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fajl} other{{count} fajls}}",
+  "passwordDialogTitle": "Arkivju protett",
+  "passwordDialogSubtitle": "Daħħal il-password",
+  "passwordDialogHint": "Password…",
+  "cancel": "Ikkanċella",
+  "confirm": "Ikkonfirma",
+  "logPanelTitle": "Log",
+  "logPanelEntryCount": "{count, plural, one{{count} entrata} other{{count} entrati}}",
+  "logPanelEmpty": "L-ebda attività",
+  "progressExtracting": "Qed nħeġġa…",
+  "progressDone": "Heħ kompleta!",
+  "treeLoading": "Qed naqra l-arkivju…",
+  "treeError": "Żball",
+  "treeEmpty": "L-ebda arkivju mitmut",
+  "treeEmptyHint": "Oqgħod fajl biex taraw il-kontenut tiegħu",
+  "treeSearch": "Fittex…",
+  "treeColName": "Isem",
+  "treeColSize": "Daqs",
+  "treeColModified": "Ibdel",
+  "treeOpenTooltip": "Dubpikk biex tiftaħ",
+  "treeItems": "{count, plural, one{{count} element} other{{count} elementi}}",
+  "sectionDestination": "Destinazzjoni",
+  "sectionSecurity": "Sigurtà",
+  "destinationSameFolder": "Istess folder bħal l-arkivju",
+  "subfolderCreate": "Extrawwi lejn subfolder",
+  "subfolderDefault": "imsemmija skond l-isem tal-arkivju",
+  "passwordNone": "Ebda password",
+  "passwordSetLabel": "Password impost",
+  "passwordEdit": "Irrevedi",
+  "passwordDefine": "Ippost",
+  "btnExtract": "Heħ",
+  "btnExtracting": "Qed nheħ...",
+  "btnDone": "Lest ✓",
+  "btnReset": "Irrisettja",
+  "binaryWarning": "7zip ma nstab. Instal li: {cmd}",
+  "pickFileDialogTitle": "Iftaħ arkivju",
+  "pickOutputDialogTitle": "Agħżel folder tal-destinazzjoni",
+  "logBinaryFound": "7zip misjub: {path}",
+  "logBinaryNotFound": "⚠️ 7zip ma nstab. Instal permezz ta Homebrew (macOS) jew 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "L-ebda arkivju rikonoxxut fil-fajls oqgħodin.",
+  "logUnsupportedFormat": "Format mhux appoġġat: {name}",
+  "logReadingArchive": "Qed naqra l-arkivju: {name}",
+  "logEntriesFound": "{count, plural, one{1 entrata misjuba fl-arkivju.} other{{count} entrati misjubin fl-arkivju.}}",
+  "logPasswordRequired": "Arkivju encrypted — password meħtieġa.",
+  "logFilePasswordRequired": "Fajl encrypted — password meħtieġa.",
+  "logPasswordDefined": "Password impost.",
+  "logCancelled": "Ikkancella.",
+  "logDestination": "Destinazzjoni: {path}",
+  "logExtractionStarted": "Qed nheħ lejn: {path}",
+  "logExtractionDone": "✅ Heħ kompleta fi: {path}",
+  "logReset": "Irrisettjat.",
+  "logOpening": "Qed niftaħ {name}…",
+  "logOpened": "Iftaħ: {name}",
+  "logOpenError": "Żball fl-iftaħ: {error}",
+  "logExtractionError": "Żball taħ-heħ: {error}",
+  "logError": "Żball: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Arkivju mqassam mhux kampitura — partijiet nieqsa. Ma jistax jintwera l-kontenut.",
+  "logSplitIncompletePartial": "⚠️ Arkivju mqassam mhux kampitura — partijiet nieqsa. Il-kontenut imtella jista jkun mhux kampitur.",
+  "logExtractionSplitError": "Heħ falliet: partijiet nieqsa.",
+  "errorSplitArchive": "⚠️ Arkivju mqassam mhux kampitura — immiegħed li l-partijiet kollha huma fl-istess folder.",
+  "tabDecompression": "Dekompriment",
+  "tabCompression": "Kompriment",
+  "tabConsoleApi": "Konsol API",
+  "tabComingSoon": "Breve",
+  "compLabelArchiveName": "Isem tal-arkivju",
+  "compLabelDestination": "Destinazzjoni",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Livell ta' kompressjoni",
+  "compLabelSecurity": "Sigurtà",
+  "compLabelSplit": "Aqsam",
+  "compSizeFolder": "folder",
+  "compDestSameFolder": "Istess folder bħal il-fajls",
+  "compLevelNotApplicable": "Mhux applikabbli għal .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "L-encryption tal-header ħaġġa",
+  "compSplitNone": "Ebda ħadd",
+  "compBtnCompress": "Komprimu",
+  "compBtnCompressing": "Qed nikkomprimu…",
+  "compAddFiles": "Żid fajls",
+  "compAddFolder": "Żid folder",
+  "compDropToAdd": "Oqgħod biex iżżid",
+  "compDropHint": "Oqgħod fajls jew folders hawn",
+  "compDropSubtitle": "Il-fajls se jiżdiedu mal-arkivju",
+  "compItemCount": "{count, plural, one{{count} element} other{{count} elementi}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Qed nikkomprimu → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arkivju mħoloq: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

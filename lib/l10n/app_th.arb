@@ -1,0 +1,119 @@
+{
+  "@@locale": "th",
+  "dropZoneDrop": "วางไฟล์บีบอัด",
+  "dropZoneRelease": "ปล่อยเพื่อเปิด",
+  "dropZoneSubtitle": "หรือคลิกเพื่อเลือก\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, other{{count} ไฟล์}}",
+  "passwordDialogTitle": "ไฟล์บีบอัดที่มีการป้องกัน",
+  "passwordDialogSubtitle": "ป้อนรหัสผ่าน",
+  "passwordDialogHint": "รหัสผ่าน…",
+  "cancel": "ยกเลิก",
+  "confirm": "ยืนยัน",
+  "logPanelTitle": "บันทึก",
+  "logPanelEntryCount": "{count, plural, other{{count} รายการ}}",
+  "logPanelEmpty": "ไม่มีกิจกรรม",
+  "progressExtracting": "กำลังแยกไฟล์…",
+  "progressDone": "แยกไฟล์เสร็จสิ้น!",
+  "treeLoading": "กำลังอ่านไฟล์บีบอัด…",
+  "treeError": "ข้อผิดพลาด",
+  "treeEmpty": "ไม่มีไฟล์บีบอัดที่โหลด",
+  "treeEmptyHint": "วางไฟล์เพื่อดูเนื้อหา",
+  "treeSearch": "ค้นหา…",
+  "treeColName": "ชื่อ",
+  "treeColSize": "ขนาด",
+  "treeColModified": "แก้ไขแล้ว",
+  "treeOpenTooltip": "ดับเบิลคลิกเพื่อเปิด",
+  "treeItems": "{count, plural, other{{count} รายการ}}",
+  "sectionDestination": "ปลายทาง",
+  "sectionSecurity": "ความปลอดภัย",
+  "destinationSameFolder": "โฟลเดอร์เดียวกับไฟล์บีบอัด",
+  "subfolderCreate": "แยกไฟล์ไปยังโฟลเดอร์ย่อย",
+  "subfolderDefault": "ตั้งชื่อจากไฟล์บีบอัด",
+  "passwordNone": "ไม่มีรหัสผ่าน",
+  "passwordSetLabel": "ตั้งรหัสผ่านแล้ว",
+  "passwordEdit": "แก้ไข",
+  "passwordDefine": "ตั้งค่า",
+  "btnExtract": "แยกไฟล์",
+  "btnExtracting": "กำลังแยกไฟล์...",
+  "btnDone": "เสร็จสิ้น ✓",
+  "btnReset": "รีเซ็ต",
+  "binaryWarning": "ไม่พบ 7zip ติดตั้ง: {cmd}",
+  "pickFileDialogTitle": "เปิดไฟล์บีบอัด",
+  "pickOutputDialogTitle": "เลือกโฟลเดอร์ปลายทาง",
+  "logBinaryFound": "พบ 7zip: {path}",
+  "logBinaryNotFound": "⚠️ ไม่พบ 7zip ติดตั้งผ่าน Homebrew (macOS) หรือ 7-zip.org (Windows)",
+  "logNoArchiveRecognized": "ไม่มีไฟล์บีบอัดที่ถูกรับรู้ในไฟล์ที่วาง",
+  "logUnsupportedFormat": "รูปแบบไม่รองรับ: {name}",
+  "logReadingArchive": "กำลังอ่านไฟล์บีบอัด: {name}",
+  "logEntriesFound": "{count, plural, other{พบ {count} รายการในไฟล์บีบอัด}}",
+  "logPasswordRequired": "ไฟล์บีบอัดที่เข้ารหัส — ต้องใช้รหัสผ่าน",
+  "logFilePasswordRequired": "ไฟล์ที่เข้ารหัส — ต้องใช้รหัสผ่าน",
+  "logPasswordDefined": "ตั้งรหัสผ่านแล้ว",
+  "logCancelled": "ยกเลิกแล้ว",
+  "logDestination": "ปลายทาง: {path}",
+  "logExtractionStarted": "กำลังแยกไฟล์ไปยัง: {path}",
+  "logExtractionDone": "✅ แยกไฟล์เสร็จสิ้นใน: {path}",
+  "logReset": "รีเซ็ตแล้ว",
+  "logOpening": "กำลังเปิด {name}…",
+  "logOpened": "เปิดแล้ว: {name}",
+  "logOpenError": "ข้อผิดพลาดในการเปิด: {error}",
+  "logExtractionError": "ข้อผิดพลาดในการแยกไฟล์: {error}",
+  "logError": "ข้อผิดพลาด: {error}",
+  "logSplitIncompleteEmpty": "⚠️ ไฟล์บีบอัดแบบแยกไม่สมบูรณ์ — ส่วนขาดหายไป ไม่สามารถแสดงเนื้อหา",
+  "logSplitIncompletePartial": "⚠️ ไฟล์บีบอัดแบบแยกไม่สมบูรณ์ — ส่วนขาดหายไป เนื้อหาที่แสดงอาจไม่สมบูรณ์",
+  "logExtractionSplitError": "การแยกไฟล์ล้มเหลว: ส่วนขาดหายไป",
+  "errorSplitArchive": "⚠️ ไฟล์บีบอัดแบบแยกไม่สมบูรณ์ — ตรวจสอบให้แน่ใจว่าส่วนทั้งหมดอยู่ในโฟลเดอร์เดียวกัน",
+  "tabDecompression": "การแตกไฟล์",
+  "tabCompression": "การบีบอัด",
+  "tabConsoleApi": "คอนโซล API",
+  "tabComingSoon": "เร็วๆ นี้",
+  "compLabelArchiveName": "ชื่อไฟล์บีบอัด",
+  "compLabelDestination": "ปลายทาง",
+  "compLabelFormat": "รูปแบบ",
+  "compLabelCompression": "ระดับการบีบอัด",
+  "compLabelSecurity": "ความปลอดภัย",
+  "compLabelSplit": "แบ่ง",
+  "compSizeFolder": "โฟลเดอร์",
+  "compDestSameFolder": "โฟลเดอร์เดียวกับไฟล์",
+  "compLevelNotApplicable": "ไม่ใช้ได้สำหรับ .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "เปิดใช้งานการเข้ารหัสส่วนหัว",
+  "compSplitNone": "ไม่มี",
+  "compBtnCompress": "บีบอัด",
+  "compBtnCompressing": "กำลังบีบอัด…",
+  "compAddFiles": "เพิ่มไฟล์",
+  "compAddFolder": "เพิ่มโฟลเดอร์",
+  "compDropToAdd": "วางเพื่อเพิ่ม",
+  "compDropHint": "วางไฟล์หรือโฟลเดอร์ที่นี่",
+  "compDropSubtitle": "ไฟล์จะถูกเพิ่มลงในไฟล์บีบอัด",
+  "compItemCount": "{count, plural, other{{count} รายการ}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "กำลังบีบอัด → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ สร้างไฟล์บีบอัด: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

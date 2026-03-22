@@ -1,0 +1,119 @@
+{
+  "@@locale": "ga",
+  "dropZoneDrop": "Scaoil faisnéis",
+  "dropZoneRelease": "Scaoil chun oscailt",
+  "dropZoneSubtitle": "nó cliceáil chun a roghnú\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} comhad} other{{count} chomhad}}",
+  "passwordDialogTitle": "Faisnéis dhlúthaithe",
+  "passwordDialogSubtitle": "Iontráil an pasfhocal",
+  "passwordDialogHint": "Pasfhocal…",
+  "cancel": "Cealaigh",
+  "confirm": "Dearbhú",
+  "logPanelTitle": "Logchomhad",
+  "logPanelEntryCount": "{count, plural, one{{count} iontráil} other{{count} iontráil}}",
+  "logPanelEmpty": "Gan gníomhaíocht",
+  "progressExtracting": "Ag foluain…",
+  "progressDone": "Foluain críochnaithe!",
+  "treeLoading": "Faisnéis á léamh…",
+  "treeError": "Earráid",
+  "treeEmpty": "Gan faisnéis ualaithe",
+  "treeEmptyHint": "Scaoil comhad chun a ábhar a fheiceáil",
+  "treeSearch": "Cuardaigh…",
+  "treeColName": "Ainm",
+  "treeColSize": "Méid",
+  "treeColModified": "Athraithe",
+  "treeOpenTooltip": "Déchilc chun oscailt",
+  "treeItems": "{count, plural, one{{count} mír} other{{count} mhír}}",
+  "sectionDestination": "Ceanncheathrú",
+  "sectionSecurity": "Slándáil",
+  "destinationSameFolder": "Bosca céanna leis an faisnéis",
+  "subfolderCreate": "Foluain go bhosca fofhuigh",
+  "subfolderDefault": "ainmnithe de réir an fhaisnéis",
+  "passwordNone": "Gan pasfhocal",
+  "passwordSetLabel": "Pasfhocal socraithe",
+  "passwordEdit": "Cuir in eagar",
+  "passwordDefine": "Socraigh",
+  "btnExtract": "Foluain",
+  "btnExtracting": "Foluain...",
+  "btnDone": "Déanta ✓",
+  "btnReset": "Athshocraigh",
+  "binaryWarning": "7zip gan fhail. Feidhmigh: {cmd}",
+  "pickFileDialogTitle": "Oscail faisnéis",
+  "pickOutputDialogTitle": "Roghnaigh bosca ceanncheathrú",
+  "logBinaryFound": "7zip faighte: {path}",
+  "logBinaryNotFound": "⚠️ 7zip gan fhail. Feidhmigh trí Homebrew (macOS) nó 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Gan faisnéis aithnighthe i gcomhaid scaoilte.",
+  "logUnsupportedFormat": "Formáid gan thaca: {name}",
+  "logReadingArchive": "Faisnéis á léamh: {name}",
+  "logEntriesFound": "{count, plural, one{1 iontráil aimsithe sa fhaisnéis.} other{{count} iontráil aimsithe sa fhaisnéis.}}",
+  "logPasswordRequired": "Faisnéis dhlúthaithe — pasfhocal de dhíth.",
+  "logFilePasswordRequired": "Comhad dlúthaithe — pasfhocal de dhíth.",
+  "logPasswordDefined": "Pasfhocal socraithe.",
+  "logCancelled": "Cealaithea.",
+  "logDestination": "Ceanncheathrú: {path}",
+  "logExtractionStarted": "Ag foluain go: {path}",
+  "logExtractionDone": "✅ Foluain críochnaithe i: {path}",
+  "logReset": "Athshocraithea.",
+  "logOpening": "Ag oscailt {name}…",
+  "logOpened": "Oscailte: {name}",
+  "logOpenError": "Earráid ag oscailt: {error}",
+  "logExtractionError": "Earráid foluain: {error}",
+  "logError": "Earráid: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Faisnéis roinnte neamhiomlán — páirt ar iarraidh. Ní féidir ábhar a thaispeáint.",
+  "logSplitIncompletePartial": "⚠️ Faisnéis roinnte neamhiomlán — páirt ar iarraidh. Seans go mbeidh ábhar taispeáinte neamhiomlán.",
+  "logExtractionSplitError": "Flouain theip: páirt ar iarraidh.",
+  "errorSplitArchive": "⚠️ Faisnéis roinnte neamhiomlán — déan cinnte go bhfuil gach páirt san fhosca céanna.",
+  "tabDecompression": "Díchomhbhrú",
+  "tabCompression": "Comhbhrú",
+  "tabConsoleApi": "Comhéadan API",
+  "tabComingSoon": "Go luath",
+  "compLabelArchiveName": "Ainm an fhaisnéis",
+  "compLabelDestination": "Ceanncheathrú",
+  "compLabelFormat": "Formáid",
+  "compLabelCompression": "Leibhéal comhbhrúite",
+  "compLabelSecurity": "Slándáil",
+  "compLabelSplit": "Roinnt",
+  "compSizeFolder": "bosca",
+  "compDestSameFolder": "Bosca céanna le na comhaid",
+  "compLevelNotApplicable": "Gan bhrí do .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Criptiú ceanntásc cumasaithe",
+  "compSplitNone": "Níl",
+  "compBtnCompress": "Comhbhrú",
+  "compBtnCompressing": "Ag comhbhrú…",
+  "compAddFiles": "Cuir comhaid leis",
+  "compAddFolder": "Cuir bosca leis",
+  "compDropToAdd": "Scaoil chun a chur leis",
+  "compDropHint": "Scaoil comhaid nó boscaí anseo",
+  "compDropSubtitle": "Cuirfear comhaid leis an fhaisnéis",
+  "compItemCount": "{count, plural, one{{count} mír} other{{count} mhír}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Ag comhbhrú → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Faisnéis cruthaithe: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

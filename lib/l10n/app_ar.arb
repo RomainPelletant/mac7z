@@ -1,0 +1,119 @@
+{
+  "@@locale": "ar",
+  "dropZoneDrop": "أسقط الأرشيف",
+  "dropZoneRelease": "أفلت للفتح",
+  "dropZoneSubtitle": "أو انقر للتحديد\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, zero{{count} ملفات} one{{count} ملف} two{{count} ملفان} few{{count} ملفات} many{{count} ملفًا} other{{count} ملف}}",
+  "passwordDialogTitle": "أرشيف محمي",
+  "passwordDialogSubtitle": "أدخل كلمة المرور",
+  "passwordDialogHint": "كلمة المرور…",
+  "cancel": "إلغاء",
+  "confirm": "تأكيد",
+  "logPanelTitle": "السجل",
+  "logPanelEntryCount": "{count, plural, zero{{count} إدخالات} one{{count} إدخال} two{{count} إدخالان} few{{count} إدخالات} many{{count} إدخالاً} other{{count} إدخال}}",
+  "logPanelEmpty": "لا توجد أنشطة",
+  "progressExtracting": "جاري الاستخراج…",
+  "progressDone": "اكتمل الاستخراج!",
+  "treeLoading": "جاري قراءة الأرشيف…",
+  "treeError": "خطأ",
+  "treeEmpty": "لم يتم تحميل أرشيف",
+  "treeEmptyHint": "أسقط ملف لرؤية محتوياته",
+  "treeSearch": "بحث…",
+  "treeColName": "الاسم",
+  "treeColSize": "الحجم",
+  "treeColModified": "معدل",
+  "treeOpenTooltip": "انقر مرتين للفتح",
+  "treeItems": "{count, plural, zero{{count} عناصر} one{{count} عنصر} two{{count} عنصران} few{{count} عناصر} many{{count} عنصراً} other{{count} عنصر}}",
+  "sectionDestination": "الوجهة",
+  "sectionSecurity": "الأمان",
+  "destinationSameFolder": "نفس المجلد مثل الأرشيف",
+  "subfolderCreate": "استخراج في مجلد فرعي",
+  "subfolderDefault": "مسمى حسب الأرشيف",
+  "passwordNone": "بدون كلمة مرور",
+  "passwordSetLabel": "تم تعيين كلمة المرور",
+  "passwordEdit": "تحرير",
+  "passwordDefine": "عين",
+  "btnExtract": "استخراج",
+  "btnExtracting": "جاري الاستخراج...",
+  "btnDone": "تم ✓",
+  "btnReset": "إعادة تعيين",
+  "binaryWarning": "لم يتم العثور على 7zip. تثبيت: {cmd}",
+  "pickFileDialogTitle": "فتح أرشيف",
+  "pickOutputDialogTitle": "اختر مجلد الوجهة",
+  "logBinaryFound": "تم العثور على 7zip: {path}",
+  "logBinaryNotFound": "⚠️ لم يتم العثور على 7zip. قم بالتثبيت عبر Homebrew (macOS) أو 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "لا توجد أرشيفات معترف بها في الملفات المُسقطة.",
+  "logUnsupportedFormat": "صيغة غير مدعومة: {name}",
+  "logReadingArchive": "جاري قراءة الأرشيف: {name}",
+  "logEntriesFound": "{count, plural, zero{تم العثور على {count} إدخالات في الأرشيف.} one{تم العثور على {count} إدخال في الأرشيف.} two{تم العثور على {count} إدخالين في الأرشيف.} few{تم العثور على {count} إدخالات في الأرشيف.} many{تم العثور على {count} إدخالاً في الأرشيف.} other{تم العثور على {count} إدخال في الأرشيف.}}",
+  "logPasswordRequired": "أرشيف مشفر — كلمة مرور مطلوبة.",
+  "logFilePasswordRequired": "ملف مشفر — كلمة مرور مطلوبة.",
+  "logPasswordDefined": "تم تعيين كلمة المرور.",
+  "logCancelled": "تم الإلغاء.",
+  "logDestination": "الوجهة: {path}",
+  "logExtractionStarted": "جاري الاستخراج إلى: {path}",
+  "logExtractionDone": "✅ اكتمل الاستخراج في: {path}",
+  "logReset": "إعادة تعيين.",
+  "logOpening": "جاري فتح {name}…",
+  "logOpened": "تم الفتح: {name}",
+  "logOpenError": "خطأ في الفتح: {error}",
+  "logExtractionError": "خطأ في الاستخراج: {error}",
+  "logError": "خطأ: {error}",
+  "logSplitIncompleteEmpty": "⚠️ أرشيف مقسم غير مكتمل — أجزاء مفقودة. لا يمكن عرض المحتوى.",
+  "logSplitIncompletePartial": "⚠️ أرشيف مقسم غير مكتمل — أجزاء مفقودة. قد تكون المحتويات المعروضة غير مكتملة.",
+  "logExtractionSplitError": "فشل الاستخراج: أجزاء مفقودة.",
+  "errorSplitArchive": "⚠️ أرشيف مقسم غير مكتمل — تأكد من أن جميع الأجزاء في نفس المجلد.",
+  "tabDecompression": "فك الضغط",
+  "tabCompression": "الضغط",
+  "tabConsoleApi": "واجهة API",
+  "tabComingSoon": "قريباً",
+  "compLabelArchiveName": "اسم الأرشيف",
+  "compLabelDestination": "الوجهة",
+  "compLabelFormat": "الصيغة",
+  "compLabelCompression": "مستوى الضغط",
+  "compLabelSecurity": "الأمان",
+  "compLabelSplit": "قسم",
+  "compSizeFolder": "مجلد",
+  "compDestSameFolder": "نفس المجلد مثل الملفات",
+  "compLevelNotApplicable": "غير قابل للتطبيق على .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "تشفير الرأس مفعل",
+  "compSplitNone": "لا شيء",
+  "compBtnCompress": "ضغط",
+  "compBtnCompressing": "جاري الضغط…",
+  "compAddFiles": "أضف ملفات",
+  "compAddFolder": "إضافة مجلد",
+  "compDropToAdd": "أسقط للإضافة",
+  "compDropHint": "أسقط الملفات أو المجلدات هنا",
+  "compDropSubtitle": "سيتم إضافة الملفات إلى الأرشيف",
+  "compItemCount": "{count, plural, zero{{count} عناصر} one{{count} عنصر} two{{count} عنصران} few{{count} عناصر} many{{count} عنصراً} other{{count} عنصر}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "جاري الضغط → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ تم إنشاء الأرشيف: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

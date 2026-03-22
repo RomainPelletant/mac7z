@@ -1,0 +1,119 @@
+{
+  "@@locale": "pt",
+  "dropZoneDrop": "Soltar um arquivo",
+  "dropZoneRelease": "Soltar para abrir",
+  "dropZoneSubtitle": "ou clique para selecionar\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} arquivo} other{{count} arquivos}}",
+  "passwordDialogTitle": "Arquivo protegido",
+  "passwordDialogSubtitle": "Digite a senha",
+  "passwordDialogHint": "Senha…",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+  "logPanelTitle": "Registo",
+  "logPanelEntryCount": "{count, plural, one{{count} entrada} other{{count} entradas}}",
+  "logPanelEmpty": "Sem atividade",
+  "progressExtracting": "Extraindo…",
+  "progressDone": "Extração concluída!",
+  "treeLoading": "Lendo arquivo…",
+  "treeError": "Erro",
+  "treeEmpty": "Nenhum arquivo carregado",
+  "treeEmptyHint": "Solte um arquivo para ver seu conteúdo",
+  "treeSearch": "Procurar…",
+  "treeColName": "Nome",
+  "treeColSize": "Tamanho",
+  "treeColModified": "Modificado",
+  "treeOpenTooltip": "Duplo clique para abrir",
+  "treeItems": "{count, plural, one{{count} item} other{{count} itens}}",
+  "sectionDestination": "Destino",
+  "sectionSecurity": "Segurança",
+  "destinationSameFolder": "Mesma pasta que o arquivo",
+  "subfolderCreate": "Extrair para uma subpasta",
+  "subfolderDefault": "nomeada segundo o arquivo",
+  "passwordNone": "Sem senha",
+  "passwordSetLabel": "Senha definida",
+  "passwordEdit": "Editar",
+  "passwordDefine": "Definir",
+  "btnExtract": "Extrair",
+  "btnExtracting": "Extraindo...",
+  "btnDone": "Concluído ✓",
+  "btnReset": "Repor",
+  "binaryWarning": "7zip não encontrado. Instale-o: {cmd}",
+  "pickFileDialogTitle": "Abrir um arquivo",
+  "pickOutputDialogTitle": "Escolha pasta de destino",
+  "logBinaryFound": "7zip encontrado: {path}",
+  "logBinaryNotFound": "⚠️ 7zip não encontrado. Instale via Homebrew (macOS) ou 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Nenhum arquivo reconhecido nos arquivos soltos.",
+  "logUnsupportedFormat": "Formato não suportado: {name}",
+  "logReadingArchive": "Lendo arquivo: {name}",
+  "logEntriesFound": "{count, plural, one{1 entrada encontrada no arquivo.} other{{count} entradas encontradas no arquivo.}}",
+  "logPasswordRequired": "Arquivo encriptado — senha obrigatória.",
+  "logFilePasswordRequired": "Arquivo encriptado — senha obrigatória.",
+  "logPasswordDefined": "Senha definida.",
+  "logCancelled": "Cancelado.",
+  "logDestination": "Destino: {path}",
+  "logExtractionStarted": "Extraindo para: {path}",
+  "logExtractionDone": "✅ Extração concluída em: {path}",
+  "logReset": "Reposto.",
+  "logOpening": "Abrindo {name}…",
+  "logOpened": "Aberto: {name}",
+  "logOpenError": "Erro ao abrir: {error}",
+  "logExtractionError": "Erro de extração: {error}",
+  "logError": "Erro: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Arquivo dividido incompleto — partes ausentes. Impossível exibir conteúdo.",
+  "logSplitIncompletePartial": "⚠️ Arquivo dividido incompleto — partes ausentes. O conteúdo exibido pode estar incompleto.",
+  "logExtractionSplitError": "Extração falhou: partes ausentes.",
+  "errorSplitArchive": "⚠️ Arquivo dividido incompleto — certifique-se de que todas as partes estão na mesma pasta.",
+  "tabDecompression": "Descompressão",
+  "tabCompression": "Compressão",
+  "tabConsoleApi": "Console API",
+  "tabComingSoon": "Em breve",
+  "compLabelArchiveName": "Nome do arquivo",
+  "compLabelDestination": "Destino",
+  "compLabelFormat": "Formato",
+  "compLabelCompression": "Nível de compressão",
+  "compLabelSecurity": "Segurança",
+  "compLabelSplit": "Dividir",
+  "compSizeFolder": "pasta",
+  "compDestSameFolder": "Mesma pasta que os arquivos",
+  "compLevelNotApplicable": "Não aplicável para .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Encriptação de cabeçalho ativada",
+  "compSplitNone": "Nenhum",
+  "compBtnCompress": "Comprimir",
+  "compBtnCompressing": "Comprimindo…",
+  "compAddFiles": "Adicionar arquivos",
+  "compAddFolder": "Adicionar pasta",
+  "compDropToAdd": "Soltar para adicionar",
+  "compDropHint": "Solte arquivos ou pastas aqui",
+  "compDropSubtitle": "Os arquivos serão adicionados ao arquivo",
+  "compItemCount": "{count, plural, one{1 item} other{{count} itens}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Comprimindo → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arquivo criado: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

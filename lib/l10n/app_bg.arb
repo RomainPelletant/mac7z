@@ -1,0 +1,119 @@
+{
+  "@@locale": "bg",
+  "dropZoneDrop": "Пуснете архив",
+  "dropZoneRelease": "Отпуснете, за да отворите",
+  "dropZoneSubtitle": "или щракнете, за да изберете\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} файл} other{{count} файла}}",
+  "passwordDialogTitle": "Защитен архив",
+  "passwordDialogSubtitle": "Въведете паролата",
+  "passwordDialogHint": "Парола…",
+  "cancel": "Отмяна",
+  "confirm": "Потвърждаване",
+  "logPanelTitle": "Дневник",
+  "logPanelEntryCount": "{count, plural, one{{count} запис} other{{count} записа}}",
+  "logPanelEmpty": "Без активност",
+  "progressExtracting": "Разархивиране…",
+  "progressDone": "Разархивиране завършено!",
+  "treeLoading": "Четене на архив…",
+  "treeError": "Грешка",
+  "treeEmpty": "Няма заредени архиви",
+  "treeEmptyHint": "Пуснете файл, за да видите съдържанието му",
+  "treeSearch": "Търсене…",
+  "treeColName": "Име",
+  "treeColSize": "Размер",
+  "treeColModified": "Изменено",
+  "treeOpenTooltip": "Двойно щракване, за да отворите",
+  "treeItems": "{count, plural, one{{count} елемент} other{{count} елемента}}",
+  "sectionDestination": "Дестинация",
+  "sectionSecurity": "Безопасност",
+  "destinationSameFolder": "Същата папка като архива",
+  "subfolderCreate": "Разархивиране в подпапка",
+  "subfolderDefault": "наименувана по архива",
+  "passwordNone": "Без парола",
+  "passwordSetLabel": "Парола установена",
+  "passwordEdit": "Редактиране",
+  "passwordDefine": "Задаване",
+  "btnExtract": "Разархивиране",
+  "btnExtracting": "Разархивиране...",
+  "btnDone": "Готово ✓",
+  "btnReset": "Нулиране",
+  "binaryWarning": "7zip не е намерен. Инсталирайте го: {cmd}",
+  "pickFileDialogTitle": "Отворете архив",
+  "pickOutputDialogTitle": "Изберете целева папка",
+  "logBinaryFound": "7zip намерен: {path}",
+  "logBinaryNotFound": "⚠️ 7zip не е намерен. Инсталирайте чрез Homebrew (macOS) или 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Няма разпознат архив в пуснатите файлове.",
+  "logUnsupportedFormat": "Неподдържан формат: {name}",
+  "logReadingArchive": "Четене на архив: {name}",
+  "logEntriesFound": "{count, plural, one{1 запис намерен в архива.} other{{count} записа намерени в архива.}}",
+  "logPasswordRequired": "Криптиран архив — требуется парола.",
+  "logFilePasswordRequired": "Криптиран файл — требуется парола.",
+  "logPasswordDefined": "Парола установена.",
+  "logCancelled": "Отменено.",
+  "logDestination": "Дестинация: {path}",
+  "logExtractionStarted": "Разархивиране на: {path}",
+  "logExtractionDone": "✅ Разархивиране завършено на: {path}",
+  "logReset": "Нулирано.",
+  "logOpening": "Отваряне на {name}…",
+  "logOpened": "Отворено: {name}",
+  "logOpenError": "Грешка при отваряне: {error}",
+  "logExtractionError": "Грешка при разархивиране: {error}",
+  "logError": "Грешка: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Непълен разделен архив — липсващи части. Не може да се покаже съдържанието.",
+  "logSplitIncompletePartial": "⚠️ Непълен разделен архив — липсващи части. Показаното съдържание може да е непълно.",
+  "logExtractionSplitError": "Разархивиране неуспешно: липсващи части.",
+  "errorSplitArchive": "⚠️ Непълен разделен архив — уверете се, че всички части са в същата папка.",
+  "tabDecompression": "Декомпресия",
+  "tabCompression": "Компресия",
+  "tabConsoleApi": "Конзола API",
+  "tabComingSoon": "Скоро",
+  "compLabelArchiveName": "Име на архива",
+  "compLabelDestination": "Дестинация",
+  "compLabelFormat": "Формат",
+  "compLabelCompression": "Ниво на компресия",
+  "compLabelSecurity": "Безопасност",
+  "compLabelSplit": "Разделяне",
+  "compSizeFolder": "папка",
+  "compDestSameFolder": "Същата папка като файловете",
+  "compLevelNotApplicable": "Неприложимо за .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Криптиране на заглавката активирано",
+  "compSplitNone": "Никой",
+  "compBtnCompress": "Компресирай",
+  "compBtnCompressing": "Компресиране…",
+  "compAddFiles": "Добавяне на файлове",
+  "compAddFolder": "Добавяне на папка",
+  "compDropToAdd": "Пуснете, за да добавите",
+  "compDropHint": "Пуснете файлове или папки тук",
+  "compDropSubtitle": "Файловете ще бъдат добавени към архива",
+  "compItemCount": "{count, plural, one{1 елемент} other{{count} елемента}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Компресиране → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Архив създаден: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

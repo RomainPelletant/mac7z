@@ -1,0 +1,119 @@
+{
+  "@@locale": "hr",
+  "dropZoneDrop": "Ispustite arhiv",
+  "dropZoneRelease": "Ispustite za otvaranje",
+  "dropZoneSubtitle": "ili klikните da biste odabrali\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} datoteka} other{{count} datoteke}}",
+  "passwordDialogTitle": "Zaštićeni arhiv",
+  "passwordDialogSubtitle": "Unesite lozinku",
+  "passwordDialogHint": "Lozinka…",
+  "cancel": "Otkaži",
+  "confirm": "Potvrdi",
+  "logPanelTitle": "Dnevnik",
+  "logPanelEntryCount": "{count, plural, one{{count} stavka} other{{count} stavke}}",
+  "logPanelEmpty": "Nema aktivnosti",
+  "progressExtracting": "Ekstraktovanje…",
+  "progressDone": "Ekstraktovanje završeno!",
+  "treeLoading": "Čitanje arhiva…",
+  "treeError": "Greška",
+  "treeEmpty": "Nema učitanog arhiva",
+  "treeEmptyHint": "Ispustite datoteku da vidite njen sadržaj",
+  "treeSearch": "Pretraživanje…",
+  "treeColName": "Naziv",
+  "treeColSize": "Veličina",
+  "treeColModified": "Promenjeno",
+  "treeOpenTooltip": "Dvoklik za otvaranje",
+  "treeItems": "{count, plural, one{{count} stavka} other{{count} stavke}}",
+  "sectionDestination": "Odredište",
+  "sectionSecurity": "Sigurnost",
+  "destinationSameFolder": "Ista mapa kao arhiv",
+  "subfolderCreate": "Ekstraktuj u podmapi",
+  "subfolderDefault": "nazvan po arhivu",
+  "passwordNone": "Bez lozinke",
+  "passwordSetLabel": "Lozinka je postavljena",
+  "passwordEdit": "Uredi",
+  "passwordDefine": "Postavi",
+  "btnExtract": "Ekstraktuj",
+  "btnExtracting": "Ekstraktovanje...",
+  "btnDone": "Gotovo ✓",
+  "btnReset": "Resetuj",
+  "binaryWarning": "7zip nije pronađen. Instalirajte ga: {cmd}",
+  "pickFileDialogTitle": "Otvori arhiv",
+  "pickOutputDialogTitle": "Izaberite odredišnu mapu",
+  "logBinaryFound": "7zip pronađen: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nije pronađen. Instalirajte preko Homebrew (macOS) ili 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Nema prepoznatih arhiva u ispuštenim datotekama.",
+  "logUnsupportedFormat": "Format koji se ne podržava: {name}",
+  "logReadingArchive": "Čitanje arhiva: {name}",
+  "logEntriesFound": "{count, plural, one{1 stavka pronađena u arhivu.} other{{count} stavke pronađene u arhivu.}}",
+  "logPasswordRequired": "Šifrovan arhiv — lozinka obavezna.",
+  "logFilePasswordRequired": "Šifrirana datoteka — lozinka obavezna.",
+  "logPasswordDefined": "Lozinka je postavljena.",
+  "logCancelled": "Otkazano.",
+  "logDestination": "Odredište: {path}",
+  "logExtractionStarted": "Ekstraktovanje u: {path}",
+  "logExtractionDone": "✅ Ekstraktovanje završeno u: {path}",
+  "logReset": "Resetovano.",
+  "logOpening": "Otvaranje {name}…",
+  "logOpened": "Otvoreno: {name}",
+  "logOpenError": "Greška pri otvaranju: {error}",
+  "logExtractionError": "Greška pri ekstraktovanju: {error}",
+  "logError": "Greška: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Nepotpun podeljeni arhiv — nedostaju delovi. Nije moguće prikazati sadržaj.",
+  "logSplitIncompletePartial": "⚠️ Nepotpun podeljeni arhiv — nedostaju delovi. Prikazani sadržaj može biti nepotpun.",
+  "logExtractionSplitError": "Ekstraktovanje neuspešno: nedostaju delovi.",
+  "errorSplitArchive": "⚠️ Nepotpun podeljeni arhiv — pazite da su svi delovi u istoj mapi.",
+  "tabDecompression": "Dekompresija",
+  "tabCompression": "Kompresija",
+  "tabConsoleApi": "Konzola API",
+  "tabComingSoon": "Uskoro",
+  "compLabelArchiveName": "Naziv arhiva",
+  "compLabelDestination": "Odredište",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Razina kompresije",
+  "compLabelSecurity": "Sigurnost",
+  "compLabelSplit": "Podeli",
+  "compSizeFolder": "mapa",
+  "compDestSameFolder": "Ista mapa kao datoteke",
+  "compLevelNotApplicable": "Nije primjenjivo za .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Šifriranje zaglavlja omogućeno",
+  "compSplitNone": "Nijedno",
+  "compBtnCompress": "Kompresiraj",
+  "compBtnCompressing": "Kompresiranje…",
+  "compAddFiles": "Dodaj datoteke",
+  "compAddFolder": "Dodaj mapu",
+  "compDropToAdd": "Ispusti za dodavanje",
+  "compDropHint": "Ispusti datoteke ili mape ovdje",
+  "compDropSubtitle": "Datoteke će biti dodane u arhiv",
+  "compItemCount": "{count, plural, one{1 stavka} other{{count} stavke}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Kompresiranje → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arhiv kreiran: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

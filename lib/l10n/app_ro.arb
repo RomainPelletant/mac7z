@@ -1,0 +1,119 @@
+{
+  "@@locale": "ro",
+  "dropZoneDrop": "Glisați un arhiv",
+  "dropZoneRelease": "Eliberați pentru a deschide",
+  "dropZoneSubtitle": "sau faceți clic pentru a selecta\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fișier} few{{count} fișiere} other{{count} de fișiere}}",
+  "passwordDialogTitle": "Arhiv protejat",
+  "passwordDialogSubtitle": "Introduceți parola",
+  "passwordDialogHint": "Parola…",
+  "cancel": "Anulare",
+  "confirm": "Confirmă",
+  "logPanelTitle": "Jurnal",
+  "logPanelEntryCount": "{count, plural, one{{count} intrare} few{{count} intrări} other{{count} de intrări}}",
+  "logPanelEmpty": "Nicio activitate",
+  "progressExtracting": "Se extrage…",
+  "progressDone": "Extragere completă!",
+  "treeLoading": "Se citește arhivul…",
+  "treeError": "Eroare",
+  "treeEmpty": "Niciun arhiv încărcat",
+  "treeEmptyHint": "Glisați un fișier pentru a-i vedea conținutul",
+  "treeSearch": "Căutare…",
+  "treeColName": "Nume",
+  "treeColSize": "Dimensiune",
+  "treeColModified": "Modificat",
+  "treeOpenTooltip": "Faceți dublu clic pentru a deschide",
+  "treeItems": "{count, plural, one{{count} element} few{{count} elemente} other{{count} de elemente}}",
+  "sectionDestination": "Destinație",
+  "sectionSecurity": "Securitate",
+  "destinationSameFolder": "Același dosar cu arhivul",
+  "subfolderCreate": "Extragere într-un subdosar",
+  "subfolderDefault": "numit după arhiv",
+  "passwordNone": "Nicio parolă",
+  "passwordSetLabel": "Parolă stabilită",
+  "passwordEdit": "Editare",
+  "passwordDefine": "Setare",
+  "btnExtract": "Extragere",
+  "btnExtracting": "Se extrage...",
+  "btnDone": "Gata ✓",
+  "btnReset": "Resetare",
+  "binaryWarning": "7zip nu a fost găsit. Instalați-l: {cmd}",
+  "pickFileDialogTitle": "Deschideți un arhiv",
+  "pickOutputDialogTitle": "Alegeți dosarul de destinație",
+  "logBinaryFound": "7zip găsit: {path}",
+  "logBinaryNotFound": "⚠️ 7zip nu a fost găsit. Instalați prin Homebrew (macOS) sau 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Niciun arhiv recunoscut în fișierele glisate.",
+  "logUnsupportedFormat": "Format nesuportat: {name}",
+  "logReadingArchive": "Se citește arhivul: {name}",
+  "logEntriesFound": "{count, plural, one{1 intrare găsită în arhiv.} few{{count} intrări găsite în arhiv.} other{{count} de intrări găsite în arhiv.}}",
+  "logPasswordRequired": "Arhiv criptat — parolă necesară.",
+  "logFilePasswordRequired": "Fișier criptat — parolă necesară.",
+  "logPasswordDefined": "Parolă stabilită.",
+  "logCancelled": "Anulat.",
+  "logDestination": "Destinație: {path}",
+  "logExtractionStarted": "Se extrage în: {path}",
+  "logExtractionDone": "✅ Extragere completă în: {path}",
+  "logReset": "Resetare.",
+  "logOpening": "Se deschide {name}…",
+  "logOpened": "Deschis: {name}",
+  "logOpenError": "Eroare la deschidere: {error}",
+  "logExtractionError": "Eroare de extragere: {error}",
+  "logError": "Eroare: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Arhiv divizat incomplet — piese lipsă. Nu se poate afișa conținutul.",
+  "logSplitIncompletePartial": "⚠️ Arhiv divizat incomplet — piese lipsă. Conținutul afișat poate fi incomplet.",
+  "logExtractionSplitError": "Extragere eșuată: piese lipsă.",
+  "errorSplitArchive": "⚠️ Arhiv divizat incomplet — asigurați-vă că toate piesele se află în același dosar.",
+  "tabDecompression": "Decomprimare",
+  "tabCompression": "Comprimare",
+  "tabConsoleApi": "Consolă API",
+  "tabComingSoon": "În curând",
+  "compLabelArchiveName": "Numele arhivului",
+  "compLabelDestination": "Destinație",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Nivel de compresie",
+  "compLabelSecurity": "Securitate",
+  "compLabelSplit": "Divide",
+  "compSizeFolder": "dosar",
+  "compDestSameFolder": "Același dosar ca și fișierele",
+  "compLevelNotApplicable": "Nu se aplică pentru .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Criptare antet activată",
+  "compSplitNone": "Niciunul",
+  "compBtnCompress": "Comprimă",
+  "compBtnCompressing": "Se comprimă…",
+  "compAddFiles": "Adaugă fișiere",
+  "compAddFolder": "Adaugă dosar",
+  "compDropToAdd": "Glisați pentru a adăuga",
+  "compDropHint": "Glisați fișierele sau dosarele aici",
+  "compDropSubtitle": "Fișierele vor fi adăugate la arhiv",
+  "compItemCount": "{count, plural, one{1 element} few{{count} elemente} other{{count} de elemente}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Se comprimă → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arhiv creat: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mac7z — Archive manager for macOS & Linux</title>
+  <meta name="description" content="Fast, minimal archive manager for macOS and Linux, powered by 7-Zip. Drag & drop, compression, split archives, encrypted archives." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #1C1C1E;
+      --surface:     #2C2C2E;
+      --surface2:    #3A3A3C;
+      --surface3:    #48484A;
+      --border:      rgba(255,255,255,0.08);
+      --text:        #F5F5F7;
+      --text-sec:    #98989D;
+      --text-ter:    #636366;
+      --accent:      #0A84FF;
+      --accent-glow: rgba(10,132,255,0.25);
+      --orange:      #FF9F0A;
+      --green:       #30D158;
+      --radius:      14px;
+      --transition:  0.2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Navbar ───────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+      background: rgba(28,28,30,0.85);
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .nav-brand img { width: 24px; height: 24px; border-radius: 6px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 13px;
+      color: var(--text-sec);
+    }
+    .nav-links a:hover { color: var(--text); transition: var(--transition); }
+
+    .nav-badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--surface2);
+      color: var(--text-sec);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Hero ─────────────────────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse at center,
+        rgba(10,132,255,0.12) 0%,
+        rgba(255,159,10,0.06) 40%,
+        transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.1),
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 40px rgba(255,159,10,0.15);
+      margin-bottom: 28px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .hero-title {
+      font-size: clamp(42px, 7vw, 68px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #FF9F0A 0%, #FF6B00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-sec);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.55;
+    }
+
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      border: 1px solid transparent;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(10,132,255,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 30px rgba(10,132,255,0.45); }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface2); }
+
+    .btn-small {
+      font-size: 12px;
+      padding: 7px 14px;
+      border-radius: 8px;
+    }
+
+    .btn svg { flex-shrink: 0; }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-ter);
+    }
+    .hero-meta span::before { content: '·'; margin-right: 16px; }
+    .hero-meta span:first-child::before { display: none; }
+
+    /* ── Screenshots ──────────────────────────────────────────────────────── */
+    .screenshots {
+      padding: 20px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .screenshot-frame {
+      width: 100%;
+      max-width: 860px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 40px 80px rgba(0,0,0,0.6);
+      background: var(--surface);
+    }
+
+    .screenshot-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+      color: var(--text-ter);
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .screenshot-placeholder svg {
+      opacity: 0.3;
+    }
+
+    /* ── Features ─────────────────────────────────────────────────────────── */
+    .section {
+      padding: 80px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 48px;
+      line-height: 1.15;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .feature-card:hover {
+      border-color: rgba(255,255,255,0.14);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: var(--text-sec);
+      line-height: 1.55;
+    }
+
+    /* ── Install ──────────────────────────────────────────────────────────── */
+    .install-section {
+      padding: 80px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .install-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .install-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-sec);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--surface2);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .install-panel { display: none; }
+    .install-panel.active { display: block; }
+
+    .install-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .install-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content { flex: 1; }
+    .step-content p { font-size: 14px; color: var(--text-sec); margin-bottom: 8px; }
+
+    pre {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: "SF Mono", "Fira Code", "Menlo", monospace;
+      font-size: 13px;
+      color: #64D2FF;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────────────── */
+    footer {
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-ter);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    footer .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--text-sec);
+      font-size: 14px;
+    }
+
+    footer .footer-brand img {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+    }
+
+    footer a { color: var(--text-sec); }
+    footer a:hover { color: var(--text); transition: var(--transition); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-separator::before {
+      content: '·';
+      margin-right: 20px;
+      color: var(--text-ter);
+    }
+
+    /* ── Divider ──────────────────────────────────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Responsive ───────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 64px 16px 48px; }
+      .section { padding: 60px 16px; }
+      .install-section { padding: 60px 16px; }
+      .hero-meta { flex-wrap: wrap; justify-content: center; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-brand">
+      <img src="icon.png" alt="mac7z" />
+      mac7z
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/romainpelletant/mac7z" target="_blank">GitHub</a>
+      <span class="nav-badge">v0.9.0</span>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <img class="hero-icon" src="icon.png" alt="mac7z icon" />
+    <h1 class="hero-title">Archive manager<br/>for <span>macOS</span> & Linux</h1>
+    <p class="hero-sub">
+      Drag, drop, compress, extract. <strong>mac7z</strong> wraps the battle-tested
+      7-Zip engine in a clean, native-feeling UI — built entirely with Flutter &amp; Claude AI.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="https://github.com/romainpelletant/mac7z/releases/latest/download/mac7z-0.9.0-macos-arm64.dmg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v13M5 14l7 7 7-7"/><path d="M3 21h18"/>
+        </svg>
+        Apple Silicon
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/romainpelletant/mac7z/releases/latest/download/mac7z-0.9.0-macos-intel.dmg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v13M5 14l7 7 7-7"/><path d="M3 21h18"/>
+        </svg>
+        Intel (x86_64)
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/romainpelletant/mac7z/releases/latest">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+        </svg>
+        All releases
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/romainpelletant/mac7z" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+        </svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <div class="hero-meta">
+      <span>macOS 11+</span>
+      <span>Linux x64</span>
+      <span>Apache 2.0</span>
+      <span>Vibe-coded 🤖</span>
+    </div>
+  </section>
+
+  <!-- ── Screenshots ─────────────────────────────────────────────────────── -->
+  <section class="screenshots">
+    <div class="screenshot-frame">
+      <img
+        src="screenshot-decompress.png"
+        alt="Decompression tab"
+        style="width:100%;display:block;"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+      />
+      <div class="screenshot-placeholder" style="display:none">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Screenshot — Decompression tab</span>
+      </div>
+    </div>
+    <div class="screenshot-frame">
+      <img
+        src="screenshot-compress.png"
+        alt="Compression tab"
+        style="width:100%;display:block;"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+      />
+      <div class="screenshot-placeholder" style="display:none">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Screenshot — Compression tab</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ────────────────────────────────────────────────────────── -->
+  <section class="section" id="features">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">Everything you need,<br/>nothing you don't.</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(10,132,255,0.15)">📂</div>
+        <h3>Drag & Drop</h3>
+        <p>Drop any archive directly into the window to instantly preview and extract its contents.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(48,209,88,0.15)">🗜️</div>
+        <h3>Compression</h3>
+        <p>Create .7z and .zip archives with adjustable compression level, from Store to Ultra.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(255,159,10,0.15)">🔪</div>
+        <h3>Split archives</h3>
+        <p>Create and extract multi-volume archives (.7z.001, .zip.002…) with automatic detection.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(191,90,242,0.15)">🔐</div>
+        <h3>Encryption</h3>
+        <p>Password-protected archives with AES-256 and header encryption for .7z.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(255,69,58,0.15)">🔍</div>
+        <h3>File preview</h3>
+        <p>Browse archive contents before extracting — names, sizes, modification dates, search.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(100,210,255,0.15)">🌍</div>
+        <h3>35 languages</h3>
+        <p>Fully localized UI — French, English, Spanish, German, Japanese, Arabic and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Install ──────────────────────────────────────────────────────────── -->
+  <section class="install-section" id="install">
+    <div class="install-inner">
+      <p class="section-label">Install</p>
+      <h2 class="section-title">Get started in seconds.</h2>
+
+      <div class="install-tabs">
+        <button class="tab-btn active" onclick="showTab('macos-brew')">macOS — Homebrew</button>
+        <button class="tab-btn" onclick="showTab('macos-dmg')">macOS — DMG</button>
+        <button class="tab-btn" onclick="showTab('linux')">Linux</button>
+        <button class="tab-btn" onclick="showTab('source')">Build from source</button>
+      </div>
+
+      <div class="install-panel active" id="tab-macos-brew">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <p>Add the mac7z tap and install</p>
+              <pre>brew tap romainpelletant/mac7z
+brew install --cask mac7z</pre>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <p>Launch mac7z from your Applications folder.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="install-panel" id="tab-macos-dmg">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <p>Download the latest DMG from the releases page.</p>
+              <a class="btn btn-primary" style="display:inline-flex;margin-top:4px" href="https://github.com/romainpelletant/mac7z/releases/latest">
+                Download DMG
+              </a>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <p>Open the DMG and drag <strong>mac7z.app</strong> into Applications.</p>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <p>First launch: right-click → Open (required for ad-hoc signed apps).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="install-panel" id="tab-linux">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <p>Install via .deb (Debian / Ubuntu)</p>
+              <pre>sudo dpkg -i mac7z_0.9.0_amd64.deb</pre>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">or</div>
+            <div class="step-content">
+              <p>Portable tar.gz</p>
+              <pre>tar -xzf mac7z-0.9.0-linux-x64.tar.gz
+./bundle/mac7z</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="install-panel" id="tab-source">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <p>Clone and set up</p>
+              <pre>git clone https://github.com/romainpelletant/mac7z
+cd mac7z
+./scripts/setup.sh   # downloads 7zz binary (macOS)
+flutter pub get</pre>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <p>Run or build</p>
+              <pre>flutter run -d macos          # debug
+flutter build macos --release  # release</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-brand">
+      <img src="icon.png" alt="mac7z" />
+      mac7z
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/romainpelletant/mac7z">GitHub</a>
+      <a class="footer-separator" href="https://github.com/romainpelletant/mac7z/releases">Releases</a>
+      <a class="footer-separator" href="https://github.com/romainpelletant/mac7z/blob/main/LICENSE">License</a>
+    </div>
+    <p>Copyright 2026 Romain Pelletant · Apache 2.0 · Vibe-coded with Claude AI 🤖</p>
+  </footer>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.install-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

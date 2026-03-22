@@ -1,0 +1,119 @@
+{
+  "@@locale": "sv",
+  "dropZoneDrop": "Släpp ett arkiv",
+  "dropZoneRelease": "Släpp för att öppna",
+  "dropZoneSubtitle": "eller klicka för att välja\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fil} other{{count} filer}}",
+  "passwordDialogTitle": "Skyddat arkiv",
+  "passwordDialogSubtitle": "Ange lösenordet",
+  "passwordDialogHint": "Lösenord…",
+  "cancel": "Avbryt",
+  "confirm": "Bekräfta",
+  "logPanelTitle": "Logg",
+  "logPanelEntryCount": "{count, plural, one{{count} post} other{{count} poster}}",
+  "logPanelEmpty": "Ingen aktivitet",
+  "progressExtracting": "Extraherar…",
+  "progressDone": "Extrahering slutförd!",
+  "treeLoading": "Läser arkiv…",
+  "treeError": "Fel",
+  "treeEmpty": "Inget arkiv laddat",
+  "treeEmptyHint": "Släpp en fil för att se dess innehål",
+  "treeSearch": "Sök…",
+  "treeColName": "Namn",
+  "treeColSize": "Storlek",
+  "treeColModified": "Ändrad",
+  "treeOpenTooltip": "Dubbelklicka för att öppna",
+  "treeItems": "{count, plural, one{{count} objekt} other{{count} objekt}}",
+  "sectionDestination": "Destination",
+  "sectionSecurity": "Säkerhet",
+  "destinationSameFolder": "Samma mapp som arkivet",
+  "subfolderCreate": "Extrahera till en undermapp",
+  "subfolderDefault": "namngivet enligt arkivet",
+  "passwordNone": "Inget lösenord",
+  "passwordSetLabel": "Lösenord inställt",
+  "passwordEdit": "Redigera",
+  "passwordDefine": "Ange",
+  "btnExtract": "Extrahera",
+  "btnExtracting": "Extraherar...",
+  "btnDone": "Klar ✓",
+  "btnReset": "Återställ",
+  "binaryWarning": "7zip inte hittat. Installera det: {cmd}",
+  "pickFileDialogTitle": "Öppna ett arkiv",
+  "pickOutputDialogTitle": "Välj målmapp",
+  "logBinaryFound": "7zip hittat: {path}",
+  "logBinaryNotFound": "⚠️ 7zip inte hittat. Installera via Homebrew (macOS) eller 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Inget känt arkiv i de släppta filerna.",
+  "logUnsupportedFormat": "Format som inte stöds: {name}",
+  "logReadingArchive": "Läser arkiv: {name}",
+  "logEntriesFound": "{count, plural, one{1 post hittad i arkivet.} other{{count} poster hittade i arkivet.}}",
+  "logPasswordRequired": "Krypterat arkiv — lösenord krävs.",
+  "logFilePasswordRequired": "Krypterad fil — lösenord krävs.",
+  "logPasswordDefined": "Lösenord inställt.",
+  "logCancelled": "Avbruten.",
+  "logDestination": "Destination: {path}",
+  "logExtractionStarted": "Extraherar till: {path}",
+  "logExtractionDone": "✅ Extrahering slutförd i: {path}",
+  "logReset": "Återställd.",
+  "logOpening": "Öppnar {name}…",
+  "logOpened": "Öppnad: {name}",
+  "logOpenError": "Fel vid öppning: {error}",
+  "logExtractionError": "Extraheringsfel: {error}",
+  "logError": "Fel: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Ofullständigt delat arkiv — saknade delar. Kan inte visa innehål.",
+  "logSplitIncompletePartial": "⚠️ Ofullständigt delat arkiv — saknade delar. Visas innehål kan vara ofullständigt.",
+  "logExtractionSplitError": "Extrahering misslyckades: saknade delar.",
+  "errorSplitArchive": "⚠️ Ofullständigt delat arkiv — se till att alla delar finns i samma mapp.",
+  "tabDecompression": "Dekomprimering",
+  "tabCompression": "Komprimering",
+  "tabConsoleApi": "Konsol-API",
+  "tabComingSoon": "Kommer snart",
+  "compLabelArchiveName": "Arkivnamn",
+  "compLabelDestination": "Destination",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Kompressionsnivå",
+  "compLabelSecurity": "Säkerhet",
+  "compLabelSplit": "Dela",
+  "compSizeFolder": "mapp",
+  "compDestSameFolder": "Samma mapp som filerna",
+  "compLevelNotApplicable": "Inte tillämpligt för .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Header-kryptering aktiverad",
+  "compSplitNone": "Ingen",
+  "compBtnCompress": "Komprimera",
+  "compBtnCompressing": "Komprimerar…",
+  "compAddFiles": "Lägg till filer",
+  "compAddFolder": "Lägg till mapp",
+  "compDropToAdd": "Släpp för att lägga till",
+  "compDropHint": "Släpp filer eller mappar här",
+  "compDropSubtitle": "Filerna läggs till i arkivet",
+  "compItemCount": "{count, plural, one{1 objekt} other{{count} objekt}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Komprimerar → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Arkiv skapat: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "@@locale": "fr",
+  "dropZoneDrop": "Déposer une archive",
+  "dropZoneRelease": "Relâcher pour ouvrir",
+  "dropZoneSubtitle": "ou cliquer pour sélectionner\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, one{{count} fichier} other{{count} fichiers}}",
+  "passwordDialogTitle": "Archive protégée",
+  "passwordDialogSubtitle": "Entrez le mot de passe",
+  "passwordDialogHint": "Mot de passe…",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "logPanelTitle": "Journal",
+  "logPanelEntryCount": "{count, plural, one{{count} entrée} other{{count} entrées}}",
+  "logPanelEmpty": "Aucune activité",
+  "progressExtracting": "Extraction en cours…",
+  "progressDone": "Extraction terminée !",
+  "treeLoading": "Lecture de l'archive…",
+  "treeError": "Erreur",
+  "treeEmpty": "Aucune archive chargée",
+  "treeEmptyHint": "Déposez un fichier pour voir son contenu",
+  "treeSearch": "Rechercher…",
+  "treeColName": "Nom",
+  "treeColSize": "Taille",
+  "treeColModified": "Modifié",
+  "treeOpenTooltip": "Double-cliquer pour ouvrir",
+  "treeItems": "{count, plural, one{{count} élément} other{{count} éléments}}",
+  "sectionDestination": "Destination",
+  "sectionSecurity": "Sécurité",
+  "destinationSameFolder": "Même dossier que l'archive",
+  "subfolderCreate": "Extraire dans un sous-dossier",
+  "subfolderDefault": "du nom de l'archive",
+  "passwordNone": "Aucun mot de passe",
+  "passwordSetLabel": "Mot de passe défini",
+  "passwordEdit": "Modifier",
+  "passwordDefine": "Définir",
+  "btnExtract": "Extraire",
+  "btnExtracting": "Extraction...",
+  "btnDone": "Terminé ✓",
+  "btnReset": "Réinitialiser",
+  "binaryWarning": "7zip introuvable. Installez-le : {cmd}",
+  "pickFileDialogTitle": "Ouvrir une archive",
+  "pickOutputDialogTitle": "Choisir le dossier de destination",
+  "logBinaryFound": "7zip trouvé : {path}",
+  "logBinaryNotFound": "⚠️ 7zip non trouvé. Installez-le via Homebrew (macOS) ou 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Aucune archive reconnue dans les fichiers déposés.",
+  "logUnsupportedFormat": "Format non supporté : {name}",
+  "logReadingArchive": "Lecture de l'archive : {name}",
+  "logEntriesFound": "{count, plural, one{1 entrée trouvée dans l'archive.} other{{count} entrées trouvées dans l'archive.}}",
+  "logPasswordRequired": "Archive chiffrée — mot de passe requis.",
+  "logFilePasswordRequired": "Fichier chiffré — mot de passe requis.",
+  "logPasswordDefined": "Mot de passe défini.",
+  "logCancelled": "Annulé.",
+  "logDestination": "Destination : {path}",
+  "logExtractionStarted": "Extraction vers : {path}",
+  "logExtractionDone": "✅ Extraction terminée dans : {path}",
+  "logReset": "Réinitialisé.",
+  "logOpening": "Ouverture de {name}…",
+  "logOpened": "Ouvert : {name}",
+  "logOpenError": "Erreur à l'ouverture : {error}",
+  "logExtractionError": "Erreur d'extraction : {error}",
+  "logError": "Erreur : {error}",
+  "logSplitIncompleteEmpty": "⚠️ Archive divisée incomplète — morceaux manquants. Impossible d'afficher le contenu.",
+  "logSplitIncompletePartial": "⚠️ Archive divisée incomplète — morceaux manquants. Le contenu affiché peut être partiel.",
+  "logExtractionSplitError": "Extraction impossible : morceaux manquants.",
+  "errorSplitArchive": "⚠️ Archive divisée incomplète — assurez-vous que tous les morceaux sont dans le même dossier.",
+  "tabDecompression": "Décompression",
+  "tabCompression": "Compression",
+  "tabConsoleApi": "Console API",
+  "tabComingSoon": "Bientôt disponible",
+  "compLabelArchiveName": "Nom de l'archive",
+  "compLabelDestination": "Destination",
+  "compLabelFormat": "Format",
+  "compLabelCompression": "Taux compression",
+  "compLabelSecurity": "Sécurité",
+  "compLabelSplit": "Diviser",
+  "compSizeFolder": "dossier",
+  "compDestSameFolder": "Même dossier que les fichiers",
+  "compLevelNotApplicable": "Pas applicable pour .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Chiffrement de l'entête actif",
+  "compSplitNone": "Aucun",
+  "compBtnCompress": "Compresser",
+  "compBtnCompressing": "Compression…",
+  "compAddFiles": "Ajouter des fichiers",
+  "compAddFolder": "Ajouter dossier",
+  "compDropToAdd": "Déposer pour ajouter",
+  "compDropHint": "Déposer des fichiers ou dossiers ici",
+  "compDropSubtitle": "Les fichiers seront ajoutés à l'archive",
+  "compItemCount": "{count, plural, one{1 item} other{{count} items}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Compression → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Archive créée: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}

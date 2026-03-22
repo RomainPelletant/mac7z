@@ -1,0 +1,119 @@
+{
+  "@@locale": "vi",
+  "dropZoneDrop": "Thả một kho lưu trữ",
+  "dropZoneRelease": "Thả để mở",
+  "dropZoneSubtitle": "hoặc nhấp để chọn\n.zip .7z .rar .tar .gz…",
+  "dropZoneFileCount": "{count, plural, other{{count} tệp}}",
+  "passwordDialogTitle": "Kho lưu trữ được bảo vệ",
+  "passwordDialogSubtitle": "Nhập mật khẩu",
+  "passwordDialogHint": "Mật khẩu…",
+  "cancel": "Hủy",
+  "confirm": "Xác nhận",
+  "logPanelTitle": "Nhật ký",
+  "logPanelEntryCount": "{count, plural, other{{count} mục}}",
+  "logPanelEmpty": "Không có hoạt động",
+  "progressExtracting": "Đang trích xuất…",
+  "progressDone": "Trích xuất hoàn thành!",
+  "treeLoading": "Đang đọc kho lưu trữ…",
+  "treeError": "Lỗi",
+  "treeEmpty": "Không có kho lưu trữ được tải",
+  "treeEmptyHint": "Thả một tệp để xem nội dung của nó",
+  "treeSearch": "Tìm kiếm…",
+  "treeColName": "Tên",
+  "treeColSize": "Kích thước",
+  "treeColModified": "Đã sửa đổi",
+  "treeOpenTooltip": "Nhấp đúp để mở",
+  "treeItems": "{count, plural, other{{count} mục}}",
+  "sectionDestination": "Đích",
+  "sectionSecurity": "Bảo mật",
+  "destinationSameFolder": "Cùng thư mục với kho lưu trữ",
+  "subfolderCreate": "Trích xuất vào thư mục con",
+  "subfolderDefault": "được đặt tên theo kho lưu trữ",
+  "passwordNone": "Không có mật khẩu",
+  "passwordSetLabel": "Mật khẩu đã được đặt",
+  "passwordEdit": "Chỉnh sửa",
+  "passwordDefine": "Đặt",
+  "btnExtract": "Trích xuất",
+  "btnExtracting": "Đang trích xuất...",
+  "btnDone": "Xong ✓",
+  "btnReset": "Đặt lại",
+  "binaryWarning": "Không tìm thấy 7zip. Cài đặt: {cmd}",
+  "pickFileDialogTitle": "Mở một kho lưu trữ",
+  "pickOutputDialogTitle": "Chọn thư mục đích",
+  "logBinaryFound": "Tìm thấy 7zip: {path}",
+  "logBinaryNotFound": "⚠️ Không tìm thấy 7zip. Cài đặt qua Homebrew (macOS) hoặc 7-zip.org (Windows).",
+  "logNoArchiveRecognized": "Không có kho lưu trữ được nhận dạng trong các tệp đã thả.",
+  "logUnsupportedFormat": "Định dạng không được hỗ trợ: {name}",
+  "logReadingArchive": "Đang đọc kho lưu trữ: {name}",
+  "logEntriesFound": "{count, plural, other{Tìm thấy {count} mục trong kho lưu trữ.}}",
+  "logPasswordRequired": "Kho lưu trữ được mã hóa — cần mật khẩu.",
+  "logFilePasswordRequired": "Tệp được mã hóa — cần mật khẩu.",
+  "logPasswordDefined": "Mật khẩu đã được đặt.",
+  "logCancelled": "Đã hủy.",
+  "logDestination": "Đích: {path}",
+  "logExtractionStarted": "Trích xuất sang: {path}",
+  "logExtractionDone": "✅ Trích xuất hoàn thành tại: {path}",
+  "logReset": "Đã đặt lại.",
+  "logOpening": "Đang mở {name}…",
+  "logOpened": "Đã mở: {name}",
+  "logOpenError": "Lỗi khi mở: {error}",
+  "logExtractionError": "Lỗi trích xuất: {error}",
+  "logError": "Lỗi: {error}",
+  "logSplitIncompleteEmpty": "⚠️ Kho lưu trữ bị phân chia không hoàn chỉnh — thiếu phần. Không thể hiển thị nội dung.",
+  "logSplitIncompletePartial": "⚠️ Kho lưu trữ bị phân chia không hoàn chỉnh — thiếu phần. Nội dung được hiển thị có thể không hoàn chỉnh.",
+  "logExtractionSplitError": "Trích xuất không thành công: thiếu phần.",
+  "errorSplitArchive": "⚠️ Kho lưu trữ bị phân chia không hoàn chỉnh — đảm bảo tất cả các phần nằm trong cùng một thư mục.",
+  "tabDecompression": "Giải nén",
+  "tabCompression": "Nén",
+  "tabConsoleApi": "Bảng điều khiển API",
+  "tabComingSoon": "Sắp ra mắt",
+  "compLabelArchiveName": "Tên kho lưu trữ",
+  "compLabelDestination": "Đích",
+  "compLabelFormat": "Định dạng",
+  "compLabelCompression": "Mức độ nén",
+  "compLabelSecurity": "Bảo mật",
+  "compLabelSplit": "Chia",
+  "compSizeFolder": "thư mục",
+  "compDestSameFolder": "Cùng thư mục với tệp",
+  "compLevelNotApplicable": "Không áp dụng cho .{format}",
+  "@compLevelNotApplicable": {
+    "placeholders": {
+      "format": {
+        "type": "String"
+      }
+    }
+  },
+  "compHeaderEncryption": "Mã hóa tiêu đề được bật",
+  "compSplitNone": "Không",
+  "compBtnCompress": "Nén",
+  "compBtnCompressing": "Đang nén…",
+  "compAddFiles": "Thêm tệp",
+  "compAddFolder": "Thêm thư mục",
+  "compDropToAdd": "Thả để thêm",
+  "compDropHint": "Thả tệp hoặc thư mục ở đây",
+  "compDropSubtitle": "Tệp sẽ được thêm vào kho lưu trữ",
+  "compItemCount": "{count, plural, other{{count} mục}}",
+  "@compItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compLogStarted": "Đang nén → {path}",
+  "@compLogStarted": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "compLogDone": "✅ Kho lưu trữ được tạo: {path}",
+  "@compLogDone": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  }
+}
