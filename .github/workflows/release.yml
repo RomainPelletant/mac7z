@@ -136,9 +136,28 @@ jobs:
           name: linux-${{ matrix.arch }}
           path: mac7z-*-${{ matrix.suffix }}.tar.gz
 
+  sbom:
+    needs: [build-macos, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: sbomify/sbomify-action@master
+        env:
+          LOCK_FILE: pubspec.lock
+          OUTPUT_FILE: sbom.cdx.json
+          COMPONENT_NAME: mac7z
+          COMPONENT_VERSION: ${{ github.ref_name }}
+          ENRICH: true
+          UPLOAD: false
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cylonedx
+          path: sbom.cdx.json
+
   # ── GitHub Release ───────────────────────────────────────────────────────────
   publish:
-    needs: [build-macos, build-linux]
+    needs: [build-macos, build-linux, sbom]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
