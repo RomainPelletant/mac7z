@@ -75,16 +75,25 @@ class SevenZipService {
   /// Returns the path of the 7zz binary bundled inside the macOS app bundle
   /// (Contents/Resources/7zz), and ensures it is executable.
   static Future<String?> _bundledBinaryPath() async {
-    if (!Platform.isMacOS) return null;
-    try {
-      // Platform.resolvedExecutable → .../YourApp.app/Contents/MacOS/YourApp
+  try {
+    if (Platform.isMacOS) {
       final macosDir = p.dirname(Platform.resolvedExecutable);
       final resourcesDir = p.join(macosDir, '..', 'Resources');
       final binary = File(p.normalize(p.join(resourcesDir, '7zz')));
       if (!binary.existsSync()) return null;
-      // Ensure executable bit is set (bundle copy may strip it)
       await Process.run('chmod', ['+x', binary.path]);
       return binary.path;
+    }
+
+    if (Platform.isLinux) {
+      final exeDir = p.dirname(Platform.resolvedExecutable);
+      final binary = File(p.join(exeDir, '7zz'));
+      if (!binary.existsSync()) return null;
+      await Process.run('chmod', ['+x', binary.path]);
+      return binary.path;
+    }
+
+    return null;
     } catch (_) {
       return null;
     }
@@ -120,9 +129,9 @@ class SevenZipService {
                 '/usr/local/bin/7z',
               ]
             : [
-                '/usr/bin/7z',
-                '/usr/local/bin/7z',
-                '7z',
+                '/usr/bin/7zz',
+                '/usr/local/bin/7zz',
+                '7zz',
               ];
 
     for (final c in candidates) {

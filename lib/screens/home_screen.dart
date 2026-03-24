@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:mac7z/l10n/app_localizations.dart';
 import 'package:mac7z/theme/app_colors.dart';
+import 'package:mac7z/theme/theme_notifier.dart';
 import '../models/archive_entry.dart';
 import '../services/seven_zip_service.dart';
 import '../services/temp_preview_manager.dart';
@@ -407,40 +408,74 @@ class _AppTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = Theme.of(context).appColors;
+    final tabBar = TabBar(
+      controller: controller,
+      isScrollable: false,
+      tabs: [
+        Tab(icon: const Icon(Icons.unarchive_rounded, size: 15), text: l10n.tabDecompression, iconMargin: const EdgeInsets.only(bottom: 2)),
+        Tab(icon: const Icon(Icons.archive_rounded, size: 15), text: l10n.tabCompression, iconMargin: const EdgeInsets.only(bottom: 2)),
+        Tab(icon: const Icon(Icons.terminal_rounded, size: 15), text: l10n.tabConsoleApi, iconMargin: const EdgeInsets.only(bottom: 2)),
+      ],
+      labelColor: c.textPrimary,
+      unselectedLabelColor: c.textTertiary,
+      labelStyle: const TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        fontFamily: '.AppleSystemUIFont',
+      ),
+      unselectedLabelStyle: const TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        fontFamily: '.AppleSystemUIFont',
+      ),
+      indicator: BoxDecoration(
+        color: c.tabIndicator,
+        borderRadius: BorderRadius.circular(7),
+      ),
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicatorPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 6),
+      dividerColor: Colors.transparent,
+      splashFactory: NoSplash.splashFactory,
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
+    );
+
     return Container(
       height: 54,
       color: c.tabBar,
-      alignment: Alignment.center,
-      child: TabBar(
-        controller: controller,
-        isScrollable: false,
-        tabs: [
-          Tab(icon: const Icon(Icons.unarchive_rounded, size: 15), text: l10n.tabDecompression, iconMargin: const EdgeInsets.only(bottom: 2)),
-          Tab(icon: const Icon(Icons.archive_rounded, size: 15), text: l10n.tabCompression, iconMargin: const EdgeInsets.only(bottom: 2)),
-          Tab(icon: const Icon(Icons.terminal_rounded, size: 15), text: l10n.tabConsoleApi, iconMargin: const EdgeInsets.only(bottom: 2)),
-        ],
-        labelColor: c.textPrimary,
-        unselectedLabelColor: c.textTertiary,
-        labelStyle: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-          fontFamily: '.AppleSystemUIFont',
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-          fontFamily: '.AppleSystemUIFont',
-        ),
-        indicator: BoxDecoration(
-          color: c.tabIndicator,
-          borderRadius: BorderRadius.circular(7),
-        ),
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 6),
-        dividerColor: Colors.transparent,
-        splashFactory: NoSplash.splashFactory,
-        overlayColor: WidgetStateProperty.all(Colors.transparent),
+      child: Platform.isLinux
+          ? Stack(
+              alignment: Alignment.center,
+              children: [
+                tabBar,
+                Positioned(
+                  right: 8,
+                  child: _ThemeModeButton(colors: c),
+                ),
+              ],
+            )
+          : Align(alignment: Alignment.center, child: tabBar),
+    );
+  }
+}
+
+class _ThemeModeButton extends StatelessWidget {
+  final AppColors colors;
+  const _ThemeModeButton({required this.colors});
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return IconButton(
+      tooltip: isDark ? 'Switch to light mode' : 'Switch to dark mode',
+      icon: Icon(
+        isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+        size: 18,
+        color: colors.textSecondary,
       ),
+      onPressed: () {
+        themeModeNotifier.value =
+            isDark ? ThemeMode.light : ThemeMode.dark;
+      },
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mac7z/theme/app_colors.dart';
@@ -227,6 +228,7 @@ class _SetupBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = Theme.of(context).appColors;
+    final isLinux = Platform.isLinux;
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -239,13 +241,19 @@ class _SetupBlock extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           _CodeBlock(
-            code: 'alias mac7z="/Applications/mac7z.app/Contents/MacOS/mac7z"',
+            code: isLinux
+                ? 'alias mac7z="/opt/mac7z/mac7z"'
+                : 'alias mac7z="/Applications/mac7z.app/Contents/MacOS/mac7z"',
           ),
           const SizedBox(height: 10),
           Text(
-            'Ajoutez cette ligne à votre ~/.zshrc (ou ~/.bash_profile) pour '
-            'la rendre permanente. Une fois configuré, toutes les commandes '
-            '7zip standard fonctionnent en remplaçant 7zz par mac7z.',
+            isLinux
+                ? 'Ajoutez cette ligne à votre ~/.bashrc (ou ~/.zshrc) pour '
+                    'la rendre permanente. Une fois configuré, toutes les commandes '
+                    '7zip standard fonctionnent en remplaçant 7zz par mac7z.'
+                : 'Ajoutez cette ligne à votre ~/.zshrc (ou ~/.bash_profile) pour '
+                    'la rendre permanente. Une fois configuré, toutes les commandes '
+                    '7zip standard fonctionnent en remplaçant 7zz par mac7z.',
             style: TextStyle(fontSize: 12, color: c.textTertiary, height: 1.6),
           ),
         ],

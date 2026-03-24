@@ -4,19 +4,39 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mac7z/l10n/app_localizations.dart';
 import 'theme/app_colors.dart';
+import 'theme/theme_notifier.dart';
 import 'screens/home_screen.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>();
 
-class Unzipper7App extends StatelessWidget {
+class Unzipper7App extends StatefulWidget {
   const Unzipper7App({super.key});
+
+  @override
+  State<Unzipper7App> createState() => _Unzipper7AppState();
+}
+
+class _Unzipper7AppState extends State<Unzipper7App> {
+  @override
+  void initState() {
+    super.initState();
+    themeModeNotifier.addListener(_onThemeChanged);
+  }
+
+  @override
+  void dispose() {
+    themeModeNotifier.removeListener(_onThemeChanged);
+    super.dispose();
+  }
+
+  void _onThemeChanged() => setState(() {});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '7zip Unarchiver',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: themeModeNotifier.value,
       theme: _buildTheme(AppColors.light, Brightness.light),
       darkTheme: _buildTheme(AppColors.dark, Brightness.dark),
       navigatorKey: _navigatorKey,
