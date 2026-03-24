@@ -8,7 +8,31 @@ on:
 
 jobs:
 
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Dart format check
+        run: dart format --output=none lib/
+
+      - name: Flutter analyze (failed only on error found)
+        run: |
+          flutter analyze 2>&1 | tee /tmp/analysis.txt || true
+          grep -q "^ *error •" /tmp/analysis.txt && exit 1 || exit 0
+
   build-macos:
+    needs: lint
     name: Build macOS (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
     strategy:
@@ -39,6 +63,7 @@ jobs:
         run: flutter build macos --release
 
   build-linux:
+    needs: lint
     name: Build Linux (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
     strategy:

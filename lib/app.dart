@@ -52,7 +52,7 @@ class _Unzipper7AppState extends State<Unzipper7App> {
   }
 
   ThemeData _buildTheme(AppColors c, Brightness brightness) {
-    const sysFont  = '.AppleSystemUIFont';
+    const sysFont = '.AppleSystemUIFont';
     const monoFont = 'Menlo';
     final isDark = brightness == Brightness.dark;
 
@@ -72,11 +72,17 @@ class _Unzipper7AppState extends State<Unzipper7App> {
         onBackground: c.textPrimary,
         onSurface: c.textPrimary,
       ),
-      textTheme: (isDark ? ThemeData.dark() : ThemeData.light()).textTheme.copyWith(
-        bodyLarge:  TextStyle(fontFamily: sysFont,  color: c.textPrimary,   fontSize: 14),
-        bodyMedium: TextStyle(fontFamily: sysFont,  color: c.textSecondary, fontSize: 13),
-        labelSmall: TextStyle(fontFamily: monoFont, color: c.textSecondary, fontSize: 11),
-      ).apply(fontFamily: sysFont),
+      textTheme: (isDark ? ThemeData.dark() : ThemeData.light())
+          .textTheme
+          .copyWith(
+            bodyLarge: TextStyle(
+                fontFamily: sysFont, color: c.textPrimary, fontSize: 14),
+            bodyMedium: TextStyle(
+                fontFamily: sysFont, color: c.textSecondary, fontSize: 13),
+            labelSmall: TextStyle(
+                fontFamily: monoFont, color: c.textSecondary, fontSize: 11),
+          )
+          .apply(fontFamily: sysFont),
       cardTheme: CardThemeData(
         color: c.surface,
         elevation: 0,
@@ -113,10 +119,14 @@ class _AppWithMenu extends StatelessWidget {
                 applicationIcon: const Icon(Icons.folder_zip_rounded, size: 48),
               ),
             ),
-            const PlatformProvidedMenuItem(type: PlatformProvidedMenuItemType.hide),
-            const PlatformProvidedMenuItem(type: PlatformProvidedMenuItemType.hideOtherApplications),
-            const PlatformProvidedMenuItem(type: PlatformProvidedMenuItemType.showAllApplications),
-            const PlatformProvidedMenuItem(type: PlatformProvidedMenuItemType.quit),
+            const PlatformProvidedMenuItem(
+                type: PlatformProvidedMenuItemType.hide),
+            const PlatformProvidedMenuItem(
+                type: PlatformProvidedMenuItemType.hideOtherApplications),
+            const PlatformProvidedMenuItem(
+                type: PlatformProvidedMenuItemType.showAllApplications),
+            const PlatformProvidedMenuItem(
+                type: PlatformProvidedMenuItemType.quit),
           ],
         ),
       ],

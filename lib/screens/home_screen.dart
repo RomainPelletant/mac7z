@@ -27,7 +27,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   ExtractionStatus _status = ExtractionStatus.idle;
   String? _archivePath;
   String? _outputDir;
@@ -93,9 +94,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     });
     final l10n = AppLocalizations.of(context)!;
     _log(
-      path != null
-          ? l10n.logBinaryFound(path)
-          : l10n.logBinaryNotFound,
+      path != null ? l10n.logBinaryFound(path) : l10n.logBinaryNotFound,
       path != null ? LogLevel.success : LogLevel.warning,
     );
   }
@@ -146,7 +145,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     _log(l10n.logReadingArchive(p.basename(path)));
 
     try {
-      final entries = await SevenZipService.listContents(path, password: _password);
+      final entries =
+          await SevenZipService.listContents(path, password: _password);
       setState(() {
         _entries = entries;
         _status = ExtractionStatus.idle;
@@ -176,7 +176,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           setState(() => _status = ExtractionStatus.idle);
         }
       } else {
-        setState(() { _status = ExtractionStatus.error; _error = msg; });
+        setState(() {
+          _status = ExtractionStatus.error;
+          _error = msg;
+        });
         _log(l10n.logError(msg), LogLevel.error);
       }
     }
@@ -191,7 +194,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   Future<void> _pickOutputDir() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.platform.getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
+    final dir = await FilePicker.platform
+        .getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
     if (dir != null) {
       setState(() => _outputDir = dir);
       _log('Destination : $dir');
@@ -233,7 +237,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             _progress = prog.percent;
           } else {
             fileCount++;
-            _progress = _entries.isEmpty ? 0 : (fileCount / _entries.length * 100).clamp(0, 99);
+            _progress = _entries.isEmpty
+                ? 0
+                : (fileCount / _entries.length * 100).clamp(0, 99);
           }
           _currentFile = prog.currentFile;
           if (prog.done) {
@@ -251,8 +257,14 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           _error = l10n.errorSplitArchive;
         });
         _log(l10n.logExtractionSplitError, LogLevel.error);
-      } else if (msg.contains('password') || msg.contains('Wrong') || msg.contains('encrypted')) {
-        setState(() { _status = ExtractionStatus.idle; _error = null; _progress = 0; });
+      } else if (msg.contains('password') ||
+          msg.contains('Wrong') ||
+          msg.contains('encrypted')) {
+        setState(() {
+          _status = ExtractionStatus.idle;
+          _error = null;
+          _progress = 0;
+        });
         _log(l10n.logPasswordRequired, LogLevel.warning);
         final pwd = await _showPasswordDialog();
         if (pwd != null) {
@@ -260,7 +272,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           await _extract();
         }
       } else {
-        setState(() { _status = ExtractionStatus.error; _error = msg; });
+        setState(() {
+          _status = ExtractionStatus.error;
+          _error = msg;
+        });
         _log(l10n.logExtractionError(e.toString()), LogLevel.error);
       }
     }
@@ -297,7 +312,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     await _openFileWithPassword(entry, _password);
   }
 
-  Future<void> _openFileWithPassword(ArchiveEntry entry, String? password) async {
+  Future<void> _openFileWithPassword(
+      ArchiveEntry entry, String? password) async {
     final l10n = AppLocalizations.of(context)!;
     try {
       final tempDir = await TempPreviewManager.instance.createDir();
@@ -318,7 +334,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       _log(l10n.logOpened(entry.name), LogLevel.success);
     } catch (e) {
       final msg = e.toString();
-      if (msg.contains('Wrong password') || msg.contains('password') || msg.contains('encrypted')) {
+      if (msg.contains('Wrong password') ||
+          msg.contains('password') ||
+          msg.contains('encrypted')) {
         _log(l10n.logFilePasswordRequired, LogLevel.warning);
         final pwd = await _showPasswordDialog();
         if (pwd != null) {
@@ -340,7 +358,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         children: [
           // Binary warning banner (shown above tabs when 7zip is missing)
           if (!_binaryAvailable)
-            _BinaryWarning(onDismiss: () => setState(() => _binaryAvailable = true)),
+            _BinaryWarning(
+                onDismiss: () => setState(() => _binaryAvailable = true)),
           // Tab bar
           _AppTabBar(controller: _tabController, l10n: l10n),
           Divider(height: 1, color: theme.dividerColor),
@@ -367,7 +386,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         onPickOutput: _pickOutputDir,
                         onExtract: _extract,
                         onReset: _reset,
-                        onToggleSubfolder: (v) => setState(() => _createSubfolder = v),
+                        onToggleSubfolder: (v) =>
+                            setState(() => _createSubfolder = v),
                       ),
                     ),
                     VerticalDivider(width: 1, color: theme.dividerColor),
@@ -412,9 +432,18 @@ class _AppTabBar extends StatelessWidget {
       controller: controller,
       isScrollable: false,
       tabs: [
-        Tab(icon: const Icon(Icons.unarchive_rounded, size: 15), text: l10n.tabDecompression, iconMargin: const EdgeInsets.only(bottom: 2)),
-        Tab(icon: const Icon(Icons.archive_rounded, size: 15), text: l10n.tabCompression, iconMargin: const EdgeInsets.only(bottom: 2)),
-        Tab(icon: const Icon(Icons.terminal_rounded, size: 15), text: l10n.tabConsoleApi, iconMargin: const EdgeInsets.only(bottom: 2)),
+        Tab(
+            icon: const Icon(Icons.unarchive_rounded, size: 15),
+            text: l10n.tabDecompression,
+            iconMargin: const EdgeInsets.only(bottom: 2)),
+        Tab(
+            icon: const Icon(Icons.archive_rounded, size: 15),
+            text: l10n.tabCompression,
+            iconMargin: const EdgeInsets.only(bottom: 2)),
+        Tab(
+            icon: const Icon(Icons.terminal_rounded, size: 15),
+            text: l10n.tabConsoleApi,
+            iconMargin: const EdgeInsets.only(bottom: 2)),
       ],
       labelColor: c.textPrimary,
       unselectedLabelColor: c.textTertiary,
@@ -473,8 +502,7 @@ class _ThemeModeButton extends StatelessWidget {
         color: colors.textSecondary,
       ),
       onPressed: () {
-        themeModeNotifier.value =
-            isDark ? ThemeMode.light : ThemeMode.dark;
+        themeModeNotifier.value = isDark ? ThemeMode.light : ThemeMode.dark;
       },
     );
   }
@@ -553,7 +581,8 @@ class _LeftPanel extends StatelessWidget {
           const SizedBox(height: 6),
           _SubfolderRow(
             enabled: createSubfolder,
-            archiveName: archivePath != null ? _subfolderName(archivePath!) : null,
+            archiveName:
+                archivePath != null ? _subfolderName(archivePath!) : null,
             onToggle: onToggleSubfolder,
           ),
           const SizedBox(height: 24),
@@ -561,9 +590,13 @@ class _LeftPanel extends StatelessWidget {
           if (!isDone) ...[
             _ActionButton(
               label: isExtracting ? l10n.btnExtracting : l10n.btnExtract,
-              icon: isExtracting ? Icons.hourglass_top_rounded : Icons.unarchive_rounded,
+              icon: isExtracting
+                  ? Icons.hourglass_top_rounded
+                  : Icons.unarchive_rounded,
               color: c.accent,
-              enabled: hasArchive && !isExtracting && status != ExtractionStatus.previewing,
+              enabled: hasArchive &&
+                  !isExtracting &&
+                  status != ExtractionStatus.previewing,
               onPressed: onExtract,
             ),
           ] else ...[
@@ -619,7 +652,8 @@ class _SubfolderRow extends StatelessWidget {
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               activeColor: c.accent,
               side: BorderSide(color: c.border, width: 1.5),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4)),
             ),
           ),
           const SizedBox(width: 8),
@@ -689,7 +723,8 @@ class _DestRow extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.folder_open_rounded, size: 16, color: Color(0xFFFFD60A)),
+            const Icon(Icons.folder_open_rounded,
+                size: 16, color: Color(0xFFFFD60A)),
             const SizedBox(width: 8),
             Expanded(
               child: Text(
@@ -709,7 +744,6 @@ class _DestRow extends StatelessWidget {
   }
 }
 
-
 class _ActionButton extends StatelessWidget {
   final String label;
   final IconData icon;
@@ -718,8 +752,10 @@ class _ActionButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const _ActionButton({
-    required this.label, required this.icon,
-    required this.color, required this.enabled,
+    required this.label,
+    required this.icon,
+    required this.color,
+    required this.enabled,
     required this.onPressed,
   });
 
@@ -741,7 +777,11 @@ class _ActionButton extends StatelessWidget {
               children: [
                 Icon(icon, size: 16, color: Colors.white),
                 const SizedBox(width: 8),
-                Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14)),
+                Text(label,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14)),
               ],
             ),
           ),
@@ -763,9 +803,12 @@ class _RightPanel extends StatelessWidget {
   final void Function(ArchiveEntry)? onFileOpen;
 
   const _RightPanel({
-    required this.entries, required this.logs,
-    required this.status, required this.progress,
-    required this.currentFile, required this.error,
+    required this.entries,
+    required this.logs,
+    required this.status,
+    required this.progress,
+    required this.currentFile,
+    required this.error,
     this.onFileOpen,
   });
 
@@ -785,8 +828,12 @@ class _RightPanel extends StatelessWidget {
         ),
         Divider(height: 1, color: Theme.of(context).dividerColor),
         // Progress bar (only when extracting)
-        if (status == ExtractionStatus.extracting || status == ExtractionStatus.done)
-          ExtractionProgressBar(progress: progress, currentFile: currentFile, done: status == ExtractionStatus.done),
+        if (status == ExtractionStatus.extracting ||
+            status == ExtractionStatus.done)
+          ExtractionProgressBar(
+              progress: progress,
+              currentFile: currentFile,
+              done: status == ExtractionStatus.done),
         Divider(height: 1, color: Theme.of(context).dividerColor),
         // Log panel (30%)
         Expanded(
@@ -825,7 +872,9 @@ class _BinaryWarning extends StatelessWidget {
               style: TextStyle(color: c.warning, fontSize: 12),
             ),
           ),
-          IconButton(onPressed: onDismiss, icon: Icon(Icons.close, size: 14, color: c.textSecondary)),
+          IconButton(
+              onPressed: onDismiss,
+              icon: Icon(Icons.close, size: 14, color: c.textSecondary)),
         ],
       ),
     );

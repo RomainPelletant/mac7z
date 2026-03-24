@@ -102,12 +102,9 @@ class TempPreviewManager with WidgetsBindingObserver {
   }
 
   static void _delete(Directory dir) {
-    dir
-        .exists()
-        .then((exists) {
-          if (exists) dir.delete(recursive: true).catchError((_) {});
-        })
-        .catchError((_) {});
+    dir.exists().then((exists) {
+      if (exists) dir.delete(recursive: true).catchError((_) {});
+    }).catchError((_) {});
   }
 }
 

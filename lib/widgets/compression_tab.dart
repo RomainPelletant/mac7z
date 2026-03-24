@@ -20,7 +20,8 @@ class SourceItem {
   final bool isDir;
   final int size;
 
-  const SourceItem({required this.path, required this.isDir, required this.size});
+  const SourceItem(
+      {required this.path, required this.isDir, required this.size});
 
   String get name => p.basename(path);
 
@@ -28,7 +29,8 @@ class SourceItem {
     if (isDir) return l10n.compSizeFolder;
     if (size < 1024) return '$size B';
     if (size < 1024 * 1024) return '${(size / 1024).toStringAsFixed(1)} KB';
-    if (size < 1024 * 1024 * 1024) return '${(size / 1024 / 1024).toStringAsFixed(1)} MB';
+    if (size < 1024 * 1024 * 1024)
+      return '${(size / 1024 / 1024).toStringAsFixed(1)} MB';
     return '${(size / 1024 / 1024 / 1024).toStringAsFixed(2)} GB';
   }
 
@@ -36,18 +38,39 @@ class SourceItem {
     if (isDir) return Icons.folder_rounded;
     final ext = name.contains('.') ? name.split('.').last.toLowerCase() : '';
     switch (ext) {
-      case 'pdf': return Icons.picture_as_pdf_rounded;
-      case 'jpg': case 'jpeg': case 'png': case 'gif': case 'webp': case 'svg':
+      case 'pdf':
+        return Icons.picture_as_pdf_rounded;
+      case 'jpg':
+      case 'jpeg':
+      case 'png':
+      case 'gif':
+      case 'webp':
+      case 'svg':
         return Icons.image_rounded;
-      case 'mp4': case 'mov': case 'avi': case 'mkv':
+      case 'mp4':
+      case 'mov':
+      case 'avi':
+      case 'mkv':
         return Icons.movie_rounded;
-      case 'mp3': case 'wav': case 'flac': case 'aac':
+      case 'mp3':
+      case 'wav':
+      case 'flac':
+      case 'aac':
         return Icons.audio_file_rounded;
-      case 'zip': case '7z': case 'rar': case 'tar': case 'gz':
+      case 'zip':
+      case '7z':
+      case 'rar':
+      case 'tar':
+      case 'gz':
         return Icons.folder_zip_rounded;
-      case 'dart': case 'py': case 'js': case 'ts': case 'swift':
+      case 'dart':
+      case 'py':
+      case 'js':
+      case 'ts':
+      case 'swift':
         return Icons.code_rounded;
-      default: return Icons.insert_drive_file_rounded;
+      default:
+        return Icons.insert_drive_file_rounded;
     }
   }
 
@@ -55,18 +78,36 @@ class SourceItem {
     if (isDir) return const Color(0xFFFFD60A);
     final ext = name.contains('.') ? name.split('.').last.toLowerCase() : '';
     switch (ext) {
-      case 'pdf': return const Color(0xFFFF453A);
-      case 'jpg': case 'jpeg': case 'png': case 'gif': case 'webp':
+      case 'pdf':
+        return const Color(0xFFFF453A);
+      case 'jpg':
+      case 'jpeg':
+      case 'png':
+      case 'gif':
+      case 'webp':
         return const Color(0xFF30D158);
-      case 'mp4': case 'mov': case 'avi': case 'mkv':
+      case 'mp4':
+      case 'mov':
+      case 'avi':
+      case 'mkv':
         return const Color(0xFFFF9F0A);
-      case 'mp3': case 'wav': case 'flac':
+      case 'mp3':
+      case 'wav':
+      case 'flac':
         return const Color(0xFFBF5AF2);
-      case 'zip': case '7z': case 'rar': case 'tar': case 'gz':
+      case 'zip':
+      case '7z':
+      case 'rar':
+      case 'tar':
+      case 'gz':
         return const Color(0xFF64D2FF);
-      case 'dart': case 'py': case 'js': case 'ts':
+      case 'dart':
+      case 'py':
+      case 'js':
+      case 'ts':
         return const Color(0xFF0A84FF);
-      default: return const Color(0xFF98989D);
+      default:
+        return const Color(0xFF98989D);
     }
   }
 }
@@ -122,8 +163,8 @@ class _CompressionTabState extends State<CompressionTab> {
 
   // ── Logging ───────────────────────────────────────────────────────────────
 
-  void _log(String msg, [LogLevel level = LogLevel.info]) =>
-      setState(() => _logs.add(LogEntry(time: DateTime.now(), message: msg, level: level)));
+  void _log(String msg, [LogLevel level = LogLevel.info]) => setState(() =>
+      _logs.add(LogEntry(time: DateTime.now(), message: msg, level: level)));
 
   // ── File management ───────────────────────────────────────────────────────
 
@@ -133,9 +174,13 @@ class _CompressionTabState extends State<CompressionTab> {
       final isDir = await FileSystemEntity.isDirectory(path);
       int size = 0;
       if (!isDir) {
-        try { size = await File(path).length(); } catch (_) {}
+        try {
+          size = await File(path).length();
+        } catch (_) {}
       }
-      if (mounted) setState(() => _items.add(SourceItem(path: path, isDir: isDir, size: size)));
+      if (mounted)
+        setState(
+            () => _items.add(SourceItem(path: path, isDir: isDir, size: size)));
     }
     // Auto-fill archive name from first item
     if (_items.length == 1 && _nameCtrl.text == 'archive') {
@@ -147,20 +192,25 @@ class _CompressionTabState extends State<CompressionTab> {
   Future<void> _pickFiles() async {
     final l10n = AppLocalizations.of(context)!;
     final result = await FilePicker.platform.pickFiles(
-      allowMultiple: true, type: FileType.any, dialogTitle: l10n.compAddFiles,
+      allowMultiple: true,
+      type: FileType.any,
+      dialogTitle: l10n.compAddFiles,
     );
-    if (result != null) await _addPaths(result.files.map((f) => f.path!).toList());
+    if (result != null)
+      await _addPaths(result.files.map((f) => f.path!).toList());
   }
 
   Future<void> _pickFolder() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.platform.getDirectoryPath(dialogTitle: l10n.compAddFolder);
+    final dir = await FilePicker.platform
+        .getDirectoryPath(dialogTitle: l10n.compAddFolder);
     if (dir != null) await _addPaths([dir]);
   }
 
   Future<void> _pickDest() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.platform.getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
+    final dir = await FilePicker.platform
+        .getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
     if (dir != null) setState(() => _destDir = dir);
   }
 
@@ -170,8 +220,11 @@ class _CompressionTabState extends State<CompressionTab> {
 
   String _outputPath() {
     final base = _destDir ??
-        (_items.isNotEmpty ? p.dirname(_items.first.path) : Directory.current.path);
-    final name = _nameCtrl.text.trim().isEmpty ? 'archive' : _nameCtrl.text.trim();
+        (_items.isNotEmpty
+            ? p.dirname(_items.first.path)
+            : Directory.current.path);
+    final name =
+        _nameCtrl.text.trim().isEmpty ? 'archive' : _nameCtrl.text.trim();
     return p.join(base, '$name.${_format.label}');
   }
 
@@ -210,7 +263,10 @@ class _CompressionTabState extends State<CompressionTab> {
       }
       _log(l10n.compLogDone(outPath), LogLevel.success);
     } on Exception catch (e) {
-      setState(() { _status = ExtractionStatus.error; _error = e.toString(); });
+      setState(() {
+        _status = ExtractionStatus.error;
+        _error = e.toString();
+      });
       _log(l10n.logError(e.toString()), LogLevel.error);
     }
   }
@@ -258,7 +314,8 @@ class _CompressionTabState extends State<CompressionTab> {
             onSplitChanged: (s) => setState(() => _split = s),
             onSetPassword: () async {
               final pwd = await showDialog<String>(
-                context: context, builder: (_) => const PasswordDialog(),
+                context: context,
+                builder: (_) => const PasswordDialog(),
               );
               if (pwd != null) setState(() => _password = pwd);
             },
@@ -284,7 +341,8 @@ class _CompressionTabState extends State<CompressionTab> {
                 ),
               ),
               Divider(height: 1, color: theme.dividerColor),
-              if (_status == ExtractionStatus.extracting || _status == ExtractionStatus.done)
+              if (_status == ExtractionStatus.extracting ||
+                  _status == ExtractionStatus.done)
                 ExtractionProgressBar(
                   progress: _progress,
                   currentFile: _currentFile,
@@ -379,7 +437,8 @@ class _LeftPanelState extends State<_LeftPanel> {
                 suffixStyle: TextStyle(fontSize: 12, color: c.textTertiary),
                 filled: true,
                 fillColor: c.surface,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: c.border),
@@ -402,8 +461,11 @@ class _LeftPanelState extends State<_LeftPanel> {
             _PickerRow(
               icon: Icons.folder_open_rounded,
               iconColor: const Color(0xFFFFD60A),
-              label: widget.destDir != null ? p.basename(widget.destDir!) : l10n.compDestSameFolder,
-              labelColor: widget.destDir != null ? c.textPrimary : c.textTertiary,
+              label: widget.destDir != null
+                  ? p.basename(widget.destDir!)
+                  : l10n.compDestSameFolder,
+              labelColor:
+                  widget.destDir != null ? c.textPrimary : c.textTertiary,
               tooltip: widget.destDir,
               onTap: widget.onPickDest,
             ),
@@ -424,20 +486,26 @@ class _LeftPanelState extends State<_LeftPanel> {
             GestureDetector(
               onTap: () => setState(() => _advancedOpen = !_advancedOpen),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
                 decoration: BoxDecoration(
                   color: _advancedOpen ? c.surface2 : c.surface,
                   borderRadius: BorderRadius.vertical(
                     top: const Radius.circular(8),
-                    bottom: _advancedOpen ? Radius.zero : const Radius.circular(8),
+                    bottom:
+                        _advancedOpen ? Radius.zero : const Radius.circular(8),
                   ),
                   border: Border.all(
-                    color: advancedCount > 0 ? c.accent.withOpacity(0.45) : c.border,
+                    color: advancedCount > 0
+                        ? c.accent.withOpacity(0.45)
+                        : c.border,
                   ),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.tune_rounded, size: 14, color: advancedCount > 0 ? c.accent : c.textTertiary),
+                    Icon(Icons.tune_rounded,
+                        size: 14,
+                        color: advancedCount > 0 ? c.accent : c.textTertiary),
                     const SizedBox(width: 8),
                     Text(
                       l10n.compLabelAdvanced,
@@ -451,7 +519,8 @@ class _LeftPanelState extends State<_LeftPanel> {
                     if (advancedCount > 0) ...[
                       const SizedBox(width: 6),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 1),
                         decoration: BoxDecoration(
                           color: c.accent,
                           borderRadius: BorderRadius.circular(10),
@@ -459,7 +528,9 @@ class _LeftPanelState extends State<_LeftPanel> {
                         child: Text(
                           '$advancedCount',
                           style: const TextStyle(
-                            fontSize: 9, color: Colors.white, fontWeight: FontWeight.w700,
+                            fontSize: 9,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
@@ -468,7 +539,8 @@ class _LeftPanelState extends State<_LeftPanel> {
                     AnimatedRotation(
                       turns: _advancedOpen ? 0.5 : 0,
                       duration: const Duration(milliseconds: 200),
-                      child: Icon(Icons.expand_more_rounded, size: 16, color: c.textTertiary),
+                      child: Icon(Icons.expand_more_rounded,
+                          size: 16, color: c.textTertiary),
                     ),
                   ],
                 ),
@@ -484,11 +556,21 @@ class _LeftPanelState extends State<_LeftPanel> {
                       padding: const EdgeInsets.fromLTRB(12, 12, 12, 14),
                       decoration: BoxDecoration(
                         color: c.surface.withOpacity(0.6),
-                        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(8)),
+                        borderRadius: const BorderRadius.vertical(
+                            bottom: Radius.circular(8)),
                         border: Border(
-                          left: BorderSide(color: advancedCount > 0 ? c.accent.withOpacity(0.45) : c.border),
-                          right: BorderSide(color: advancedCount > 0 ? c.accent.withOpacity(0.45) : c.border),
-                          bottom: BorderSide(color: advancedCount > 0 ? c.accent.withOpacity(0.45) : c.border),
+                          left: BorderSide(
+                              color: advancedCount > 0
+                                  ? c.accent.withOpacity(0.45)
+                                  : c.border),
+                          right: BorderSide(
+                              color: advancedCount > 0
+                                  ? c.accent.withOpacity(0.45)
+                                  : c.border),
+                          bottom: BorderSide(
+                              color: advancedCount > 0
+                                  ? c.accent.withOpacity(0.45)
+                                  : c.border),
                         ),
                       ),
                       child: Column(
@@ -505,31 +587,47 @@ class _LeftPanelState extends State<_LeftPanel> {
                               onChanged: widget.onLevelChanged,
                             )
                           else
-                            _DisabledRow(l10n.compLevelNotApplicable(widget.format.label)),
+                            _DisabledRow(l10n
+                                .compLevelNotApplicable(widget.format.label)),
                           const SizedBox(height: 14),
 
                           // Security / password
                           _Label(l10n.compLabelSecurity),
                           const SizedBox(height: 8),
                           _PickerRow(
-                            icon: widget.password != null ? Icons.lock_rounded : Icons.lock_open_rounded,
-                            iconColor: widget.password != null ? c.accent : c.textTertiary,
-                            label: widget.password != null ? l10n.passwordSetLabel : l10n.passwordNone,
-                            labelColor: widget.password != null ? c.accent : c.textTertiary,
-                            trailingLabel: widget.password != null ? l10n.passwordEdit : l10n.passwordDefine,
+                            icon: widget.password != null
+                                ? Icons.lock_rounded
+                                : Icons.lock_open_rounded,
+                            iconColor: widget.password != null
+                                ? c.accent
+                                : c.textTertiary,
+                            label: widget.password != null
+                                ? l10n.passwordSetLabel
+                                : l10n.passwordNone,
+                            labelColor: widget.password != null
+                                ? c.accent
+                                : c.textTertiary,
+                            trailingLabel: widget.password != null
+                                ? l10n.passwordEdit
+                                : l10n.passwordDefine,
                             onTap: widget.onSetPassword,
                             highlighted: widget.password != null,
                           ),
-                          if (widget.format == ArchiveFormat.sevenZip && widget.password != null)
+                          if (widget.format == ArchiveFormat.sevenZip &&
+                              widget.password != null)
                             Padding(
                               padding: const EdgeInsets.only(top: 4),
                               child: Row(
                                 children: [
-                                  Icon(Icons.shield_rounded, size: 11, color: c.success.withOpacity(0.8)),
+                                  Icon(Icons.shield_rounded,
+                                      size: 11,
+                                      color: c.success.withOpacity(0.8)),
                                   const SizedBox(width: 4),
                                   Text(
                                     l10n.compHeaderEncryption,
-                                    style: TextStyle(fontSize: 10, color: c.success.withOpacity(0.8)),
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        color: c.success.withOpacity(0.8)),
                                   ),
                                 ],
                               ),
@@ -542,7 +640,9 @@ class _LeftPanelState extends State<_LeftPanel> {
                           _SegmentedPicker<SplitSize>(
                             values: SplitSize.values,
                             selected: widget.split,
-                            labelOf: (s) => s == SplitSize.none ? l10n.compSplitNone : s.label,
+                            labelOf: (s) => s == SplitSize.none
+                                ? l10n.compSplitNone
+                                : s.label,
                             onChanged: widget.onSplitChanged,
                           ),
                         ],
@@ -555,8 +655,11 @@ class _LeftPanelState extends State<_LeftPanel> {
             // ── Buttons ───────────────────────────────────────────────────
             if (!isDone)
               _ActionButton(
-                label: isRunning ? l10n.compBtnCompressing : l10n.compBtnCompress,
-                icon: isRunning ? Icons.hourglass_top_rounded : Icons.archive_rounded,
+                label:
+                    isRunning ? l10n.compBtnCompressing : l10n.compBtnCompress,
+                icon: isRunning
+                    ? Icons.hourglass_top_rounded
+                    : Icons.archive_rounded,
                 color: c.accent,
                 enabled: widget.hasItems && !isRunning,
                 onPressed: widget.onCompress,
@@ -624,9 +727,7 @@ class _FileListState extends State<_FileList> {
       onDragExited: (_) => setState(() => _hovering = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        color: _hovering
-            ? c.accent.withOpacity(0.06)
-            : c.bg,
+        color: _hovering ? c.accent.withOpacity(0.06) : c.bg,
         child: widget.items.isEmpty
             ? _EmptyDropHint(
                 hovering: _hovering,
@@ -670,13 +771,9 @@ class _EmptyDropHint extends StatelessWidget {
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: hovering
-                  ? c.accent.withOpacity(0.12)
-                  : c.surface,
+              color: hovering ? c.accent.withOpacity(0.12) : c.surface,
               border: Border.all(
-                color: hovering
-                    ? c.accent.withOpacity(0.5)
-                    : c.border,
+                color: hovering ? c.accent.withOpacity(0.5) : c.border,
               ),
             ),
             child: Icon(Icons.add_to_photos_rounded, size: 42, color: color),
@@ -699,9 +796,15 @@ class _EmptyDropHint extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _SmallBtn(label: l10n.compAddFiles, icon: Icons.add_rounded, onTap: onPickFiles),
+              _SmallBtn(
+                  label: l10n.compAddFiles,
+                  icon: Icons.add_rounded,
+                  onTap: onPickFiles),
               const SizedBox(width: 10),
-              _SmallBtn(label: l10n.compAddFolder, icon: Icons.folder_rounded, onTap: onPickFolder),
+              _SmallBtn(
+                  label: l10n.compAddFolder,
+                  icon: Icons.folder_rounded,
+                  onTap: onPickFolder),
             ],
           ),
         ],
@@ -743,9 +846,15 @@ class _ItemsView extends StatelessWidget {
                 style: TextStyle(fontSize: 12, color: c.textSecondary),
               ),
               const Spacer(),
-              _SmallBtn(label: l10n.compAddFiles, icon: Icons.add_rounded, onTap: onPickFiles),
+              _SmallBtn(
+                  label: l10n.compAddFiles,
+                  icon: Icons.add_rounded,
+                  onTap: onPickFiles),
               const SizedBox(width: 8),
-              _SmallBtn(label: l10n.compAddFolder, icon: Icons.folder_rounded, onTap: onPickFolder),
+              _SmallBtn(
+                  label: l10n.compAddFolder,
+                  icon: Icons.folder_rounded,
+                  onTap: onPickFolder),
             ],
           ),
         ),
@@ -758,7 +867,9 @@ class _ItemsView extends StatelessWidget {
               children: [
                 Icon(Icons.error_rounded, size: 14, color: c.error),
                 const SizedBox(width: 8),
-                Expanded(child: Text(error!, style: TextStyle(fontSize: 12, color: c.error))),
+                Expanded(
+                    child: Text(error!,
+                        style: TextStyle(fontSize: 12, color: c.error))),
               ],
             ),
           ),
@@ -766,7 +877,8 @@ class _ItemsView extends StatelessWidget {
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(vertical: 4),
             itemCount: items.length,
-            separatorBuilder: (_, __) => Divider(height: 1, color: c.surface, indent: 50),
+            separatorBuilder: (_, __) =>
+                Divider(height: 1, color: c.surface, indent: 50),
             itemBuilder: (context, i) {
               final item = items[i];
               return _ItemRow(
@@ -828,7 +940,8 @@ class _ItemRowState extends State<_ItemRow> {
             const SizedBox(width: 8),
             Text(
               widget.item.sizeLabel(l10n),
-              style: TextStyle(fontSize: 11, color: c.textTertiary, fontFamily: 'Menlo'),
+              style: TextStyle(
+                  fontSize: 11, color: c.textTertiary, fontFamily: 'Menlo'),
             ),
             const SizedBox(width: 6),
             AnimatedOpacity(
@@ -843,7 +956,8 @@ class _ItemRowState extends State<_ItemRow> {
                     shape: BoxShape.circle,
                     color: c.surface3,
                   ),
-                  child: Icon(Icons.close_rounded, size: 11, color: c.textSecondary),
+                  child: Icon(Icons.close_rounded,
+                      size: 11, color: c.textSecondary),
                 ),
               ),
             ),
@@ -865,8 +979,10 @@ class _Label extends StatelessWidget {
     return Text(
       text.toUpperCase(),
       style: TextStyle(
-        fontSize: 10, letterSpacing: 1.2,
-        color: c.textTertiary, fontWeight: FontWeight.w600,
+        fontSize: 10,
+        letterSpacing: 1.2,
+        color: c.textTertiary,
+        fontWeight: FontWeight.w600,
       ),
     );
   }
@@ -924,9 +1040,7 @@ class _PickerRow extends StatelessWidget {
             color: c.surface,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: highlighted
-                  ? c.accent.withOpacity(0.4)
-                  : c.border,
+              color: highlighted ? c.accent.withOpacity(0.4) : c.border,
             ),
           ),
           child: Row(
@@ -934,17 +1048,20 @@ class _PickerRow extends StatelessWidget {
               Icon(icon, size: 15, color: iconColor),
               const SizedBox(width: 8),
               Expanded(
-                child: Text(label,
+                child: Text(
+                  label,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 12, color: labelColor),
                 ),
               ),
               if (trailingLabel != null)
-                Text(trailingLabel!,
+                Text(
+                  trailingLabel!,
                   style: TextStyle(fontSize: 11, color: c.accent),
                 )
               else
-                Icon(Icons.chevron_right_rounded, size: 14, color: c.textTertiary),
+                Icon(Icons.chevron_right_rounded,
+                    size: 14, color: c.textTertiary),
             ],
           ),
         ),
@@ -1010,8 +1127,10 @@ class _ActionButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const _ActionButton({
-    required this.label, required this.icon,
-    required this.color, required this.enabled,
+    required this.label,
+    required this.icon,
+    required this.color,
+    required this.enabled,
     required this.onPressed,
   });
 
@@ -1033,9 +1152,12 @@ class _ActionButton extends StatelessWidget {
               children: [
                 Icon(icon, size: 16, color: Colors.white),
                 const SizedBox(width: 8),
-                Text(label, style: const TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14,
-                )),
+                Text(label,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    )),
               ],
             ),
           ),
@@ -1049,7 +1171,8 @@ class _SmallBtn extends StatelessWidget {
   final String label;
   final IconData icon;
   final VoidCallback onTap;
-  const _SmallBtn({required this.label, required this.icon, required this.onTap});
+  const _SmallBtn(
+      {required this.label, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

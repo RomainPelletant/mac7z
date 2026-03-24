@@ -8,12 +8,12 @@ import '../models/archive_entry.dart';
 // ── Compression enums ─────────────────────────────────────────────────────────
 
 enum ArchiveFormat {
-  sevenZip('7z',     '-t7z',    true,  true),
-  zip     ('zip',    '-tzip',   true,  false),
-  tar     ('tar',    '-ttar',   false, false),
-  tarGz   ('tar.gz',  null,     true,  false),
-  tarBz2  ('tar.bz2', null,     true,  false),
-  tarXz   ('tar.xz',  null,     true,  false);
+  sevenZip('7z', '-t7z', true, true),
+  zip('zip', '-tzip', true, false),
+  tar('tar', '-ttar', false, false),
+  tarGz('tar.gz', null, true, false),
+  tarBz2('tar.bz2', null, true, false),
+  tarXz('tar.xz', null, true, false);
 
   /// File extension shown in UI and appended to output filename.
   final String label;
@@ -27,16 +27,17 @@ enum ArchiveFormat {
   /// Whether this format supports header + content encryption.
   final bool supportsEncryption;
 
-  const ArchiveFormat(this.label, this.typeFlag, this.supportsLevel, this.supportsEncryption);
+  const ArchiveFormat(
+      this.label, this.typeFlag, this.supportsLevel, this.supportsEncryption);
 }
 
 enum CompressionLevel {
-  store  ('Store',    0),
-  fastest('Fastest',  1),
-  fast   ('Fast',     3),
-  normal ('Normal',   5),
-  maximum('Maximum',  7),
-  ultra  ('Ultra',    9);
+  store('Store', 0),
+  fastest('Fastest', 1),
+  fast('Fast', 3),
+  normal('Normal', 5),
+  maximum('Maximum', 7),
+  ultra('Ultra', 9);
 
   final String label;
   final int value;
@@ -44,12 +45,12 @@ enum CompressionLevel {
 }
 
 enum SplitSize {
-  none ('No split',      null),
-  mb10 ('10 MB',         '10m'),
-  mb100('100 MB',        '100m'),
-  mb700('700 MB (CD)',   '700m'),
-  gb1  ('1 GB',          '1g'),
-  gb4  ('4 GB (FAT32)',  '4g');
+  none('No split', null),
+  mb10('10 MB', '10m'),
+  mb100('100 MB', '100m'),
+  mb700('700 MB (CD)', '700m'),
+  gb1('1 GB', '1g'),
+  gb4('4 GB (FAT32)', '4g');
 
   final String label;
   final String? flag;
@@ -75,25 +76,25 @@ class SevenZipService {
   /// Returns the path of the 7zz binary bundled inside the macOS app bundle
   /// (Contents/Resources/7zz), and ensures it is executable.
   static Future<String?> _bundledBinaryPath() async {
-  try {
-    if (Platform.isMacOS) {
-      final macosDir = p.dirname(Platform.resolvedExecutable);
-      final resourcesDir = p.join(macosDir, '..', 'Resources');
-      final binary = File(p.normalize(p.join(resourcesDir, '7zz')));
-      if (!binary.existsSync()) return null;
-      await Process.run('chmod', ['+x', binary.path]);
-      return binary.path;
-    }
+    try {
+      if (Platform.isMacOS) {
+        final macosDir = p.dirname(Platform.resolvedExecutable);
+        final resourcesDir = p.join(macosDir, '..', 'Resources');
+        final binary = File(p.normalize(p.join(resourcesDir, '7zz')));
+        if (!binary.existsSync()) return null;
+        await Process.run('chmod', ['+x', binary.path]);
+        return binary.path;
+      }
 
-    if (Platform.isLinux) {
-      final exeDir = p.dirname(Platform.resolvedExecutable);
-      final binary = File(p.join(exeDir, '7zz'));
-      if (!binary.existsSync()) return null;
-      await Process.run('chmod', ['+x', binary.path]);
-      return binary.path;
-    }
+      if (Platform.isLinux) {
+        final exeDir = p.dirname(Platform.resolvedExecutable);
+        final binary = File(p.join(exeDir, '7zz'));
+        if (!binary.existsSync()) return null;
+        await Process.run('chmod', ['+x', binary.path]);
+        return binary.path;
+      }
 
-    return null;
+      return null;
     } catch (_) {
       return null;
     }
@@ -107,7 +108,8 @@ class SevenZipService {
     if (bundled != null) {
       try {
         final result = await Process.run(bundled, ['i']);
-        if (result.exitCode == 0 || result.stdout.toString().contains('7-Zip')) {
+        if (result.exitCode == 0 ||
+            result.stdout.toString().contains('7-Zip')) {
           _binaryPath = bundled;
           return _binaryPath;
         }
@@ -137,7 +139,8 @@ class SevenZipService {
     for (final c in candidates) {
       try {
         final result = await Process.run(c, ['i'], runInShell: true);
-        if (result.exitCode == 0 || result.stdout.toString().contains('7-Zip')) {
+        if (result.exitCode == 0 ||
+            result.stdout.toString().contains('7-Zip')) {
           _binaryPath = c;
           return c;
         }
@@ -153,7 +156,8 @@ class SevenZipService {
     String? password,
   }) async {
     final bin = await findBinary();
-    if (bin == null) throw Exception('7zip binary not found. Please install 7-Zip.');
+    if (bin == null)
+      throw Exception('7zip binary not found. Please install 7-Zip.');
 
     // Always pass -p to avoid interactive prompts. Empty string is ignored
     // for non-encrypted archives; for encrypted ones it forces exit code 2.
@@ -221,10 +225,12 @@ class SevenZipService {
   @visibleForTesting
   static String? outerType(String archivePath) {
     final lower = archivePath.toLowerCase();
-    if (lower.endsWith('.tar.gz')  || lower.endsWith('.tgz'))          return 'gzip';
-    if (lower.endsWith('.tar.bz2') || lower.endsWith('.tbz2') || lower.endsWith('.tbz')) return 'bzip2';
-    if (lower.endsWith('.tar.xz')  || lower.endsWith('.txz'))          return 'xz';
-    if (lower.endsWith('.tar.zst'))                                     return 'zstd';
+    if (lower.endsWith('.tar.gz') || lower.endsWith('.tgz')) return 'gzip';
+    if (lower.endsWith('.tar.bz2') ||
+        lower.endsWith('.tbz2') ||
+        lower.endsWith('.tbz')) return 'bzip2';
+    if (lower.endsWith('.tar.xz') || lower.endsWith('.txz')) return 'xz';
+    if (lower.endsWith('.tar.zst')) return 'zstd';
     return null;
   }
 
@@ -242,14 +248,16 @@ class SevenZipService {
       // Étape 1 : extraire SEULEMENT la couche externe → produit le .tar
       final extractArgs = [
         'e', archivePath,
-        if (outerType != null) '-t$outerType', // force le type outer → pas de récursion tar
+        if (outerType != null)
+          '-t$outerType', // force le type outer → pas de récursion tar
         '-o${tempDir.path}',
         '-y',
         if (password != null) '-p$password',
       ];
       final extractResult = await Process.run(bin, extractArgs);
       if (extractResult.exitCode != 0 && extractResult.exitCode != 1) {
-        throw Exception('7zip error (compound extract): ${extractResult.stderr}');
+        throw Exception(
+            '7zip error (compound extract): ${extractResult.stderr}');
       }
 
       // Étape 2 : trouver le .tar extrait
@@ -296,7 +304,8 @@ class SevenZipService {
       // ── Compound archive (.tar.xz, .tar.gz, …) ────────────────────────────
       // Step 1: extract outer compression layer → obtain .tar in tempDir
       final outerArgs = [
-        'e', archivePath,
+        'e',
+        archivePath,
         '-t$outer',
         '-o${tempDir.path}',
         '-y',
@@ -317,11 +326,13 @@ class SevenZipService {
           .whereType<File>()
           .where((f) => f.path.toLowerCase().endsWith('.tar'))
           .toList();
-      if (tarFiles.isEmpty) throw Exception('Inner .tar not found after outer extraction.');
+      if (tarFiles.isEmpty)
+        throw Exception('Inner .tar not found after outer extraction.');
 
       // Step 3: extract specific file from the .tar
       final innerArgs = [
-        'e', tarFiles.first.path,
+        'e',
+        tarFiles.first.path,
         '-o${tempDir.path}',
         '-y',
         entryPath,
@@ -336,7 +347,8 @@ class SevenZipService {
     } else {
       // ── Simple archive ─────────────────────────────────────────────────────
       final args = [
-        'e', archivePath,
+        'e',
+        archivePath,
         '-o${tempDir.path}',
         '-y',
         '-p${password ?? ""}',
@@ -362,7 +374,8 @@ class SevenZipService {
           .whereType<File>()
           .where((f) => !f.path.toLowerCase().endsWith('.tar'))
           .toList();
-      if (found.isEmpty) throw Exception('Extracted file not found in temp dir.');
+      if (found.isEmpty)
+        throw Exception('Extracted file not found in temp dir.');
       return found.first.path;
     }
     return extracted.path;
@@ -399,7 +412,8 @@ class SevenZipService {
       if (password != null) '-p$password',
     ];
 
-    final process = await Process.start(bin, extractArgs, runInShell: Platform.isWindows);
+    final process =
+        await Process.start(bin, extractArgs, runInShell: Platform.isWindows);
 
     // Collect stderr concurrently to avoid pipe-buffer deadlocks and to
     // detect password errors regardless of exit code.
@@ -407,7 +421,9 @@ class SevenZipService {
 
     int extracted = 0;
 
-    await for (final line in process.stdout.transform(utf8.decoder).transform(const LineSplitter())) {
+    await for (final line in process.stdout
+        .transform(utf8.decoder)
+        .transform(const LineSplitter())) {
       onLog?.call(line);
       if (line.startsWith('Extracting') || line.contains('%')) {
         extracted++;
@@ -416,7 +432,8 @@ class SevenZipService {
         if (pct != null) {
           yield ExtractionProgress(
             percent: int.parse(pct.group(1)!).toDouble(),
-            currentFile: line.replaceAll(RegExp(r'^\s*\d+%\s*-?\s*'), '').trim(),
+            currentFile:
+                line.replaceAll(RegExp(r'^\s*\d+%\s*-?\s*'), '').trim(),
           );
         } else {
           final file = line.replaceFirst('Extracting  ', '').trim();
@@ -432,7 +449,8 @@ class SevenZipService {
     final exitCode = await process.exitCode;
     if (exitCode == 2 || (exitCode != 0 && _isPasswordError(stderrContent))) {
       if (_isVolumeError(stderrContent)) {
-        throw Exception('Split archive incomplete: volumes are missing. Make sure all parts are in the same folder.');
+        throw Exception(
+            'Split archive incomplete: volumes are missing. Make sure all parts are in the same folder.');
       }
       throw Exception('Wrong password or corrupted archive.');
     }
@@ -456,7 +474,8 @@ class SevenZipService {
     void Function(String)? onLog,
   }) async* {
     final binary = await findBinary();
-    if (binary == null) throw Exception('7zip binary not found. Please install 7-Zip.');
+    if (binary == null)
+      throw Exception('7zip binary not found. Please install 7-Zip.');
 
     final args = <String>[
       'a',
@@ -472,8 +491,11 @@ class SevenZipService {
       ...sourcePaths,
     ];
 
-    final process = await Process.start(binary, args, runInShell: Platform.isWindows);
-    final stderrFuture = process.stderr.transform(const Utf8Decoder(allowMalformed: true)).join();
+    final process =
+        await Process.start(binary, args, runInShell: Platform.isWindows);
+    final stderrFuture = process.stderr
+        .transform(const Utf8Decoder(allowMalformed: true))
+        .join();
 
     // 7zip progress lines look like:  "  5% - filename.txt"  or  "  5%"
     final percentRe = RegExp(r'^\s*(\d+)%(?:\s*-\s*(.*))?$');
@@ -496,7 +518,8 @@ class SevenZipService {
     if (exitCode == 0 || exitCode == 1) {
       yield ExtractionProgress(percent: 100, currentFile: '', done: true);
     } else {
-      final msg = stderr.isNotEmpty ? stderr : 'Compression failed (exit $exitCode)';
+      final msg =
+          stderr.isNotEmpty ? stderr : 'Compression failed (exit $exitCode)';
       throw Exception(msg);
     }
   }
@@ -533,7 +556,9 @@ class SevenZipService {
     // Merge stdout and stderr into a single ordered stream.
     final controller = StreamController<String>();
     var remaining = 2;
-    void onDone() { if (--remaining == 0) controller.close(); }
+    void onDone() {
+      if (--remaining == 0) controller.close();
+    }
 
     process.stdout
         .transform(const Utf8Decoder(allowMalformed: true))
@@ -589,7 +614,8 @@ class SevenZipService {
           isDir = trimmed.contains('D');
         } else if (trimmed.startsWith('Modified = ')) {
           try {
-            modified = DateTime.parse(trimmed.substring(11).trim().replaceFirst(' ', 'T'));
+            modified = DateTime.parse(
+                trimmed.substring(11).trim().replaceFirst(' ', 'T'));
           } catch (_) {}
         }
       }
