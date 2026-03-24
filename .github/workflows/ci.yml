@@ -5,6 +5,11 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+    - cron: '0 4 * * 1'   # Weekly CodeQL scan every Monday at 4am UTC
+
+permissions:
+  contents: read
 
 jobs:
 
@@ -31,8 +36,42 @@ jobs:
           flutter analyze 2>&1 | tee /tmp/analysis.txt || true
           grep -q "^ *error •" /tmp/analysis.txt && exit 1 || exit 0
 
+  codeql:
+    name: CodeQL (Dart)
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: dart
+          queries: security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: /language:dart
+
   build-macos:
     needs: lint
+    if: github.event_name != 'schedule'
     name: Build macOS (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
     strategy:
@@ -64,6 +103,7 @@ jobs:
 
   build-linux:
     needs: lint
+    if: github.event_name != 'schedule'
     name: Build Linux (${{ matrix.arch }})
     runs-on: ${{ matrix.runner }}
     strategy:
