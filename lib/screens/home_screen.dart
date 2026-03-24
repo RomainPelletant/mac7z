@@ -93,10 +93,12 @@ class _HomeScreenState extends State<HomeScreen>
       _binaryPath = path;
     });
     final l10n = AppLocalizations.of(context)!;
-    _log(
-      path != null ? l10n.logBinaryFound(path) : l10n.logBinaryNotFound,
-      path != null ? LogLevel.success : LogLevel.warning,
-    );
+    if (path == null) {
+      _log(
+        l10n.logBinaryNotFound,
+        LogLevel.warning,
+      );
+    }
   }
 
   void _log(String message, [LogLevel level = LogLevel.info]) {
