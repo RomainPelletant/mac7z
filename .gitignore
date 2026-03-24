@@ -4,7 +4,6 @@
 .flutter-plugins-dependencies
 .packages
 build/
-pubspec.lock
 
 # Xcode
 macos/Pods/
