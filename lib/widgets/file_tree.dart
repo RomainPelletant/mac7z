@@ -54,8 +54,16 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
   static List<ArchiveEntry> _sortTree(List<ArchiveEntry> entries) {
     final list = List<ArchiveEntry>.from(entries);
     list.sort((a, b) {
-      final aParts = a.path.replaceAll('\\', '/').split('/').where((s) => s.isNotEmpty).toList();
-      final bParts = b.path.replaceAll('\\', '/').split('/').where((s) => s.isNotEmpty).toList();
+      final aParts = a.path
+          .replaceAll('\\', '/')
+          .split('/')
+          .where((s) => s.isNotEmpty)
+          .toList();
+      final bParts = b.path
+          .replaceAll('\\', '/')
+          .split('/')
+          .where((s) => s.isNotEmpty)
+          .toList();
 
       for (int i = 0; i < aParts.length && i < bParts.length; i++) {
         final ac = aParts[i].toLowerCase();
@@ -85,7 +93,9 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
   List<ArchiveEntry> get _filtered {
     if (_search.isEmpty) return _sortedEntries;
     final q = _search.toLowerCase();
-    return _sortedEntries.where((e) => e.path.toLowerCase().contains(q)).toList();
+    return _sortedEntries
+        .where((e) => e.path.toLowerCase().contains(q))
+        .toList();
   }
 
   @override
@@ -99,7 +109,8 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
           children: [
             CircularProgressIndicator(color: c.accent, strokeWidth: 2),
             const SizedBox(height: 16),
-            Text(l10n.treeLoading, style: TextStyle(color: c.textSecondary, fontSize: 13)),
+            Text(l10n.treeLoading,
+                style: TextStyle(color: c.textSecondary, fontSize: 13)),
           ],
         ),
       );
@@ -112,11 +123,15 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
           children: [
             Icon(Icons.error_outline_rounded, color: c.error, size: 48),
             const SizedBox(height: 12),
-            Text(l10n.treeError, style: TextStyle(color: c.error, fontSize: 16, fontWeight: FontWeight.w600)),
+            Text(l10n.treeError,
+                style: TextStyle(
+                    color: c.error, fontSize: 16, fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Text(widget.error!, style: TextStyle(color: c.textSecondary, fontSize: 12), textAlign: TextAlign.center),
+              child: Text(widget.error!,
+                  style: TextStyle(color: c.textSecondary, fontSize: 12),
+                  textAlign: TextAlign.center),
             ),
           ],
         ),
@@ -130,9 +145,11 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
           children: [
             Icon(Icons.inbox_rounded, size: 64, color: c.surface2),
             const SizedBox(height: 16),
-            Text(l10n.treeEmpty, style: TextStyle(color: c.textTertiary, fontSize: 14)),
+            Text(l10n.treeEmpty,
+                style: TextStyle(color: c.textTertiary, fontSize: 14)),
             const SizedBox(height: 4),
-            Text(l10n.treeEmptyHint, style: TextStyle(color: c.surface3, fontSize: 12)),
+            Text(l10n.treeEmptyHint,
+                style: TextStyle(color: c.surface3, fontSize: 12)),
           ],
         ),
       );
@@ -164,7 +181,8 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
                     decoration: InputDecoration(
                       hintText: l10n.treeSearch,
                       hintStyle: TextStyle(color: c.surface3, fontSize: 13),
-                      prefixIcon: Icon(Icons.search_rounded, size: 16, color: c.textTertiary),
+                      prefixIcon: Icon(Icons.search_rounded,
+                          size: 16, color: c.textTertiary),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     ),
@@ -214,7 +232,8 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
   static String _formatSize(int bytes) {
     if (bytes < 1024) return '$bytes B';
     if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(0)} KB';
-    if (bytes < 1024 * 1024 * 1024) return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
+    if (bytes < 1024 * 1024 * 1024)
+      return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
     return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(2)} GB';
   }
 }
@@ -227,7 +246,11 @@ class _ColHeader extends StatelessWidget {
     final c = Theme.of(context).appColors;
     return Text(
       label,
-      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: c.textTertiary, letterSpacing: 0.5),
+      style: TextStyle(
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+          color: c.textTertiary,
+          letterSpacing: 0.5),
     );
   }
 }
@@ -295,7 +318,8 @@ class _EntryRowState extends State<_EntryRow> {
                 // Icon — show spinner when opening
                 _opening
                     ? SizedBox(
-                        width: 15, height: 15,
+                        width: 15,
+                        height: 15,
                         child: CircularProgressIndicator(
                           strokeWidth: 1.5,
                           color: c.accent,
@@ -315,7 +339,8 @@ class _EntryRowState extends State<_EntryRow> {
                           : e.isDirectory
                               ? c.textPrimary
                               : const Color(0xFFD1D1D6),
-                      fontWeight: e.isDirectory ? FontWeight.w600 : FontWeight.normal,
+                      fontWeight:
+                          e.isDirectory ? FontWeight.w600 : FontWeight.normal,
                     ),
                   ),
                 ),
@@ -323,7 +348,10 @@ class _EntryRowState extends State<_EntryRow> {
                   flex: 2,
                   child: Text(
                     e.sizeFormatted,
-                    style: TextStyle(fontFamily: 'Menlo', fontSize: 11, color: c.textTertiary),
+                    style: TextStyle(
+                        fontFamily: 'Menlo',
+                        fontSize: 11,
+                        color: c.textTertiary),
                   ),
                 ),
                 Expanded(

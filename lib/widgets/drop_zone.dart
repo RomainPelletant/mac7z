@@ -46,9 +46,7 @@ class _DropZoneWidgetState extends State<DropZoneWidget> {
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                color: _hovering
-                    ? c.accent.withOpacity(0.12)
-                    : c.surface,
+                color: _hovering ? c.accent.withOpacity(0.12) : c.surface,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: _hovering
@@ -60,7 +58,8 @@ class _DropZoneWidgetState extends State<DropZoneWidget> {
                 ),
               ),
               child: widget.hasFile
-                  ? _FileSummary(name: widget.fileName!, count: widget.entryCount)
+                  ? _FileSummary(
+                      name: widget.fileName!, count: widget.entryCount)
                   : _EmptyZone(hovering: _hovering),
             ),
             if (widget.hasFile)
@@ -77,7 +76,8 @@ class _DropZoneWidgetState extends State<DropZoneWidget> {
                       color: c.surface3,
                       border: Border.all(color: Colors.white.withOpacity(0.12)),
                     ),
-                    child: const Icon(Icons.close_rounded, size: 13, color: Color(0xFFAEAEB2)),
+                    child: const Icon(Icons.close_rounded,
+                        size: 13, color: Color(0xFFAEAEB2)),
                   ),
                 ),
               ),
@@ -105,9 +105,7 @@ class _EmptyZone extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: hovering
-                  ? c.accent.withOpacity(0.2)
-                  : c.surface2,
+              color: hovering ? c.accent.withOpacity(0.2) : c.surface2,
             ),
             child: Icon(
               Icons.folder_zip_rounded,
@@ -160,7 +158,8 @@ class _FileSummary extends StatelessWidget {
                   color: c.accent.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Icon(Icons.folder_zip_rounded, size: 36, color: c.accent),
+                child:
+                    Icon(Icons.folder_zip_rounded, size: 36, color: c.accent),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
@@ -168,7 +167,11 @@ class _FileSummary extends StatelessWidget {
                   color: c.accent,
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Text(ext, style: const TextStyle(fontSize: 9, fontWeight: FontWeight.w700, color: Colors.white)),
+                child: Text(ext,
+                    style: const TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white)),
               ),
             ],
           ),
@@ -180,7 +183,10 @@ class _FileSummary extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: c.textPrimary),
+              style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: c.textPrimary),
             ),
           ),
           const SizedBox(height: 4),

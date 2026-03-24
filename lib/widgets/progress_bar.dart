@@ -22,9 +22,7 @@ class ExtractionProgressBar extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      color: done
-          ? c.success.withOpacity(0.06)
-          : c.accent.withOpacity(0.04),
+      color: done ? c.success.withOpacity(0.06) : c.accent.withOpacity(0.04),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
@@ -39,7 +37,11 @@ class ExtractionProgressBar extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  done ? l10n.progressDone : (currentFile.isNotEmpty ? currentFile : l10n.progressExtracting),
+                  done
+                      ? l10n.progressDone
+                      : (currentFile.isNotEmpty
+                          ? currentFile
+                          : l10n.progressExtracting),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 12,

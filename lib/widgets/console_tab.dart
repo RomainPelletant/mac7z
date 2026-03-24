@@ -75,15 +75,38 @@ class ConsoleTab extends StatelessWidget {
                 _Section(
                   title: 'OPTIONS COURANTES',
                   children: [
-                    _OptionRow(flag: '-p{motdepasse}', description: 'Protéger l\'archive par mot de passe'),
-                    _OptionRow(flag: '-mhe=on', description: 'Chiffrer aussi les noms de fichiers (7z seulement)'),
-                    _OptionRow(flag: '-mx={0-9}', description: 'Niveau de compression (0 = aucun, 9 = ultra)'),
-                    _OptionRow(flag: '-mmt=on', description: 'Activer la compression multi-thread'),
-                    _OptionRow(flag: '-v{taille}', description: 'Découper en volumes (ex : -v100m pour 100 Mo)'),
-                    _OptionRow(flag: '-r', description: 'Traitement récursif des sous-dossiers'),
-                    _OptionRow(flag: '-y', description: 'Répondre "oui" à toutes les confirmations'),
-                    _OptionRow(flag: '-o{chemin}', description: 'Dossier de destination pour l\'extraction'),
-                    _OptionRow(flag: '-x!{pattern}', description: 'Exclure des fichiers (ex : -x!*.log)'),
+                    _OptionRow(
+                        flag: '-p{motdepasse}',
+                        description: 'Protéger l\'archive par mot de passe'),
+                    _OptionRow(
+                        flag: '-mhe=on',
+                        description:
+                            'Chiffrer aussi les noms de fichiers (7z seulement)'),
+                    _OptionRow(
+                        flag: '-mx={0-9}',
+                        description:
+                            'Niveau de compression (0 = aucun, 9 = ultra)'),
+                    _OptionRow(
+                        flag: '-mmt=on',
+                        description: 'Activer la compression multi-thread'),
+                    _OptionRow(
+                        flag: '-v{taille}',
+                        description:
+                            'Découper en volumes (ex : -v100m pour 100 Mo)'),
+                    _OptionRow(
+                        flag: '-r',
+                        description: 'Traitement récursif des sous-dossiers'),
+                    _OptionRow(
+                        flag: '-y',
+                        description:
+                            'Répondre "oui" à toutes les confirmations'),
+                    _OptionRow(
+                        flag: '-o{chemin}',
+                        description:
+                            'Dossier de destination pour l\'extraction'),
+                    _OptionRow(
+                        flag: '-x!{pattern}',
+                        description: 'Exclure des fichiers (ex : -x!*.log)'),
                   ],
                 ),
                 SizedBox(height: 32),
@@ -104,7 +127,8 @@ class ConsoleTab extends StatelessWidget {
                     ),
                     _ExampleBlock(
                       label: 'Extraire un seul fichier',
-                      cmd: 'mac7z e archive.zip "dossier/rapport.pdf" -o~/Bureau',
+                      cmd:
+                          'mac7z e archive.zip "dossier/rapport.pdf" -o~/Bureau',
                     ),
                     _ExampleBlock(
                       label: 'Lister avec détails techniques',
@@ -446,9 +470,7 @@ class _CopyButtonState extends State<_CopyButton> {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: _copied
-                ? c.success.withOpacity(0.12)
-                : Colors.transparent,
+            color: _copied ? c.success.withOpacity(0.12) : Colors.transparent,
             borderRadius: BorderRadius.circular(6),
           ),
           child: Icon(

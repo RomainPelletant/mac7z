@@ -49,8 +49,13 @@ class _PasswordDialogState extends State<PasswordDialog> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(l10n.passwordDialogTitle, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: c.textPrimary)),
-                    Text(l10n.passwordDialogSubtitle, style: TextStyle(fontSize: 12, color: c.textSecondary)),
+                    Text(l10n.passwordDialogTitle,
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: c.textPrimary)),
+                    Text(l10n.passwordDialogSubtitle,
+                        style: TextStyle(fontSize: 12, color: c.textSecondary)),
                   ],
                 ),
               ],
@@ -66,17 +71,21 @@ class _PasswordDialogState extends State<PasswordDialog> {
                 controller: _controller,
                 obscureText: _obscure,
                 autofocus: true,
-                onSubmitted: (v) => Navigator.pop(context, v.isEmpty ? null : v),
+                onSubmitted: (v) =>
+                    Navigator.pop(context, v.isEmpty ? null : v),
                 style: TextStyle(fontSize: 14, color: c.textPrimary),
                 decoration: InputDecoration(
                   hintText: l10n.passwordDialogHint,
                   hintStyle: TextStyle(color: c.surface3),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   suffixIcon: IconButton(
                     onPressed: () => setState(() => _obscure = !_obscure),
                     icon: Icon(
-                      _obscure ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                      _obscure
+                          ? Icons.visibility_off_rounded
+                          : Icons.visibility_rounded,
                       size: 16,
                       color: c.textTertiary,
                     ),
@@ -93,9 +102,11 @@ class _PasswordDialogState extends State<PasswordDialog> {
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       backgroundColor: c.surface2,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
                     ),
-                    child: Text(l10n.cancel, style: TextStyle(color: c.textSecondary)),
+                    child: Text(l10n.cancel,
+                        style: TextStyle(color: c.textSecondary)),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -108,9 +119,12 @@ class _PasswordDialogState extends State<PasswordDialog> {
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       backgroundColor: c.accent,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
                     ),
-                    child: Text(l10n.confirm, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
+                    child: Text(l10n.confirm,
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600)),
                   ),
                 ),
               ],

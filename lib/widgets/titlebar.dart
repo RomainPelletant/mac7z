@@ -67,7 +67,8 @@ class _AppTitleBarState extends State<AppTitleBar> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.folder_zip_rounded, size: 13, color: Color(0xFF636366)),
+                  Icon(Icons.folder_zip_rounded,
+                      size: 13, color: Color(0xFF636366)),
                   SizedBox(width: 6),
                   Text(
                     'mac7z',
@@ -126,7 +127,8 @@ class _TrafficButton extends StatelessWidget {
           ),
           child: hovered
               ? Center(
-                  child: Icon(icon, size: 6, color: Colors.white.withOpacity(0.7)),
+                  child:
+                      Icon(icon, size: 6, color: Colors.white.withOpacity(0.7)),
                 )
               : null,
         ),

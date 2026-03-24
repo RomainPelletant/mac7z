@@ -2,13 +2,30 @@ import 'package:path/path.dart' as p;
 
 /// Supported single-part extensions.
 const kSingleExtensions = [
-  'zip', '7z', 'rar', 'tar', 'gz', 'bz2', 'xz',
-  'txz', 'tgz', 'tbz', 'tbz2', 'lzma', 'zst', 'cab', 'iso',
+  'zip',
+  '7z',
+  'rar',
+  'tar',
+  'gz',
+  'bz2',
+  'xz',
+  'txz',
+  'tgz',
+  'tbz',
+  'tbz2',
+  'lzma',
+  'zst',
+  'cab',
+  'iso',
 ];
 
 /// Compound archive extensions (must be checked before single-extension).
 const kCompoundExtensions = [
-  '.tar.xz', '.tar.gz', '.tar.bz2', '.tar.zst', '.tar.lzma',
+  '.tar.xz',
+  '.tar.gz',
+  '.tar.bz2',
+  '.tar.zst',
+  '.tar.lzma',
 ];
 
 /// Returns true when [path] has a recognised archive extension.
