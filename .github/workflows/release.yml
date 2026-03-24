@@ -68,9 +68,77 @@ jobs:
           name: macos-dmg-${{ matrix.arch }}
           path: mac7z-*-${{ matrix.suffix }}.dmg
 
+  # ── Linux → .tar.gz (matrix: amd64 + arm64) ─────────────────────────────────
+  build-linux:
+    name: Build Linux (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-latest
+            flutter_arch: x64
+            suffix: linux-amd64
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+            flutter_arch: arm64
+            suffix: linux-arm64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y \
+            clang cmake ninja-build pkg-config \
+            libgtk-3-dev libblkid-dev liblzma-dev \
+            libsecret-1-dev libjsoncpp-dev git xz-utils
+
+      - name: Setup Flutter (x86_64)
+        if: matrix.arch == 'amd64'
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Setup Flutter (arm64 — manual install)
+        if: matrix.arch == 'arm64'
+        run: |
+          git clone https://github.com/flutter/flutter.git \
+            --branch stable --depth 1 "$HOME/flutter"
+          echo "$HOME/flutter/bin" >> "$GITHUB_PATH"
+
+      - name: Flutter precache & config
+        run: |
+          flutter precache --linux
+          flutter config --enable-linux-desktop
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Download 7zz binary
+        run: bash scripts/setup.sh
+
+      - name: Build Linux release
+        run: flutter build linux --release
+
+      - name: Package .tar.gz
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          BUNDLE="build/linux/${{ matrix.flutter_arch }}/release/bundle"
+          tar -czf "mac7z-${VERSION}-${{ matrix.suffix }}.tar.gz" -C "$BUNDLE" .
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-${{ matrix.arch }}
+          path: mac7z-*-${{ matrix.suffix }}.tar.gz
+
   # ── GitHub Release ───────────────────────────────────────────────────────────
   publish:
-    needs: [build-macos]
+    needs: [build-macos, build-linux]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -102,12 +170,25 @@ jobs:
             | Apple Silicon (M1-5) | `mac7z-${{ steps.version.outputs.version }}-macos-arm64.dmg` |
             | Intel (x86_64) | `mac7z-${{ steps.version.outputs.version }}-macos-intel.dmg` |
 
-            1. Download DMG file according to your Mac CPU platform
-            2. Open the DMG file and drop mac7z into Applications
-            3. First launch : Right click → Open (signature ad-hoc)
+            1. Download the DMG for your CPU
+            2. Open the DMG and drop mac7z into Applications
+            3. First launch: Right click → Open (ad-hoc signature)
 
-            ### Prereq.
+            ### Linux
+
+            | Architecture | File |
+            |---|---|
+            | x86_64 (amd64) | `mac7z-${{ steps.version.outputs.version }}-linux-amd64.tar.gz` |
+            | ARM64 | `mac7z-${{ steps.version.outputs.version }}-linux-arm64.tar.gz` |
+
+            ```bash
+            tar -xzf mac7z-${{ steps.version.outputs.version }}-linux-amd64.tar.gz
+            ./mac7z
+            ```
+
+            ### Requirements
             - macOS 11.0+
+            - Linux: GTK 3, glibc 2.31+
           files: artifacts/**
 
   # ── Homebrew tap update ──────────────────────────────────────────────────────
