@@ -19,10 +19,10 @@ jobs:
       matrix:
         include:
           - arch: arm64
-            runner: macos-latest  # Apple Silicon (M1/M2/M3)
+            runner: macos-latest
             suffix: macos-arm64
           - arch: x86_64
-            runner: macos-15-intel      # Intel
+            runner: macos-15-intel
             suffix: macos-intel
 
     steps:
@@ -130,11 +130,62 @@ jobs:
           BUNDLE="build/linux/${{ matrix.flutter_arch }}/release/bundle"
           tar -czf "mac7z-${VERSION}-${{ matrix.suffix }}.tar.gz" -C "$BUNDLE" .
 
-      - name: Upload Linux artifact
+      - name: Package .deb
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          ARCH="${{ matrix.arch }}"
+          BUNDLE="build/linux/${{ matrix.flutter_arch }}/release/bundle"
+          PKG="mac7z_${VERSION}_${ARCH}"
+
+          mkdir -p "$PKG/DEBIAN"
+          mkdir -p "$PKG/usr/lib/mac7z"
+          mkdir -p "$PKG/usr/bin"
+          mkdir -p "$PKG/usr/share/applications"
+          mkdir -p "$PKG/usr/share/icons/hicolor/256x256/apps"
+
+          # App bundle
+          cp -r "$BUNDLE/." "$PKG/usr/lib/mac7z/"
+
+          # Launcher symlink
+          ln -s /usr/lib/mac7z/mac7z "$PKG/usr/bin/mac7z"
+
+          # .desktop entry
+          cat > "$PKG/usr/share/applications/mac7z.desktop" << 'EOF'
+          [Desktop Entry]
+          Name=mac7z
+          Comment=Archive manager powered by 7-Zip
+          Exec=/usr/bin/mac7z
+          Icon=mac7z
+          Terminal=false
+          Type=Application
+          Categories=Utility;Archiving;
+          MimeType=application/x-7z-compressed;application/zip;application/x-tar;application/x-rar;application/gzip;application/x-bzip2;application/x-xz;application/zstd;
+          EOF
+
+          # control file
+          cat > "$PKG/DEBIAN/control" << EOF
+          Package: mac7z
+          Version: $VERSION
+          Architecture: $ARCH
+          Maintainer: Romain Pelletant <romain.pelletant@gmail.com>
+          Description: Archive manager for macOS & Linux
+           Fast, minimal archive manager powered by 7-Zip.
+           Supports 7z, zip, tar, rar, gz, bz2, xz, zst formats.
+          Depends: libgtk-3-0, libsecret-1-0
+          Section: utils
+          Priority: optional
+          EOF
+
+          dpkg-deb --build --root-owner-group "$PKG"
+          mv "${PKG}.deb" "mac7z-${VERSION}-${{ matrix.suffix }}.deb"
+
+      - name: Upload Linux artifacts
         uses: actions/upload-artifact@v4
         with:
           name: linux-${{ matrix.arch }}
-          path: mac7z-*-${{ matrix.suffix }}.tar.gz
+          path: |
+            mac7z-*-${{ matrix.suffix }}.tar.gz
+            mac7z-*-${{ matrix.suffix }}.deb
 
   sbom:
     needs: [build-macos, build-linux]
@@ -198,14 +249,19 @@ jobs:
 
             ### Linux
 
-            | Architecture | File |
-            |---|---|
-            | x86_64 (amd64) | `mac7z-${{ steps.version.outputs.version }}-linux-amd64.tar.gz` |
-            | ARM64 | `mac7z-${{ steps.version.outputs.version }}-linux-arm64.tar.gz` |
+            | Architecture | .deb (Debian/Ubuntu) | .tar.gz (portable) |
+            |---|---|---|
+            | x86_64 (amd64) | `mac7z-${{ steps.version.outputs.version }}-linux-amd64.deb` | `mac7z-${{ steps.version.outputs.version }}-linux-amd64.tar.gz` |
+            | ARM64 | `mac7z-${{ steps.version.outputs.version }}-linux-arm64.deb` | `mac7z-${{ steps.version.outputs.version }}-linux-arm64.tar.gz` |
 
+            **Install .deb:**
             ```bash
-            tar -xzf mac7z-${{ steps.version.outputs.version }}-linux-amd64.tar.gz
-            ./mac7z
+            sudo dpkg -i mac7z-${{ steps.version.outputs.version }}-linux-amd64.deb
+            ```
+            **Portable tar.gz:**
+            ```bash
+            tar -xzf mac7z-${{ steps.version.outputs.version }}-linux-amd64.tar.gz -C ~/Applications/mac7z
+            ~/Applications/mac7z/mac7z
             ```
 
             ### Requirements
