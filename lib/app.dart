@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mac7z/l10n/app_localizations.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'theme/app_colors.dart';
 import 'theme/theme_notifier.dart';
 import 'screens/home_screen.dart';
+import 'services/archive_backend.dart';
+import 'services/backend_provider.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>();
 
@@ -112,11 +115,25 @@ class _AppWithMenu extends StatelessWidget {
           menus: [
             PlatformMenuItem(
               label: 'À propos de mac7z',
-              onSelected: () => showLicensePage(
+              onSelected: () {
+                PackageInfo.fromPlatform().then((info) {
+                  showLicensePage(
+                    context: _navigatorKey.currentContext!,
+                    applicationName: 'mac7z',
+                    applicationVersion: info.version,
+                    applicationIcon:
+                        const Icon(Icons.folder_zip_rounded, size: 48),
+                  );
+                });
+              },
+            ),
+            PlatformMenuItem(
+              label: 'Préférences…',
+              shortcut: const SingleActivator(LogicalKeyboardKey.comma,
+                  meta: true),
+              onSelected: () => showDialog(
                 context: _navigatorKey.currentContext!,
-                applicationName: 'mac7z',
-                applicationVersion: '1.0.0',
-                applicationIcon: const Icon(Icons.folder_zip_rounded, size: 48),
+                builder: (_) => const PreferencesDialog(),
               ),
             ),
             const PlatformProvidedMenuItem(
@@ -131,6 +148,151 @@ class _AppWithMenu extends StatelessWidget {
         ),
       ],
       child: const HomeScreen(),
+    );
+  }
+}
+
+// ── Preferences dialog ────────────────────────────────────────────────────────
+
+class PreferencesDialog extends StatefulWidget {
+  const PreferencesDialog();
+
+  @override
+  State<PreferencesDialog> createState() => _PreferencesDialogState();
+}
+
+class _PreferencesDialogState extends State<PreferencesDialog> {
+  late BackendType _selected;
+
+  @override
+  void initState() {
+    super.initState();
+    _selected = BackendProvider.instance.value;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = Theme.of(context).appColors;
+    return AlertDialog(
+      backgroundColor: c.surface,
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      title: Text(
+        'Préférences',
+        style: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+          color: c.textPrimary,
+        ),
+      ),
+      content: SizedBox(
+        width: 360,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'MOTEUR D\'ARCHIVAGE',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 1.2,
+                color: c.textTertiary,
+              ),
+            ),
+            const SizedBox(height: 10),
+            ...BackendType.values.map((type) => _BackendTile(
+                  type: type,
+                  selected: _selected == type,
+                  onTap: () => setState(() => _selected = type),
+                )),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text('Annuler', style: TextStyle(color: c.textSecondary)),
+        ),
+        FilledButton(
+          style: FilledButton.styleFrom(backgroundColor: c.accent),
+          onPressed: () {
+            BackendProvider.instance.setBackend(_selected);
+            Navigator.of(context).pop();
+          },
+          child: const Text('Appliquer'),
+        ),
+      ],
+    );
+  }
+}
+
+class _BackendTile extends StatelessWidget {
+  final BackendType type;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _BackendTile({
+    required this.type,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final c = Theme.of(context).appColors;
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        margin: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        decoration: BoxDecoration(
+          color: selected ? c.accent.withOpacity(0.1) : c.bg,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: selected ? c.accent : c.border,
+            width: selected ? 1.5 : 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              type == BackendType.bundled
+                  ? Icons.inventory_2_rounded
+                  : Icons.computer_rounded,
+              size: 18,
+              color: selected ? c.accent : c.textSecondary,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    type.label,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: selected ? c.accent : c.textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    type.description,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: c.textTertiary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (selected)
+              Icon(Icons.check_circle_rounded, size: 16, color: c.accent),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -15,9 +15,12 @@ class FinderSync: FIFinderSync {
         "tgz", "tbz", "tbz2", "txz", "wim", "iso", "dmg"
     ]
 
+    /// Pasteboard name shared with the main app (no entitlement needed).
+    private static let actionPasteboardName = NSPasteboard.Name("com.mac7z.action")
+    private static let actionPasteboardType = NSPasteboard.PasteboardType("com.mac7z.action")
+
     override init() {
         super.init()
-        // Monitor the entire filesystem so context menu items appear everywhere.
         FIFinderSyncController.default().directoryURLs = [URL(fileURLWithPath: "/")]
     }
 
@@ -31,30 +34,24 @@ class FinderSync: FIFinderSync {
 
         let menu = NSMenu(title: "")
 
-        // Show "Extract" only when every selected item is a known archive.
         if items.allSatisfy({ isArchive($0) }) {
             let extractItem = NSMenuItem(
-                title: "Extract with mac7z",
+                title: loc("Extract with mac7z", fr: "Extraire avec mac7z"),
                 action: #selector(extractSelected(_:)),
                 keyEquivalent: ""
             )
             extractItem.target = self
-            if #available(macOS 11.0, *) {
-                extractItem.image = NSImage(systemSymbolName: "archivebox", accessibilityDescription: nil)
-            }
+            extractItem.image = adaptiveSymbol("archivebox")
             menu.addItem(extractItem)
         }
 
-        // "Compress" is always available for any file or folder.
         let compressItem = NSMenuItem(
-            title: "Compress with mac7z",
+            title: loc("Compress with mac7z", fr: "Compresser avec mac7z"),
             action: #selector(compressSelected(_:)),
             keyEquivalent: ""
         )
         compressItem.target = self
-        if #available(macOS 11.0, *) {
-            compressItem.image = NSImage(systemSymbolName: "doc.zipper", accessibilityDescription: nil)
-        }
+        compressItem.image = adaptiveSymbol("doc.zipper")
         menu.addItem(compressItem)
 
         return menu
@@ -64,14 +61,54 @@ class FinderSync: FIFinderSync {
 
     @objc func extractSelected(_ sender: NSMenuItem) {
         let items = FIFinderSyncController.default().selectedItemURLs() ?? []
-        guard let url = items.first else { return }
-        openMainApp(command: "extract", paths: [url.path])
+        guard let archiveURL = items.first else { return }
+        NSLog("[mac7z-ext] extractSelected: %@", archiveURL.path)
+        sendAction(command: "extract", paths: [archiveURL.path])
     }
 
     @objc func compressSelected(_ sender: NSMenuItem) {
         let items = FIFinderSyncController.default().selectedItemURLs() ?? []
         let paths = items.map { $0.path }
-        openMainApp(command: "compress", paths: paths)
+        NSLog("[mac7z-ext] compressSelected: %d items", paths.count)
+        sendAction(command: "compress", paths: paths)
+    }
+
+    // MARK: - IPC via named NSPasteboard
+
+    /// Write the command to a named pasteboard, then bring the main app to the foreground.
+    ///
+    /// Named pasteboards are accessible between any processes on macOS —
+    /// no App Group entitlement is required, and the sandbox does not restrict them.
+    private func sendAction(command: String, paths: [String]) {
+        // 1. Write payload to named pasteboard.
+        let pb = NSPasteboard(name: Self.actionPasteboardName)
+        pb.clearContents()
+        let payload: NSDictionary = [
+            "command": command,
+            "paths": paths as NSArray
+        ]
+        let ok = pb.setPropertyList(payload, forType: Self.actionPasteboardType)
+        NSLog("[mac7z-ext] sendAction: pasteboard write ok=%d, command=%@, paths=%@", ok ? 1 : 0, command, paths)
+
+        // 2. Bring the main app to the foreground (launches it if needed).
+        guard let appURL = containingAppURL() else {
+            NSLog("[mac7z-ext] sendAction: could not resolve containing app URL")
+            return
+        }
+
+        if #available(macOS 10.15, *) {
+            let config = NSWorkspace.OpenConfiguration()
+            config.activates = true
+            NSWorkspace.shared.openApplication(at: appURL, configuration: config) { _, error in
+                if let error = error {
+                    NSLog("[mac7z-ext] openApplication error: %@", error.localizedDescription)
+                } else {
+                    NSLog("[mac7z-ext] openApplication success")
+                }
+            }
+        } else {
+            NSWorkspace.shared.open(appURL)
+        }
     }
 
     // MARK: - Helpers
@@ -86,13 +123,35 @@ class FinderSync: FIFinderSync {
             || path.hasSuffix(".tar.zst")
     }
 
-    /// Encode the paths into a mac7z:// URL and open the main app.
-    private func openMainApp(command: String, paths: [String]) {
-        let joined = paths.joined(separator: "\n")
-        guard let data = joined.data(using: .utf8) else { return }
-        let b64 = data.base64EncodedString()
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        guard let url = URL(string: "mac7z://\(command)?b64=\(b64)") else { return }
-        NSWorkspace.shared.open(url)
+    private func adaptiveSymbol(_ name: String) -> NSImage? {
+        guard #available(macOS 11.0, *) else { return nil }
+        if #available(macOS 12.0, *) {
+            let config = NSImage.SymbolConfiguration(hierarchicalColor: .labelColor)
+            return NSImage(systemSymbolName: name, accessibilityDescription: nil)?
+                .withSymbolConfiguration(config)
+        } else {
+            let img = NSImage(systemSymbolName: name, accessibilityDescription: nil)
+            img?.isTemplate = true
+            return img
+        }
+    }
+
+    private func loc(_ en: String, fr: String) -> String {
+        let lang = Locale.preferredLanguages.first ?? "en"
+        return lang.hasPrefix("fr") ? fr : en
+    }
+
+    /// Extension bundle: mac7z.app/Contents/PlugIns/FinderSyncExt.appex
+    /// → go up 3 levels to get mac7z.app
+    private func containingAppURL() -> URL? {
+        let appURL = Bundle.main.bundleURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        guard appURL.pathExtension == "app" else {
+            NSLog("[mac7z-ext] containingAppURL: unexpected path %@", appURL.path)
+            return nil
+        }
+        return appURL
     }
 }

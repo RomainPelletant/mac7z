@@ -39,6 +39,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>7-Zip Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -54,6 +56,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>ZIP Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -70,6 +74,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>TAR Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -85,6 +91,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>Gzipped TAR Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -103,6 +111,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>Bzip2 TAR Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -122,6 +132,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>XZ TAR Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -142,6 +154,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>RAR Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -157,6 +171,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>Gzip Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -172,6 +188,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>Bzip2 Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -187,6 +205,8 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>Zstandard Archive</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>ArchiveDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>

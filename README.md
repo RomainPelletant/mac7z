@@ -105,7 +105,57 @@ bash scripts/release.sh
 
 ## Supported formats
 
-`.7z` `.zip` `.rar` `.tar` `.gz` `.bz2` `.xz` `.tgz` `.lzma` `.cab` `.iso` and all formats supported by 7-Zip.
+### Extraction
+
+mac7z can open and extract any format supported by 7-Zip:
+
+| Format | Extensions |
+|--------|-----------|
+| 7-Zip | `.7z`, `.7z.001` (multi-volume) |
+| ZIP | `.zip`, `.zipx` |
+| TAR | `.tar`, `.tgz`, `.tbz`, `.tbz2`, `.txz` |
+| GZip | `.gz`, `.tgz` |
+| BZip2 | `.bz2`, `.tbz`, `.tbz2` |
+| XZ / LZMA | `.xz`, `.txz`, `.lzma` |
+| Zstandard | `.zst`, `.tar.zst` |
+| RAR | `.rar`, `.r00`…`.r99` (RAR4 & RAR5, read-only) |
+| WIM | `.wim`, `.swm`, `.esd` |
+| ISO | `.iso` |
+| Cabinet | `.cab` |
+| ARJ | `.arj` |
+| CPIO | `.cpio` |
+| CramFS | `.cramfs` |
+| DEB | `.deb` |
+| DMG | `.dmg` |
+| EXT | `.ext`, `.ext2`, `.ext3`, `.ext4` |
+| FAT | `.fat`, `.img` |
+| GPT / MBR | `.img`, `.vhd` |
+| HFS / HFS+ | `.hfs`, `.hfsx` |
+| LHA / LZH | `.lha`, `.lzh` |
+| LZFSE | `.lzfse` |
+| NTFS | `.img` (raw NTFS images) |
+| RPM | `.rpm` |
+| SquashFS | `.squashfs` |
+| UDF | `.udf`, `.iso` (UDF discs) |
+| VHDX | `.vhdx` |
+| VMDK | `.vmdk` |
+| XAR | `.xar`, `.pkg` (macOS packages) |
+| Z / compress | `.Z` |
+
+> 7-Zip also handles many self-extracting archives (`.exe` on Linux/macOS), NSIS installers, InnoSetup packages, and compound binary formats (MSI, CHM, …) transparently.
+
+### Compression (creation)
+
+mac7z can create archives in the following formats:
+
+| Format | Extensions | Encryption | Split volumes | Notes |
+|--------|-----------|:----------:|:-------------:|-------|
+| **7-Zip** | `.7z` | ✅ AES-256 + header | ✅ | Best compression ratio |
+| **ZIP** | `.zip` | ✅ AES-256 | ✅ | Maximum compatibility |
+| **TAR** | `.tar` | — | — | Uncompressed container |
+| **TAR + GZip** | `.tar.gz`, `.tgz` | — | — | |
+| **TAR + BZip2** | `.tar.bz2`, `.tbz2` | — | — | |
+| **TAR + XZ** | `.tar.xz`, `.txz` | — | — | Best ratio for TAR |
 
 ---
 
