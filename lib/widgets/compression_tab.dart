@@ -9,6 +9,7 @@ import 'package:mac7z/l10n/app_localizations.dart';
 import 'package:mac7z/theme/app_colors.dart';
 import '../models/archive_entry.dart';
 import '../services/seven_zip_service.dart';
+import '../services/backend_provider.dart';
 import '../widgets/log_panel.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/password_dialog.dart';
@@ -115,11 +116,17 @@ class SourceItem {
 // ── Main widget ───────────────────────────────────────────────────────────────
 
 class CompressionTab extends StatefulWidget {
-  /// Optional stream of file/folder paths injected from outside
-  /// (e.g. from the macOS "Compress with mac7z" Services menu entry).
-  final Stream<List<String>>? addFilesStream;
+  /// Incremented each time the host app asks this tab to add files.
+  final int externalAddRequestId;
 
-  const CompressionTab({super.key, this.addFilesStream});
+  /// File/folder paths supplied by the host app for the current request.
+  final List<String> externalAddPaths;
+
+  const CompressionTab({
+    super.key,
+    this.externalAddRequestId = 0,
+    this.externalAddPaths = const [],
+  });
 
   @override
   State<CompressionTab> createState() => _CompressionTabState();
@@ -144,19 +151,22 @@ class _CompressionTabState extends State<CompressionTab> {
   String? _error;
   final List<LogEntry> _logs = [];
 
-  StreamSubscription<List<String>>? _addFilesSub;
+  int _lastHandledExternalAddRequestId = 0;
 
   @override
   void initState() {
     super.initState();
-    _addFilesSub = widget.addFilesStream?.listen((paths) {
-      _addPaths(paths);
-    });
+    _consumeExternalAddRequest();
+  }
+
+  @override
+  void didUpdateWidget(covariant CompressionTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _consumeExternalAddRequest();
   }
 
   @override
   void dispose() {
-    _addFilesSub?.cancel();
     _nameCtrl.dispose();
     super.dispose();
   }
@@ -167,6 +177,16 @@ class _CompressionTabState extends State<CompressionTab> {
       _logs.add(LogEntry(time: DateTime.now(), message: msg, level: level)));
 
   // ── File management ───────────────────────────────────────────────────────
+
+  void _consumeExternalAddRequest() {
+    if (widget.externalAddRequestId == 0 ||
+        widget.externalAddRequestId == _lastHandledExternalAddRequestId ||
+        widget.externalAddPaths.isEmpty) {
+      return;
+    }
+    _lastHandledExternalAddRequestId = widget.externalAddRequestId;
+    unawaited(_addPaths(widget.externalAddPaths));
+  }
 
   Future<void> _addPaths(List<String> paths) async {
     for (final path in paths) {
@@ -242,7 +262,7 @@ class _CompressionTabState extends State<CompressionTab> {
     _log(l10n.compLogStarted(outPath));
 
     try {
-      await for (final prog in SevenZipService.compress(
+      await for (final prog in BackendProvider.instance.current.compress(
         sourcePaths: _items.map((i) => i.path).toList(),
         outputPath: outPath,
         format: _format,

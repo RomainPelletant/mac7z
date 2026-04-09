@@ -13,7 +13,6 @@ class MainFlutterWindow: NSWindow {
       name: "com.mac7z/window",
       binaryMessenger: flutterViewController.engine.binaryMessenger
     )
-
     windowChannel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
       switch call.method {
       case "closeWindow":
@@ -32,10 +31,12 @@ class MainFlutterWindow: NSWindow {
 
     RegisterGeneratedPlugins(registry: flutterViewController)
 
-    // Configure window appearance — let macOS control light/dark mode
     self.styleMask = [.titled, .closable, .miniaturizable, .resizable]
     self.collectionBehavior.insert(.fullScreenPrimary)
-    self.appearance = nil  // inherit system appearance
+    self.appearance = nil
+
+    // Légère transparence — 96 % opaque, fiable, sans manipulation de vues
+    self.alphaValue = 0.96
 
     super.awakeFromNib()
   }

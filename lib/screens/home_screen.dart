@@ -7,6 +7,8 @@ import 'package:mac7z/theme/app_colors.dart';
 import 'package:mac7z/theme/theme_notifier.dart';
 import '../models/archive_entry.dart';
 import '../services/seven_zip_service.dart';
+import '../services/backend_provider.dart';
+import '../app.dart' show PreferencesDialog;
 import '../services/temp_preview_manager.dart';
 import '../utils/archive_utils.dart';
 import '../widgets/drop_zone.dart';
@@ -44,9 +46,10 @@ class _HomeScreenState extends State<HomeScreen>
 
   late TabController _tabController;
 
-  /// Broadcasts file paths to the CompressionTab when the macOS Services menu
-  /// "Compress with mac7z" item is triggered.
-  final _compressFilesController = StreamController<List<String>>.broadcast();
+  /// Remembers the latest external compression request so the CompressionTab
+  /// can consume it even if it mounts slightly after the platform message.
+  int _compressRequestId = 0;
+  List<String> _pendingCompressPaths = const [];
 
   // Method channel to receive files opened from Finder
   static const _fileOpenChannel = MethodChannel('com.mac7z/file_open');
@@ -57,13 +60,16 @@ class _HomeScreenState extends State<HomeScreen>
     _tabController = TabController(length: 3, vsync: this);
     _checkBinary();
     _fileOpenChannel.setMethodCallHandler(_handleFileOpen);
+    // Tell Swift that this handler is now registered. On cold start, the
+    // native channel may appear a little later than this widget, so retry
+    // briefly until the macOS side acknowledges readiness.
+    unawaited(_notifyNativeFlutterReady());
     // Orphan cleanup and lifecycle management is handled by TempPreviewManager
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-    _compressFilesController.close();
     super.dispose();
   }
 
@@ -80,14 +86,30 @@ class _HomeScreenState extends State<HomeScreen>
       // Switch to the compression tab and forward the paths.
       final raw = call.arguments as List?;
       if (raw != null && raw.isNotEmpty) {
+        setState(() {
+          _compressRequestId++;
+          _pendingCompressPaths = raw.cast<String>();
+        });
         _tabController.animateTo(1);
-        _compressFilesController.add(raw.cast<String>());
+      }
+    }
+  }
+
+  Future<void> _notifyNativeFlutterReady() async {
+    for (var attempt = 0; attempt < 20 && mounted; attempt++) {
+      try {
+        await _fileOpenChannel.invokeMethod<bool>('flutterReady');
+        return;
+      } on MissingPluginException {
+        await Future<void>.delayed(const Duration(milliseconds: 200));
+      } on PlatformException {
+        await Future<void>.delayed(const Duration(milliseconds: 200));
       }
     }
   }
 
   Future<void> _checkBinary() async {
-    final path = await SevenZipService.findBinary();
+    final path = await BackendProvider.instance.current.findBinary();
     setState(() {
       _binaryAvailable = path != null;
       _binaryPath = path;
@@ -147,8 +169,8 @@ class _HomeScreenState extends State<HomeScreen>
     _log(l10n.logReadingArchive(p.basename(path)));
 
     try {
-      final entries =
-          await SevenZipService.listContents(path, password: _password);
+      final entries = await BackendProvider.instance.current
+          .listContents(path, password: _password);
       setState(() {
         _entries = entries;
         _status = ExtractionStatus.idle;
@@ -228,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen>
 
     int fileCount = 0;
     try {
-      await for (final prog in SevenZipService.extract(
+      await for (final prog in BackendProvider.instance.current.extract(
         _archivePath!,
         outDir,
         password: _password,
@@ -319,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen>
     final l10n = AppLocalizations.of(context)!;
     try {
       final tempDir = await TempPreviewManager.instance.createDir();
-      final filePath = await SevenZipService.extractSingleFile(
+      final filePath = await BackendProvider.instance.current.extractSingleFile(
         _archivePath!,
         entry.path,
         outputDir: tempDir,
@@ -407,7 +429,10 @@ class _HomeScreenState extends State<HomeScreen>
                   ],
                 ),
                 // ── Tab 2: Compression ────────────────────────────────────
-                CompressionTab(addFilesStream: _compressFilesController.stream),
+                CompressionTab(
+                  externalAddRequestId: _compressRequestId,
+                  externalAddPaths: _pendingCompressPaths,
+                ),
                 // ── Tab 3: Console API ────────────────────────────────────
                 const _ConsoleApiTab(),
               ],
@@ -480,11 +505,34 @@ class _AppTabBar extends StatelessWidget {
                 tabBar,
                 Positioned(
                   right: 8,
-                  child: _ThemeModeButton(colors: c),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _SettingsButton(colors: c),
+                      _ThemeModeButton(colors: c),
+                    ],
+                  ),
                 ),
               ],
             )
           : Align(alignment: Alignment.center, child: tabBar),
+    );
+  }
+}
+
+class _SettingsButton extends StatelessWidget {
+  final AppColors colors;
+  const _SettingsButton({required this.colors});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      tooltip: 'Préférences',
+      icon: Icon(Icons.settings_rounded, size: 18, color: colors.textSecondary),
+      onPressed: () => showDialog(
+        context: context,
+        builder: (_) => const PreferencesDialog(),
+      ),
     );
   }
 }
