@@ -86,6 +86,7 @@ First launch: right-click → Open (ad-hoc signature).
 
 ### Linux — .deb (not implemented)
 
+
 ---
 
 ## Build from source
