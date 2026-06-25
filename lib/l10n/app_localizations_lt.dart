@@ -361,4 +361,116 @@ class AppLocalizationsLt extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Archyvas sukurtas: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGŪRACIJA';
+
+  @override
+  String get consoleSectionCommands => 'PAGRINDINĖS KOMANDOS';
+
+  @override
+  String get consoleSectionOptions => 'DAŽNOS PARINKTYS';
+
+  @override
+  String get consoleSectionExamples => 'IŠPLĖSTINIAI PAVYZDŽIAI';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z visus argumentus perduoda tiesiai į įtaisytą 7zip dvejetainį failą. Naudokite jį Terminale taip pat, kaip naudotumėte 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Sukurkite alias savo shell aplinkoje, kad galėtumėte naudoti mac7z kaip įprastą Terminalo komandą:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Pridėkite šią eilutę į ~/.zshrc arba ~/.bash_profile, kad ji išliktų nuolat. Po nustatymo visos įprastos 7zip komandos veiks pakeitus 7zz į mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Pridėkite šią eilutę į ~/.bashrc arba ~/.zshrc, kad ji išliktų nuolat. Po nustatymo visos įprastos 7zip komandos veiks pakeitus 7zz į mac7z.';
+
+  @override
+  String get consoleCmdList => 'Rodyti archyvo turinį';
+
+  @override
+  String get consoleCmdExtractFull => 'Išskleisti su pilnais keliais';
+
+  @override
+  String get consoleCmdExtractToDir => 'Išskleisti į konkretų aplanką';
+
+  @override
+  String get consoleCmdExtractFlat => 'Išskleisti be poaplankių';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Sukurti arba atnaujinti archyvą';
+
+  @override
+  String get consoleCmdCreateZip => 'Sukurti ZIP archyvą';
+
+  @override
+  String get consoleCmdTest => 'Patikrinti archyvo vientisumą';
+
+  @override
+  String get consoleCmdDelete => 'Pašalinti failą iš archyvo';
+
+  @override
+  String get consoleCmdInfo => 'Rodyti informaciją apie 7zip';
+
+  @override
+  String get consoleOptPassword => 'Apsaugoti archyvą slaptažodžiu';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Užšifruoti ir failų pavadinimus (tik 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Suspaudimo lygis (0 = nėra, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Įjungti daugiagijinį suspaudimą';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Padalyti į dalis (pvz. -v100m reiškia 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Rekursiškai apdoroti poaplankius';
+
+  @override
+  String get consoleOptYesAll => 'Į visus patvirtinimus atsakyti „taip“';
+
+  @override
+  String get consoleOptOutputDir => 'Išskleidimo paskirties aplankas';
+
+  @override
+  String get consoleOptExclude => 'Neįtraukti failų (pvz. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted =>
+      'Užšifruotas archyvas su paslėptais pavadinimais';
+
+  @override
+  String get consoleExVolumes => 'Archyvas padalytas į 50 MB dalis';
+
+  @override
+  String get consoleExUltra =>
+      'Itin stiprus suspaudimas (lėtas, mažiausias failas)';
+
+  @override
+  String get consoleExSingleFile => 'Išskleisti vieną failą';
+
+  @override
+  String get consoleExTechnical => 'Rodyti su techninėmis detalėmis';
+
+  @override
+  String get consoleCopy => 'Kopijuoti';
+
+  @override
+  String get consoleCopied => 'Nukopijuota!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z turi savo 7zz dvejetainį failą. Argumentai perduodami tiksliai tokie, kokie yra, be pakeitimų. Bet kuri 7zz komandai tinkama komanda taip pat veikia ir su mac7z.';
 }

@@ -344,4 +344,113 @@ class AppLocalizationsTh extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ สร้างไฟล์บีบอัด: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'การตั้งค่า';
+
+  @override
+  String get consoleSectionCommands => 'คำสั่งหลัก';
+
+  @override
+  String get consoleSectionOptions => 'ตัวเลือกที่ใช้บ่อย';
+
+  @override
+  String get consoleSectionExamples => 'ตัวอย่างขั้นสูง';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z จะส่งอาร์กิวเมนต์ทั้งหมดไปยังไบนารี 7zip ที่ฝังมาโดยตรง ใช้งานจาก Terminal ได้เหมือนกับการใช้ 7zz ทุกประการ';
+
+  @override
+  String get consoleSetupIntro =>
+      'สร้าง alias ใน shell ของคุณเพื่อใช้ mac7z เป็นคำสั่งมาตรฐานใน Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'เพิ่มบรรทัดนี้ลงใน ~/.zshrc หรือ ~/.bash_profile เพื่อให้ใช้งานถาวร เมื่อกำหนดค่าแล้ว คำสั่งมาตรฐานของ 7zip ทั้งหมดจะทำงานได้โดยแทนที่ 7zz ด้วย mac7z';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'เพิ่มบรรทัดนี้ลงใน ~/.bashrc หรือ ~/.zshrc เพื่อให้ใช้งานถาวร เมื่อกำหนดค่าแล้ว คำสั่งมาตรฐานของ 7zip ทั้งหมดจะทำงานได้โดยแทนที่ 7zz ด้วย mac7z';
+
+  @override
+  String get consoleCmdList => 'แสดงรายการเนื้อหาในไฟล์บีบอัด';
+
+  @override
+  String get consoleCmdExtractFull => 'แตกไฟล์พร้อมเส้นทางเต็ม';
+
+  @override
+  String get consoleCmdExtractToDir => 'แตกไฟล์ไปยังโฟลเดอร์ที่กำหนด';
+
+  @override
+  String get consoleCmdExtractFlat => 'แตกไฟล์แบบไม่สร้างโฟลเดอร์ย่อย';
+
+  @override
+  String get consoleCmdCreateUpdate => 'สร้างหรืออัปเดตไฟล์บีบอัด';
+
+  @override
+  String get consoleCmdCreateZip => 'สร้างไฟล์บีบอัด ZIP';
+
+  @override
+  String get consoleCmdTest => 'ทดสอบความสมบูรณ์ของไฟล์บีบอัด';
+
+  @override
+  String get consoleCmdDelete => 'ลบไฟล์ออกจากไฟล์บีบอัด';
+
+  @override
+  String get consoleCmdInfo => 'แสดงข้อมูลเกี่ยวกับ 7zip';
+
+  @override
+  String get consoleOptPassword => 'ป้องกันไฟล์บีบอัดด้วยรหัสผ่าน';
+
+  @override
+  String get consoleOptEncryptHeaders => 'เข้ารหัสชื่อไฟล์ด้วย (เฉพาะ 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'ระดับการบีบอัด (0 = ไม่มี, 9 = สูงสุด)';
+
+  @override
+  String get consoleOptMultithread => 'เปิดใช้การบีบอัดหลายเธรด';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'แบ่งเป็นหลายส่วน (เช่น -v100m สำหรับ 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'ประมวลผลโฟลเดอร์ย่อยแบบเรียกซ้ำ';
+
+  @override
+  String get consoleOptYesAll => 'ตอบ \"ใช่\" สำหรับทุกการยืนยัน';
+
+  @override
+  String get consoleOptOutputDir => 'โฟลเดอร์ปลายทางสำหรับการแตกไฟล์';
+
+  @override
+  String get consoleOptExclude => 'ยกเว้นไฟล์ (เช่น -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'ไฟล์บีบอัดเข้ารหัสพร้อมซ่อนชื่อไฟล์';
+
+  @override
+  String get consoleExVolumes => 'ไฟล์บีบอัดที่แบ่งเป็นส่วนละ 50 MB';
+
+  @override
+  String get consoleExUltra => 'การบีบอัดสูงสุด (ช้า แต่ไฟล์เล็กที่สุด)';
+
+  @override
+  String get consoleExSingleFile => 'แตกไฟล์เดี่ยว';
+
+  @override
+  String get consoleExTechnical => 'แสดงรายการพร้อมรายละเอียดทางเทคนิค';
+
+  @override
+  String get consoleCopy => 'คัดลอก';
+
+  @override
+  String get consoleCopied => 'คัดลอกแล้ว!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z มีไบนารี 7zz ของตัวเองในตัว อาร์กิวเมนต์จะถูกส่งต่อไปตามเดิมโดยไม่แก้ไข คำสั่งใดก็ตามที่ใช้ได้กับ 7zz จะทำงานเหมือนกันกับ mac7z';
 }

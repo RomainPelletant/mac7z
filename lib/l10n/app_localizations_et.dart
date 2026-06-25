@@ -351,4 +351,112 @@ class AppLocalizationsEt extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arhiiv loodud: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'SEADISTUS';
+
+  @override
+  String get consoleSectionCommands => 'PÕHIKÄSUD';
+
+  @override
+  String get consoleSectionOptions => 'LEVINUD VALIKUD';
+
+  @override
+  String get consoleSectionExamples => 'TÄPSEMAD NÄITED';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z edastab kõik argumendid otse kaasasolevale 7zip binaarfailile. Kasuta seda Terminalis täpselt nii, nagu kasutaksid 7zz-i.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Loo oma shellis alias, et kasutada mac7z-i tavalise käsuna Terminalis:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Lisa see rida faili ~/.zshrc või ~/.bash_profile, et see jääks püsivaks. Pärast seadistamist töötavad kõik tavalised 7zip käsud, kui asendad 7zz mac7z-iga.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Lisa see rida faili ~/.bashrc või ~/.zshrc, et see jääks püsivaks. Pärast seadistamist töötavad kõik tavalised 7zip käsud, kui asendad 7zz mac7z-iga.';
+
+  @override
+  String get consoleCmdList => 'Arhiivi sisu loetlemine';
+
+  @override
+  String get consoleCmdExtractFull => 'Lahtipakkimine täielike teedega';
+
+  @override
+  String get consoleCmdExtractToDir => 'Lahtipakkimine kindlasse kausta';
+
+  @override
+  String get consoleCmdExtractFlat => 'Lahtipakkimine ilma alamkaustadeta';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Arhiivi loomine või uuendamine';
+
+  @override
+  String get consoleCmdCreateZip => 'ZIP-arhiivi loomine';
+
+  @override
+  String get consoleCmdTest => 'Arhiivi tervikluse kontroll';
+
+  @override
+  String get consoleCmdDelete => 'Faili kustutamine arhiivist';
+
+  @override
+  String get consoleCmdInfo => '7zipi teabe kuvamine';
+
+  @override
+  String get consoleOptPassword => 'Arhiivi kaitsmine parooliga';
+
+  @override
+  String get consoleOptEncryptHeaders => 'Krüpti ka failinimed (ainult 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Pakkimistaseme valik (0 = puudub, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Mitmelõimelise pakkimise lubamine';
+
+  @override
+  String get consoleOptSplitVolumes => 'Jaga osadeks (nt -v100m 100 MB jaoks)';
+
+  @override
+  String get consoleOptRecursive => 'Töötle alamkaustu rekursiivselt';
+
+  @override
+  String get consoleOptYesAll => 'Vasta kõigile kinnitustele \"jah\"';
+
+  @override
+  String get consoleOptOutputDir => 'Sihtkaust lahtipakkimiseks';
+
+  @override
+  String get consoleOptExclude => 'Välista failid (nt -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Krüpteeritud arhiiv peidetud nimedega';
+
+  @override
+  String get consoleExVolumes => 'Arhiiv jagatud 50 MB osadeks';
+
+  @override
+  String get consoleExUltra => 'Ülipakkimine (aeglane, väikseim fail)';
+
+  @override
+  String get consoleExSingleFile => 'Ühe faili lahtipakkimine';
+
+  @override
+  String get consoleExTechnical => 'Loetelu tehniliste detailidega';
+
+  @override
+  String get consoleCopy => 'Kopeeri';
+
+  @override
+  String get consoleCopied => 'Kopeeritud!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z sisaldab oma 7zz binaarfaili. Argumendid edastatakse täpselt muutmata kujul. Kõik 7zz jaoks kehtivad käsud töötavad samamoodi ka mac7z-iga.';
 }

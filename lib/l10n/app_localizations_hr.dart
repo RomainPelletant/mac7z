@@ -352,4 +352,114 @@ class AppLocalizationsHr extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arhiv kreiran: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURACIJA';
+
+  @override
+  String get consoleSectionCommands => 'GLAVNE NAREDBE';
+
+  @override
+  String get consoleSectionOptions => 'UOBIČAJENE OPCIJE';
+
+  @override
+  String get consoleSectionExamples => 'NAPREDNI PRIMJERI';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z prosljeđuje sve argumente izravno ugrađenom 7zip binarnom programu. Koristite ga u Terminalu točno kao što biste koristili 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Napravite alias u svom shellu kako biste koristili mac7z kao standardnu naredbu u Terminalu:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Dodajte ovaj redak u ~/.zshrc ili ~/.bash_profile kako bi ostao trajan. Nakon postavljanja, sve standardne 7zip naredbe rade tako da zamijenite 7zz s mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Dodajte ovaj redak u ~/.bashrc ili ~/.zshrc kako bi ostao trajan. Nakon postavljanja, sve standardne 7zip naredbe rade tako da zamijenite 7zz s mac7z.';
+
+  @override
+  String get consoleCmdList => 'Prikaži sadržaj arhive';
+
+  @override
+  String get consoleCmdExtractFull => 'Izdvoji s punim putanjama';
+
+  @override
+  String get consoleCmdExtractToDir => 'Izdvoji u određenu mapu';
+
+  @override
+  String get consoleCmdExtractFlat => 'Izdvoji bez podmapa';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Stvori ili ažuriraj arhivu';
+
+  @override
+  String get consoleCmdCreateZip => 'Stvori ZIP arhivu';
+
+  @override
+  String get consoleCmdTest => 'Testiraj integritet arhive';
+
+  @override
+  String get consoleCmdDelete => 'Izbriši datoteku iz arhive';
+
+  @override
+  String get consoleCmdInfo => 'Prikaži informacije o 7zipu';
+
+  @override
+  String get consoleOptPassword => 'Zaštiti arhivu lozinkom';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Kriptiraj i nazive datoteka (samo 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Razina kompresije (0 = bez, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Omogući višedretvenu kompresiju';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Podijeli u volumene (npr. -v100m za 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Rekurzivno obradi podmape';
+
+  @override
+  String get consoleOptYesAll => 'Odgovori \"da\" na sve potvrde';
+
+  @override
+  String get consoleOptOutputDir => 'Odredišna mapa za izdvajanje';
+
+  @override
+  String get consoleOptExclude => 'Isključi datoteke (npr. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Kriptirana arhiva sa skrivenim nazivima';
+
+  @override
+  String get consoleExVolumes => 'Arhiva podijeljena u volumene od 50 MB';
+
+  @override
+  String get consoleExUltra => 'Ultra kompresija (spora, najmanja datoteka)';
+
+  @override
+  String get consoleExSingleFile => 'Izdvoji jednu datoteku';
+
+  @override
+  String get consoleExTechnical => 'Popis s tehničkim detaljima';
+
+  @override
+  String get consoleCopy => 'Kopiraj';
+
+  @override
+  String get consoleCopied => 'Kopirano!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z uključuje vlastiti 7zz binarni program. Argumenti se prosljeđuju točno onako kako jesu, bez izmjena. Svaka naredba valjana za 7zz radi jednako i s mac7z-om.';
 }

@@ -351,4 +351,114 @@ class AppLocalizationsBg extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Архив създаден: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'КОНФИГУРАЦИЯ';
+
+  @override
+  String get consoleSectionCommands => 'ОСНОВНИ КОМАНДИ';
+
+  @override
+  String get consoleSectionOptions => 'ЧЕСТИ ОПЦИИ';
+
+  @override
+  String get consoleSectionExamples => 'РАЗШИРЕНИ ПРИМЕРИ';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z предава всички аргументи директно към вградения 7zip бинарен файл. Използвайте го от Terminal точно както бихте използвали 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Създайте alias във вашия shell, за да използвате mac7z като стандартна команда в Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Добавете този ред към ~/.zshrc или ~/.bash_profile, за да е постоянен. След настройката всички стандартни 7zip команди работят, като замените 7zz с mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Добавете този ред към ~/.bashrc или ~/.zshrc, за да е постоянен. След настройката всички стандартни 7zip команди работят, като замените 7zz с mac7z.';
+
+  @override
+  String get consoleCmdList => 'Показване на съдържанието на архив';
+
+  @override
+  String get consoleCmdExtractFull => 'Извличане с пълните пътища';
+
+  @override
+  String get consoleCmdExtractToDir => 'Извличане в определена папка';
+
+  @override
+  String get consoleCmdExtractFlat => 'Извличане без подпапки';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Създаване или обновяване на архив';
+
+  @override
+  String get consoleCmdCreateZip => 'Създаване на ZIP архив';
+
+  @override
+  String get consoleCmdTest => 'Проверка на целостта на архива';
+
+  @override
+  String get consoleCmdDelete => 'Изтриване на файл от архив';
+
+  @override
+  String get consoleCmdInfo => 'Показване на информация за 7zip';
+
+  @override
+  String get consoleOptPassword => 'Защита на архива с парола';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Шифриране и на имената на файловете (само 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Ниво на компресия (0 = няма, 9 = ултра)';
+
+  @override
+  String get consoleOptMultithread => 'Включване на многонишкова компресия';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Разделяне на части (напр. -v100m за 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Рекурсивна обработка на подпапки';
+
+  @override
+  String get consoleOptYesAll => 'Отговор „да“ на всички потвърждения';
+
+  @override
+  String get consoleOptOutputDir => 'Папка за извличане';
+
+  @override
+  String get consoleOptExclude => 'Изключване на файлове (напр. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Шифриран архив със скрити имена';
+
+  @override
+  String get consoleExVolumes => 'Архив, разделен на части по 50 MB';
+
+  @override
+  String get consoleExUltra => 'Ултра компресия (бавна, най-малък файл)';
+
+  @override
+  String get consoleExSingleFile => 'Извличане на един файл';
+
+  @override
+  String get consoleExTechnical => 'Списък с технически подробности';
+
+  @override
+  String get consoleCopy => 'Копиране';
+
+  @override
+  String get consoleCopied => 'Копирано!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z включва собствен 7zz бинарен файл. Аргументите се предават без никаква промяна. Всяка валидна команда за 7zz работи по същия начин и с mac7z.';
 }

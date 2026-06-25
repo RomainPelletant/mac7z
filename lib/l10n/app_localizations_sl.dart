@@ -362,4 +362,114 @@ class AppLocalizationsSl extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arhiv ustvarjen: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'NASTAVITEV';
+
+  @override
+  String get consoleSectionCommands => 'GLAVNI UKAZI';
+
+  @override
+  String get consoleSectionOptions => 'POGOSTE MOŽNOSTI';
+
+  @override
+  String get consoleSectionExamples => 'NAPREDNI PRIMERI';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z vse argumente posreduje neposredno vgrajenemu binarnemu programu 7zip. Uporabite ga v Terminalu natanko tako, kot bi uporabljali 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Ustvarite alias v svojem shellu, da boste lahko uporabljali mac7z kot običajen ukaz v Terminalu:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Dodajte to vrstico v ~/.zshrc ali ~/.bash_profile, da bo trajna. Po nastavitvi bodo vsi standardni ukazi 7zip delovali tako, da 7zz zamenjate z mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Dodajte to vrstico v ~/.bashrc ali ~/.zshrc, da bo trajna. Po nastavitvi bodo vsi standardni ukazi 7zip delovali tako, da 7zz zamenjate z mac7z.';
+
+  @override
+  String get consoleCmdList => 'Prikaži vsebino arhiva';
+
+  @override
+  String get consoleCmdExtractFull => 'Razširi s polnimi potmi';
+
+  @override
+  String get consoleCmdExtractToDir => 'Razširi v določeno mapo';
+
+  @override
+  String get consoleCmdExtractFlat => 'Razširi brez podmap';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Ustvari ali posodobi arhiv';
+
+  @override
+  String get consoleCmdCreateZip => 'Ustvari ZIP arhiv';
+
+  @override
+  String get consoleCmdTest => 'Preveri celovitost arhiva';
+
+  @override
+  String get consoleCmdDelete => 'Izbriši datoteko iz arhiva';
+
+  @override
+  String get consoleCmdInfo => 'Prikaži informacije o 7zipu';
+
+  @override
+  String get consoleOptPassword => 'Zaščiti arhiv z geslom';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Šifriraj tudi imena datotek (samo 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Raven stiskanja (0 = brez, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Omogoči večnitno stiskanje';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Razdeli na volumne (npr. -v100m za 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Rekurzivno obdela podmape';
+
+  @override
+  String get consoleOptYesAll => 'Na vse potrditve odgovori z \"da\"';
+
+  @override
+  String get consoleOptOutputDir => 'Ciljna mapa za razširjanje';
+
+  @override
+  String get consoleOptExclude => 'Izključi datoteke (npr. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Šifriran arhiv s skritimi imeni';
+
+  @override
+  String get consoleExVolumes => 'Arhiv razdeljen na 50 MB volumne';
+
+  @override
+  String get consoleExUltra => 'Ultra stiskanje (počasno, najmanjša datoteka)';
+
+  @override
+  String get consoleExSingleFile => 'Razširi eno datoteko';
+
+  @override
+  String get consoleExTechnical => 'Prikaži s tehničnimi podrobnostmi';
+
+  @override
+  String get consoleCopy => 'Kopiraj';
+
+  @override
+  String get consoleCopied => 'Kopirano!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z vključuje svoj lastni binarni program 7zz. Argumenti se posredujejo natančno takšni, kot so, brez sprememb. Vsak ukaz, veljaven za 7zz, deluje enako tudi z mac7z.';
 }

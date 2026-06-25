@@ -360,4 +360,113 @@ class AppLocalizationsCs extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Archiv vytvořen: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'NASTAVENÍ';
+
+  @override
+  String get consoleSectionCommands => 'HLAVNÍ PŘÍKAZY';
+
+  @override
+  String get consoleSectionOptions => 'BĚŽNÉ VOLBY';
+
+  @override
+  String get consoleSectionExamples => 'POKROČILÉ PŘÍKLADY';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z předává všechny argumenty přímo vestavěnému binárnímu souboru 7zip. Používejte jej v Terminalu přesně tak, jako byste používali 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Vytvořte si ve svém shellu alias, abyste mohli používat mac7z jako běžný příkaz v Terminalu:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Přidejte tento řádek do ~/.zshrc nebo ~/.bash_profile, aby byl trvalý. Po nastavení fungují všechny standardní příkazy 7zip tak, že nahradíte 7zz za mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Přidejte tento řádek do ~/.bashrc nebo ~/.zshrc, aby byl trvalý. Po nastavení fungují všechny standardní příkazy 7zip tak, že nahradíte 7zz za mac7z.';
+
+  @override
+  String get consoleCmdList => 'Vypsat obsah archivu';
+
+  @override
+  String get consoleCmdExtractFull => 'Extrahovat s úplnými cestami';
+
+  @override
+  String get consoleCmdExtractToDir => 'Extrahovat do konkrétní složky';
+
+  @override
+  String get consoleCmdExtractFlat => 'Extrahovat naplocho bez podsložek';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Vytvořit nebo aktualizovat archiv';
+
+  @override
+  String get consoleCmdCreateZip => 'Vytvořit ZIP archiv';
+
+  @override
+  String get consoleCmdTest => 'Otestovat integritu archivu';
+
+  @override
+  String get consoleCmdDelete => 'Smazat soubor z archivu';
+
+  @override
+  String get consoleCmdInfo => 'Zobrazit informace o 7zip';
+
+  @override
+  String get consoleOptPassword => 'Chránit archiv heslem';
+
+  @override
+  String get consoleOptEncryptHeaders => 'Šifrovat také názvy souborů (jen 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Úroveň komprese (0 = žádná, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Povolit vícevláknovou kompresi';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Rozdělit do svazků (např. -v100m pro 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Rekurzivně zpracovat podsložky';
+
+  @override
+  String get consoleOptYesAll => 'Odpovědět „ano“ na všechna potvrzení';
+
+  @override
+  String get consoleOptOutputDir => 'Cílová složka pro extrakci';
+
+  @override
+  String get consoleOptExclude => 'Vyloučit soubory (např. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Šifrovaný archiv se skrytými názvy';
+
+  @override
+  String get consoleExVolumes => 'Archiv rozdělený na svazky po 50 MB';
+
+  @override
+  String get consoleExUltra => 'Ultra komprese (pomalá, nejmenší soubor)';
+
+  @override
+  String get consoleExSingleFile => 'Extrahovat jediný soubor';
+
+  @override
+  String get consoleExTechnical => 'Vypsat s technickými detaily';
+
+  @override
+  String get consoleCopy => 'Kopírovat';
+
+  @override
+  String get consoleCopied => 'Zkopírováno!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z obsahuje vlastní binární soubor 7zz. Argumenty se předávají přesně tak, jak jsou, bez úprav. Jakýkoli příkaz platný pro 7zz funguje stejně i s mac7z.';
 }

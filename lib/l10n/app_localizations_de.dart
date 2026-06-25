@@ -353,4 +353,115 @@ class AppLocalizationsDe extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Archiv erstellt: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURATION';
+
+  @override
+  String get consoleSectionCommands => 'WICHTIGE BEFEHLE';
+
+  @override
+  String get consoleSectionOptions => 'HÄUFIGE OPTIONEN';
+
+  @override
+  String get consoleSectionExamples => 'ERWEITERTE BEISPIELE';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z übergibt alle Argumente direkt an die integrierte 7zip-Binärdatei. Verwenden Sie es im Terminal genau so, wie Sie 7zz verwenden würden.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Erstellen Sie in Ihrer Shell einen Alias, um mac7z als normalen Befehl im Terminal zu verwenden:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Fügen Sie diese Zeile zu Ihrer ~/.zshrc oder ~/.bash_profile hinzu, damit sie dauerhaft bleibt. Nach der Einrichtung funktionieren alle üblichen 7zip-Befehle, indem Sie 7zz durch mac7z ersetzen.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Fügen Sie diese Zeile zu Ihrer ~/.bashrc oder ~/.zshrc hinzu, damit sie dauerhaft bleibt. Nach der Einrichtung funktionieren alle üblichen 7zip-Befehle, indem Sie 7zz durch mac7z ersetzen.';
+
+  @override
+  String get consoleCmdList => 'Inhalt eines Archivs auflisten';
+
+  @override
+  String get consoleCmdExtractFull => 'Mit vollständigen Pfaden entpacken';
+
+  @override
+  String get consoleCmdExtractToDir => 'In einen bestimmten Ordner entpacken';
+
+  @override
+  String get consoleCmdExtractFlat => 'Flach entpacken ohne Unterordner';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Archiv erstellen oder aktualisieren';
+
+  @override
+  String get consoleCmdCreateZip => 'ZIP-Archiv erstellen';
+
+  @override
+  String get consoleCmdTest => 'Integrität des Archivs prüfen';
+
+  @override
+  String get consoleCmdDelete => 'Datei aus einem Archiv löschen';
+
+  @override
+  String get consoleCmdInfo => 'Informationen über 7zip anzeigen';
+
+  @override
+  String get consoleOptPassword => 'Archiv mit Passwort schützen';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Auch Dateinamen verschlüsseln (nur 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Komprimierungsstufe (0 = keine, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Mehrthread-Komprimierung aktivieren';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'In Volumes aufteilen (z. B. -v100m für 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Unterordner rekursiv verarbeiten';
+
+  @override
+  String get consoleOptYesAll => 'Alle Bestätigungen mit \"Ja\" beantworten';
+
+  @override
+  String get consoleOptOutputDir => 'Zielordner für das Entpacken';
+
+  @override
+  String get consoleOptExclude => 'Dateien ausschließen (z. B. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted =>
+      'Verschlüsseltes Archiv mit ausgeblendeten Namen';
+
+  @override
+  String get consoleExVolumes => 'Archiv in 50-MB-Volumes aufgeteilt';
+
+  @override
+  String get consoleExUltra => 'Ultra-Komprimierung (langsam, kleinste Datei)';
+
+  @override
+  String get consoleExSingleFile => 'Eine einzelne Datei entpacken';
+
+  @override
+  String get consoleExTechnical => 'Mit technischen Details auflisten';
+
+  @override
+  String get consoleCopy => 'Kopieren';
+
+  @override
+  String get consoleCopied => 'Kopiert!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z bringt seine eigene 7zz-Binärdatei mit. Die Argumente werden unverändert weitergegeben. Jeder für 7zz gültige Befehl funktioniert mit mac7z identisch.';
 }

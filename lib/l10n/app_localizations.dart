@@ -693,6 +693,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'✅ Archive created: {path}'**
   String compLogDone(String path);
+
+  /// No description provided for @consoleSectionConfig.
+  ///
+  /// In en, this message translates to:
+  /// **'CONFIGURATION'**
+  String get consoleSectionConfig;
+
+  /// No description provided for @consoleSectionCommands.
+  ///
+  /// In en, this message translates to:
+  /// **'MAIN COMMANDS'**
+  String get consoleSectionCommands;
+
+  /// No description provided for @consoleSectionOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'COMMON OPTIONS'**
+  String get consoleSectionOptions;
+
+  /// No description provided for @consoleSectionExamples.
+  ///
+  /// In en, this message translates to:
+  /// **'ADVANCED EXAMPLES'**
+  String get consoleSectionExamples;
+
+  /// No description provided for @consoleHeroSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'mac7z passes all arguments directly to the bundled 7zip binary. Use it from Terminal exactly as you would use 7zz.'**
+  String get consoleHeroSubtitle;
+
+  /// No description provided for @consoleSetupIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an alias in your shell to use mac7z as a standard command in Terminal:'**
+  String get consoleSetupIntro;
+
+  /// No description provided for @consoleSetupOutroMac.
+  ///
+  /// In en, this message translates to:
+  /// **'Add this line to your ~/.zshrc (or ~/.bash_profile) to make it permanent. Once configured, all standard 7zip commands work by replacing 7zz with mac7z.'**
+  String get consoleSetupOutroMac;
+
+  /// No description provided for @consoleSetupOutroLinux.
+  ///
+  /// In en, this message translates to:
+  /// **'Add this line to your ~/.bashrc (or ~/.zshrc) to make it permanent. Once configured, all standard 7zip commands work by replacing 7zz with mac7z.'**
+  String get consoleSetupOutroLinux;
+
+  /// No description provided for @consoleCmdList.
+  ///
+  /// In en, this message translates to:
+  /// **'List the contents of an archive'**
+  String get consoleCmdList;
+
+  /// No description provided for @consoleCmdExtractFull.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract with full paths'**
+  String get consoleCmdExtractFull;
+
+  /// No description provided for @consoleCmdExtractToDir.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract to a specific folder'**
+  String get consoleCmdExtractToDir;
+
+  /// No description provided for @consoleCmdExtractFlat.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract flat (without subfolders)'**
+  String get consoleCmdExtractFlat;
+
+  /// No description provided for @consoleCmdCreateUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create or update an archive'**
+  String get consoleCmdCreateUpdate;
+
+  /// No description provided for @consoleCmdCreateZip.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a ZIP archive'**
+  String get consoleCmdCreateZip;
+
+  /// No description provided for @consoleCmdTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test archive integrity'**
+  String get consoleCmdTest;
+
+  /// No description provided for @consoleCmdDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete a file from an archive'**
+  String get consoleCmdDelete;
+
+  /// No description provided for @consoleCmdInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Show information about 7zip'**
+  String get consoleCmdInfo;
+
+  /// No description provided for @consoleOptPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Protect the archive with a password'**
+  String get consoleOptPassword;
+
+  /// No description provided for @consoleOptEncryptHeaders.
+  ///
+  /// In en, this message translates to:
+  /// **'Also encrypt file names (7z only)'**
+  String get consoleOptEncryptHeaders;
+
+  /// No description provided for @consoleOptCompressionLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression level (0 = none, 9 = ultra)'**
+  String get consoleOptCompressionLevel;
+
+  /// No description provided for @consoleOptMultithread.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable multi-threaded compression'**
+  String get consoleOptMultithread;
+
+  /// No description provided for @consoleOptSplitVolumes.
+  ///
+  /// In en, this message translates to:
+  /// **'Split into volumes (e.g. -v100m for 100 MB)'**
+  String get consoleOptSplitVolumes;
+
+  /// No description provided for @consoleOptRecursive.
+  ///
+  /// In en, this message translates to:
+  /// **'Recursively process subfolders'**
+  String get consoleOptRecursive;
+
+  /// No description provided for @consoleOptYesAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer \"yes\" to all confirmations'**
+  String get consoleOptYesAll;
+
+  /// No description provided for @consoleOptOutputDir.
+  ///
+  /// In en, this message translates to:
+  /// **'Destination folder for extraction'**
+  String get consoleOptOutputDir;
+
+  /// No description provided for @consoleOptExclude.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclude files (e.g. -x!*.log)'**
+  String get consoleOptExclude;
+
+  /// No description provided for @consoleExEncrypted.
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypted archive with hidden names'**
+  String get consoleExEncrypted;
+
+  /// No description provided for @consoleExVolumes.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive split into 50 MB volumes'**
+  String get consoleExVolumes;
+
+  /// No description provided for @consoleExUltra.
+  ///
+  /// In en, this message translates to:
+  /// **'Ultra compression (slow, smallest file)'**
+  String get consoleExUltra;
+
+  /// No description provided for @consoleExSingleFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract a single file'**
+  String get consoleExSingleFile;
+
+  /// No description provided for @consoleExTechnical.
+  ///
+  /// In en, this message translates to:
+  /// **'List with technical details'**
+  String get consoleExTechnical;
+
+  /// No description provided for @consoleCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get consoleCopy;
+
+  /// No description provided for @consoleCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied!'**
+  String get consoleCopied;
+
+  /// No description provided for @consoleInfoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'mac7z ships with its own 7zz binary. Arguments are passed through exactly as-is, without modification. Any command valid for 7zz works identically with mac7z.'**
+  String get consoleInfoNote;
 }
 
 class _AppLocalizationsDelegate

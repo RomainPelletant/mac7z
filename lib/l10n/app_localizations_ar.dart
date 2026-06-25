@@ -369,4 +369,112 @@ class AppLocalizationsAr extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ تم إنشاء الأرشيف: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'الإعداد';
+
+  @override
+  String get consoleSectionCommands => 'الأوامر الرئيسية';
+
+  @override
+  String get consoleSectionOptions => 'الخيارات الشائعة';
+
+  @override
+  String get consoleSectionExamples => 'أمثلة متقدمة';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'يمرر mac7z جميع الوسائط مباشرة إلى ملف 7zip الثنائي المضمّن. استخدمه من Terminal تمامًا كما تستخدم 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'أنشئ اسمًا مستعارًا في shell لاستخدام mac7z كأمر عادي في Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'أضف هذا السطر إلى ~/.zshrc أو ~/.bash_profile لجعله دائمًا. بعد الإعداد، تعمل كل أوامر 7zip القياسية باستبدال 7zz بـ mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'أضف هذا السطر إلى ~/.bashrc أو ~/.zshrc لجعله دائمًا. بعد الإعداد، تعمل كل أوامر 7zip القياسية باستبدال 7zz بـ mac7z.';
+
+  @override
+  String get consoleCmdList => 'عرض محتويات الأرشيف';
+
+  @override
+  String get consoleCmdExtractFull => 'استخراج مع المسارات الكاملة';
+
+  @override
+  String get consoleCmdExtractToDir => 'استخراج إلى مجلد محدد';
+
+  @override
+  String get consoleCmdExtractFlat => 'استخراج مسطح بدون مجلدات فرعية';
+
+  @override
+  String get consoleCmdCreateUpdate => 'إنشاء أرشيف أو تحديثه';
+
+  @override
+  String get consoleCmdCreateZip => 'إنشاء أرشيف ZIP';
+
+  @override
+  String get consoleCmdTest => 'اختبار سلامة الأرشيف';
+
+  @override
+  String get consoleCmdDelete => 'حذف ملف من الأرشيف';
+
+  @override
+  String get consoleCmdInfo => 'عرض معلومات حول 7zip';
+
+  @override
+  String get consoleOptPassword => 'حماية الأرشيف بكلمة مرور';
+
+  @override
+  String get consoleOptEncryptHeaders => 'تشفير أسماء الملفات أيضًا (7z فقط)';
+
+  @override
+  String get consoleOptCompressionLevel => 'مستوى الضغط (0 = بدون، 9 = أقصى)';
+
+  @override
+  String get consoleOptMultithread => 'تفعيل الضغط متعدد الخيوط';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'تقسيم إلى أجزاء (مثل ‎-v100m لـ 100 ميغابايت)';
+
+  @override
+  String get consoleOptRecursive => 'معالجة المجلدات الفرعية بشكل递归';
+
+  @override
+  String get consoleOptYesAll => 'الإجابة \"نعم\" على جميع التأكيدات';
+
+  @override
+  String get consoleOptOutputDir => 'مجلد الوجهة للاستخراج';
+
+  @override
+  String get consoleOptExclude => 'استبعاد ملفات (مثل ‎-x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'أرشيف مشفّر بأسماء مخفية';
+
+  @override
+  String get consoleExVolumes => 'أرشيف مقسم إلى أجزاء 50 ميغابايت';
+
+  @override
+  String get consoleExUltra => 'ضغط فائق (بطيء، أصغر ملف)';
+
+  @override
+  String get consoleExSingleFile => 'استخراج ملف واحد';
+
+  @override
+  String get consoleExTechnical => 'عرض مع تفاصيل تقنية';
+
+  @override
+  String get consoleCopy => 'نسخ';
+
+  @override
+  String get consoleCopied => 'تم النسخ!';
+
+  @override
+  String get consoleInfoNote =>
+      'يتضمن mac7z ملف 7zz الثنائي الخاص به. تُمرَّر الوسائط كما هي تمامًا دون تعديل. أي أمر صالح لـ 7zz يعمل بالطريقة نفسها مع mac7z.';
 }
