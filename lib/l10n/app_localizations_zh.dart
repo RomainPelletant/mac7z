@@ -340,4 +340,111 @@ class AppLocalizationsZh extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ 存档已创建: $path';
   }
+
+  @override
+  String get consoleSectionConfig => '配置';
+
+  @override
+  String get consoleSectionCommands => '主要命令';
+
+  @override
+  String get consoleSectionOptions => '常用选项';
+
+  @override
+  String get consoleSectionExamples => '高级示例';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z 会将所有参数直接传递给内置的 7zip 二进制文件。你可以在 Terminal 中像使用 7zz 一样使用它。';
+
+  @override
+  String get consoleSetupIntro =>
+      '在你的 shell 中创建一个别名，以便在 Terminal 中把 mac7z 当作标准命令使用：';
+
+  @override
+  String get consoleSetupOutroMac =>
+      '将这一行添加到 ~/.zshrc 或 ~/.bash_profile 中即可永久生效。配置完成后，只需把标准 7zip 命令中的 7zz 替换为 mac7z 即可。';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      '将这一行添加到 ~/.bashrc 或 ~/.zshrc 中即可永久生效。配置完成后，只需把标准 7zip 命令中的 7zz 替换为 mac7z 即可。';
+
+  @override
+  String get consoleCmdList => '列出压缩包内容';
+
+  @override
+  String get consoleCmdExtractFull => '按完整路径解压';
+
+  @override
+  String get consoleCmdExtractToDir => '解压到指定文件夹';
+
+  @override
+  String get consoleCmdExtractFlat => '不创建子文件夹，直接解压';
+
+  @override
+  String get consoleCmdCreateUpdate => '创建或更新压缩包';
+
+  @override
+  String get consoleCmdCreateZip => '创建 ZIP 压缩包';
+
+  @override
+  String get consoleCmdTest => '测试压缩包完整性';
+
+  @override
+  String get consoleCmdDelete => '从压缩包中删除文件';
+
+  @override
+  String get consoleCmdInfo => '显示 7zip 信息';
+
+  @override
+  String get consoleOptPassword => '使用密码保护压缩包';
+
+  @override
+  String get consoleOptEncryptHeaders => '同时加密文件名（仅限 7z）';
+
+  @override
+  String get consoleOptCompressionLevel => '压缩级别（0 = 无，9 = 极致）';
+
+  @override
+  String get consoleOptMultithread => '启用多线程压缩';
+
+  @override
+  String get consoleOptSplitVolumes => '分卷压缩（例如 -v100m 表示 100 MB）';
+
+  @override
+  String get consoleOptRecursive => '递归处理子文件夹';
+
+  @override
+  String get consoleOptYesAll => '对所有确认都回答“是”';
+
+  @override
+  String get consoleOptOutputDir => '解压目标文件夹';
+
+  @override
+  String get consoleOptExclude => '排除文件（例如 -x!*.log）';
+
+  @override
+  String get consoleExEncrypted => '带隐藏文件名的加密压缩包';
+
+  @override
+  String get consoleExVolumes => '分成 50 MB 卷的压缩包';
+
+  @override
+  String get consoleExUltra => '极限压缩（较慢，文件最小）';
+
+  @override
+  String get consoleExSingleFile => '解压单个文件';
+
+  @override
+  String get consoleExTechnical => '列出技术细节';
+
+  @override
+  String get consoleCopy => '复制';
+
+  @override
+  String get consoleCopied => '已复制！';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z 内置了自己的 7zz 二进制文件。参数会原样传递，不做任何修改。任何对 7zz 有效的命令，对 mac7z 也同样有效。';
 }

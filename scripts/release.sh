@@ -33,9 +33,25 @@ release_macos() {
   flutter build macos --release
   ok "Build → $APP_PATH"
 
-  # 2. Signature ad-hoc
-  step "[macOS] Signature ad-hoc..."
-  codesign --deep --force --sign - "$APP_PATH"
+  # 2. Signature ad-hoc (inside-out : frameworks d'abord, puis le bundle)
+  step "[macOS] Signature ad-hoc (inside-out)..."
+
+  # 2a. Re-signer chaque .framework et .dylib dans Contents/Frameworks/
+  #     (nécessaire quand les frameworks tiers portent un Team ID différent)
+  local FRAMEWORKS_DIR="$APP_PATH/Contents/Frameworks"
+  if [ -d "$FRAMEWORKS_DIR" ]; then
+    # Signer d'abord les binaires les plus profonds (bibliothèques dans les frameworks)
+    find "$FRAMEWORKS_DIR" -type f \( -name "*.dylib" -o -name "*.so" \) | while read -r lib; do
+      codesign --force --sign - "$lib"
+    done
+    # Puis signer chaque .framework (le bundle entier)
+    find "$FRAMEWORKS_DIR" -name "*.framework" -maxdepth 1 | while read -r fw; do
+      codesign --force --sign - "$fw"
+    done
+  fi
+
+  # 2b. Signer le bundle principal
+  codesign --force --sign - "$APP_PATH"
   codesign --verify --deep --strict "$APP_PATH" && ok "Signature valide" || warn "Vérification signature échouée"
 
   # 3. DMG
@@ -79,26 +95,35 @@ release_linux() {
   step "[Linux] Création du paquet .deb..."
   rm -rf "$DEB_DIR"
 
-  # Structure Debian
+  # Structure Debian — bundle dans /usr/lib, wrapper dans /usr/bin
   mkdir -p "$DEB_DIR/DEBIAN"
   mkdir -p "$DEB_DIR/usr/bin"
   mkdir -p "$DEB_DIR/usr/lib/$APP_NAME"
   mkdir -p "$DEB_DIR/usr/share/applications"
   mkdir -p "$DEB_DIR/usr/share/icons/hicolor/256x256/apps"
+  mkdir -p "$DEB_DIR/usr/share/icons/hicolor/512x512/apps"
 
-  # Copie du bundle Flutter
+  # Copie du bundle Flutter dans /usr/lib/mac7z/
   cp -R "$BUNDLE/." "$DEB_DIR/usr/lib/$APP_NAME/"
 
-  # Wrapper de lancement
+  # Wrapper de lancement dans /usr/bin
   cat > "$DEB_DIR/usr/bin/$APP_NAME" << EOF
 #!/bin/bash
 exec /usr/lib/$APP_NAME/$APP_NAME "\$@"
 EOF
   chmod +x "$DEB_DIR/usr/bin/$APP_NAME"
 
-  # Icône (copie depuis les assets Flutter si disponible, sinon placeholder)
-  if [ -f "assets/icon.png" ]; then
-    cp "assets/icon.png" "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/$APP_NAME.png"
+  # Icône pour le thème hicolor (256x256 et 512x512)
+  local ICON_SRC="linux/icon.png"
+  if [ -f "$ICON_SRC" ]; then
+    cp "$ICON_SRC" "$DEB_DIR/usr/share/icons/hicolor/512x512/apps/$APP_NAME.png"
+    # Générer une version 256x256 si convert (ImageMagick) est disponible
+    if command -v convert &>/dev/null; then
+      convert "$ICON_SRC" -resize 256x256 \
+        "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/$APP_NAME.png"
+    else
+      cp "$ICON_SRC" "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/$APP_NAME.png"
+    fi
   fi
 
   # Fichier .desktop

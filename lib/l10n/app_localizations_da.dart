@@ -350,4 +350,113 @@ class AppLocalizationsDa extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arkiv oprettet: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURATION';
+
+  @override
+  String get consoleSectionCommands => 'VIGTIGE KOMMANDOER';
+
+  @override
+  String get consoleSectionOptions => 'ALMINDELIGE INDSTILLINGER';
+
+  @override
+  String get consoleSectionExamples => 'AVANCEREDE EKSEMPLER';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z sender alle argumenter direkte til den indbyggede 7zip-binærfil. Brug det fra Terminal præcis som du ville bruge 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Opret et alias i din shell for at bruge mac7z som en standardkommando i Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Tilføj denne linje til ~/.zshrc eller ~/.bash_profile for at gøre den permanent. Når det er sat op, virker alle standard 7zip-kommandoer ved at erstatte 7zz med mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Tilføj denne linje til ~/.bashrc eller ~/.zshrc for at gøre den permanent. Når det er sat op, virker alle standard 7zip-kommandoer ved at erstatte 7zz med mac7z.';
+
+  @override
+  String get consoleCmdList => 'Vis indholdet af et arkiv';
+
+  @override
+  String get consoleCmdExtractFull => 'Udpak med fulde stier';
+
+  @override
+  String get consoleCmdExtractToDir => 'Udpak til en bestemt mappe';
+
+  @override
+  String get consoleCmdExtractFlat => 'Udpak fladt uden undermapper';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Opret eller opdater et arkiv';
+
+  @override
+  String get consoleCmdCreateZip => 'Opret et ZIP-arkiv';
+
+  @override
+  String get consoleCmdTest => 'Test arkivets integritet';
+
+  @override
+  String get consoleCmdDelete => 'Slet en fil fra et arkiv';
+
+  @override
+  String get consoleCmdInfo => 'Vis oplysninger om 7zip';
+
+  @override
+  String get consoleOptPassword => 'Beskyt arkivet med en adgangskode';
+
+  @override
+  String get consoleOptEncryptHeaders => 'Krypter også filnavne (kun 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Komprimeringsniveau (0 = ingen, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Aktivér flertrådet komprimering';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Opdel i dele (f.eks. -v100m for 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Behandl undermapper rekursivt';
+
+  @override
+  String get consoleOptYesAll => 'Svar \"ja\" til alle bekræftelser';
+
+  @override
+  String get consoleOptOutputDir => 'Destinationsmappe til udpakning';
+
+  @override
+  String get consoleOptExclude => 'Udeluk filer (f.eks. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Krypteret arkiv med skjulte navne';
+
+  @override
+  String get consoleExVolumes => 'Arkiv opdelt i 50 MB-dele';
+
+  @override
+  String get consoleExUltra => 'Ultra-komprimering (langsom, mindste fil)';
+
+  @override
+  String get consoleExSingleFile => 'Udpak en enkelt fil';
+
+  @override
+  String get consoleExTechnical => 'Vis med tekniske detaljer';
+
+  @override
+  String get consoleCopy => 'Kopiér';
+
+  @override
+  String get consoleCopied => 'Kopieret!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z leveres med sin egen 7zz-binærfil. Argumenter sendes videre præcis som de er uden ændringer. Enhver gyldig kommando til 7zz virker på samme måde med mac7z.';
 }

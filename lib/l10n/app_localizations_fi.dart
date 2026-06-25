@@ -351,4 +351,112 @@ class AppLocalizationsFi extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arkisto luotu: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'MÄÄRITYKSET';
+
+  @override
+  String get consoleSectionCommands => 'PÄÄKOMENNOT';
+
+  @override
+  String get consoleSectionOptions => 'YLEISET ASETUKSET';
+
+  @override
+  String get consoleSectionExamples => 'EDISTYNEET ESIMERKIT';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z välittää kaikki argumentit suoraan mukana tulevalle 7zip-binäärille. Käytä sitä Terminalissa aivan kuten käyttäisit 7zz:ää.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Luo shelliisi alias, jotta voit käyttää mac7z:ää tavallisena komentona Terminalissa:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Lisää tämä rivi tiedostoon ~/.zshrc tai ~/.bash_profile, jotta asetus pysyy voimassa. Kun se on määritetty, kaikki tavalliset 7zip-komennot toimivat korvaamalla 7zz:n komennolla mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Lisää tämä rivi tiedostoon ~/.bashrc tai ~/.zshrc, jotta asetus pysyy voimassa. Kun se on määritetty, kaikki tavalliset 7zip-komennot toimivat korvaamalla 7zz:n komennolla mac7z.';
+
+  @override
+  String get consoleCmdList => 'Listaa arkiston sisältö';
+
+  @override
+  String get consoleCmdExtractFull => 'Pura täydet polut säilyttäen';
+
+  @override
+  String get consoleCmdExtractToDir => 'Pura tiettyyn kansioon';
+
+  @override
+  String get consoleCmdExtractFlat => 'Pura ilman alikansioita';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Luo tai päivitä arkisto';
+
+  @override
+  String get consoleCmdCreateZip => 'Luo ZIP-arkisto';
+
+  @override
+  String get consoleCmdTest => 'Testaa arkiston eheys';
+
+  @override
+  String get consoleCmdDelete => 'Poista tiedosto arkistosta';
+
+  @override
+  String get consoleCmdInfo => 'Näytä tietoja 7zipistä';
+
+  @override
+  String get consoleOptPassword => 'Suojaa arkisto salasanalla';
+
+  @override
+  String get consoleOptEncryptHeaders => 'Salaa myös tiedostonimet (vain 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Pakkaustaso (0 = ei pakkausta, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Ota monisäikeinen pakkaus käyttöön';
+
+  @override
+  String get consoleOptSplitVolumes => 'Jaa osiin (esim. -v100m = 100 Mt)';
+
+  @override
+  String get consoleOptRecursive => 'Käsittele alikansiot rekursiivisesti';
+
+  @override
+  String get consoleOptYesAll => 'Vastaa \"kyllä\" kaikkiin vahvistuksiin';
+
+  @override
+  String get consoleOptOutputDir => 'Purkamisen kohdekansio';
+
+  @override
+  String get consoleOptExclude => 'Sulje tiedostoja pois (esim. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Salattu arkisto piilotetuilla nimillä';
+
+  @override
+  String get consoleExVolumes => 'Arkisto jaettu 50 Mt:n osiin';
+
+  @override
+  String get consoleExUltra => 'Ultra-pakkaus (hidas, pienin tiedosto)';
+
+  @override
+  String get consoleExSingleFile => 'Pura yksi tiedosto';
+
+  @override
+  String get consoleExTechnical => 'Listaa tekniset tiedot';
+
+  @override
+  String get consoleCopy => 'Kopioi';
+
+  @override
+  String get consoleCopied => 'Kopioitu!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z sisältää oman 7zz-binäärinsä. Argumentit välitetään sellaisinaan ilman muutoksia. Kaikki 7zz:lle kelvolliset komennot toimivat samalla tavalla myös mac7z:n kanssa.';
 }

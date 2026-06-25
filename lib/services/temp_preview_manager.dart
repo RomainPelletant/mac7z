@@ -48,7 +48,7 @@ class TempPreviewManager with WidgetsBindingObserver {
   }
 
   /// Creates a new named temp directory and registers it for cleanup.
-  /// Returns the [Directory] — pass its path to [SevenZipService.extractSingleFile].
+  /// Returns the [Directory] — pass its path to [ArchiveBackend.extractSingleFile].
   Future<Directory> createDir() async {
     final dir = await Directory.systemTemp.createTemp(_prefix);
     _dirs.add(_TempEntry(dir: dir, createdAt: DateTime.now()));

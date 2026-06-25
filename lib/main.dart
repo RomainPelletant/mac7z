@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:macos_window_utils/macos_window_utils.dart';
 import 'app.dart';
 import 'services/seven_zip_service.dart';
+import 'services/backend_provider.dart';
 import 'services/temp_preview_manager.dart';
 
 void _registerLicenses() {
@@ -43,6 +45,7 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   _registerLicenses();
   TempPreviewManager.instance.init();
+
   runApp(const Unzipper7App());
 }
 
@@ -58,7 +61,7 @@ bool _isCliMode(List<String> args) {
 
 /// Runs 7zip in headless mode with the provided arguments.
 Future<void> _runCliMode(List<String> args) async {
-  final binary = await SevenZipService.findBinary();
+  final binary = await BackendProvider.instance.current.findBinary();
   if (binary == null) {
     stderr.writeln('7zip: command not found');
     stderr.writeln('  Install via: brew install sevenzip (macOS)');

@@ -135,3 +135,8 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Resources/7zz"
     OWNER_READ OWNER_WRITE OWNER_EXECUTE
     GROUP_READ GROUP_EXECUTE
     WORLD_READ WORLD_EXECUTE)
+
+# Install app icon so my_application.cc can load it at runtime.
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/icon.png"
+  DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
+  COMPONENT Runtime)

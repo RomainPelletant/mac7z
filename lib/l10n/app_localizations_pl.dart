@@ -361,4 +361,114 @@ class AppLocalizationsPl extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Archiwum utworzone: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURACJA';
+
+  @override
+  String get consoleSectionCommands => 'GŁÓWNE POLECENIA';
+
+  @override
+  String get consoleSectionOptions => 'CZĘSTE OPCJE';
+
+  @override
+  String get consoleSectionExamples => 'ZAAWANSOWANE PRZYKŁADY';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z przekazuje wszystkie argumenty bezpośrednio do dołączonego pliku binarnego 7zip. Używaj go w Terminalu dokładnie tak samo, jak używałbyś 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Utwórz alias w swojej powłoce, aby używać mac7z jako zwykłego polecenia w Terminalu:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Dodaj ten wiersz do ~/.zshrc lub ~/.bash_profile, aby był trwały. Po skonfigurowaniu wszystkie standardowe polecenia 7zip będą działać po zastąpieniu 7zz przez mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Dodaj ten wiersz do ~/.bashrc lub ~/.zshrc, aby był trwały. Po skonfigurowaniu wszystkie standardowe polecenia 7zip będą działać po zastąpieniu 7zz przez mac7z.';
+
+  @override
+  String get consoleCmdList => 'Wyświetl zawartość archiwum';
+
+  @override
+  String get consoleCmdExtractFull => 'Wypakuj z pełnymi ścieżkami';
+
+  @override
+  String get consoleCmdExtractToDir => 'Wypakuj do określonego folderu';
+
+  @override
+  String get consoleCmdExtractFlat => 'Wypakuj bez podfolderów';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Utwórz lub zaktualizuj archiwum';
+
+  @override
+  String get consoleCmdCreateZip => 'Utwórz archiwum ZIP';
+
+  @override
+  String get consoleCmdTest => 'Sprawdź integralność archiwum';
+
+  @override
+  String get consoleCmdDelete => 'Usuń plik z archiwum';
+
+  @override
+  String get consoleCmdInfo => 'Pokaż informacje o 7zip';
+
+  @override
+  String get consoleOptPassword => 'Chroń archiwum hasłem';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Szyfruj także nazwy plików (tylko 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Poziom kompresji (0 = brak, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Włącz kompresję wielowątkową';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Podziel na woluminy (np. -v100m dla 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Przetwarzaj podfoldery rekurencyjnie';
+
+  @override
+  String get consoleOptYesAll => 'Odpowiadaj „tak” na wszystkie potwierdzenia';
+
+  @override
+  String get consoleOptOutputDir => 'Folder docelowy do wypakowania';
+
+  @override
+  String get consoleOptExclude => 'Wyklucz pliki (np. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Zaszyfrowane archiwum z ukrytymi nazwami';
+
+  @override
+  String get consoleExVolumes => 'Archiwum podzielone na części po 50 MB';
+
+  @override
+  String get consoleExUltra => 'Ultra kompresja (wolna, najmniejszy plik)';
+
+  @override
+  String get consoleExSingleFile => 'Wypakuj pojedynczy plik';
+
+  @override
+  String get consoleExTechnical => 'Lista ze szczegółami technicznymi';
+
+  @override
+  String get consoleCopy => 'Kopiuj';
+
+  @override
+  String get consoleCopied => 'Skopiowano!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z zawiera własny plik binarny 7zz. Argumenty są przekazywane dokładnie tak, jak zostały podane, bez zmian. Każde polecenie poprawne dla 7zz działa identycznie także z mac7z.';
 }

@@ -351,4 +351,113 @@ class AppLocalizationsHu extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Archívum létrehozva: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'BEÁLLÍTÁS';
+
+  @override
+  String get consoleSectionCommands => 'FŐ PARANCSOK';
+
+  @override
+  String get consoleSectionOptions => 'GYAKORI OPCIÓK';
+
+  @override
+  String get consoleSectionExamples => 'HALADÓ PÉLDÁK';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'A mac7z minden argumentumot közvetlenül a beépített 7zip binárisnak ad át. Használja a Terminálból pontosan úgy, ahogy a 7zz-t használná.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Hozzon létre egy aliast a shelljében, hogy a mac7z-t normál parancsként használhassa a Terminálban:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Adja hozzá ezt a sort a ~/.zshrc vagy ~/.bash_profile fájlhoz, hogy állandó maradjon. Beállítás után az összes szokásos 7zip parancs működik, ha a 7zz helyett a mac7z-t használja.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Adja hozzá ezt a sort a ~/.bashrc vagy ~/.zshrc fájlhoz, hogy állandó maradjon. Beállítás után az összes szokásos 7zip parancs működik, ha a 7zz helyett a mac7z-t használja.';
+
+  @override
+  String get consoleCmdList => 'Archívum tartalmának listázása';
+
+  @override
+  String get consoleCmdExtractFull => 'Kibontás teljes elérési útvonalakkal';
+
+  @override
+  String get consoleCmdExtractToDir => 'Kibontás egy megadott mappába';
+
+  @override
+  String get consoleCmdExtractFlat => 'Kibontás almappák nélkül';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Archívum létrehozása vagy frissítése';
+
+  @override
+  String get consoleCmdCreateZip => 'ZIP archívum létrehozása';
+
+  @override
+  String get consoleCmdTest => 'Az archívum épségének ellenőrzése';
+
+  @override
+  String get consoleCmdDelete => 'Fájl törlése az archívumból';
+
+  @override
+  String get consoleCmdInfo => 'Információk megjelenítése a 7zipről';
+
+  @override
+  String get consoleOptPassword => 'Az archívum védelme jelszóval';
+
+  @override
+  String get consoleOptEncryptHeaders => 'A fájlnevek titkosítása is (csak 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Tömörítési szint (0 = nincs, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Többszálú tömörítés engedélyezése';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Felosztás kötetekre (pl. -v100m = 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Almappák rekurzív feldolgozása';
+
+  @override
+  String get consoleOptYesAll => 'Minden megerősítésre „igen” válasz';
+
+  @override
+  String get consoleOptOutputDir => 'Kimeneti mappa a kibontáshoz';
+
+  @override
+  String get consoleOptExclude => 'Fájlok kizárása (pl. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Titkosított archívum rejtett nevekkel';
+
+  @override
+  String get consoleExVolumes => '50 MB-os kötetekre bontott archívum';
+
+  @override
+  String get consoleExUltra => 'Ultra tömörítés (lassú, legkisebb fájl)';
+
+  @override
+  String get consoleExSingleFile => 'Egyetlen fájl kibontása';
+
+  @override
+  String get consoleExTechnical => 'Listázás technikai részletekkel';
+
+  @override
+  String get consoleCopy => 'Másolás';
+
+  @override
+  String get consoleCopied => 'Másolva!';
+
+  @override
+  String get consoleInfoNote =>
+      'A mac7z saját 7zz binárissal érkezik. Az argumentumok módosítás nélkül, pontosan úgy kerülnek továbbításra, ahogy meg vannak adva. Minden, a 7zz-hez érvényes parancs ugyanúgy működik a mac7z-zel is.';
 }

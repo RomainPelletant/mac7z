@@ -59,8 +59,54 @@ jobs:
       - name: Download 7zz binary
         run: bash scripts/setup.sh
 
+      - name: Import signing certificate
+        env:
+          MACOS_CERTIFICATE_P12: ${{ secrets.APPLE_CERTIFICATE }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+        run: |
+          echo "$MACOS_CERTIFICATE_P12" | base64 --decode > certificate.p12
+
+          security create-keychain -p temp123 build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p temp123 build.keychain
+          security import certificate.p12 \
+            -k build.keychain \
+            -P "$MACOS_CERTIFICATE_PASSWORD" \
+            -T /usr/bin/codesign \
+            -T /usr/bin/security
+
+          security set-key-partition-list \
+            -S apple-tool:,apple:,codesign: \
+            -s -k temp123 build.keychain
+
+
       - name: Build macOS (${{ matrix.arch }})
         run: flutter build macos --release
+
+      - name: Upload macOS artifact (${{ matrix.arch }})
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac7z-macos-${{ matrix.arch }}
+          path: build/macos/Build/Products/Release/mac7z.app
+          if-no-files-found: error
+
+  audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Dart pub audit
+        run: dart pub audit
 
   build-linux:
     needs: lint
@@ -113,3 +159,10 @@ jobs:
 
       - name: Build Linux (${{ matrix.arch }})
         run: flutter build linux --release
+
+      - name: Upload Linux artifact (${{ matrix.arch }})
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac7z-linux-${{ matrix.arch }}
+          path: build/linux/**/release/bundle
+          if-no-files-found: error

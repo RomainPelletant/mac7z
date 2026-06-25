@@ -342,4 +342,111 @@ class AppLocalizationsKo extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ 아카이브 생성: $path';
   }
+
+  @override
+  String get consoleSectionConfig => '구성';
+
+  @override
+  String get consoleSectionCommands => '주요 명령';
+
+  @override
+  String get consoleSectionOptions => '자주 쓰는 옵션';
+
+  @override
+  String get consoleSectionExamples => '고급 예제';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z는 모든 인수를 내장된 7zip 바이너리에 그대로 전달합니다. Terminal에서 7zz를 쓰듯이 동일하게 사용할 수 있습니다.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Terminal에서 mac7z를 일반 명령처럼 사용하려면 shell에 별칭을 추가하세요.';
+
+  @override
+  String get consoleSetupOutroMac =>
+      '~/.zshrc 또는 ~/.bash_profile에 이 줄을 추가하면 영구적으로 사용할 수 있습니다. 설정 후에는 표준 7zip 명령에서 7zz 대신 mac7z만 쓰면 됩니다.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      '~/.bashrc 또는 ~/.zshrc에 이 줄을 추가하면 영구적으로 사용할 수 있습니다. 설정 후에는 표준 7zip 명령에서 7zz 대신 mac7z만 쓰면 됩니다.';
+
+  @override
+  String get consoleCmdList => '압축 파일 내용 보기';
+
+  @override
+  String get consoleCmdExtractFull => '전체 경로를 유지하며 추출';
+
+  @override
+  String get consoleCmdExtractToDir => '지정한 폴더로 추출';
+
+  @override
+  String get consoleCmdExtractFlat => '하위 폴더 없이 평면 추출';
+
+  @override
+  String get consoleCmdCreateUpdate => '압축 파일 생성 또는 업데이트';
+
+  @override
+  String get consoleCmdCreateZip => 'ZIP 압축 파일 만들기';
+
+  @override
+  String get consoleCmdTest => '압축 파일 무결성 검사';
+
+  @override
+  String get consoleCmdDelete => '압축 파일에서 파일 삭제';
+
+  @override
+  String get consoleCmdInfo => '7zip 정보 표시';
+
+  @override
+  String get consoleOptPassword => '암호로 압축 파일 보호';
+
+  @override
+  String get consoleOptEncryptHeaders => '파일 이름도 암호화(7z 전용)';
+
+  @override
+  String get consoleOptCompressionLevel => '압축 수준 (0 = 없음, 9 = 최고)';
+
+  @override
+  String get consoleOptMultithread => '멀티스레드 압축 활성화';
+
+  @override
+  String get consoleOptSplitVolumes => '분할 압축 생성 (예: 100MB는 -v100m)';
+
+  @override
+  String get consoleOptRecursive => '하위 폴더 재귀 처리';
+
+  @override
+  String get consoleOptYesAll => '모든 확인에 \"예\"로 응답';
+
+  @override
+  String get consoleOptOutputDir => '추출 대상 폴더';
+
+  @override
+  String get consoleOptExclude => '파일 제외 (예: -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => '이름을 숨긴 암호화 압축 파일';
+
+  @override
+  String get consoleExVolumes => '50MB 단위로 분할된 압축 파일';
+
+  @override
+  String get consoleExUltra => '초고압축 (느리지만 가장 작은 파일)';
+
+  @override
+  String get consoleExSingleFile => '단일 파일 추출';
+
+  @override
+  String get consoleExTechnical => '기술 세부 정보와 함께 목록 표시';
+
+  @override
+  String get consoleCopy => '복사';
+
+  @override
+  String get consoleCopied => '복사됨!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z에는 자체 7zz 바이너리가 포함되어 있습니다. 인수는 수정 없이 그대로 전달됩니다. 7zz에서 유효한 모든 명령은 mac7z에서도 동일하게 동작합니다.';
 }

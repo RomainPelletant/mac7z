@@ -4,58 +4,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:path/path.dart' as p;
 import '../models/archive_entry.dart';
+import 'archive_backend.dart';
+import 'archive_types.dart';
 
-// ── Compression enums ─────────────────────────────────────────────────────────
-
-enum ArchiveFormat {
-  sevenZip('7z', '-t7z', true, true),
-  zip('zip', '-tzip', true, false),
-  tar('tar', '-ttar', false, false),
-  tarGz('tar.gz', null, true, false),
-  tarBz2('tar.bz2', null, true, false),
-  tarXz('tar.xz', null, true, false);
-
-  /// File extension shown in UI and appended to output filename.
-  final String label;
-
-  /// 7zip `-t` flag, or null to let 7zip infer from extension (compound tars).
-  final String? typeFlag;
-
-  /// Whether this format supports a meaningful compression level.
-  final bool supportsLevel;
-
-  /// Whether this format supports header + content encryption.
-  final bool supportsEncryption;
-
-  const ArchiveFormat(
-      this.label, this.typeFlag, this.supportsLevel, this.supportsEncryption);
-}
-
-enum CompressionLevel {
-  store('Store', 0),
-  fastest('Fastest', 1),
-  fast('Fast', 3),
-  normal('Normal', 5),
-  maximum('Maximum', 7),
-  ultra('Ultra', 9);
-
-  final String label;
-  final int value;
-  const CompressionLevel(this.label, this.value);
-}
-
-enum SplitSize {
-  none('No split', null),
-  mb10('10 MB', '10m'),
-  mb100('100 MB', '100m'),
-  mb700('700 MB (CD)', '700m'),
-  gb1('1 GB', '1g'),
-  gb4('4 GB (FAT32)', '4g');
-
-  final String label;
-  final String? flag;
-  const SplitSize(this.label, this.flag);
-}
+export 'archive_types.dart';
 
 // ── Thrown when a split archive has missing volumes. ─────────────────────────
 
@@ -69,12 +21,28 @@ class SplitVolumeException implements Exception {
   String toString() => 'Split archive incomplete: volumes are missing.';
 }
 
-class SevenZipService {
-  /// Finds the 7z/7zz binary on the current platform.
-  static String? _binaryPath;
+// ── SevenZipService ───────────────────────────────────────────────────────────
 
-  /// Returns the path of the 7zz binary bundled inside the macOS app bundle
-  /// (Contents/Resources/7zz), and ensures it is executable.
+/// Concrete [ArchiveBackend] backed by the 7zz binary (bundled or system).
+///
+/// [preferSystem] controls binary resolution priority:
+///   - false (default / bundled): bundled binary first, system fallback.
+///   - true (system): skip bundled binary, use system-installed 7z/7zz only.
+class SevenZipService implements ArchiveBackend {
+  SevenZipService({this.preferSystem = false});
+
+  final bool preferSystem;
+
+  /// Cached resolved binary path for this instance.
+  String? _binaryPath;
+
+  @override
+  BackendType get type =>
+      preferSystem ? BackendType.system : BackendType.bundled;
+
+  // ── Binary resolution ───────────────────────────────────────────────────────
+
+  /// Returns the path of the 7zz binary bundled inside the app bundle.
   static Future<String?> _bundledBinaryPath() async {
     try {
       if (Platform.isMacOS) {
@@ -100,23 +68,26 @@ class SevenZipService {
     }
   }
 
-  static Future<String?> findBinary() async {
+  @override
+  Future<String?> findBinary() async {
     if (_binaryPath != null) return _binaryPath;
 
-    // 1. Bundled binary inside the app bundle (no installation required)
-    final bundled = await _bundledBinaryPath();
-    if (bundled != null) {
-      try {
-        final result = await Process.run(bundled, ['i']);
-        if (result.exitCode == 0 ||
-            result.stdout.toString().contains('7-Zip')) {
-          _binaryPath = bundled;
-          return _binaryPath;
-        }
-      } catch (_) {}
+    if (!preferSystem) {
+      // 1. Try bundled binary first
+      final bundled = await _bundledBinaryPath();
+      if (bundled != null) {
+        try {
+          final result = await Process.run(bundled, ['i']);
+          if (result.exitCode == 0 ||
+              result.stdout.toString().contains('7-Zip')) {
+            _binaryPath = bundled;
+            return _binaryPath;
+          }
+        } catch (_) {}
+      }
     }
 
-    // 2. Fallback: system-installed binaries
+    // 2. System-installed binaries
     final candidates = Platform.isWindows
         ? [
             r'C:\Program Files\7-Zip\7z.exe',
@@ -149,9 +120,10 @@ class SevenZipService {
     return null;
   }
 
-  /// Lists entries in an archive without extracting.
-  /// Handles compound archives (.tar.xz, .tar.gz, .tar.bz2) transparently.
-  static Future<List<ArchiveEntry>> listContents(
+  // ── List ────────────────────────────────────────────────────────────────────
+
+  @override
+  Future<List<ArchiveEntry>> listContents(
     String archivePath, {
     String? password,
   }) async {
@@ -159,8 +131,6 @@ class SevenZipService {
     if (bin == null)
       throw Exception('7zip binary not found. Please install 7-Zip.');
 
-    // Always pass -p to avoid interactive prompts. Empty string is ignored
-    // for non-encrypted archives; for encrypted ones it forces exit code 2.
     final args = ['l', '-slt', '-p${password ?? ""}', '--', archivePath];
     final result = await Process.run(bin, args, runInShell: Platform.isWindows);
 
@@ -169,7 +139,6 @@ class SevenZipService {
     final allOutput = stdout + stderr;
 
     if (_isVolumeError(allOutput)) {
-      // Parse whatever 7zip managed to output before bailing out
       throw SplitVolumeException(parseListOutput(stdout));
     }
     if (result.exitCode == 2 || _isPasswordError(allOutput)) {
@@ -181,8 +150,6 @@ class SevenZipService {
 
     final entries = parseListOutput(stdout);
 
-    // Compound archive (.tar.xz, .tar.gz, etc.) : 7zip ne voit que le .tar
-    // interne. On pipe la décompression vers un second listing du tar.
     if (entries.length == 1 &&
         entries.first.extension == 'tar' &&
         !entries.first.isDirectory) {
@@ -192,102 +159,10 @@ class SevenZipService {
     return entries;
   }
 
-  /// Returns true if [output] (stderr/stdout) indicates a password error.
-  /// Covers the various messages 7zip emits across formats and versions.
-  /// Returns true if [output] indicates a missing/incomplete split volume.
-  /// Must be checked BEFORE [_isPasswordError] since 7zip reuses exit code 2
-  /// for both missing volumes and wrong passwords.
-  static bool _isVolumeError(String output) {
-    final lower = output.toLowerCase();
-    return lower.contains('volumes are absent') ||
-        lower.contains('volume is absent') ||
-        lower.contains('cannot find volume') ||
-        lower.contains('cannot find next volume') ||
-        lower.contains('no more volumes') ||
-        lower.contains('there are no split') ||
-        (lower.contains('volume') && lower.contains('missing'));
-  }
+  // ── Extract single file ─────────────────────────────────────────────────────
 
-  /// Returns true if [output] (stderr/stdout) indicates a password error.
-  /// [_isVolumeError] is checked first so volume errors are never misclassified.
-  static bool _isPasswordError(String output) {
-    if (_isVolumeError(output)) return false;
-    final lower = output.toLowerCase();
-    return lower.contains('wrong password') ||
-        lower.contains('incorrect password') ||
-        lower.contains('password') && lower.contains('error') ||
-        lower.contains('cannot open encrypted') ||
-        lower.contains('can not open encrypted') ||
-        lower.contains('data error in encrypted file');
-  }
-
-  /// Retourne le type 7zip de la couche externe d'une archive composée.
-  @visibleForTesting
-  static String? outerType(String archivePath) {
-    final lower = archivePath.toLowerCase();
-    if (lower.endsWith('.tar.gz') || lower.endsWith('.tgz')) return 'gzip';
-    if (lower.endsWith('.tar.bz2') ||
-        lower.endsWith('.tbz2') ||
-        lower.endsWith('.tbz')) return 'bzip2';
-    if (lower.endsWith('.tar.xz') || lower.endsWith('.txz')) return 'xz';
-    if (lower.endsWith('.tar.zst')) return 'zstd';
-    return null;
-  }
-
-  /// Extrait UNIQUEMENT la couche externe (xz/gz/bz2) vers un dossier temp,
-  /// liste le .tar résultant, puis nettoie.
-  static Future<List<ArchiveEntry>> _listCompoundTar(
-    String bin,
-    String archivePath, {
-    String? password,
-  }) async {
-    final tempDir = await Directory.systemTemp.createTemp('unzipper7_');
-    try {
-      final outerType = SevenZipService.outerType(archivePath);
-
-      // Étape 1 : extraire SEULEMENT la couche externe → produit le .tar
-      final extractArgs = [
-        'e', archivePath,
-        if (outerType != null)
-          '-t$outerType', // force le type outer → pas de récursion tar
-        '-o${tempDir.path}',
-        '-y',
-        if (password != null) '-p$password',
-      ];
-      final extractResult = await Process.run(bin, extractArgs);
-      if (extractResult.exitCode != 0 && extractResult.exitCode != 1) {
-        throw Exception(
-            '7zip error (compound extract): ${extractResult.stderr}');
-      }
-
-      // Étape 2 : trouver le .tar extrait
-      final tarFiles = tempDir
-          .listSync()
-          .whereType<File>()
-          .where((f) => f.path.toLowerCase().endsWith('.tar'))
-          .toList();
-      if (tarFiles.isEmpty) return [];
-
-      // Étape 3 : lister le .tar
-      final listArgs = ['l', '-slt', '--', tarFiles.first.path];
-      final listResult = await Process.run(bin, listArgs);
-      return parseListOutput(listResult.stdout.toString());
-    } finally {
-      await tempDir.delete(recursive: true);
-    }
-  }
-
-  /// Extracts a single [entryPath] from [archivePath] into [outputDir].
-  ///
-  /// [outputDir] must already exist and is managed by the caller
-  /// (e.g. [TempPreviewManager]). The caller is responsible for cleanup.
-  ///
-  /// Works transparently with compound archives (.tar.xz, .tar.gz, etc.):
-  /// the outer layer is decompressed first inside [outputDir], then the
-  /// specific entry is extracted from the inner .tar.
-  ///
-  /// Returns the absolute path of the extracted file.
-  static Future<String> extractSingleFile(
+  @override
+  Future<String> extractSingleFile(
     String archivePath,
     String entryPath, {
     required Directory outputDir,
@@ -297,19 +172,12 @@ class SevenZipService {
     if (bin == null) throw Exception('7zip binary not found.');
 
     final tempDir = outputDir;
-
     final outer = outerType(archivePath);
 
     if (outer != null) {
-      // ── Compound archive (.tar.xz, .tar.gz, …) ────────────────────────────
-      // Step 1: extract outer compression layer → obtain .tar in tempDir
       final outerArgs = [
-        'e',
-        archivePath,
-        '-t$outer',
-        '-o${tempDir.path}',
-        '-y',
-        '-p${password ?? ""}',
+        'e', archivePath, '-t$outer',
+        '-o${tempDir.path}', '-y', '-p${password ?? ""}',
       ];
       final outerResult = await Process.run(bin, outerArgs);
       final outerStderr = outerResult.stderr.toString();
@@ -320,7 +188,6 @@ class SevenZipService {
         throw Exception('Outer extraction failed: $outerStderr');
       }
 
-      // Step 2: find the .tar
       final tarFiles = tempDir
           .listSync()
           .whereType<File>()
@@ -329,30 +196,19 @@ class SevenZipService {
       if (tarFiles.isEmpty)
         throw Exception('Inner .tar not found after outer extraction.');
 
-      // Step 3: extract specific file from the .tar
       final innerArgs = [
-        'e',
-        tarFiles.first.path,
-        '-o${tempDir.path}',
-        '-y',
-        entryPath,
+        'e', tarFiles.first.path, '-o${tempDir.path}', '-y', entryPath,
       ];
       final innerResult = await Process.run(bin, innerArgs);
       if (innerResult.exitCode != 0 && innerResult.exitCode != 1) {
         throw Exception('Inner extraction failed: ${innerResult.stderr}');
       }
 
-      // Clean up the intermediate .tar
       await tarFiles.first.delete();
     } else {
-      // ── Simple archive ─────────────────────────────────────────────────────
       final args = [
-        'e',
-        archivePath,
-        '-o${tempDir.path}',
-        '-y',
-        '-p${password ?? ""}',
-        entryPath,
+        'e', archivePath, '-o${tempDir.path}', '-y',
+        '-p${password ?? ""}', entryPath,
       ];
       final result = await Process.run(bin, args);
       final stderr = result.stderr.toString();
@@ -364,11 +220,9 @@ class SevenZipService {
       }
     }
 
-    // Find the extracted file (7z -e strips the directory structure)
     final filename = p.basename(entryPath.replaceAll('\\', '/'));
     final extracted = File(p.join(tempDir.path, filename));
     if (!extracted.existsSync()) {
-      // Fallback: return the first non-.tar file found
       final found = tempDir
           .listSync()
           .whereType<File>()
@@ -379,12 +233,12 @@ class SevenZipService {
       return found.first.path;
     }
     return extracted.path;
-    // Caller (TempPreviewManager) is responsible for cleanup on both
-    // success and failure.
   }
 
-  /// Extracts an archive to [outputDir].
-  static Stream<ExtractionProgress> extract(
+  // ── Extract ─────────────────────────────────────────────────────────────────
+
+  @override
+  Stream<ExtractionProgress> extract(
     String archivePath,
     String outputDir, {
     String? password,
@@ -393,41 +247,23 @@ class SevenZipService {
     final bin = await findBinary();
     if (bin == null) throw Exception('7zip binary not found.');
 
-    final args = [
-      'x',
-      archivePath,
-      '-o$outputDir',
-      '-y',
-      if (password != null) '-p$password',
-      '--',
-      archivePath,
-    ];
-
-    // Correct args: remove duplicate archivePath
     final extractArgs = [
-      'x',
-      archivePath,
-      '-o$outputDir',
-      '-y',
+      'x', archivePath, '-o$outputDir', '-y',
       if (password != null) '-p$password',
     ];
 
     final process =
         await Process.start(bin, extractArgs, runInShell: Platform.isWindows);
 
-    // Collect stderr concurrently to avoid pipe-buffer deadlocks and to
-    // detect password errors regardless of exit code.
     final stderrFuture = process.stderr.transform(utf8.decoder).join();
 
     int extracted = 0;
-
     await for (final line in process.stdout
         .transform(utf8.decoder)
         .transform(const LineSplitter())) {
       onLog?.call(line);
       if (line.startsWith('Extracting') || line.contains('%')) {
         extracted++;
-        // Parse percentage if present: "  5% - filename"
         final pct = RegExp(r'(\d+)%').firstMatch(line);
         if (pct != null) {
           yield ExtractionProgress(
@@ -460,11 +296,8 @@ class SevenZipService {
 
   // ── Compress ─────────────────────────────────────────────────────────────────
 
-  /// Creates an archive from [sourcePaths] at [outputPath].
-  ///
-  /// Yields [ExtractionProgress] events while the process runs.
-  /// The last event always has [ExtractionProgress.done] == true.
-  static Stream<ExtractionProgress> compress({
+  @override
+  Stream<ExtractionProgress> compress({
     required List<String> sourcePaths,
     required String outputPath,
     required ArchiveFormat format,
@@ -481,10 +314,10 @@ class SevenZipService {
       'a',
       if (format.typeFlag != null) format.typeFlag!,
       if (format.supportsLevel) '-mx=${level.value}',
-      '-mmt=on', // multithreading
+      '-mmt=on',
       if (password != null && password.isNotEmpty) ...[
         '-p$password',
-        if (format == ArchiveFormat.sevenZip) '-mhe=on', // encrypt headers
+        if (format == ArchiveFormat.sevenZip) '-mhe=on',
       ],
       if (splitSize.flag != null) '-v${splitSize.flag}',
       outputPath,
@@ -497,7 +330,6 @@ class SevenZipService {
         .transform(const Utf8Decoder(allowMalformed: true))
         .join();
 
-    // 7zip progress lines look like:  "  5% - filename.txt"  or  "  5%"
     final percentRe = RegExp(r'^\s*(\d+)%(?:\s*-\s*(.*))?$');
 
     await for (final line in process.stdout
@@ -526,15 +358,10 @@ class SevenZipService {
 
   // ── Raw pass-through ────────────────────────────────────────────────────────
 
-  /// The process currently running via [runRaw], if any.
-  /// Used by [killRaw] to terminate it.
-  static Process? _rawProcess;
+  Process? _rawProcess;
 
-  /// Runs 7zip with arbitrary [args] and streams each output line.
-  ///
-  /// The last yielded line is always `[Exit code: N]` so callers can
-  /// detect completion and parse the exit code.
-  static Stream<String> runRaw(List<String> args) async* {
+  @override
+  Stream<String> runRaw(List<String> args) async* {
     final binary = await findBinary();
     if (binary == null) {
       yield '7zip binary not found. Make sure 7zz is installed or bundled.';
@@ -553,7 +380,6 @@ class SevenZipService {
 
     _rawProcess = process;
 
-    // Merge stdout and stderr into a single ordered stream.
     final controller = StreamController<String>();
     var remaining = 2;
     void onDone() {
@@ -579,13 +405,83 @@ class SevenZipService {
     yield '[Exit code: $exitCode]';
   }
 
-  /// Kills the process currently running via [runRaw], if any.
-  static void killRaw() {
+  @override
+  void killRaw() {
     _rawProcess?.kill(ProcessSignal.sigterm);
     _rawProcess = null;
   }
 
-  // ── List / parse ─────────────────────────────────────────────────────────────
+  // ── Helpers ─────────────────────────────────────────────────────────────────
+
+  static bool _isVolumeError(String output) {
+    final lower = output.toLowerCase();
+    return lower.contains('volumes are absent') ||
+        lower.contains('volume is absent') ||
+        lower.contains('cannot find volume') ||
+        lower.contains('cannot find next volume') ||
+        lower.contains('no more volumes') ||
+        lower.contains('there are no split') ||
+        (lower.contains('volume') && lower.contains('missing'));
+  }
+
+  static bool _isPasswordError(String output) {
+    if (_isVolumeError(output)) return false;
+    final lower = output.toLowerCase();
+    return lower.contains('wrong password') ||
+        lower.contains('incorrect password') ||
+        lower.contains('password') && lower.contains('error') ||
+        lower.contains('cannot open encrypted') ||
+        lower.contains('can not open encrypted') ||
+        lower.contains('data error in encrypted file');
+  }
+
+  @visibleForTesting
+  static String? outerType(String archivePath) {
+    final lower = archivePath.toLowerCase();
+    if (lower.endsWith('.tar.gz') || lower.endsWith('.tgz')) return 'gzip';
+    if (lower.endsWith('.tar.bz2') ||
+        lower.endsWith('.tbz2') ||
+        lower.endsWith('.tbz')) return 'bzip2';
+    if (lower.endsWith('.tar.xz') || lower.endsWith('.txz')) return 'xz';
+    if (lower.endsWith('.tar.zst')) return 'zstd';
+    return null;
+  }
+
+  static Future<List<ArchiveEntry>> _listCompoundTar(
+    String bin,
+    String archivePath, {
+    String? password,
+  }) async {
+    final tempDir = await Directory.systemTemp.createTemp('unzipper7_');
+    try {
+      final outer = SevenZipService.outerType(archivePath);
+
+      final extractArgs = [
+        'e', archivePath,
+        if (outer != null) '-t$outer',
+        '-o${tempDir.path}', '-y',
+        if (password != null) '-p$password',
+      ];
+      final extractResult = await Process.run(bin, extractArgs);
+      if (extractResult.exitCode != 0 && extractResult.exitCode != 1) {
+        throw Exception(
+            '7zip error (compound extract): ${extractResult.stderr}');
+      }
+
+      final tarFiles = tempDir
+          .listSync()
+          .whereType<File>()
+          .where((f) => f.path.toLowerCase().endsWith('.tar'))
+          .toList();
+      if (tarFiles.isEmpty) return [];
+
+      final listArgs = ['l', '-slt', '--', tarFiles.first.path];
+      final listResult = await Process.run(bin, listArgs);
+      return parseListOutput(listResult.stdout.toString());
+    } finally {
+      await tempDir.delete(recursive: true);
+    }
+  }
 
   @visibleForTesting
   static List<ArchiveEntry> parseListOutput(String output) {
@@ -634,14 +530,3 @@ class SevenZipService {
   }
 }
 
-class ExtractionProgress {
-  final double percent; // -1 = unknown
-  final String currentFile;
-  final bool done;
-
-  const ExtractionProgress({
-    required this.percent,
-    required this.currentFile,
-    this.done = false,
-  });
-}

@@ -354,4 +354,113 @@ class AppLocalizationsLv extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arhīvs izveidots: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURĀCIJA';
+
+  @override
+  String get consoleSectionCommands => 'GALVENĀS KOMANDAS';
+
+  @override
+  String get consoleSectionOptions => 'BIEŽĀKĀS OPCIJAS';
+
+  @override
+  String get consoleSectionExamples => 'PAPLAŠINĀTI PIEMĒRI';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z nodod visus argumentus tieši iebūvētajam 7zip binārajam failam. Izmantojiet to Terminal tieši tāpat kā 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Izveidojiet alias savā shell vidē, lai lietotu mac7z kā parastu Terminal komandu:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Pievienojiet šo rindu savam ~/.zshrc vai ~/.bash_profile, lai tā būtu pastāvīga. Pēc iestatīšanas visas parastās 7zip komandas darbosies, aizstājot 7zz ar mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Pievienojiet šo rindu savam ~/.bashrc vai ~/.zshrc, lai tā būtu pastāvīga. Pēc iestatīšanas visas parastās 7zip komandas darbosies, aizstājot 7zz ar mac7z.';
+
+  @override
+  String get consoleCmdList => 'Parādīt arhīva saturu';
+
+  @override
+  String get consoleCmdExtractFull => 'Izvilkt ar pilniem ceļiem';
+
+  @override
+  String get consoleCmdExtractToDir => 'Izvilkt noteiktā mapē';
+
+  @override
+  String get consoleCmdExtractFlat => 'Izvilkt bez apakšmapēm';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Izveidot vai atjaunināt arhīvu';
+
+  @override
+  String get consoleCmdCreateZip => 'Izveidot ZIP arhīvu';
+
+  @override
+  String get consoleCmdTest => 'Pārbaudīt arhīva integritāti';
+
+  @override
+  String get consoleCmdDelete => 'Dzēst failu no arhīva';
+
+  @override
+  String get consoleCmdInfo => 'Parādīt informāciju par 7zip';
+
+  @override
+  String get consoleOptPassword => 'Aizsargāt arhīvu ar paroli';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Šifrēt arī failu nosaukumus (tikai 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Saspiešanas līmenis (0 = nav, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Iespējot daudzpavedienu saspiešanu';
+
+  @override
+  String get consoleOptSplitVolumes => 'Sadalīt apjomos (piem., -v100m 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Rekursīvi apstrādāt apakšmapes';
+
+  @override
+  String get consoleOptYesAll => 'Atbildēt \"jā\" uz visiem apstiprinājumiem';
+
+  @override
+  String get consoleOptOutputDir => 'Izvilkšanas mērķa mape';
+
+  @override
+  String get consoleOptExclude => 'Izslēgt failus (piem., -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Šifrēts arhīvs ar slēptiem nosaukumiem';
+
+  @override
+  String get consoleExVolumes => 'Arhīvs sadalīts 50 MB daļās';
+
+  @override
+  String get consoleExUltra => 'Ultra saspiešana (lēna, mazākais fails)';
+
+  @override
+  String get consoleExSingleFile => 'Izvilkt vienu failu';
+
+  @override
+  String get consoleExTechnical => 'Parādīt ar tehniskām detaļām';
+
+  @override
+  String get consoleCopy => 'Kopēt';
+
+  @override
+  String get consoleCopied => 'Nokopēts!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z ietver savu 7zz bināro failu. Argumenti tiek nodoti tieši tādi, kādi tie ir, bez izmaiņām. Jebkura komanda, kas der 7zz, darbosies tāpat arī ar mac7z.';
 }

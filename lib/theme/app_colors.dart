@@ -61,7 +61,7 @@ class AppColors extends ThemeExtension<AppColors> {
     surface3: Color(0xFF48484A),
     tabBar: Color(0xFF2C2C2E),
     tabIndicator: Color(0xFF48484A),
-    border: Color(0x14FFFFFF), // white 8%
+    border: Color(0x14FFFFFF),
     textPrimary: Color(0xFFF5F5F7),
     textSecondary: Color(0xFF98989D),
     textTertiary: Color(0xFF636366),
@@ -81,7 +81,7 @@ class AppColors extends ThemeExtension<AppColors> {
     surface3: Color(0xFFD1D1D6),
     tabBar: Color(0xFFE9E9EE),
     tabIndicator: Color(0xFFFFFFFF),
-    border: Color(0x14000000), // black 8%
+    border: Color(0x14000000),
     textPrimary: Color(0xFF1C1C1E),
     textSecondary: Color(0xFF636366),
     textTertiary: Color(0xFF8E8E93),

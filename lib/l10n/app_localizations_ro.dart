@@ -355,4 +355,114 @@ class AppLocalizationsRo extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arhiv creat: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'CONFIGURARE';
+
+  @override
+  String get consoleSectionCommands => 'COMENZI PRINCIPALE';
+
+  @override
+  String get consoleSectionOptions => 'OPȚIUNI FRECVENTE';
+
+  @override
+  String get consoleSectionExamples => 'EXEMPLE AVANSATE';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z transmite toate argumentele direct către binarul 7zip inclus. Folosiți-l din Terminal exact așa cum ați folosi 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Creați un alias în shell pentru a folosi mac7z ca o comandă standard în Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Adăugați această linie în ~/.zshrc sau ~/.bash_profile pentru a o face permanentă. După configurare, toate comenzile standard 7zip vor funcționa înlocuind 7zz cu mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Adăugați această linie în ~/.bashrc sau ~/.zshrc pentru a o face permanentă. După configurare, toate comenzile standard 7zip vor funcționa înlocuind 7zz cu mac7z.';
+
+  @override
+  String get consoleCmdList => 'Listează conținutul unei arhive';
+
+  @override
+  String get consoleCmdExtractFull => 'Extrage cu căile complete';
+
+  @override
+  String get consoleCmdExtractToDir => 'Extrage într-un dosar specific';
+
+  @override
+  String get consoleCmdExtractFlat => 'Extrage fără subdosare';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Creează sau actualizează o arhivă';
+
+  @override
+  String get consoleCmdCreateZip => 'Creează o arhivă ZIP';
+
+  @override
+  String get consoleCmdTest => 'Testează integritatea arhivei';
+
+  @override
+  String get consoleCmdDelete => 'Șterge un fișier din arhivă';
+
+  @override
+  String get consoleCmdInfo => 'Afișează informații despre 7zip';
+
+  @override
+  String get consoleOptPassword => 'Protejează arhiva cu o parolă';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Criptează și numele fișierelor (doar 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Nivel de compresie (0 = niciunul, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Activează compresia multi-thread';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Împarte în volume (ex.: -v100m pentru 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Procesează subdosarele recursiv';
+
+  @override
+  String get consoleOptYesAll => 'Răspunde „da” la toate confirmările';
+
+  @override
+  String get consoleOptOutputDir => 'Dosarul de destinație pentru extragere';
+
+  @override
+  String get consoleOptExclude => 'Exclude fișiere (ex.: -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Arhivă criptată cu nume ascunse';
+
+  @override
+  String get consoleExVolumes => 'Arhivă împărțită în volume de 50 MB';
+
+  @override
+  String get consoleExUltra => 'Compresie ultra (lentă, fișier minim)';
+
+  @override
+  String get consoleExSingleFile => 'Extrage un singur fișier';
+
+  @override
+  String get consoleExTechnical => 'Listează cu detalii tehnice';
+
+  @override
+  String get consoleCopy => 'Copiază';
+
+  @override
+  String get consoleCopied => 'Copiat!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z include propriul său binar 7zz. Argumentele sunt transmise exact așa cum sunt, fără modificări. Orice comandă validă pentru 7zz funcționează identic și cu mac7z.';
 }

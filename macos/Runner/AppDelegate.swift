@@ -4,10 +4,16 @@ import FlutterMacOS
 @main
 class AppDelegate: FlutterAppDelegate {
 
+  /// Pasteboard name shared with the FinderSync extension (mirrors FinderSync.swift).
+  private static let actionPasteboardName = NSPasteboard.Name("com.mac7z.action")
+  private static let actionPasteboardType = NSPasteboard.PasteboardType("com.mac7z.action")
+
   // Stores a file path received before Flutter is ready
   private var pendingFilePath: String?
-  // Stores paths received via "Compress with mac7z" before Flutter is ready
   private var pendingCompressPaths: [String]?
+  private var flutterIsReady = false
+  private var fileOpenChannelRef: FlutterMethodChannel?
+  private var fileOpenChannelHandlerInstalled = false
 
   override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
     return true
@@ -17,98 +23,147 @@ class AppDelegate: FlutterAppDelegate {
     return true
   }
 
-  // Called when the user double-clicks an archive in Finder
-  override func application(_ sender: NSApplication, openFile filename: String) -> Bool {
-    if let channel = fileOpenChannel() {
-      channel.invokeMethod("openFile", arguments: filename)
-    } else {
-      pendingFilePath = filename
-    }
-    return true
-  }
+  // MARK: - Lifecycle
 
-  // Also handles multiple files / macOS 10.15+ open URLs (file:// only)
-  override func application(_ application: NSApplication, open urls: [URL]) {
-    guard let url = urls.first, url.isFileURL else { return }
-    let path = url.path
-    if let channel = fileOpenChannel() {
-      channel.invokeMethod("openFile", arguments: path)
-    } else {
-      pendingFilePath = path
-    }
-  }
-
-  override func applicationDidFinishLaunching(_ notification: Notification) {
-    super.applicationDidFinishLaunching(notification)
-
-    // Register for the mac7z:// URL scheme dispatched by the Finder Sync Extension.
-    // Apple Events is the reliable cross-process mechanism for custom URL schemes in Cocoa.
+  override func applicationWillFinishLaunching(_ notification: Notification) {
+    // Register Apple Event handler early so cold-start URL events are not missed.
     NSAppleEventManager.shared().setEventHandler(
       self,
       andSelector: #selector(handleURLEvent(_:withReplyEvent:)),
       forEventClass: AEEventClass(kInternetEventClass),
       andEventID: AEEventID(kAEGetURL)
     )
+    NSLog("[mac7z] applicationWillFinishLaunching: Apple Event handler registered")
+  }
 
-    // Register NSServices provider (for Services submenu fallback)
+  override func applicationDidFinishLaunching(_ notification: Notification) {
+    super.applicationDidFinishLaunching(notification)
+
     NSApp.servicesProvider = self
     NSUpdateDynamicServices()
 
-    // Flush any paths that arrived before Flutter was ready
-    if let path = pendingFilePath, let channel = fileOpenChannel() {
-      channel.invokeMethod("openFile", arguments: path)
+    if !ensureFileOpenChannelInstalled() {
+      NSLog("[mac7z] applicationDidFinishLaunching: fileOpenChannel() is nil, will retry")
+    }
+
+    // Also check the pasteboard on launch (cold start from extension).
+    consumePendingPasteboardAction()
+  }
+
+  override func applicationDidBecomeActive(_ notification: Notification) {
+    // Called every time the app comes to the foreground — including when the Finder
+    // Sync Extension activates us after writing to the named pasteboard.
+    NSLog("[mac7z] applicationDidBecomeActive")
+    _ = ensureFileOpenChannelInstalled()
+    consumePendingPasteboardAction()
+  }
+
+  // MARK: - Named pasteboard IPC (primary mechanism from sandboxed FinderSync extension)
+
+  private func consumePendingPasteboardAction() {
+    let pb = NSPasteboard(name: Self.actionPasteboardName)
+
+    guard
+      let payload = pb.propertyList(forType: Self.actionPasteboardType) as? [String: Any],
+      let command = payload["command"] as? String,
+      let paths   = payload["paths"] as? [String],
+      !paths.isEmpty
+    else { return }
+
+    // Clear the pasteboard so we don't process the same action twice.
+    pb.clearContents()
+
+    NSLog("[mac7z] consumePendingPasteboardAction: command=%@, paths=%@", command, paths)
+    NSApp.activate(ignoringOtherApps: true)
+
+    if command == "extract", let path = paths.first {
+      pendingFilePath = path
+      pendingCompressPaths = nil
+    } else if command == "compress" {
+      pendingCompressPaths = paths
       pendingFilePath = nil
     }
-    if let paths = pendingCompressPaths, let channel = fileOpenChannel() {
-      channel.invokeMethod("compressFiles", arguments: paths)
-      pendingCompressPaths = nil
+
+    scheduleFlush()
+  }
+
+  // MARK: - File / URL open delegates (double-click in Finder, drag onto dock, etc.)
+
+  override func application(_ sender: NSApplication, openFile filename: String) -> Bool {
+    NSLog("[mac7z] openFile (legacy): %@", filename)
+    storePendingFile(filename)
+    scheduleFlush()
+    return true
+  }
+
+  override func application(_ application: NSApplication, open urls: [URL]) {
+    NSLog("[mac7z] application:open:urls count=%d", urls.count)
+    for url in urls {
+      if url.isFileURL {
+        NSLog("[mac7z] application:open: file URL: %@", url.path)
+        storePendingFile(url.path)
+        scheduleFlush()
+      } else if url.scheme == "mac7z" {
+        NSLog("[mac7z] application:open: mac7z URL: %@", url.absoluteString)
+        handleMac7zURL(url)
+      }
     }
   }
 
-  // MARK: - mac7z:// URL scheme (from Finder Sync Extension)
+  // MARK: - Apple Event handler (URL scheme fallback for non-sandboxed / Release builds)
 
-  /// Handles mac7z://extract?b64=<base64> and mac7z://compress?b64=<base64>
   @objc func handleURLEvent(
     _ event: NSAppleEventDescriptor,
     withReplyEvent: NSAppleEventDescriptor
   ) {
     guard
-      let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue,
-      let url       = URL(string: urlString),
-      url.scheme    == "mac7z"
-    else { return }
+      let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue
+    else { NSLog("[mac7z] handleURLEvent: no urlString"); return }
 
-    let command = url.host ?? ""  // "extract" or "compress"
+    NSLog("[mac7z] handleURLEvent: %@", urlString)
 
-    // Decode base64 paths
+    guard
+      let url = URL(string: urlString),
+      url.scheme == "mac7z"
+    else { NSLog("[mac7z] handleURLEvent: invalid URL or scheme"); return }
+
+    handleMac7zURL(url)
+  }
+
+  // MARK: - Shared mac7z:// URL parser
+
+  private func handleMac7zURL(_ url: URL) {
+    let command = url.host ?? ""
+    NSLog("[mac7z] handleMac7zURL: command=%@", command)
+
     guard
       let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-      let b64        = components.queryItems?.first(where: { $0.name == "b64" })?.value,
-      let data       = Data(base64Encoded: b64),
-      let joined     = String(data: data, encoding: .utf8)
-    else { return }
+      let b64        = components.queryItems?.first(where: { $0.name == "b64" })?.value
+    else { NSLog("[mac7z] handleMac7zURL: missing b64 param"); return }
+
+    guard
+      let data   = Data(base64Encoded: b64),
+      let joined = String(data: data, encoding: .utf8)
+    else { NSLog("[mac7z] handleMac7zURL: base64 decode failed"); return }
 
     let paths = joined.components(separatedBy: "\n").filter { !$0.isEmpty }
     guard !paths.isEmpty else { return }
 
+    NSLog("[mac7z] handleMac7zURL: paths=%@", paths)
     NSApp.activate(ignoringOtherApps: true)
 
     if command == "extract", let path = paths.first {
-      if let channel = fileOpenChannel() {
-        channel.invokeMethod("openFile", arguments: path)
-      } else {
-        pendingFilePath = path
-      }
+      pendingFilePath = path
+      pendingCompressPaths = nil
     } else if command == "compress" {
-      if let channel = fileOpenChannel() {
-        channel.invokeMethod("compressFiles", arguments: paths)
-      } else {
-        pendingCompressPaths = paths
-      }
+      pendingCompressPaths = paths
+      pendingFilePath = nil
     }
+
+    scheduleFlush()
   }
 
-  // MARK: - NSServices (Services submenu fallback)
+  // MARK: - NSServices (Services submenu)
 
   @objc func extractWithMac7z(
     _ pboard: NSPasteboard,
@@ -117,12 +172,10 @@ class AppDelegate: FlutterAppDelegate {
   ) {
     let paths = filePaths(from: pboard)
     guard let path = paths.first else { return }
+    NSLog("[mac7z] extractWithMac7z (service): %@", path)
     NSApp.activate(ignoringOtherApps: true)
-    if let channel = fileOpenChannel() {
-      channel.invokeMethod("openFile", arguments: path)
-    } else {
-      pendingFilePath = path
-    }
+    storePendingFile(path)
+    scheduleFlush()
   }
 
   @objc func compressWithMac7z(
@@ -132,11 +185,47 @@ class AppDelegate: FlutterAppDelegate {
   ) {
     let paths = filePaths(from: pboard)
     guard !paths.isEmpty else { return }
+    NSLog("[mac7z] compressWithMac7z (service): count=%d", paths.count)
     NSApp.activate(ignoringOtherApps: true)
-    if let channel = fileOpenChannel() {
+    pendingCompressPaths = paths
+    pendingFilePath = nil
+    scheduleFlush()
+  }
+
+  // MARK: - Pending delivery
+
+  private func storePendingFile(_ path: String) {
+    pendingFilePath = path
+    pendingCompressPaths = nil
+  }
+
+  private func scheduleFlush() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+      _ = self?.ensureFileOpenChannelInstalled()
+      self?.flushPendingToFlutter()
+    }
+  }
+
+  private func flushPendingToFlutter() {
+    guard flutterIsReady else {
+      NSLog("[mac7z] flushPendingToFlutter: not ready yet (flutterIsReady=%d)", flutterIsReady ? 1 : 0)
+      return
+    }
+    guard let channel = fileOpenChannel() else {
+      NSLog("[mac7z] flushPendingToFlutter: channel unavailable, will retry")
+      scheduleFlush()
+      return
+    }
+    if let path = pendingFilePath {
+      NSLog("[mac7z] flushPendingToFlutter: invoking openFile path=%@", path)
+      pendingFilePath = nil
+      channel.invokeMethod("openFile", arguments: path)
+    } else if let paths = pendingCompressPaths {
+      NSLog("[mac7z] flushPendingToFlutter: invoking compressFiles count=%d", paths.count)
+      pendingCompressPaths = nil
       channel.invokeMethod("compressFiles", arguments: paths)
     } else {
-      pendingCompressPaths = paths
+      NSLog("[mac7z] flushPendingToFlutter: nothing pending")
     }
   }
 
@@ -155,12 +244,37 @@ class AppDelegate: FlutterAppDelegate {
   }
 
   private func fileOpenChannel() -> FlutterMethodChannel? {
+    if let channel = fileOpenChannelRef {
+      return channel
+    }
     guard
       let controller = mainFlutterWindow?.contentViewController as? FlutterViewController
     else { return nil }
-    return FlutterMethodChannel(
+    let channel = FlutterMethodChannel(
       name: "com.mac7z/file_open",
       binaryMessenger: controller.engine.binaryMessenger
     )
+    fileOpenChannelRef = channel
+    return channel
+  }
+
+  @discardableResult
+  private func ensureFileOpenChannelInstalled() -> Bool {
+    guard let channel = fileOpenChannel() else { return false }
+    guard !fileOpenChannelHandlerInstalled else { return true }
+
+    NSLog("[mac7z] ensureFileOpenChannelInstalled: registering handler")
+    channel.setMethodCallHandler { [weak self] call, result in
+      if call.method == "flutterReady" {
+        NSLog("[mac7z] flutterReady received, pending=%@", self?.pendingFilePath ?? "nil")
+        self?.flutterIsReady = true
+        result(true)
+        self?.flushPendingToFlutter()
+      } else {
+        result(FlutterMethodNotImplemented)
+      }
+    }
+    fileOpenChannelHandlerInstalled = true
+    return true
   }
 }

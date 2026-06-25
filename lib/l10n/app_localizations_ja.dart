@@ -342,4 +342,111 @@ class AppLocalizationsJa extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ アーカイブを作成: $path';
   }
+
+  @override
+  String get consoleSectionConfig => '設定';
+
+  @override
+  String get consoleSectionCommands => '主なコマンド';
+
+  @override
+  String get consoleSectionOptions => 'よく使うオプション';
+
+  @override
+  String get consoleSectionExamples => '応用例';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z はすべての引数を内蔵された 7zip バイナリにそのまま渡します。Terminal から 7zz と同じ感覚で使用できます。';
+
+  @override
+  String get consoleSetupIntro =>
+      'Terminal で mac7z を標準コマンドとして使うには、shell にエイリアスを作成します。';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'この行を ~/.zshrc または ~/.bash_profile に追加すると永続化できます。設定後は、通常の 7zip コマンドで 7zz を mac7z に置き換えるだけで動作します。';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'この行を ~/.bashrc または ~/.zshrc に追加すると永続化できます。設定後は、通常の 7zip コマンドで 7zz を mac7z に置き換えるだけで動作します。';
+
+  @override
+  String get consoleCmdList => 'アーカイブ内容を一覧表示';
+
+  @override
+  String get consoleCmdExtractFull => '完全なパスを保持して展開';
+
+  @override
+  String get consoleCmdExtractToDir => '指定したフォルダーに展開';
+
+  @override
+  String get consoleCmdExtractFlat => 'サブフォルダーなしで展開';
+
+  @override
+  String get consoleCmdCreateUpdate => 'アーカイブを作成または更新';
+
+  @override
+  String get consoleCmdCreateZip => 'ZIP アーカイブを作成';
+
+  @override
+  String get consoleCmdTest => 'アーカイブの整合性を確認';
+
+  @override
+  String get consoleCmdDelete => 'アーカイブからファイルを削除';
+
+  @override
+  String get consoleCmdInfo => '7zip の情報を表示';
+
+  @override
+  String get consoleOptPassword => 'パスワードでアーカイブを保護';
+
+  @override
+  String get consoleOptEncryptHeaders => 'ファイル名も暗号化する（7z のみ）';
+
+  @override
+  String get consoleOptCompressionLevel => '圧縮レベル（0 = なし、9 = 最大）';
+
+  @override
+  String get consoleOptMultithread => 'マルチスレッド圧縮を有効化';
+
+  @override
+  String get consoleOptSplitVolumes => '分割ボリュームを作成（例: 100MB は -v100m）';
+
+  @override
+  String get consoleOptRecursive => 'サブフォルダーを再帰的に処理';
+
+  @override
+  String get consoleOptYesAll => 'すべての確認に「はい」で答える';
+
+  @override
+  String get consoleOptOutputDir => '展開先フォルダー';
+
+  @override
+  String get consoleOptExclude => 'ファイルを除外（例: -x!*.log）';
+
+  @override
+  String get consoleExEncrypted => '名前を隠した暗号化アーカイブ';
+
+  @override
+  String get consoleExVolumes => '50MB ごとに分割したアーカイブ';
+
+  @override
+  String get consoleExUltra => '超圧縮（低速・最小サイズ）';
+
+  @override
+  String get consoleExSingleFile => '単一ファイルを展開';
+
+  @override
+  String get consoleExTechnical => '技術的な詳細付きで一覧表示';
+
+  @override
+  String get consoleCopy => 'コピー';
+
+  @override
+  String get consoleCopied => 'コピーしました';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z には独自の 7zz バイナリが同梱されています。引数は変更されず、そのまま渡されます。7zz で有効なコマンドは mac7z でも同じように動作します。';
 }

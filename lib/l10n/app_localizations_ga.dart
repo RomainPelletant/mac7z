@@ -352,4 +352,114 @@ class AppLocalizationsGa extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Faisnéis cruthaithe: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'CUMRAÍOCHT';
+
+  @override
+  String get consoleSectionCommands => 'PRÍOMHORDUITHE';
+
+  @override
+  String get consoleSectionOptions => 'ROGHANNA COITIANTA';
+
+  @override
+  String get consoleSectionExamples => 'SAMPLAÍ CUIDEACHTA';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'Cuireann mac7z gach argóint ar aghaidh go díreach chuig an dénártha 7zip atá san áireamh. Úsáid é ón Terminal díreach mar a d’úsáidfeá 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Cruthaigh ailias i do shell chun mac7z a úsáid mar ghnáthordú sa Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Cuir an líne seo le do ~/.zshrc nó ~/.bash_profile chun í a dhéanamh buan. Nuair a bheidh sé socraithe, oibreoidh gach gnáthordú 7zip trí mac7z a chur in áit 7zz.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Cuir an líne seo le do ~/.bashrc nó ~/.zshrc chun í a dhéanamh buan. Nuair a bheidh sé socraithe, oibreoidh gach gnáthordú 7zip trí mac7z a chur in áit 7zz.';
+
+  @override
+  String get consoleCmdList => 'Liostaigh ábhar cartlainne';
+
+  @override
+  String get consoleCmdExtractFull => 'Bain amach le cosáin iomlána';
+
+  @override
+  String get consoleCmdExtractToDir => 'Bain amach chuig fillteán sonrach';
+
+  @override
+  String get consoleCmdExtractFlat => 'Bain amach gan fofhillteáin';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Cruthaigh nó nuashonraigh cartlann';
+
+  @override
+  String get consoleCmdCreateZip => 'Cruthaigh cartlann ZIP';
+
+  @override
+  String get consoleCmdTest => 'Tástáil sláine na cartlainne';
+
+  @override
+  String get consoleCmdDelete => 'Scrios comhad ó chartlann';
+
+  @override
+  String get consoleCmdInfo => 'Taispeáin eolas faoi 7zip';
+
+  @override
+  String get consoleOptPassword => 'Cosain an chartlann le focal faire';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Criptigh ainmneacha comhad freisin (7z amháin)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Leibhéal comhbhrúite (0 = gan aon, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Cumasaigh comhbhrú ilshnáithe';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Roinn ina imleabhair (m.sh. -v100m do 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Próiseáil fofhillteáin go hathchúrsach';
+
+  @override
+  String get consoleOptYesAll => 'Freagair \"tá\" do gach dearbhú';
+
+  @override
+  String get consoleOptOutputDir => 'Fillteán sprice don eastóscadh';
+
+  @override
+  String get consoleOptExclude => 'Fág comhaid ar lár (m.sh. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Cartlann chriptithe le hainmneacha ceilte';
+
+  @override
+  String get consoleExVolumes => 'Cartlann roinnte ina himleabhair 50 MB';
+
+  @override
+  String get consoleExUltra => 'Sár-chomhbhrú (mall, an comhad is lú)';
+
+  @override
+  String get consoleExSingleFile => 'Bain amach comhad amháin';
+
+  @override
+  String get consoleExTechnical => 'Liostaigh le sonraí teicniúla';
+
+  @override
+  String get consoleCopy => 'Cóipeáil';
+
+  @override
+  String get consoleCopied => 'Cóipeáilte!';
+
+  @override
+  String get consoleInfoNote =>
+      'Tagann mac7z lena dhénártha 7zz féin. Cuirtear na hargóintí ar aghaidh díreach mar atá siad, gan athrú. Oibríonn aon ordú bailí do 7zz ar an mbealach céanna le mac7z.';
 }

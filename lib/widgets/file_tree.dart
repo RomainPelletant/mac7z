@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/material.dart';
 import 'package:mac7z/l10n/app_localizations.dart';
 import 'package:mac7z/theme/app_colors.dart';
@@ -52,43 +51,70 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
   /// - dossiers avant fichiers à chaque niveau
   /// - ordre alphabétique (insensible à la casse) au sein d'un même niveau
   static List<ArchiveEntry> _sortTree(List<ArchiveEntry> entries) {
-    final list = List<ArchiveEntry>.from(entries);
-    list.sort((a, b) {
-      final aParts = a.path
-          .replaceAll('\\', '/')
-          .split('/')
-          .where((s) => s.isNotEmpty)
-          .toList();
-      final bParts = b.path
-          .replaceAll('\\', '/')
-          .split('/')
-          .where((s) => s.isNotEmpty)
-          .toList();
+    final childrenByParent = <String, List<_TreeNode>>{};
 
-      for (int i = 0; i < aParts.length && i < bParts.length; i++) {
-        final ac = aParts[i].toLowerCase();
-        final bc = bParts[i].toLowerCase();
-        if (ac == bc) continue;
+    for (final entry in entries) {
+      final parts = _pathParts(entry.path);
+      if (parts.isEmpty) continue;
 
-        // Divergence à ce niveau — même parent (niveaux 0..i-1 identiques)
-        final aLast = i == aParts.length - 1;
-        final bLast = i == bParts.length - 1;
+      var parent = '';
+      for (var i = 0; i < parts.length; i++) {
+        final name = parts[i];
+        final fullPath = parent.isEmpty ? name : '$parent/$name';
+        final isLeaf = i == parts.length - 1;
 
-        if (aLast && bLast) {
-          // Même profondeur : dossiers avant fichiers, puis alpha
-          if (a.isDirectory && !b.isDirectory) return -1;
-          if (!a.isDirectory && b.isDirectory) return 1;
-          return ac.compareTo(bc);
+        final bucket = childrenByParent.putIfAbsent(parent, () => []);
+        final existingIndex = bucket.indexWhere((node) => node.name == name);
+
+        if (existingIndex == -1) {
+          bucket.add(_TreeNode(
+            name: name,
+            fullPath: fullPath,
+            entry: isLeaf ? entry : null,
+            isDirectory: isLeaf ? entry.isDirectory : true,
+          ));
+        } else if (isLeaf) {
+          final existing = bucket[existingIndex];
+          bucket[existingIndex] = existing.copyWith(
+            entry: entry,
+            isDirectory: entry.isDirectory,
+          );
         }
-        // Profondeurs différentes mais noms distincts → tri alpha sur le composant courant
-        return ac.compareTo(bc);
-      }
 
-      // Un chemin est préfixe de l'autre → le plus court (parent) en premier
-      return aParts.length.compareTo(bParts.length);
-    });
-    return list;
+        parent = fullPath;
+      }
+    }
+
+    final result = <ArchiveEntry>[];
+
+    void visit(String parent) {
+      final children = childrenByParent[parent];
+      if (children == null) return;
+
+      children.sort((a, b) {
+        if (a.isDirectory != b.isDirectory) {
+          return a.isDirectory ? -1 : 1;
+        }
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      });
+
+      for (final child in children) {
+        if (child.entry != null) {
+          result.add(child.entry!);
+        }
+        visit(child.fullPath);
+      }
+    }
+
+    visit('');
+    return result;
   }
+
+  static List<String> _pathParts(String path) => path
+      .replaceAll('\\', '/')
+      .split('/')
+      .where((part) => part.isNotEmpty)
+      .toList();
 
   List<ArchiveEntry> get _filtered {
     if (_search.isEmpty) return _sortedEntries;
@@ -173,7 +199,8 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
                   decoration: BoxDecoration(
                     color: c.surface,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.white.withOpacity(0.06)),
+                    border:
+                        Border.all(color: Colors.white.withValues(alpha: 0.06)),
                   ),
                   child: TextField(
                     onChanged: (v) => setState(() => _search = v),
@@ -232,8 +259,9 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
   static String _formatSize(int bytes) {
     if (bytes < 1024) return '$bytes B';
     if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(0)} KB';
-    if (bytes < 1024 * 1024 * 1024)
+    if (bytes < 1024 * 1024 * 1024) {
       return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
+    }
     return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(2)} GB';
   }
 }
@@ -290,8 +318,11 @@ class _EntryRowState extends State<_EntryRow> {
     final l10n = AppLocalizations.of(context)!;
     final c = Theme.of(context).appColors;
     final e = widget.entry;
-    final depth = e.path.split('/').length - 1;
-    final name = e.name.isEmpty ? e.path.split('/').last : e.name;
+    final pathParts = _FileTreeWidgetState._pathParts(e.path);
+    final depth = pathParts.length - 1;
+    final name = e.name.isEmpty
+        ? (pathParts.isNotEmpty ? pathParts.last : e.path)
+        : e.name;
     final canOpen = !e.isDirectory && widget.onFileOpen != null;
 
     return MouseRegion(
@@ -306,9 +337,9 @@ class _EntryRowState extends State<_EntryRow> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             color: _opening
-                ? c.accent.withOpacity(0.12)
+                ? c.accent.withValues(alpha: 0.12)
                 : _hovered
-                    ? Colors.white.withOpacity(0.04)
+                    ? Colors.white.withValues(alpha: 0.04)
                     : Colors.transparent,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
@@ -368,6 +399,32 @@ class _EntryRowState extends State<_EntryRow> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _TreeNode {
+  final String name;
+  final String fullPath;
+  final ArchiveEntry? entry;
+  final bool isDirectory;
+
+  const _TreeNode({
+    required this.name,
+    required this.fullPath,
+    required this.entry,
+    required this.isDirectory,
+  });
+
+  _TreeNode copyWith({
+    ArchiveEntry? entry,
+    bool? isDirectory,
+  }) {
+    return _TreeNode(
+      name: name,
+      fullPath: fullPath,
+      entry: entry ?? this.entry,
+      isDirectory: isDirectory ?? this.isDirectory,
     );
   }
 }

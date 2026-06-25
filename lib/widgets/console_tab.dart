@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mac7z/l10n/app_localizations.dart';
 import 'package:mac7z/theme/app_colors.dart';
 
 /// Static documentation page explaining how to use mac7z as a 7zip CLI
@@ -10,6 +11,7 @@ class ConsoleTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final c = Theme.of(context).appColors;
     return Container(
       color: c.bg,
@@ -24,114 +26,109 @@ class ConsoleTab extends StatelessWidget {
                 _Hero(),
                 SizedBox(height: 36),
                 _Section(
-                  title: 'CONFIGURATION',
+                  title: l10n.consoleSectionConfig,
                   children: [
                     _SetupBlock(),
                   ],
                 ),
                 SizedBox(height: 32),
                 _Section(
-                  title: 'COMMANDES PRINCIPALES',
+                  title: l10n.consoleSectionCommands,
                   children: [
                     _CommandRow(
                       cmd: 'mac7z l archive.zip',
-                      description: 'Lister le contenu d\'une archive',
+                      description: l10n.consoleCmdList,
                     ),
                     _CommandRow(
                       cmd: 'mac7z x archive.7z',
-                      description: 'Extraire avec les chemins complets',
+                      description: l10n.consoleCmdExtractFull,
                     ),
                     _CommandRow(
                       cmd: 'mac7z x archive.7z -o~/Bureau/dest',
-                      description: 'Extraire vers un dossier spécifique',
+                      description: l10n.consoleCmdExtractToDir,
                     ),
                     _CommandRow(
                       cmd: 'mac7z e archive.tar.gz',
-                      description: 'Extraire à plat (sans sous-dossiers)',
+                      description: l10n.consoleCmdExtractFlat,
                     ),
                     _CommandRow(
                       cmd: 'mac7z a sortie.7z fichier1 dossier2',
-                      description: 'Créer ou mettre à jour une archive',
+                      description: l10n.consoleCmdCreateUpdate,
                     ),
                     _CommandRow(
                       cmd: 'mac7z a sortie.zip src/ -tzip',
-                      description: 'Créer une archive ZIP',
+                      description: l10n.consoleCmdCreateZip,
                     ),
                     _CommandRow(
                       cmd: 'mac7z t archive.7z',
-                      description: 'Tester l\'intégrité de l\'archive',
+                      description: l10n.consoleCmdTest,
                     ),
                     _CommandRow(
                       cmd: 'mac7z d archive.zip old.txt',
-                      description: 'Supprimer un fichier d\'une archive',
+                      description: l10n.consoleCmdDelete,
                     ),
                     _CommandRow(
                       cmd: 'mac7z i',
-                      description: 'Afficher les informations sur 7zip',
+                      description: l10n.consoleCmdInfo,
                     ),
                   ],
                 ),
                 SizedBox(height: 32),
                 _Section(
-                  title: 'OPTIONS COURANTES',
+                  title: l10n.consoleSectionOptions,
                   children: [
                     _OptionRow(
                         flag: '-p{motdepasse}',
-                        description: 'Protéger l\'archive par mot de passe'),
+                        description: l10n.consoleOptPassword),
                     _OptionRow(
                         flag: '-mhe=on',
-                        description:
-                            'Chiffrer aussi les noms de fichiers (7z seulement)'),
+                        description: l10n.consoleOptEncryptHeaders),
                     _OptionRow(
                         flag: '-mx={0-9}',
-                        description:
-                            'Niveau de compression (0 = aucun, 9 = ultra)'),
+                        description: l10n.consoleOptCompressionLevel),
                     _OptionRow(
                         flag: '-mmt=on',
-                        description: 'Activer la compression multi-thread'),
+                        description: l10n.consoleOptMultithread),
                     _OptionRow(
                         flag: '-v{taille}',
-                        description:
-                            'Découper en volumes (ex : -v100m pour 100 Mo)'),
+                        description: l10n.consoleOptSplitVolumes),
                     _OptionRow(
                         flag: '-r',
-                        description: 'Traitement récursif des sous-dossiers'),
+                        description: l10n.consoleOptRecursive),
                     _OptionRow(
                         flag: '-y',
-                        description:
-                            'Répondre "oui" à toutes les confirmations'),
+                        description: l10n.consoleOptYesAll),
                     _OptionRow(
                         flag: '-o{chemin}',
-                        description:
-                            'Dossier de destination pour l\'extraction'),
+                        description: l10n.consoleOptOutputDir),
                     _OptionRow(
                         flag: '-x!{pattern}',
-                        description: 'Exclure des fichiers (ex : -x!*.log)'),
+                        description: l10n.consoleOptExclude),
                   ],
                 ),
                 SizedBox(height: 32),
                 _Section(
-                  title: 'EXEMPLES AVANCÉS',
+                  title: l10n.consoleSectionExamples,
                   children: [
                     _ExampleBlock(
-                      label: 'Archive chiffrée avec noms masqués',
+                      label: l10n.consoleExEncrypted,
                       cmd: 'mac7z a secrets.7z docs/ -p"MonMotDePasse" -mhe=on',
                     ),
                     _ExampleBlock(
-                      label: 'Archive découpée en volumes de 50 Mo',
+                      label: l10n.consoleExVolumes,
                       cmd: 'mac7z a backup.7z ~/Documents -v50m',
                     ),
                     _ExampleBlock(
-                      label: 'Compression ultra (lente, fichier minimal)',
+                      label: l10n.consoleExUltra,
                       cmd: 'mac7z a ultra.7z src/ -mx=9 -mmt=on',
                     ),
                     _ExampleBlock(
-                      label: 'Extraire un seul fichier',
+                      label: l10n.consoleExSingleFile,
                       cmd:
                           'mac7z e archive.zip "dossier/rapport.pdf" -o~/Bureau',
                     ),
                     _ExampleBlock(
-                      label: 'Lister avec détails techniques',
+                      label: l10n.consoleExTechnical,
                       cmd: 'mac7z l -slt archive.7z',
                     ),
                   ],
@@ -155,6 +152,7 @@ class _Hero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final c = Theme.of(context).appColors;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,7 +172,7 @@ class _Hero extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Console API',
+                l10n.tabConsoleApi,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
@@ -184,8 +182,7 @@ class _Hero extends StatelessWidget {
               ),
               SizedBox(height: 6),
               Text(
-                'mac7z passe tous ses arguments directement au binaire 7zip intégré. '
-                'Utilisez-le depuis Terminal exactement comme vous utiliseriez 7zz.',
+                l10n.consoleHeroSubtitle,
                 style: TextStyle(
                   fontSize: 13,
                   color: c.textSecondary,
@@ -251,6 +248,7 @@ class _SetupBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final c = Theme.of(context).appColors;
     final isLinux = Platform.isLinux;
     return Padding(
@@ -259,8 +257,7 @@ class _SetupBlock extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Créez un alias dans votre shell pour utiliser mac7z comme commande '
-            'standard dans le Terminal :',
+            l10n.consoleSetupIntro,
             style: TextStyle(fontSize: 13, color: c.textSecondary, height: 1.6),
           ),
           const SizedBox(height: 14),
@@ -272,12 +269,8 @@ class _SetupBlock extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             isLinux
-                ? 'Ajoutez cette ligne à votre ~/.bashrc (ou ~/.zshrc) pour '
-                    'la rendre permanente. Une fois configuré, toutes les commandes '
-                    '7zip standard fonctionnent en remplaçant 7zz par mac7z.'
-                : 'Ajoutez cette ligne à votre ~/.zshrc (ou ~/.bash_profile) pour '
-                    'la rendre permanente. Une fois configuré, toutes les commandes '
-                    '7zip standard fonctionnent en remplaçant 7zz par mac7z.',
+                ? l10n.consoleSetupOutroLinux
+                : l10n.consoleSetupOutroMac,
             style: TextStyle(fontSize: 12, color: c.textTertiary, height: 1.6),
           ),
         ],
@@ -460,9 +453,10 @@ class _CopyButtonState extends State<_CopyButton> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final c = Theme.of(context).appColors;
     return Tooltip(
-      message: _copied ? 'Copié !' : 'Copier',
+      message: _copied ? l10n.consoleCopied : l10n.consoleCopy,
       child: InkWell(
         onTap: _copy,
         borderRadius: BorderRadius.circular(6),
@@ -491,6 +485,7 @@ class _InfoNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final c = Theme.of(context).appColors;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
@@ -506,9 +501,7 @@ class _InfoNote extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              'mac7z embarque son propre binaire 7zz. Les arguments sont transmis '
-              'tels quels, sans modification. Toute commande valide pour 7zz '
-              'fonctionne de manière identique avec mac7z.',
+              l10n.consoleInfoNote,
               style: TextStyle(
                 fontSize: 12,
                 color: c.accent,

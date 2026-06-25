@@ -350,4 +350,115 @@ class AppLocalizationsMt extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arkivju mħoloq: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURAZZJONI';
+
+  @override
+  String get consoleSectionCommands => 'KMANDI EWLENIN';
+
+  @override
+  String get consoleSectionOptions => 'GĦAŻLIET KOMUNI';
+
+  @override
+  String get consoleSectionExamples => 'EŻEMPJI AVVANZATI';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z jgħaddi l-argumenti kollha direttament lill-binarju 7zip inkorporat. Użah minn Terminal eżatt kif tuża 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Oħloq alias fis-shell tiegħek biex tuża mac7z bħala kmand normali fit-Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Żid din il-linja fil-~/.zshrc jew fil-~/.bash_profile biex tibqa’ permanenti. Ladarba jiġi kkonfigurat, il-kmandi standard kollha ta’ 7zip jaħdmu billi tissostitwixxi 7zz b’mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Żid din il-linja fil-~/.bashrc jew fil-~/.zshrc biex tibqa’ permanenti. Ladarba jiġi kkonfigurat, il-kmandi standard kollha ta’ 7zip jaħdmu billi tissostitwixxi 7zz b’mac7z.';
+
+  @override
+  String get consoleCmdList => 'Uri l-kontenut ta’ arkivju';
+
+  @override
+  String get consoleCmdExtractFull => 'Estrai bil-passaġġi sħaħ';
+
+  @override
+  String get consoleCmdExtractToDir => 'Estrai għal folder speċifiku';
+
+  @override
+  String get consoleCmdExtractFlat => 'Estrai mingħajr subfolders';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Oħloq jew aġġorna arkivju';
+
+  @override
+  String get consoleCmdCreateZip => 'Oħloq arkivju ZIP';
+
+  @override
+  String get consoleCmdTest => 'Ittestja l-integrità tal-arkivju';
+
+  @override
+  String get consoleCmdDelete => 'Ħassar fajl minn arkivju';
+
+  @override
+  String get consoleCmdInfo => 'Uri informazzjoni dwar 7zip';
+
+  @override
+  String get consoleOptPassword => 'Ipproteġi l-arkivju b’password';
+
+  @override
+  String get consoleOptEncryptHeaders =>
+      'Ikkripta wkoll l-ismijiet tal-fajls (7z biss)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Livell ta’ kompressjoni (0 = xejn, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Ixgħel il-kompressjoni multi-thread';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Aqsam f’volumi (eż. -v100m għal 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Ipproċessa s-subfolders b’mod rikursiv';
+
+  @override
+  String get consoleOptYesAll => 'Wieġeb \"iva\" għall-konfermi kollha';
+
+  @override
+  String get consoleOptOutputDir =>
+      'Folder tad-destinazzjoni għall-estrazzjoni';
+
+  @override
+  String get consoleOptExclude => 'Eskludi fajls (eż. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Arkivju kkodifikat b’ismijiet moħbija';
+
+  @override
+  String get consoleExVolumes => 'Arkivju maqsum f’volumi ta’ 50 MB';
+
+  @override
+  String get consoleExUltra => 'Kompressjoni ultra (bil-mod, l-iżgħar fajl)';
+
+  @override
+  String get consoleExSingleFile => 'Estrai fajl wieħed';
+
+  @override
+  String get consoleExTechnical => 'Uri b’dettalji tekniċi';
+
+  @override
+  String get consoleCopy => 'Ikkopja';
+
+  @override
+  String get consoleCopied => 'Ikkopjat!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z jiġi bil-binarju 7zz tiegħu stess. L-argumenti jgħaddu eżatt kif inhuma, mingħajr tibdil. Kull kmand validu għal 7zz jaħdem bl-istess mod ma’ mac7z.';
 }

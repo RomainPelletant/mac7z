@@ -345,4 +345,113 @@ class AppLocalizationsId extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Arsip dibuat: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'KONFIGURASI';
+
+  @override
+  String get consoleSectionCommands => 'PERINTAH UTAMA';
+
+  @override
+  String get consoleSectionOptions => 'OPSI UMUM';
+
+  @override
+  String get consoleSectionExamples => 'CONTOH LANJUTAN';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z meneruskan semua argumen langsung ke biner 7zip bawaan. Gunakan dari Terminal persis seperti Anda menggunakan 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Buat alias di shell Anda untuk menggunakan mac7z sebagai perintah standar di Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Tambahkan baris ini ke ~/.zshrc atau ~/.bash_profile agar tetap permanen. Setelah dikonfigurasi, semua perintah standar 7zip akan berfungsi dengan mengganti 7zz menjadi mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Tambahkan baris ini ke ~/.bashrc atau ~/.zshrc agar tetap permanen. Setelah dikonfigurasi, semua perintah standar 7zip akan berfungsi dengan mengganti 7zz menjadi mac7z.';
+
+  @override
+  String get consoleCmdList => 'Menampilkan isi arsip';
+
+  @override
+  String get consoleCmdExtractFull => 'Ekstrak dengan jalur lengkap';
+
+  @override
+  String get consoleCmdExtractToDir => 'Ekstrak ke folder tertentu';
+
+  @override
+  String get consoleCmdExtractFlat => 'Ekstrak tanpa subfolder';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Membuat atau memperbarui arsip';
+
+  @override
+  String get consoleCmdCreateZip => 'Membuat arsip ZIP';
+
+  @override
+  String get consoleCmdTest => 'Menguji integritas arsip';
+
+  @override
+  String get consoleCmdDelete => 'Menghapus file dari arsip';
+
+  @override
+  String get consoleCmdInfo => 'Menampilkan informasi tentang 7zip';
+
+  @override
+  String get consoleOptPassword => 'Lindungi arsip dengan kata sandi';
+
+  @override
+  String get consoleOptEncryptHeaders => 'Enkripsi juga nama file (khusus 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Tingkat kompresi (0 = tidak ada, 9 = ultra)';
+
+  @override
+  String get consoleOptMultithread => 'Aktifkan kompresi multi-thread';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Bagi menjadi volume (mis. -v100m untuk 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Proses subfolder secara rekursif';
+
+  @override
+  String get consoleOptYesAll => 'Jawab \"ya\" untuk semua konfirmasi';
+
+  @override
+  String get consoleOptOutputDir => 'Folder tujuan untuk ekstraksi';
+
+  @override
+  String get consoleOptExclude => 'Kecualikan file (mis. -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Arsip terenkripsi dengan nama tersembunyi';
+
+  @override
+  String get consoleExVolumes => 'Arsip dibagi menjadi volume 50 MB';
+
+  @override
+  String get consoleExUltra => 'Kompresi ultra (lambat, file paling kecil)';
+
+  @override
+  String get consoleExSingleFile => 'Ekstrak satu file';
+
+  @override
+  String get consoleExTechnical => 'Daftar dengan detail teknis';
+
+  @override
+  String get consoleCopy => 'Salin';
+
+  @override
+  String get consoleCopied => 'Tersalin!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z menyertakan biner 7zz miliknya sendiri. Argumen diteruskan apa adanya tanpa perubahan. Setiap perintah yang valid untuk 7zz akan bekerja dengan cara yang sama di mac7z.';
 }

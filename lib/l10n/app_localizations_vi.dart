@@ -345,4 +345,113 @@ class AppLocalizationsVi extends AppLocalizations {
   String compLogDone(String path) {
     return '✅ Kho lưu trữ được tạo: $path';
   }
+
+  @override
+  String get consoleSectionConfig => 'CẤU HÌNH';
+
+  @override
+  String get consoleSectionCommands => 'LỆNH CHÍNH';
+
+  @override
+  String get consoleSectionOptions => 'TÙY CHỌN THƯỜNG DÙNG';
+
+  @override
+  String get consoleSectionExamples => 'VÍ DỤ NÂNG CAO';
+
+  @override
+  String get consoleHeroSubtitle =>
+      'mac7z chuyển toàn bộ đối số trực tiếp tới tệp nhị phân 7zip đi kèm. Hãy dùng nó trong Terminal giống hệt như khi bạn dùng 7zz.';
+
+  @override
+  String get consoleSetupIntro =>
+      'Tạo một alias trong shell để dùng mac7z như một lệnh tiêu chuẩn trong Terminal:';
+
+  @override
+  String get consoleSetupOutroMac =>
+      'Thêm dòng này vào ~/.zshrc hoặc ~/.bash_profile để dùng lâu dài. Sau khi cấu hình, mọi lệnh 7zip tiêu chuẩn sẽ hoạt động nếu bạn thay 7zz bằng mac7z.';
+
+  @override
+  String get consoleSetupOutroLinux =>
+      'Thêm dòng này vào ~/.bashrc hoặc ~/.zshrc để dùng lâu dài. Sau khi cấu hình, mọi lệnh 7zip tiêu chuẩn sẽ hoạt động nếu bạn thay 7zz bằng mac7z.';
+
+  @override
+  String get consoleCmdList => 'Liệt kê nội dung của tệp nén';
+
+  @override
+  String get consoleCmdExtractFull => 'Giải nén với đầy đủ đường dẫn';
+
+  @override
+  String get consoleCmdExtractToDir => 'Giải nén vào thư mục cụ thể';
+
+  @override
+  String get consoleCmdExtractFlat => 'Giải nén phẳng không có thư mục con';
+
+  @override
+  String get consoleCmdCreateUpdate => 'Tạo hoặc cập nhật tệp nén';
+
+  @override
+  String get consoleCmdCreateZip => 'Tạo tệp nén ZIP';
+
+  @override
+  String get consoleCmdTest => 'Kiểm tra tính toàn vẹn của tệp nén';
+
+  @override
+  String get consoleCmdDelete => 'Xóa tệp khỏi tệp nén';
+
+  @override
+  String get consoleCmdInfo => 'Hiển thị thông tin về 7zip';
+
+  @override
+  String get consoleOptPassword => 'Bảo vệ tệp nén bằng mật khẩu';
+
+  @override
+  String get consoleOptEncryptHeaders => 'Mã hóa cả tên tệp (chỉ 7z)';
+
+  @override
+  String get consoleOptCompressionLevel =>
+      'Mức nén (0 = không nén, 9 = tối đa)';
+
+  @override
+  String get consoleOptMultithread => 'Bật nén đa luồng';
+
+  @override
+  String get consoleOptSplitVolumes =>
+      'Chia thành nhiều phần (ví dụ: -v100m cho 100 MB)';
+
+  @override
+  String get consoleOptRecursive => 'Xử lý thư mục con đệ quy';
+
+  @override
+  String get consoleOptYesAll => 'Trả lời \"có\" cho mọi xác nhận';
+
+  @override
+  String get consoleOptOutputDir => 'Thư mục đích để giải nén';
+
+  @override
+  String get consoleOptExclude => 'Loại trừ tệp (ví dụ: -x!*.log)';
+
+  @override
+  String get consoleExEncrypted => 'Tệp nén được mã hóa với tên ẩn';
+
+  @override
+  String get consoleExVolumes => 'Tệp nén chia thành các phần 50 MB';
+
+  @override
+  String get consoleExUltra => 'Nén tối đa (chậm, tệp nhỏ nhất)';
+
+  @override
+  String get consoleExSingleFile => 'Giải nén một tệp duy nhất';
+
+  @override
+  String get consoleExTechnical => 'Liệt kê với chi tiết kỹ thuật';
+
+  @override
+  String get consoleCopy => 'Sao chép';
+
+  @override
+  String get consoleCopied => 'Đã sao chép!';
+
+  @override
+  String get consoleInfoNote =>
+      'mac7z đi kèm tệp nhị phân 7zz riêng. Các đối số được chuyển tiếp nguyên trạng, không chỉnh sửa. Mọi lệnh hợp lệ cho 7zz đều hoạt động giống hệt với mac7z.';
 }
