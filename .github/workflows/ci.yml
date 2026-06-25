@@ -62,6 +62,13 @@ jobs:
       - name: Build macOS (${{ matrix.arch }})
         run: flutter build macos --release
 
+      - name: Upload macOS artifact (${{ matrix.arch }})
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac7z-macos-${{ matrix.arch }}
+          path: build/macos/Build/Products/Release/mac7z.app
+          if-no-files-found: error
+
   audit:
     name: Security Audit
     runs-on: ubuntu-latest
@@ -131,3 +138,10 @@ jobs:
 
       - name: Build Linux (${{ matrix.arch }})
         run: flutter build linux --release
+
+      - name: Upload Linux artifact (${{ matrix.arch }})
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac7z-linux-${{ matrix.arch }}
+          path: build/linux/**/release/bundle
+          if-no-files-found: error
