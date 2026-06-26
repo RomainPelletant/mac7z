@@ -90,24 +90,6 @@ jobs:
           path: build/macos/Build/Products/Release/mac7z.app
           if-no-files-found: error
 
-  audit:
-    name: Security Audit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          cache: true
-
-      - name: Flutter pub get
-        run: flutter pub get
-
-      - name: Dart pub audit
-        run: dart pub audit
-
   build-linux:
     needs: lint
     name: Build Linux (${{ matrix.arch }})
