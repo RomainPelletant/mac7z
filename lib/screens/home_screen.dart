@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen>
     // FileType.any évite les problèmes de UTI macOS pour les formats peu communs
     // (.xz, .tar.xz, etc.) — la validation est faite par _isArchive.
     final l10n = AppLocalizations.of(context)!;
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       dialogTitle: l10n.pickFileDialogTitle,
       type: FileType.any,
     );
@@ -218,8 +218,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   Future<void> _pickOutputDir() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.platform
-        .getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
+    final dir = await FilePicker.getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
     if (dir != null) {
       setState(() => _outputDir = dir);
       _log('Destination : $dir');

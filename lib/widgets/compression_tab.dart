@@ -211,7 +211,7 @@ class _CompressionTabState extends State<CompressionTab> {
 
   Future<void> _pickFiles() async {
     final l10n = AppLocalizations.of(context)!;
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       allowMultiple: true,
       type: FileType.any,
       dialogTitle: l10n.compAddFiles,
@@ -222,15 +222,13 @@ class _CompressionTabState extends State<CompressionTab> {
 
   Future<void> _pickFolder() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.platform
-        .getDirectoryPath(dialogTitle: l10n.compAddFolder);
+    final dir = await FilePicker.getDirectoryPath(dialogTitle: l10n.compAddFolder);
     if (dir != null) await _addPaths([dir]);
   }
 
   Future<void> _pickDest() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.platform
-        .getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
+    final dir = await FilePicker.getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
     if (dir != null) setState(() => _destDir = dir);
   }
 
