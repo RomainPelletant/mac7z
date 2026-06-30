@@ -288,7 +288,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get compLabelSecurity => 'Turvalisus';
 
   @override
-  String get compLabelAdvanced => 'Advanced options';
+  String get compLabelAdvanced => 'Täpsemad valikud';
 
   @override
   String get compLabelSplit => 'Jaga';

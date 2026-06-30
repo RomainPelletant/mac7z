@@ -72,6 +72,7 @@
   "compLabelFormat": "Formato",
   "compLabelCompression": "Nível de compressão",
   "compLabelSecurity": "Segurança",
+  "compLabelAdvanced": "Opções avançadas",
   "compLabelSplit": "Dividir",
   "compSizeFolder": "pasta",
   "compDestSameFolder": "Mesma pasta dos arquivos",

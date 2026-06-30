@@ -289,7 +289,7 @@ class AppLocalizationsGa extends AppLocalizations {
   String get compLabelSecurity => 'Slándáil';
 
   @override
-  String get compLabelAdvanced => 'Advanced options';
+  String get compLabelAdvanced => 'Ardroghanna';
 
   @override
   String get compLabelSplit => 'Roinnt';
