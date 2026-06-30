@@ -204,14 +204,20 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
                   ),
                   child: TextField(
                     onChanged: (v) => setState(() => _search = v),
+                    textAlignVertical: TextAlignVertical.center,
                     style: TextStyle(fontSize: 13, color: c.textPrimary),
                     decoration: InputDecoration(
+                      isDense: true,
                       hintText: l10n.treeSearch,
                       hintStyle: TextStyle(color: c.surface3, fontSize: 13),
                       prefixIcon: Icon(Icons.search_rounded,
                           size: 16, color: c.textTertiary),
+                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 32,
+                        minHeight: 32,
+                      ),
                       border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 0),
                     ),
                   ),
                 ),
