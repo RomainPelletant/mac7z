@@ -150,5 +150,61 @@
   "consoleExTechnical": "기술 세부 정보와 함께 목록 표시",
   "consoleCopy": "복사",
   "consoleCopied": "복사됨!",
-  "consoleInfoNote": "mac7z에는 자체 7zz 바이너리가 포함되어 있습니다. 인수는 수정 없이 그대로 전달됩니다. 7zz에서 유효한 모든 명령은 mac7z에서도 동일하게 동작합니다."
+  "consoleInfoNote": "mac7z에는 자체 7zz 바이너리가 포함되어 있습니다. 인수는 수정 없이 그대로 전달됩니다. 7zz에서 유효한 모든 명령은 mac7z에서도 동일하게 동작합니다.",
+"updateAvailableTitle": "업데이트 उपलब्ध",
+"updateAvailableMessage": "버전 {version}을 사용할 수 있습니다. 지금 설치하시겠습니까?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "현재 버전: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "새 버전: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "파일: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "크기: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "설치",
+"updateLater": "나중에",
+"updateSkipVersion": "이 버전 건너뛰기",
+"updateDownloading": "다운로드 중...",
+"updateDownloadingAsset": "{name} 다운로드 중...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "설치 프로그램 여는 중...",
+"updateNoCompatibleAsset": "이 릴리스에서 호환되는 파일을 찾을 수 없습니다."
+
 }

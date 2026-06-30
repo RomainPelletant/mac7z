@@ -465,4 +465,56 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z include propriul său binar 7zz. Argumentele sunt transmise exact așa cum sunt, fără modificări. Orice comandă validă pentru 7zz funcționează identic și cu mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Actualizare disponibilă';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Versiunea $version este disponibilă. Doriți să o instalați acum?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Versiune curentă: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Versiune nouă: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Fișier: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Dimensiune: $size';
+  }
+
+  @override
+  String get updateInstall => 'Instalează';
+
+  @override
+  String get updateLater => 'Mai târziu';
+
+  @override
+  String get updateSkipVersion => 'Omite această versiune';
+
+  @override
+  String get updateDownloading => 'Se descarcă...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Se descarcă $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Se deschide instalatorul...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Nu a fost găsit niciun fișier compatibil în această versiune.';
 }

@@ -462,4 +462,56 @@ class AppLocalizationsGa extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'Tagann mac7z lena dhénártha 7zz féin. Cuirtear na hargóintí ar aghaidh díreach mar atá siad, gan athrú. Oibríonn aon ordú bailí do 7zz ar an mbealach céanna le mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Nuashonrú ar fáil';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Tá leagan $version ar fáil. Ar mhaith leat é a shuiteáil anois?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Leagan reatha: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Leagan nua: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Comhad: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Méid: $size';
+  }
+
+  @override
+  String get updateInstall => 'Suiteáil';
+
+  @override
+  String get updateLater => 'Níos déanaí';
+
+  @override
+  String get updateSkipVersion => 'Scipeáil an leagan seo';
+
+  @override
+  String get updateDownloading => 'Á íoslódáil...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Á íoslódáil $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Suiteálaí á oscailt...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Níor aimsíodh comhad comhoiriúnach sa leagan seo.';
 }

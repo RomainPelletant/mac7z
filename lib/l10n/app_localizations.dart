@@ -897,6 +897,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'mac7z ships with its own 7zz binary. Arguments are passed through exactly as-is, without modification. Any command valid for 7zz works identically with mac7z.'**
   String get consoleInfoNote;
+
+  /// No description provided for @updateAvailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update available'**
+  String get updateAvailableTitle;
+
+  /// No description provided for @updateAvailableMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} is available. Do you want to install it now?'**
+  String updateAvailableMessage(String version);
+
+  /// No description provided for @updateCurrentVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Current version: {version}'**
+  String updateCurrentVersion(String version);
+
+  /// No description provided for @updateNewVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'New version: {version}'**
+  String updateNewVersion(String version);
+
+  /// No description provided for @updateFile.
+  ///
+  /// In en, this message translates to:
+  /// **'File: {name}'**
+  String updateFile(String name);
+
+  /// No description provided for @updateSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size: {size}'**
+  String updateSize(String size);
+
+  /// No description provided for @updateInstall.
+  ///
+  /// In en, this message translates to:
+  /// **'Install'**
+  String get updateInstall;
+
+  /// No description provided for @updateLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get updateLater;
+
+  /// No description provided for @updateSkipVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip this version'**
+  String get updateSkipVersion;
+
+  /// No description provided for @updateDownloading.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading...'**
+  String get updateDownloading;
+
+  /// No description provided for @updateDownloadingAsset.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading {name}...'**
+  String updateDownloadingAsset(String name);
+
+  /// No description provided for @updateOpeningInstaller.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening installer...'**
+  String get updateOpeningInstaller;
+
+  /// No description provided for @updateNoCompatibleAsset.
+  ///
+  /// In en, this message translates to:
+  /// **'No compatible file was found in this release.'**
+  String get updateNoCompatibleAsset;
 }
 
 class _AppLocalizationsDelegate

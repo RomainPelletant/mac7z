@@ -21,6 +21,7 @@ dependencies:
   archive: ^3.4.9
   macos_window_utils: ^1.4.1
   package_info_plus: ^8.0.0
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:

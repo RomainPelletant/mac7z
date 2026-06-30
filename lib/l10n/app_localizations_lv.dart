@@ -463,4 +463,56 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z ietver savu 7zz bināro failu. Argumenti tiek nodoti tieši tādi, kādi tie ir, bez izmaiņām. Jebkura komanda, kas der 7zz, darbosies tāpat arī ar mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Pieejams atjauninājums';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Ir pieejama versija $version. Vai vēlaties to instalēt tagad?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Pašreizējā versija: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Jaunā versija: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Fails: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Izmērs: $size';
+  }
+
+  @override
+  String get updateInstall => 'Instalēt';
+
+  @override
+  String get updateLater => 'Vēlāk';
+
+  @override
+  String get updateSkipVersion => 'Izlaist šo versiju';
+
+  @override
+  String get updateDownloading => 'Lejupielādē...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Lejupielādē $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Atver instalētāju...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Šajā laidienā netika atrasts saderīgs fails.';
 }

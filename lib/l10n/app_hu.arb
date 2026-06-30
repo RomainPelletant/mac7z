@@ -150,5 +150,61 @@
   "consoleExTechnical": "Listázás technikai részletekkel",
   "consoleCopy": "Másolás",
   "consoleCopied": "Másolva!",
-  "consoleInfoNote": "A mac7z saját 7zz binárissal érkezik. Az argumentumok módosítás nélkül, pontosan úgy kerülnek továbbításra, ahogy meg vannak adva. Minden, a 7zz-hez érvényes parancs ugyanúgy működik a mac7z-zel is."
+  "consoleInfoNote": "A mac7z saját 7zz binárissal érkezik. Az argumentumok módosítás nélkül, pontosan úgy kerülnek továbbításra, ahogy meg vannak adva. Minden, a 7zz-hez érvényes parancs ugyanúgy működik a mac7z-zel is.",
+"updateAvailableTitle": "Frissítés érhető el",
+"updateAvailableMessage": "A(z) {version} verzió elérhető. Szeretné most telepíteni?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Jelenlegi verzió: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Új verzió: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Fájl: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Méret: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Telepítés",
+"updateLater": "Később",
+"updateSkipVersion": "Verzió kihagyása",
+"updateDownloading": "Letöltés...",
+"updateDownloadingAsset": "{name} letöltése...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Telepítő megnyitása...",
+"updateNoCompatibleAsset": "Ehhez a kiadáshoz nem található kompatibilis fájl."
+
 }

@@ -461,4 +461,56 @@ class AppLocalizationsMt extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z jiġi bil-binarju 7zz tiegħu stess. L-argumenti jgħaddu eżatt kif inhuma, mingħajr tibdil. Kull kmand validu għal 7zz jaħdem bl-istess mod ma’ mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Aġġornament disponibbli';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Il-verżjoni $version hija disponibbli. Trid tinstallaha issa?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Verżjoni kurrenti: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Verżjoni ġdida: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Fajl: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Daqs: $size';
+  }
+
+  @override
+  String get updateInstall => 'Installa';
+
+  @override
+  String get updateLater => 'Aktar tard';
+
+  @override
+  String get updateSkipVersion => 'Aqbeż din il-verżjoni';
+
+  @override
+  String get updateDownloading => 'Qed jitniżżel...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Qed jitniżżel $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Qed jinfetaħ l-installatur...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Ma nstab l-ebda fajl kompatibbli f’dan ir-rilaxx.';
 }

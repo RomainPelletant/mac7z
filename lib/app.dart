@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mac7z/l10n/app_localizations.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'services/github_release_updater.dart';
+import 'services/update_preferences.dart';
 import 'theme/app_colors.dart';
 import 'theme/theme_notifier.dart';
 import 'screens/home_screen.dart';
@@ -11,6 +14,8 @@ import 'services/archive_backend.dart';
 import 'services/backend_provider.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>();
+final _releaseUpdater = GitHubReleaseUpdater();
+final _updatePreferences = UpdatePreferences();
 
 class Unzipper7App extends StatefulWidget {
   const Unzipper7App({super.key});
@@ -24,6 +29,9 @@ class _Unzipper7AppState extends State<Unzipper7App> {
   void initState() {
     super.initState();
     themeModeNotifier.addListener(_onThemeChanged);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      unawaited(_checkForUpdatesInBackground());
+    });
   }
 
   @override
@@ -33,6 +41,29 @@ class _Unzipper7AppState extends State<Unzipper7App> {
   }
 
   void _onThemeChanged() => setState(() {});
+
+  Future<void> _checkForUpdatesInBackground() async {
+    if (!mounted) return;
+    if (!Platform.isMacOS && !Platform.isLinux) return;
+
+    try {
+      final result = await _releaseUpdater.checkForUpdates();
+      if (!mounted || !result.hasUpdate) return;
+
+      final skippedVersion = await _updatePreferences.getSkippedVersion();
+      if (skippedVersion == result.latestVersion) return;
+
+      final dialogContext = _navigatorKey.currentContext;
+      if (dialogContext == null || !dialogContext.mounted || !mounted) return;
+
+      await showDialog<void>(
+        context: dialogContext,
+        builder: (_) => UpdateAvailableDialog(result: result),
+      );
+    } catch (_) {
+      // Silent background check: errors are logged by the updater service.
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +128,179 @@ class _Unzipper7AppState extends State<Unzipper7App> {
       dividerColor: c.border,
       extensions: [c],
       useMaterial3: true,
+    );
+  }
+}
+
+class UpdateAvailableDialog extends StatefulWidget {
+  const UpdateAvailableDialog({
+    super.key,
+    required this.result,
+  });
+
+  final UpdateCheckResult result;
+
+  @override
+  State<UpdateAvailableDialog> createState() => _UpdateAvailableDialogState();
+}
+
+class _UpdateAvailableDialogState extends State<UpdateAvailableDialog> {
+  bool _downloading = false;
+  double? _progress;
+  String? _status;
+  String? _error;
+
+  Future<void> _install() async {
+    final asset = widget.result.asset;
+    if (asset == null) {
+      setState(() {
+        _error = AppLocalizations.of(context)!.updateNoCompatibleAsset;
+      });
+      return;
+    }
+
+    setState(() {
+      _downloading = true;
+      _progress = 0;
+      _error = null;
+      _status = AppLocalizations.of(context)!.updateDownloadingAsset(asset.name);
+    });
+
+    try {
+      await _updatePreferences.clearSkippedVersion();
+      final downloaded = await _releaseUpdater.downloadUpdate(
+        asset,
+        onProgress: (receivedBytes, totalBytes) {
+          if (!mounted || totalBytes <= 0) return;
+          setState(() => _progress = receivedBytes / totalBytes);
+        },
+      );
+
+      if (!mounted) return;
+      setState(() {
+        _status = AppLocalizations.of(context)!.updateOpeningInstaller;
+      });
+
+      await _releaseUpdater.launchInstaller(downloaded);
+      if (!mounted) return;
+      Navigator.of(context).pop();
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _error = '$e';
+        _downloading = false;
+      });
+    }
+  }
+
+  Future<void> _skipThisVersion() async {
+    await _updatePreferences.skipVersion(widget.result.latestVersion);
+    if (!mounted) return;
+    Navigator.of(context).pop();
+  }
+
+  String _formatBytes(int bytes) {
+    if (bytes <= 0) return 'Unknown';
+
+    const units = ['B', 'KB', 'MB', 'GB'];
+    var value = bytes.toDouble();
+    var unitIndex = 0;
+
+    while (value >= 1024 && unitIndex < units.length - 1) {
+      value /= 1024;
+      unitIndex++;
+    }
+
+    final digits = value >= 10 || unitIndex == 0 ? 0 : 1;
+    return '${value.toStringAsFixed(digits)} ${units[unitIndex]}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = Theme.of(context).appColors;
+    final l10n = AppLocalizations.of(context)!;
+    final result = widget.result;
+    final asset = result.asset;
+
+    return AlertDialog(
+      backgroundColor: c.surface,
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      title: Text(l10n.updateAvailableTitle),
+      content: SizedBox(
+        width: 420,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l10n.updateAvailableMessage(result.latestVersion),
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: c.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              l10n.updateCurrentVersion(result.currentVersion),
+              style: TextStyle(color: c.textSecondary),
+            ),
+            Text(
+              l10n.updateNewVersion(result.latestVersion),
+              style: TextStyle(color: c.textSecondary),
+            ),
+            if (asset != null) ...[
+              const SizedBox(height: 10),
+              Text(
+                l10n.updateFile(asset.name),
+                style: TextStyle(color: c.textSecondary),
+              ),
+              Text(
+                l10n.updateSize(_formatBytes(asset.size)),
+                style: TextStyle(color: c.textSecondary),
+              ),
+            ],
+            if (_downloading && _progress != null) ...[
+              const SizedBox(height: 14),
+              LinearProgressIndicator(value: _progress),
+            ],
+            if (_status != null) ...[
+              const SizedBox(height: 10),
+              Text(
+                _status!,
+                style: TextStyle(color: c.textSecondary),
+              ),
+            ],
+            if (_error != null) ...[
+              const SizedBox(height: 10),
+              Text(
+                _error!,
+                style: TextStyle(color: c.error),
+              ),
+            ],
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: _downloading ? null : () => Navigator.of(context).pop(),
+          child: Text(l10n.updateLater, style: TextStyle(color: c.textSecondary)),
+        ),
+        TextButton(
+          onPressed: _downloading ? null : _skipThisVersion,
+          child: Text(
+            l10n.updateSkipVersion,
+            style: TextStyle(color: c.textSecondary),
+          ),
+        ),
+        FilledButton(
+          style: FilledButton.styleFrom(backgroundColor: c.accent),
+          onPressed: _downloading ? null : _install,
+          child: Text(
+            _downloading ? l10n.updateDownloading : l10n.updateInstall,
+          ),
+        ),
+      ],
     );
   }
 }

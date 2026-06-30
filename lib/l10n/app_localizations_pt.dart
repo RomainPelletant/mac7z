@@ -461,6 +461,58 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'O mac7z inclui o seu próprio binário 7zz. Os argumentos são passados exatamente como estão, sem alterações. Qualquer comando válido para o 7zz funciona da mesma forma com o mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Atualização disponível';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'A versão $version está disponível. Quer instalá-la agora?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Versão atual: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Nova versão: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Ficheiro: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Tamanho: $size';
+  }
+
+  @override
+  String get updateInstall => 'Instalar';
+
+  @override
+  String get updateLater => 'Mais tarde';
+
+  @override
+  String get updateSkipVersion => 'Ignorar esta versão';
+
+  @override
+  String get updateDownloading => 'A transferir...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'A transferir $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'A abrir o instalador...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Nenhum ficheiro compatível foi encontrado nesta release.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -918,4 +970,56 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get consoleInfoNote =>
       'O mac7z inclui seu próprio binário 7zz. Os argumentos são repassados exatamente como estão, sem modificação. Qualquer comando válido para 7zz funciona da mesma forma com o mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Atualização disponível';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'A versão $version está disponível. Deseja instalá-la agora?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Versão atual: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Nova versão: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Arquivo: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Tamanho: $size';
+  }
+
+  @override
+  String get updateInstall => 'Instalar';
+
+  @override
+  String get updateLater => 'Mais tarde';
+
+  @override
+  String get updateSkipVersion => 'Pular esta versão';
+
+  @override
+  String get updateDownloading => 'Baixando...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Baixando $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Abrindo o instalador...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Nenhum arquivo compatível foi encontrado nesta release.';
 }

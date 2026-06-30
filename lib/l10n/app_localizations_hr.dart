@@ -462,4 +462,56 @@ class AppLocalizationsHr extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z uključuje vlastiti 7zz binarni program. Argumenti se prosljeđuju točno onako kako jesu, bez izmjena. Svaka naredba valjana za 7zz radi jednako i s mac7z-om.';
+
+  @override
+  String get updateAvailableTitle => 'Dostupno je ažuriranje';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Verzija $version je dostupna. Želite li je sada instalirati?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Trenutna verzija: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Nova verzija: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Datoteka: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Veličina: $size';
+  }
+
+  @override
+  String get updateInstall => 'Instaliraj';
+
+  @override
+  String get updateLater => 'Kasnije';
+
+  @override
+  String get updateSkipVersion => 'Preskoči ovu verziju';
+
+  @override
+  String get updateDownloading => 'Preuzimanje...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Preuzimanje $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Otvaranje instalacijskog programa...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'U ovom izdanju nije pronađena kompatibilna datoteka.';
 }

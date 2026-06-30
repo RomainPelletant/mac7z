@@ -150,5 +150,61 @@
   "consoleExTechnical": "Liệt kê với chi tiết kỹ thuật",
   "consoleCopy": "Sao chép",
   "consoleCopied": "Đã sao chép!",
-  "consoleInfoNote": "mac7z đi kèm tệp nhị phân 7zz riêng. Các đối số được chuyển tiếp nguyên trạng, không chỉnh sửa. Mọi lệnh hợp lệ cho 7zz đều hoạt động giống hệt với mac7z."
+  "consoleInfoNote": "mac7z đi kèm tệp nhị phân 7zz riêng. Các đối số được chuyển tiếp nguyên trạng, không chỉnh sửa. Mọi lệnh hợp lệ cho 7zz đều hoạt động giống hệt với mac7z.",
+"updateAvailableTitle": "Có bản cập nhật",
+"updateAvailableMessage": "Phiên bản {version} đã có sẵn. Bạn có muốn cài đặt ngay bây giờ không?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Phiên bản hiện tại: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Phiên bản mới: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Tệp: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Kích thước: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Cài đặt",
+"updateLater": "Để sau",
+"updateSkipVersion": "Bỏ qua phiên bản này",
+"updateDownloading": "Đang tải xuống...",
+"updateDownloadingAsset": "Đang tải xuống {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Đang mở trình cài đặt...",
+"updateNoCompatibleAsset": "Không tìm thấy tệp tương thích trong bản phát hành này."
+
 }

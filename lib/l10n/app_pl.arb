@@ -150,5 +150,61 @@
   "consoleExTechnical": "Lista ze szczegółami technicznymi",
   "consoleCopy": "Kopiuj",
   "consoleCopied": "Skopiowano!",
-  "consoleInfoNote": "mac7z zawiera własny plik binarny 7zz. Argumenty są przekazywane dokładnie tak, jak zostały podane, bez zmian. Każde polecenie poprawne dla 7zz działa identycznie także z mac7z."
+  "consoleInfoNote": "mac7z zawiera własny plik binarny 7zz. Argumenty są przekazywane dokładnie tak, jak zostały podane, bez zmian. Każde polecenie poprawne dla 7zz działa identycznie także z mac7z.",
+"updateAvailableTitle": "Dostępna aktualizacja",
+"updateAvailableMessage": "Wersja {version} jest dostępna. Czy chcesz zainstalować ją teraz?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Obecna wersja: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Nowa wersja: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Plik: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Rozmiar: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Zainstaluj",
+"updateLater": "Później",
+"updateSkipVersion": "Pomiń tę wersję",
+"updateDownloading": "Pobieranie...",
+"updateDownloadingAsset": "Pobieranie {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Otwieranie instalatora...",
+"updateNoCompatibleAsset": "Nie znaleziono zgodnego pliku w tym wydaniu."
+
 }

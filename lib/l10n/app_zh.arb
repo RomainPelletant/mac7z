@@ -150,5 +150,61 @@
   "consoleExTechnical": "列出技术细节",
   "consoleCopy": "复制",
   "consoleCopied": "已复制！",
-  "consoleInfoNote": "mac7z 内置了自己的 7zz 二进制文件。参数会原样传递，不做任何修改。任何对 7zz 有效的命令，对 mac7z 也同样有效。"
+  "consoleInfoNote": "mac7z 内置了自己的 7zz 二进制文件。参数会原样传递，不做任何修改。任何对 7zz 有效的命令，对 mac7z 也同样有效。",
+"updateAvailableTitle": "有可用更新",
+"updateAvailableMessage": "版本 {version} 已可用。现在要安装吗？",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "当前版本：{version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "新版本：{version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "文件：{name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "大小：{size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "安装",
+"updateLater": "稍后",
+"updateSkipVersion": "跳过此版本",
+"updateDownloading": "正在下载...",
+"updateDownloadingAsset": "正在下载 {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "正在打开安装程序...",
+"updateNoCompatibleAsset": "此版本中未找到兼容文件。"
+
 }

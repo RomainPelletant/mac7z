@@ -149,5 +149,61 @@
   "consoleExTechnical": "Uri b’dettalji tekniċi",
   "consoleCopy": "Ikkopja",
   "consoleCopied": "Ikkopjat!",
-  "consoleInfoNote": "mac7z jiġi bil-binarju 7zz tiegħu stess. L-argumenti jgħaddu eżatt kif inhuma, mingħajr tibdil. Kull kmand validu għal 7zz jaħdem bl-istess mod ma’ mac7z."
+  "consoleInfoNote": "mac7z jiġi bil-binarju 7zz tiegħu stess. L-argumenti jgħaddu eżatt kif inhuma, mingħajr tibdil. Kull kmand validu għal 7zz jaħdem bl-istess mod ma’ mac7z.",
+"updateAvailableTitle": "Aġġornament disponibbli",
+"updateAvailableMessage": "Il-verżjoni {version} hija disponibbli. Trid tinstallaha issa?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Verżjoni kurrenti: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Verżjoni ġdida: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Fajl: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Daqs: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Installa",
+"updateLater": "Aktar tard",
+"updateSkipVersion": "Aqbeż din il-verżjoni",
+"updateDownloading": "Qed jitniżżel...",
+"updateDownloadingAsset": "Qed jitniżżel {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Qed jinfetaħ l-installatur...",
+"updateNoCompatibleAsset": "Ma nstab l-ebda fajl kompatibbli f’dan ir-rilaxx."
+
 }

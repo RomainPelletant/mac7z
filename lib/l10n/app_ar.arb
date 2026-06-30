@@ -150,5 +150,61 @@
   "consoleExTechnical": "عرض مع تفاصيل تقنية",
   "consoleCopy": "نسخ",
   "consoleCopied": "تم النسخ!",
-  "consoleInfoNote": "يتضمن mac7z ملف 7zz الثنائي الخاص به. تُمرَّر الوسائط كما هي تمامًا دون تعديل. أي أمر صالح لـ 7zz يعمل بالطريقة نفسها مع mac7z."
+  "consoleInfoNote": "يتضمن mac7z ملف 7zz الثنائي الخاص به. تُمرَّر الوسائط كما هي تمامًا دون تعديل. أي أمر صالح لـ 7zz يعمل بالطريقة نفسها مع mac7z.",
+"updateAvailableTitle": "يتوفر تحديث",
+"updateAvailableMessage": "الإصدار {version} متوفر. هل تريد تثبيته الآن؟",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "الإصدار الحالي: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "الإصدار الجديد: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "الملف: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "الحجم: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "تثبيت",
+"updateLater": "لاحقًا",
+"updateSkipVersion": "تخطي هذا الإصدار",
+"updateDownloading": "جارٍ التنزيل...",
+"updateDownloadingAsset": "جارٍ تنزيل {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "جارٍ فتح برنامج التثبيت...",
+"updateNoCompatibleAsset": "لم يتم العثور على ملف متوافق في هذا الإصدار."
+
 }

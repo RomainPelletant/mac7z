@@ -461,4 +461,56 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z включва собствен 7zz бинарен файл. Аргументите се предават без никаква промяна. Всяка валидна команда за 7zz работи по същия начин и с mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Налична е актуализация';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Версия $version е налична. Искате ли да я инсталирате сега?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Текуща версия: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Нова версия: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Файл: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Размер: $size';
+  }
+
+  @override
+  String get updateInstall => 'Инсталирай';
+
+  @override
+  String get updateLater => 'По-късно';
+
+  @override
+  String get updateSkipVersion => 'Пропусни тази версия';
+
+  @override
+  String get updateDownloading => 'Изтегляне...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Изтегляне на $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Отваряне на инсталатора...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Не беше намерен съвместим файл в тази версия.';
 }

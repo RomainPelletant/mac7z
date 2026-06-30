@@ -449,4 +449,55 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z에는 자체 7zz 바이너리가 포함되어 있습니다. 인수는 수정 없이 그대로 전달됩니다. 7zz에서 유효한 모든 명령은 mac7z에서도 동일하게 동작합니다.';
+
+  @override
+  String get updateAvailableTitle => '업데이트 उपलब्ध';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return '버전 $version을 사용할 수 있습니다. 지금 설치하시겠습니까?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return '현재 버전: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return '새 버전: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return '파일: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return '크기: $size';
+  }
+
+  @override
+  String get updateInstall => '설치';
+
+  @override
+  String get updateLater => '나중에';
+
+  @override
+  String get updateSkipVersion => '이 버전 건너뛰기';
+
+  @override
+  String get updateDownloading => '다운로드 중...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return '$name 다운로드 중...';
+  }
+
+  @override
+  String get updateOpeningInstaller => '설치 프로그램 여는 중...';
+
+  @override
+  String get updateNoCompatibleAsset => '이 릴리스에서 호환되는 파일을 찾을 수 없습니다.';
 }

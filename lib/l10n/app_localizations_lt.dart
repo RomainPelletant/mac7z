@@ -473,4 +473,56 @@ class AppLocalizationsLt extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z turi savo 7zz dvejetainį failą. Argumentai perduodami tiksliai tokie, kokie yra, be pakeitimų. Bet kuri 7zz komandai tinkama komanda taip pat veikia ir su mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Yra atnaujinimas';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Galima versija $version. Ar norite ją įdiegti dabar?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Dabartinė versija: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Nauja versija: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Failas: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Dydis: $size';
+  }
+
+  @override
+  String get updateInstall => 'Įdiegti';
+
+  @override
+  String get updateLater => 'Vėliau';
+
+  @override
+  String get updateSkipVersion => 'Praleisti šią versiją';
+
+  @override
+  String get updateDownloading => 'Atsiunčiama...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Atsiunčiama $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Atidaroma diegimo programa...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Šioje laidoje nerasta suderinamo failo.';
 }

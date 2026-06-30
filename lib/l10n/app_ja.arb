@@ -150,5 +150,61 @@
   "consoleExTechnical": "技術的な詳細付きで一覧表示",
   "consoleCopy": "コピー",
   "consoleCopied": "コピーしました",
-  "consoleInfoNote": "mac7z には独自の 7zz バイナリが同梱されています。引数は変更されず、そのまま渡されます。7zz で有効なコマンドは mac7z でも同じように動作します。"
+  "consoleInfoNote": "mac7z には独自の 7zz バイナリが同梱されています。引数は変更されず、そのまま渡されます。7zz で有効なコマンドは mac7z でも同じように動作します。",
+"updateAvailableTitle": "アップデートがあります",
+"updateAvailableMessage": "バージョン {version} が利用可能です。今すぐインストールしますか？",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "現在のバージョン: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "新しいバージョン: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "ファイル: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "サイズ: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "インストール",
+"updateLater": "後で",
+"updateSkipVersion": "このバージョンをスキップ",
+"updateDownloading": "ダウンロード中...",
+"updateDownloadingAsset": "{name} をダウンロード中...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "インストーラーを開いています...",
+"updateNoCompatibleAsset": "このリリースに互換性のあるファイルが見つかりませんでした。"
+
 }

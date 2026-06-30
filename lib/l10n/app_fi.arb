@@ -150,5 +150,61 @@
   "consoleExTechnical": "Listaa tekniset tiedot",
   "consoleCopy": "Kopioi",
   "consoleCopied": "Kopioitu!",
-  "consoleInfoNote": "mac7z sisältää oman 7zz-binäärinsä. Argumentit välitetään sellaisinaan ilman muutoksia. Kaikki 7zz:lle kelvolliset komennot toimivat samalla tavalla myös mac7z:n kanssa."
+  "consoleInfoNote": "mac7z sisältää oman 7zz-binäärinsä. Argumentit välitetään sellaisinaan ilman muutoksia. Kaikki 7zz:lle kelvolliset komennot toimivat samalla tavalla myös mac7z:n kanssa.",
+"updateAvailableTitle": "Päivitys saatavilla",
+"updateAvailableMessage": "Versio {version} on saatavilla. Haluatko asentaa sen nyt?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Nykyinen versio: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Uusi versio: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Tiedosto: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Koko: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Asenna",
+"updateLater": "Myöhemmin",
+"updateSkipVersion": "Ohita tämä versio",
+"updateDownloading": "Ladataan...",
+"updateDownloadingAsset": "Ladataan {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Avataan asennusohjelmaa...",
+"updateNoCompatibleAsset": "Tälle julkaisulle ei löytynyt yhteensopivaa tiedostoa."
+
 }
