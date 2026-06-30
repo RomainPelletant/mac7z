@@ -149,5 +149,61 @@
   "consoleExTechnical": "Prikaži s tehničnimi podrobnostmi",
   "consoleCopy": "Kopiraj",
   "consoleCopied": "Kopirano!",
-  "consoleInfoNote": "mac7z vključuje svoj lastni binarni program 7zz. Argumenti se posredujejo natančno takšni, kot so, brez sprememb. Vsak ukaz, veljaven za 7zz, deluje enako tudi z mac7z."
+  "consoleInfoNote": "mac7z vključuje svoj lastni binarni program 7zz. Argumenti se posredujejo natančno takšni, kot so, brez sprememb. Vsak ukaz, veljaven za 7zz, deluje enako tudi z mac7z.",
+"updateAvailableTitle": "Posodobitev je na voljo",
+"updateAvailableMessage": "Na voljo je različica {version}. Jo želite namestiti zdaj?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Trenutna različica: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Nova različica: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Datoteka: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Velikost: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Namesti",
+"updateLater": "Pozneje",
+"updateSkipVersion": "Preskoči to različico",
+"updateDownloading": "Prenašanje...",
+"updateDownloadingAsset": "Prenašanje {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Odpiranje namestitvenega programa...",
+"updateNoCompatibleAsset": "V tej izdaji ni bilo najdene združljive datoteke."
+
 }

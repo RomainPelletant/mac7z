@@ -453,4 +453,55 @@ class AppLocalizationsTh extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z มีไบนารี 7zz ของตัวเองในตัว อาร์กิวเมนต์จะถูกส่งต่อไปตามเดิมโดยไม่แก้ไข คำสั่งใดก็ตามที่ใช้ได้กับ 7zz จะทำงานเหมือนกันกับ mac7z';
+
+  @override
+  String get updateAvailableTitle => 'มีการอัปเดตใหม่';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'เวอร์ชัน $version พร้อมใช้งาน ต้องการติดตั้งตอนนี้หรือไม่?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'เวอร์ชันปัจจุบัน: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'เวอร์ชันใหม่: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'ไฟล์: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'ขนาด: $size';
+  }
+
+  @override
+  String get updateInstall => 'ติดตั้ง';
+
+  @override
+  String get updateLater => 'ภายหลัง';
+
+  @override
+  String get updateSkipVersion => 'ข้ามเวอร์ชันนี้';
+
+  @override
+  String get updateDownloading => 'กำลังดาวน์โหลด...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'กำลังดาวน์โหลด $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'กำลังเปิดตัวติดตั้ง...';
+
+  @override
+  String get updateNoCompatibleAsset => 'ไม่พบไฟล์ที่เข้ากันได้ในรีลีสนี้';
 }

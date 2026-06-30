@@ -150,5 +150,61 @@
   "consoleExTechnical": "Списък с технически подробности",
   "consoleCopy": "Копиране",
   "consoleCopied": "Копирано!",
-  "consoleInfoNote": "mac7z включва собствен 7zz бинарен файл. Аргументите се предават без никаква промяна. Всяка валидна команда за 7zz работи по същия начин и с mac7z."
+  "consoleInfoNote": "mac7z включва собствен 7zz бинарен файл. Аргументите се предават без никаква промяна. Всяка валидна команда за 7zz работи по същия начин и с mac7z.",
+"updateAvailableTitle": "Налична е актуализация",
+"updateAvailableMessage": "Версия {version} е налична. Искате ли да я инсталирате сега?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Текуща версия: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Нова версия: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Файл: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Размер: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Инсталирай",
+"updateLater": "По-късно",
+"updateSkipVersion": "Пропусни тази версия",
+"updateDownloading": "Изтегляне...",
+"updateDownloadingAsset": "Изтегляне на {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Отваряне на инсталатора...",
+"updateNoCompatibleAsset": "Не беше намерен съвместим файл в тази версия."
+
 }

@@ -463,4 +463,56 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'Το mac7z περιλαμβάνει το δικό του δυαδικό 7zz. Τα ορίσματα μεταβιβάζονται ακριβώς όπως είναι, χωρίς τροποποίηση. Κάθε έγκυρη εντολή για το 7zz λειτουργεί με τον ίδιο τρόπο και με το mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Διαθέσιμη ενημέρωση';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Η έκδοση $version είναι διαθέσιμη. Θέλετε να την εγκαταστήσετε τώρα;';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Τρέχουσα έκδοση: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Νέα έκδοση: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Αρχείο: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Μέγεθος: $size';
+  }
+
+  @override
+  String get updateInstall => 'Εγκατάσταση';
+
+  @override
+  String get updateLater => 'Αργότερα';
+
+  @override
+  String get updateSkipVersion => 'Παράλειψη αυτής της έκδοσης';
+
+  @override
+  String get updateDownloading => 'Λήψη...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Λήψη του $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Άνοιγμα εγκαταστάτη...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Δεν βρέθηκε συμβατό αρχείο σε αυτή την έκδοση.';
 }

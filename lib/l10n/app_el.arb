@@ -150,5 +150,61 @@
   "consoleExTechnical": "Καταχώριση με τεχνικές λεπτομέρειες",
   "consoleCopy": "Αντιγραφή",
   "consoleCopied": "Αντιγράφηκε!",
-  "consoleInfoNote": "Το mac7z περιλαμβάνει το δικό του δυαδικό 7zz. Τα ορίσματα μεταβιβάζονται ακριβώς όπως είναι, χωρίς τροποποίηση. Κάθε έγκυρη εντολή για το 7zz λειτουργεί με τον ίδιο τρόπο και με το mac7z."
+  "consoleInfoNote": "Το mac7z περιλαμβάνει το δικό του δυαδικό 7zz. Τα ορίσματα μεταβιβάζονται ακριβώς όπως είναι, χωρίς τροποποίηση. Κάθε έγκυρη εντολή για το 7zz λειτουργεί με τον ίδιο τρόπο και με το mac7z.",
+"updateAvailableTitle": "Διαθέσιμη ενημέρωση",
+"updateAvailableMessage": "Η έκδοση {version} είναι διαθέσιμη. Θέλετε να την εγκαταστήσετε τώρα;",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Τρέχουσα έκδοση: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Νέα έκδοση: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Αρχείο: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Μέγεθος: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Εγκατάσταση",
+"updateLater": "Αργότερα",
+"updateSkipVersion": "Παράλειψη αυτής της έκδοσης",
+"updateDownloading": "Λήψη...",
+"updateDownloadingAsset": "Λήψη του {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Άνοιγμα εγκαταστάτη...",
+"updateNoCompatibleAsset": "Δεν βρέθηκε συμβατό αρχείο σε αυτή την έκδοση."
+
 }

@@ -149,5 +149,61 @@
   "consoleExTechnical": "Liostaigh le sonraí teicniúla",
   "consoleCopy": "Cóipeáil",
   "consoleCopied": "Cóipeáilte!",
-  "consoleInfoNote": "Tagann mac7z lena dhénártha 7zz féin. Cuirtear na hargóintí ar aghaidh díreach mar atá siad, gan athrú. Oibríonn aon ordú bailí do 7zz ar an mbealach céanna le mac7z."
+  "consoleInfoNote": "Tagann mac7z lena dhénártha 7zz féin. Cuirtear na hargóintí ar aghaidh díreach mar atá siad, gan athrú. Oibríonn aon ordú bailí do 7zz ar an mbealach céanna le mac7z.",
+"updateAvailableTitle": "Nuashonrú ar fáil",
+"updateAvailableMessage": "Tá leagan {version} ar fáil. Ar mhaith leat é a shuiteáil anois?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Leagan reatha: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Leagan nua: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Comhad: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Méid: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Suiteáil",
+"updateLater": "Níos déanaí",
+"updateSkipVersion": "Scipeáil an leagan seo",
+"updateDownloading": "Á íoslódáil...",
+"updateDownloadingAsset": "Á íoslódáil {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Suiteálaí á oscailt...",
+"updateNoCompatibleAsset": "Níor aimsíodh comhad comhoiriúnach sa leagan seo."
+
 }

@@ -150,5 +150,61 @@
   "consoleExTechnical": "แสดงรายการพร้อมรายละเอียดทางเทคนิค",
   "consoleCopy": "คัดลอก",
   "consoleCopied": "คัดลอกแล้ว!",
-  "consoleInfoNote": "mac7z มีไบนารี 7zz ของตัวเองในตัว อาร์กิวเมนต์จะถูกส่งต่อไปตามเดิมโดยไม่แก้ไข คำสั่งใดก็ตามที่ใช้ได้กับ 7zz จะทำงานเหมือนกันกับ mac7z"
+  "consoleInfoNote": "mac7z มีไบนารี 7zz ของตัวเองในตัว อาร์กิวเมนต์จะถูกส่งต่อไปตามเดิมโดยไม่แก้ไข คำสั่งใดก็ตามที่ใช้ได้กับ 7zz จะทำงานเหมือนกันกับ mac7z",
+"updateAvailableTitle": "มีการอัปเดตใหม่",
+"updateAvailableMessage": "เวอร์ชัน {version} พร้อมใช้งาน ต้องการติดตั้งตอนนี้หรือไม่?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "เวอร์ชันปัจจุบัน: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "เวอร์ชันใหม่: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "ไฟล์: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "ขนาด: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "ติดตั้ง",
+"updateLater": "ภายหลัง",
+"updateSkipVersion": "ข้ามเวอร์ชันนี้",
+"updateDownloading": "กำลังดาวน์โหลด...",
+"updateDownloadingAsset": "กำลังดาวน์โหลด {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "กำลังเปิดตัวติดตั้ง...",
+"updateNoCompatibleAsset": "ไม่พบไฟล์ที่เข้ากันได้ในรีลีสนี้"
+
 }

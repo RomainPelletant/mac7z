@@ -460,4 +460,56 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'A mac7z saját 7zz binárissal érkezik. Az argumentumok módosítás nélkül, pontosan úgy kerülnek továbbításra, ahogy meg vannak adva. Minden, a 7zz-hez érvényes parancs ugyanúgy működik a mac7z-zel is.';
+
+  @override
+  String get updateAvailableTitle => 'Frissítés érhető el';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'A(z) $version verzió elérhető. Szeretné most telepíteni?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Jelenlegi verzió: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Új verzió: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Fájl: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Méret: $size';
+  }
+
+  @override
+  String get updateInstall => 'Telepítés';
+
+  @override
+  String get updateLater => 'Később';
+
+  @override
+  String get updateSkipVersion => 'Verzió kihagyása';
+
+  @override
+  String get updateDownloading => 'Letöltés...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return '$name letöltése...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Telepítő megnyitása...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Ehhez a kiadáshoz nem található kompatibilis fájl.';
 }

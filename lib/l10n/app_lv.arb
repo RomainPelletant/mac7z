@@ -149,5 +149,61 @@
   "consoleExTechnical": "Parādīt ar tehniskām detaļām",
   "consoleCopy": "Kopēt",
   "consoleCopied": "Nokopēts!",
-  "consoleInfoNote": "mac7z ietver savu 7zz bināro failu. Argumenti tiek nodoti tieši tādi, kādi tie ir, bez izmaiņām. Jebkura komanda, kas der 7zz, darbosies tāpat arī ar mac7z."
+  "consoleInfoNote": "mac7z ietver savu 7zz bināro failu. Argumenti tiek nodoti tieši tādi, kādi tie ir, bez izmaiņām. Jebkura komanda, kas der 7zz, darbosies tāpat arī ar mac7z.",
+"updateAvailableTitle": "Pieejams atjauninājums",
+"updateAvailableMessage": "Ir pieejama versija {version}. Vai vēlaties to instalēt tagad?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Pašreizējā versija: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Jaunā versija: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Fails: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Izmērs: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Instalēt",
+"updateLater": "Vēlāk",
+"updateSkipVersion": "Izlaist šo versiju",
+"updateDownloading": "Lejupielādē...",
+"updateDownloadingAsset": "Lejupielādē {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Atver instalētāju...",
+"updateNoCompatibleAsset": "Šajā laidienā netika atrasts saderīgs fails."
+
 }

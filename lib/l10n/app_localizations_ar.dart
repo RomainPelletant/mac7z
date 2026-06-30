@@ -477,4 +477,56 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'يتضمن mac7z ملف 7zz الثنائي الخاص به. تُمرَّر الوسائط كما هي تمامًا دون تعديل. أي أمر صالح لـ 7zz يعمل بالطريقة نفسها مع mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'يتوفر تحديث';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'الإصدار $version متوفر. هل تريد تثبيته الآن؟';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'الإصدار الحالي: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'الإصدار الجديد: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'الملف: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'الحجم: $size';
+  }
+
+  @override
+  String get updateInstall => 'تثبيت';
+
+  @override
+  String get updateLater => 'لاحقًا';
+
+  @override
+  String get updateSkipVersion => 'تخطي هذا الإصدار';
+
+  @override
+  String get updateDownloading => 'جارٍ التنزيل...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'جارٍ تنزيل $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'جارٍ فتح برنامج التثبيت...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'لم يتم العثور على ملف متوافق في هذا الإصدار.';
 }

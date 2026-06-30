@@ -150,5 +150,61 @@
   "consoleExTechnical": "Daftar dengan detail teknis",
   "consoleCopy": "Salin",
   "consoleCopied": "Tersalin!",
-  "consoleInfoNote": "mac7z menyertakan biner 7zz miliknya sendiri. Argumen diteruskan apa adanya tanpa perubahan. Setiap perintah yang valid untuk 7zz akan bekerja dengan cara yang sama di mac7z."
+  "consoleInfoNote": "mac7z menyertakan biner 7zz miliknya sendiri. Argumen diteruskan apa adanya tanpa perubahan. Setiap perintah yang valid untuk 7zz akan bekerja dengan cara yang sama di mac7z.",
+"updateAvailableTitle": "Pembaruan tersedia",
+"updateAvailableMessage": "Versi {version} tersedia. Apakah Anda ingin memasangnya sekarang?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Versi saat ini: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Versi baru: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Berkas: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Ukuran: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Pasang",
+"updateLater": "Nanti",
+"updateSkipVersion": "Lewati versi ini",
+"updateDownloading": "Mengunduh...",
+"updateDownloadingAsset": "Mengunduh {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Membuka penginstal...",
+"updateNoCompatibleAsset": "Tidak ada berkas yang kompatibel ditemukan dalam rilis ini."
+
 }

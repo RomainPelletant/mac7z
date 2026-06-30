@@ -150,5 +150,61 @@
   "consoleExTechnical": "Vis med tekniske detaljer",
   "consoleCopy": "Kopiér",
   "consoleCopied": "Kopieret!",
-  "consoleInfoNote": "mac7z leveres med sin egen 7zz-binærfil. Argumenter sendes videre præcis som de er uden ændringer. Enhver gyldig kommando til 7zz virker på samme måde med mac7z."
+  "consoleInfoNote": "mac7z leveres med sin egen 7zz-binærfil. Argumenter sendes videre præcis som de er uden ændringer. Enhver gyldig kommando til 7zz virker på samme måde med mac7z.",
+"updateAvailableTitle": "Opdatering tilgængelig",
+"updateAvailableMessage": "Version {version} er tilgængelig. Vil du installere den nu?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Nuværende version: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Ny version: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Fil: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Størrelse: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Installer",
+"updateLater": "Senere",
+"updateSkipVersion": "Spring denne version over",
+"updateDownloading": "Downloader...",
+"updateDownloadingAsset": "Downloader {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Åbner installationsprogram...",
+"updateNoCompatibleAsset": "Ingen kompatibel fil blev fundet i denne udgivelse."
+
 }

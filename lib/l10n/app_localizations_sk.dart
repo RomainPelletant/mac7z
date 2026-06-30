@@ -470,4 +470,56 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z obsahuje vlastný binárny súbor 7zz. Argumenty sa odovzdávajú presne tak, ako sú, bez úprav. Každý príkaz platný pre 7zz funguje rovnako aj s mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Dostupná aktualizácia';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Verzia $version je dostupná. Chcete ju teraz nainštalovať?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Aktuálna verzia: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Nová verzia: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Súbor: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Veľkosť: $size';
+  }
+
+  @override
+  String get updateInstall => 'Inštalovať';
+
+  @override
+  String get updateLater => 'Neskôr';
+
+  @override
+  String get updateSkipVersion => 'Preskočiť túto verziu';
+
+  @override
+  String get updateDownloading => 'Sťahovanie...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Sťahovanie $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Otvára sa inštalátor...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'V tomto vydaní sa nenašiel kompatibilný súbor.';
 }

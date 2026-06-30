@@ -150,5 +150,61 @@
   "consoleExTechnical": "Popis s tehničkim detaljima",
   "consoleCopy": "Kopiraj",
   "consoleCopied": "Kopirano!",
-  "consoleInfoNote": "mac7z uključuje vlastiti 7zz binarni program. Argumenti se prosljeđuju točno onako kako jesu, bez izmjena. Svaka naredba valjana za 7zz radi jednako i s mac7z-om."
+  "consoleInfoNote": "mac7z uključuje vlastiti 7zz binarni program. Argumenti se prosljeđuju točno onako kako jesu, bez izmjena. Svaka naredba valjana za 7zz radi jednako i s mac7z-om.",
+"updateAvailableTitle": "Dostupno je ažuriranje",
+"updateAvailableMessage": "Verzija {version} je dostupna. Želite li je sada instalirati?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Trenutna verzija: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Nova verzija: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Datoteka: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Veličina: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Instaliraj",
+"updateLater": "Kasnije",
+"updateSkipVersion": "Preskoči ovu verziju",
+"updateDownloading": "Preuzimanje...",
+"updateDownloadingAsset": "Preuzimanje {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Otvaranje instalacijskog programa...",
+"updateNoCompatibleAsset": "U ovom izdanju nije pronađena kompatibilna datoteka."
+
 }

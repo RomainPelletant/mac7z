@@ -459,4 +459,56 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z sisältää oman 7zz-binäärinsä. Argumentit välitetään sellaisinaan ilman muutoksia. Kaikki 7zz:lle kelvolliset komennot toimivat samalla tavalla myös mac7z:n kanssa.';
+
+  @override
+  String get updateAvailableTitle => 'Päivitys saatavilla';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Versio $version on saatavilla. Haluatko asentaa sen nyt?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Nykyinen versio: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Uusi versio: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Tiedosto: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Koko: $size';
+  }
+
+  @override
+  String get updateInstall => 'Asenna';
+
+  @override
+  String get updateLater => 'Myöhemmin';
+
+  @override
+  String get updateSkipVersion => 'Ohita tämä versio';
+
+  @override
+  String get updateDownloading => 'Ladataan...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Ladataan $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Avataan asennusohjelmaa...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Tälle julkaisulle ei löytynyt yhteensopivaa tiedostoa.';
 }

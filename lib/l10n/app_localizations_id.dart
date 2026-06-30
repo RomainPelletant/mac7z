@@ -454,4 +454,56 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z menyertakan biner 7zz miliknya sendiri. Argumen diteruskan apa adanya tanpa perubahan. Setiap perintah yang valid untuk 7zz akan bekerja dengan cara yang sama di mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Pembaruan tersedia';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Versi $version tersedia. Apakah Anda ingin memasangnya sekarang?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Versi saat ini: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Versi baru: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Berkas: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Ukuran: $size';
+  }
+
+  @override
+  String get updateInstall => 'Pasang';
+
+  @override
+  String get updateLater => 'Nanti';
+
+  @override
+  String get updateSkipVersion => 'Lewati versi ini';
+
+  @override
+  String get updateDownloading => 'Mengunduh...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Mengunduh $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Membuka penginstal...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Tidak ada berkas yang kompatibel ditemukan dalam rilis ini.';
 }

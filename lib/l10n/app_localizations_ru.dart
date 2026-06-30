@@ -472,4 +472,56 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z включает собственный двоичный файл 7zz. Аргументы передаются без изменений, точно как есть. Любая команда, допустимая для 7zz, работает точно так же и с mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Доступно обновление';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Доступна версия $version. Установить её сейчас?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Текущая версия: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Новая версия: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Файл: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Размер: $size';
+  }
+
+  @override
+  String get updateInstall => 'Установить';
+
+  @override
+  String get updateLater => 'Позже';
+
+  @override
+  String get updateSkipVersion => 'Пропустить эту версию';
+
+  @override
+  String get updateDownloading => 'Загрузка...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Загрузка $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Открытие установщика...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'В этом релизе не найден совместимый файл.';
 }

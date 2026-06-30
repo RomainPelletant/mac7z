@@ -459,4 +459,56 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z sisaldab oma 7zz binaarfaili. Argumendid edastatakse täpselt muutmata kujul. Kõik 7zz jaoks kehtivad käsud töötavad samamoodi ka mac7z-iga.';
+
+  @override
+  String get updateAvailableTitle => 'Uuendus on saadaval';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Versioon $version on saadaval. Kas soovite selle kohe installida?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Praegune versioon: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Uus versioon: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Fail: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Suurus: $size';
+  }
+
+  @override
+  String get updateInstall => 'Installi';
+
+  @override
+  String get updateLater => 'Hiljem';
+
+  @override
+  String get updateSkipVersion => 'Jäta see versioon vahele';
+
+  @override
+  String get updateDownloading => 'Allalaadimine...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return '$name allalaadimine...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Installeri avamine...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Selles väljalaskes ei leitud ühtegi ühilduvat faili.';
 }

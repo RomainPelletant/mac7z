@@ -150,5 +150,61 @@
   "consoleExTechnical": "Vypsat s technickými detaily",
   "consoleCopy": "Kopírovat",
   "consoleCopied": "Zkopírováno!",
-  "consoleInfoNote": "mac7z obsahuje vlastní binární soubor 7zz. Argumenty se předávají přesně tak, jak jsou, bez úprav. Jakýkoli příkaz platný pro 7zz funguje stejně i s mac7z."
+  "consoleInfoNote": "mac7z obsahuje vlastní binární soubor 7zz. Argumenty se předávají přesně tak, jak jsou, bez úprav. Jakýkoli příkaz platný pro 7zz funguje stejně i s mac7z.",
+"updateAvailableTitle": "K dispozici je aktualizace",
+"updateAvailableMessage": "Verze {version} je k dispozici. Chcete ji nyní nainstalovat?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Aktuální verze: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Nová verze: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Soubor: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Velikost: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Instalovat",
+"updateLater": "Později",
+"updateSkipVersion": "Přeskočit tuto verzi",
+"updateDownloading": "Stahování...",
+"updateDownloadingAsset": "Stahování {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Otevírání instalátoru...",
+"updateNoCompatibleAsset": "V této verzi nebyl nalezen kompatibilní soubor."
+
 }

@@ -454,4 +454,56 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z đi kèm tệp nhị phân 7zz riêng. Các đối số được chuyển tiếp nguyên trạng, không chỉnh sửa. Mọi lệnh hợp lệ cho 7zz đều hoạt động giống hệt với mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Có bản cập nhật';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'Phiên bản $version đã có sẵn. Bạn có muốn cài đặt ngay bây giờ không?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Phiên bản hiện tại: $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Phiên bản mới: $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Tệp: $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Kích thước: $size';
+  }
+
+  @override
+  String get updateInstall => 'Cài đặt';
+
+  @override
+  String get updateLater => 'Để sau';
+
+  @override
+  String get updateSkipVersion => 'Bỏ qua phiên bản này';
+
+  @override
+  String get updateDownloading => 'Đang tải xuống...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Đang tải xuống $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Đang mở trình cài đặt...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Không tìm thấy tệp tương thích trong bản phát hành này.';
 }

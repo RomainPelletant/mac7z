@@ -150,5 +150,61 @@
   "consoleExTechnical": "Listează cu detalii tehnice",
   "consoleCopy": "Copiază",
   "consoleCopied": "Copiat!",
-  "consoleInfoNote": "mac7z include propriul său binar 7zz. Argumentele sunt transmise exact așa cum sunt, fără modificări. Orice comandă validă pentru 7zz funcționează identic și cu mac7z."
+  "consoleInfoNote": "mac7z include propriul său binar 7zz. Argumentele sunt transmise exact așa cum sunt, fără modificări. Orice comandă validă pentru 7zz funcționează identic și cu mac7z.",
+"updateAvailableTitle": "Actualizare disponibilă",
+"updateAvailableMessage": "Versiunea {version} este disponibilă. Doriți să o instalați acum?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Versiune curentă: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Versiune nouă: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Fișier: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Dimensiune: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Instalează",
+"updateLater": "Mai târziu",
+"updateSkipVersion": "Omite această versiune",
+"updateDownloading": "Se descarcă...",
+"updateDownloadingAsset": "Se descarcă {name}...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Se deschide instalatorul...",
+"updateNoCompatibleAsset": "Nu a fost găsit niciun fișier compatibil în această versiune."
+
 }

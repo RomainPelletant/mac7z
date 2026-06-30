@@ -149,5 +149,61 @@
   "consoleExTechnical": "Loetelu tehniliste detailidega",
   "consoleCopy": "Kopeeri",
   "consoleCopied": "Kopeeritud!",
-  "consoleInfoNote": "mac7z sisaldab oma 7zz binaarfaili. Argumendid edastatakse täpselt muutmata kujul. Kõik 7zz jaoks kehtivad käsud töötavad samamoodi ka mac7z-iga."
+  "consoleInfoNote": "mac7z sisaldab oma 7zz binaarfaili. Argumendid edastatakse täpselt muutmata kujul. Kõik 7zz jaoks kehtivad käsud töötavad samamoodi ka mac7z-iga.",
+"updateAvailableTitle": "Uuendus on saadaval",
+"updateAvailableMessage": "Versioon {version} on saadaval. Kas soovite selle kohe installida?",
+"@updateAvailableMessage": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateCurrentVersion": "Praegune versioon: {version}",
+"@updateCurrentVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateNewVersion": "Uus versioon: {version}",
+"@updateNewVersion": {
+  "placeholders": {
+    "version": {
+      "type": "String"
+    }
+  }
+},
+"updateFile": "Fail: {name}",
+"@updateFile": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateSize": "Suurus: {size}",
+"@updateSize": {
+  "placeholders": {
+    "size": {
+      "type": "String"
+    }
+  }
+},
+"updateInstall": "Installi",
+"updateLater": "Hiljem",
+"updateSkipVersion": "Jäta see versioon vahele",
+"updateDownloading": "Allalaadimine...",
+"updateDownloadingAsset": "{name} allalaadimine...",
+"@updateDownloadingAsset": {
+  "placeholders": {
+    "name": {
+      "type": "String"
+    }
+  }
+},
+"updateOpeningInstaller": "Installeri avamine...",
+"updateNoCompatibleAsset": "Selles väljalaskes ei leitud ühtegi ühilduvat faili."
+
 }

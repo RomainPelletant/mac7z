@@ -447,4 +447,55 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z 内置了自己的 7zz 二进制文件。参数会原样传递，不做任何修改。任何对 7zz 有效的命令，对 mac7z 也同样有效。';
+
+  @override
+  String get updateAvailableTitle => '有可用更新';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return '版本 $version 已可用。现在要安装吗？';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return '当前版本：$version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return '新版本：$version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return '文件：$name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return '大小：$size';
+  }
+
+  @override
+  String get updateInstall => '安装';
+
+  @override
+  String get updateLater => '稍后';
+
+  @override
+  String get updateSkipVersion => '跳过此版本';
+
+  @override
+  String get updateDownloading => '正在下载...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return '正在下载 $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => '正在打开安装程序...';
+
+  @override
+  String get updateNoCompatibleAsset => '此版本中未找到兼容文件。';
 }

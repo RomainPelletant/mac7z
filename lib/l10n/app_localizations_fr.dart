@@ -462,4 +462,56 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get consoleInfoNote =>
       'mac7z embarque son propre binaire 7zz. Les arguments sont transmis tels quels, sans modification. Toute commande valide pour 7zz fonctionne de manière identique avec mac7z.';
+
+  @override
+  String get updateAvailableTitle => 'Mise à jour disponible';
+
+  @override
+  String updateAvailableMessage(String version) {
+    return 'La version $version est disponible. Voulez-vous l’installer maintenant ?';
+  }
+
+  @override
+  String updateCurrentVersion(String version) {
+    return 'Version actuelle : $version';
+  }
+
+  @override
+  String updateNewVersion(String version) {
+    return 'Nouvelle version : $version';
+  }
+
+  @override
+  String updateFile(String name) {
+    return 'Fichier : $name';
+  }
+
+  @override
+  String updateSize(String size) {
+    return 'Taille : $size';
+  }
+
+  @override
+  String get updateInstall => 'Installer';
+
+  @override
+  String get updateLater => 'Plus tard';
+
+  @override
+  String get updateSkipVersion => 'Sauter cette version';
+
+  @override
+  String get updateDownloading => 'Téléchargement...';
+
+  @override
+  String updateDownloadingAsset(String name) {
+    return 'Téléchargement de $name...';
+  }
+
+  @override
+  String get updateOpeningInstaller => 'Ouverture de l’installateur...';
+
+  @override
+  String get updateNoCompatibleAsset =>
+      'Aucun fichier compatible n\'a été trouvé dans cette release.';
 }
