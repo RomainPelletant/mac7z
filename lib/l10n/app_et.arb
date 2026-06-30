@@ -72,6 +72,7 @@
   "compLabelFormat": "Vorming",
   "compLabelCompression": "Tihenduse tase",
   "compLabelSecurity": "Turvalisus",
+  "compLabelAdvanced": "Täpsemad valikud",
   "compLabelSplit": "Jaga",
   "compSizeFolder": "kaust",
   "compDestSameFolder": "Sama kaust kui failid",

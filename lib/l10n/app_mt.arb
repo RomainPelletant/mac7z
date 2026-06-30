@@ -72,6 +72,7 @@
   "compLabelFormat": "Format",
   "compLabelCompression": "Livell ta' kompressjoni",
   "compLabelSecurity": "Sigurtà",
+  "compLabelAdvanced": "Għażliet avvanzati",
   "compLabelSplit": "Aqsam",
   "compSizeFolder": "folder",
   "compDestSameFolder": "Istess folder bħal il-fajls",

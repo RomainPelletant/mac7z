@@ -801,6 +801,9 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get compLabelSecurity => 'Seguridad';
 
   @override
+  String get compLabelAdvanced => 'Opciones avanzadas';
+
+  @override
   String get compLabelSplit => 'Dividir';
 
   @override

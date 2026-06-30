@@ -296,7 +296,7 @@ class AppLocalizationsLt extends AppLocalizations {
   String get compLabelSecurity => 'Saugumas';
 
   @override
-  String get compLabelAdvanced => 'Advanced options';
+  String get compLabelAdvanced => 'Išplėstinės parinktys';
 
   @override
   String get compLabelSplit => 'Skaidyti';

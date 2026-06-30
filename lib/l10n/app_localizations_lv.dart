@@ -290,7 +290,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get compLabelSecurity => 'Drošība';
 
   @override
-  String get compLabelAdvanced => 'Advanced options';
+  String get compLabelAdvanced => 'Papildu opcijas';
 
   @override
   String get compLabelSplit => 'Dalīt';

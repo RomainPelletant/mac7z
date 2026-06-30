@@ -287,7 +287,7 @@ class AppLocalizationsMt extends AppLocalizations {
   String get compLabelSecurity => 'Sigurtà';
 
   @override
-  String get compLabelAdvanced => 'Advanced options';
+  String get compLabelAdvanced => 'Għażliet avvanzati';
 
   @override
   String get compLabelSplit => 'Aqsam';

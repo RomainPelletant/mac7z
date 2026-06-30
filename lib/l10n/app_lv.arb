@@ -72,6 +72,7 @@
   "compLabelFormat": "Formāts",
   "compLabelCompression": "Saspiešanas līmenis",
   "compLabelSecurity": "Drošība",
+  "compLabelAdvanced": "Papildu opcijas",
   "compLabelSplit": "Dalīt",
   "compSizeFolder": "mape",
   "compDestSameFolder": "Tā pati mape kā faili",

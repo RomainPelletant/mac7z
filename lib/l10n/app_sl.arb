@@ -72,6 +72,7 @@
   "compLabelFormat": "Oblika",
   "compLabelCompression": "Raven stiskanja",
   "compLabelSecurity": "Varnost",
+  "compLabelAdvanced": "Napredne možnosti",
   "compLabelSplit": "Deli",
   "compSizeFolder": "mapa",
   "compDestSameFolder": "Ista mapa kot datoteke",

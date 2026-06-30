@@ -800,6 +800,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get compLabelSecurity => 'Segurança';
 
   @override
+  String get compLabelAdvanced => 'Opções avançadas';
+
+  @override
   String get compLabelSplit => 'Dividir';
 
   @override

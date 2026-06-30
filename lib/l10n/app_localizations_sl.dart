@@ -297,7 +297,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get compLabelSecurity => 'Varnost';
 
   @override
-  String get compLabelAdvanced => 'Advanced options';
+  String get compLabelAdvanced => 'Napredne možnosti';
 
   @override
   String get compLabelSplit => 'Deli';

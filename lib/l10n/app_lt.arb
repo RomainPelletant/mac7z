@@ -72,6 +72,7 @@
   "compLabelFormat": "Formatas",
   "compLabelCompression": "Glaudinimo lygis",
   "compLabelSecurity": "Saugumas",
+  "compLabelAdvanced": "Išplėstinės parinktys",
   "compLabelSplit": "Skaidyti",
   "compSizeFolder": "aplankas",
   "compDestSameFolder": "Tas pats aplankas kaip failai",
