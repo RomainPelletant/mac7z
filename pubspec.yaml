@@ -1,7 +1,7 @@
 name: mac7z
 description: A macOS 7zip archive manager with drag & drop support.
 publish_to: 'none'
-version: 0.9.4+0
+version: 0.9.5+0
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
