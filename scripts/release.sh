@@ -33,29 +33,35 @@ release_macos() {
   flutter build macos --release
   ok "Build → $APP_PATH"
 
-  # 2. Signature ad-hoc (inside-out : frameworks d'abord, puis le bundle)
-  step "[macOS] Signature ad-hoc (inside-out)..."
+  # 2. Signature
 
-  # 2a. Re-signer chaque .framework et .dylib dans Contents/Frameworks/
-  #     (nécessaire quand les frameworks tiers portent un Team ID différent)
+  # 2a. Sign the frameworks inside Contents/Frameworks/
   local FRAMEWORKS_DIR="$APP_PATH/Contents/Frameworks"
   if [ -d "$FRAMEWORKS_DIR" ]; then
-    # Signer d'abord les binaires les plus profonds (bibliothèques dans les frameworks)
+    # Sign each .dylib and .so file inside the frameworks
     find "$FRAMEWORKS_DIR" -type f \( -name "*.dylib" -o -name "*.so" \) | while read -r lib; do
       codesign --force --sign - "$lib"
     done
-    # Puis signer chaque .framework (le bundle entier)
+    # Then sign each .framework bundle
     find "$FRAMEWORKS_DIR" -name "*.framework" -maxdepth 1 | while read -r fw; do
       codesign --force --sign - "$fw"
     done
   fi
 
-  # 2b. Signer le bundle principal
-  codesign --force --sign - "$APP_PATH"
+  # 2b. Sign the 7zz binary inside Contents/Resources/ 
+  codesign --force --options runtime --timestamp \
+  --sign "$APPLE_SIGN_ID_APP" \
+  "$APP_PATH/Contents/Resources/7zz"
+
+  # 2b. Sign the main app bundle
+  #codesign --force --sign - "$APP_PATH"
+  codesign --force --deep --options runtime --timestamp \
+  --sign "$APPLE_SIGN_ID_APP" \
+  "$APP_PATH"
   codesign --verify --deep --strict "$APP_PATH" && ok "Signature valide" || warn "Vérification signature échouée"
 
   # 3. DMG
-  step "[macOS] Création du DMG..."
+  step "[macOS] Create DMG..."
   rm -rf "$DMG_STAGING"
   mkdir -p "$DMG_STAGING"
   cp -R "$APP_PATH" "$DMG_STAGING/"
@@ -68,6 +74,17 @@ release_macos() {
     "$OUTPUT_DIR/$DMG_NAME"
   rm -rf "$DMG_STAGING"
   ok "DMG → $OUTPUT_DIR/$DMG_NAME ($(du -sh "$OUTPUT_DIR/$DMG_NAME" | awk '{print $1}'))"
+
+  # 4.Notarization
+  if ! xcrun notarytool submit $OUTPUT_DIR/$DMG_NAME \
+    --apple-id "$APPLE_ACCOUNT_ID" \
+    --team-id "$APPLE_TEAM_ID" \
+    --password "$APPLE_APP_PASSWORD" \
+    --wait
+  then
+    echo "Notarization failed"
+    exit 1
+  fi
 
 }
 
