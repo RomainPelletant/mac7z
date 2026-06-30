@@ -63,6 +63,26 @@ jobs:
       - name: Build macOS release
         run: flutter build macos --release
 
+      - name: Code sign mac7z.app
+        env:
+          APPLE_SIGN_ID_APP: ${{ secrets.APPLE_SIGN_ID_APP }}
+          APP_PATH: "build/macos/Build/Products/Release/mac7z.app"
+        run: |  
+            codesign --force --options runtime --timestamp \
+              --sign "$APPLE_SIGN_ID_APP" \
+              "$APP_PATH/Contents/Resources/7zz"
+
+            codesign --force --deep --options runtime --timestamp \
+              --sign "$APPLE_SIGN_ID_APP" \
+              "$APP_PATH"
+
+            if codesign --verify --deep --strict --verbose=4 "$APP_PATH"; then
+              echo "Signature valid"
+            else
+              echo "Signature failed"
+              exit 1
+            fi
+
       - name: Create DMG
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
@@ -75,6 +95,21 @@ jobs:
             -srcfolder "$DMG_STAGING" \
             -ov -format UDZO -fs HFS+ \
             "mac7z-${VERSION}-${{ matrix.suffix }}.dmg"
+
+      - name: Notarize DMG
+        env:
+          APPLE_ACCOUNT_ID: ${{ secrets.APPLE_ACCOUNT_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          DMG_FILE="mac7z-${VERSION}-${{ matrix.suffix }}.dmg"
+
+          xcrun notarytool submit "$DMG_FILE" \
+            --apple-id "$APPLE_ACCOUNT_ID" \
+            --team-id "$APPLE_TEAM_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --wait
 
       - name: Upload DMG artifact
         uses: actions/upload-artifact@v4
