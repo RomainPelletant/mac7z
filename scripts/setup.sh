@@ -3,7 +3,7 @@ set -e
 
 # ── Config ────────────────────────────────────────────────────────────────────
 # Version of 7-Zip to download (check on https://7-zip.org)
-SEVENZIP_VERSION="2600"
+SEVENZIP_VERSION="2603"
 
 # Resolve path relative to this script, regardless of where it is called from
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
