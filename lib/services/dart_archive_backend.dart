@@ -85,6 +85,7 @@ class DartArchiveBackend implements ArchiveBackend {
     String archivePath,
     String outputDir, {
     String? password,
+    List<String>? entryPaths,
     void Function(String)? onLog,
   }) async* {
     if (password != null && password.isNotEmpty) {
@@ -92,9 +93,19 @@ class DartArchiveBackend implements ArchiveBackend {
           'Le backend Dart Archive ne supporte pas les archives chiffrées.\n'
           'Utilisez le backend 7-Zip pour ce fichier.');
     }
+    if (entryPaths != null && entryPaths.isEmpty) {
+      yield ExtractionProgress(percent: 100, currentFile: '', done: true);
+      return;
+    }
 
     final archive = await _decodeArchive(archivePath);
-    final files = archive.files.where((f) => f.isFile).toList();
+    final selectedPaths =
+        entryPaths?.map((path) => path.replaceAll('\\', '/')).toSet();
+    final files = archive.files.where((file) {
+      if (!file.isFile) return false;
+      return selectedPaths == null ||
+          selectedPaths.contains(file.name.replaceAll('\\', '/'));
+    }).toList();
     final total = files.length;
     int done = 0;
 
@@ -147,8 +158,7 @@ class DartArchiveBackend implements ArchiveBackend {
           'Utilisez le backend 7-Zip pour cette option.');
     }
     if (format == ArchiveFormat.sevenZip) {
-      throw Exception(
-          'Le backend Dart Archive ne supporte pas le format 7z.\n'
+      throw Exception('Le backend Dart Archive ne supporte pas le format 7z.\n'
           'Utilisez le backend 7-Zip pour créer des archives 7z.');
     }
     if (format == ArchiveFormat.tarXz) {
@@ -182,8 +192,7 @@ class DartArchiveBackend implements ArchiveBackend {
         bytes.length,
         bytes,
       );
-      entry.lastModTime =
-          stat.modified.millisecondsSinceEpoch ~/ 1000;
+      entry.lastModTime = stat.modified.millisecondsSinceEpoch ~/ 1000;
       archive.addFile(entry);
 
       done++;
@@ -281,8 +290,7 @@ class DartArchiveBackend implements ArchiveBackend {
           'Utilisez le backend 7-Zip pour ce fichier.');
     }
 
-    throw Exception(
-        'Format non reconnu : ${p.extension(archivePath)}\n'
+    throw Exception('Format non reconnu : ${p.extension(archivePath)}\n'
         'Formats supportés par Dart Archive : zip, tar, tar.gz, tar.bz2, tar.xz');
   }
 

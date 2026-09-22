@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen>
   String? _outputDir;
   String? _password;
   List<ArchiveEntry> _entries = [];
+  Set<String> _selectedEntryPaths = {};
   List<LogEntry> _logs = [];
   double _progress = 0;
   String _currentFile = '';
@@ -161,6 +162,7 @@ class _HomeScreenState extends State<HomeScreen>
     setState(() {
       _archivePath = path;
       _entries = [];
+      _selectedEntryPaths = {};
       _status = ExtractionStatus.previewing;
       _error = null;
       _progress = 0;
@@ -173,6 +175,10 @@ class _HomeScreenState extends State<HomeScreen>
           .listContents(path, password: _password);
       setState(() {
         _entries = entries;
+        _selectedEntryPaths = entries
+            .where((entry) => !entry.isDirectory)
+            .map((entry) => entry.path)
+            .toSet();
         _status = ExtractionStatus.idle;
       });
       _log(l10n.logEntriesFound(entries.length), LogLevel.success);
@@ -180,6 +186,10 @@ class _HomeScreenState extends State<HomeScreen>
       // Show whatever 7zip could read, with a warning
       setState(() {
         _entries = e.partialEntries;
+        _selectedEntryPaths = e.partialEntries
+            .where((entry) => !entry.isDirectory)
+            .map((entry) => entry.path)
+            .toSet();
         _status = ExtractionStatus.idle;
       });
       _log(
@@ -218,7 +228,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   Future<void> _pickOutputDir() async {
     final l10n = AppLocalizations.of(context)!;
-    final dir = await FilePicker.getDirectoryPath(dialogTitle: l10n.pickOutputDialogTitle);
+    final dir = await FilePicker.getDirectoryPath(
+        dialogTitle: l10n.pickOutputDialogTitle);
     if (dir != null) {
       setState(() => _outputDir = dir);
       _log('Destination : $dir');
@@ -228,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen>
   String _archiveBaseName(String path) => archiveBaseName(path);
 
   Future<void> _extract() async {
-    if (_archivePath == null) return;
+    if (_archivePath == null || _selectedEntryPaths.isEmpty) return;
 
     final baseDir = _outputDir ?? p.dirname(_archivePath!);
     final String outDir = _createSubfolder
@@ -253,6 +264,11 @@ class _HomeScreenState extends State<HomeScreen>
         _archivePath!,
         outDir,
         password: _password,
+        entryPaths: _entries
+            .where((entry) =>
+                !entry.isDirectory && _selectedEntryPaths.contains(entry.path))
+            .map((entry) => entry.path)
+            .toList(),
         onLog: (l) => _log(l),
       )) {
         setState(() {
@@ -260,9 +276,14 @@ class _HomeScreenState extends State<HomeScreen>
             _progress = prog.percent;
           } else {
             fileCount++;
-            _progress = _entries.isEmpty
+            final selectedFileCount = _entries
+                .where((entry) =>
+                    !entry.isDirectory &&
+                    _selectedEntryPaths.contains(entry.path))
+                .length;
+            _progress = selectedFileCount == 0
                 ? 0
-                : (fileCount / _entries.length * 100).clamp(0, 99);
+                : (fileCount / selectedFileCount * 100).clamp(0, 99);
           }
           _currentFile = prog.currentFile;
           if (prog.done) {
@@ -311,6 +332,7 @@ class _HomeScreenState extends State<HomeScreen>
       _outputDir = null;
       _password = null;
       _entries = [];
+      _selectedEntryPaths = {};
       _progress = 0;
       _currentFile = '';
       _error = null;
@@ -403,6 +425,7 @@ class _HomeScreenState extends State<HomeScreen>
                         outputDir: _outputDir,
                         status: _status,
                         entries: _entries,
+                        hasSelectedEntries: _selectedEntryPaths.isNotEmpty,
                         createSubfolder: _createSubfolder,
                         onPickFile: _pickFile,
                         onDrop: _onFilesDropped,
@@ -417,12 +440,18 @@ class _HomeScreenState extends State<HomeScreen>
                     Expanded(
                       child: _RightPanel(
                         entries: _entries,
+                        selectedEntryPaths: _selectedEntryPaths,
                         logs: _logs,
                         status: _status,
                         progress: _progress,
                         currentFile: _currentFile,
                         error: _error,
                         onFileOpen: _archivePath != null ? _openFile : null,
+                        onSelectionChanged:
+                            _status == ExtractionStatus.extracting
+                                ? null
+                                : (paths) =>
+                                    setState(() => _selectedEntryPaths = paths),
                       ),
                     ),
                   ],
@@ -573,6 +602,7 @@ class _LeftPanel extends StatelessWidget {
   final String? outputDir;
   final ExtractionStatus status;
   final List<ArchiveEntry> entries;
+  final bool hasSelectedEntries;
   final bool createSubfolder;
   final VoidCallback onPickFile;
   final Future<void> Function(List<String>) onDrop;
@@ -586,6 +616,7 @@ class _LeftPanel extends StatelessWidget {
     required this.outputDir,
     required this.status,
     required this.entries,
+    required this.hasSelectedEntries,
     required this.createSubfolder,
     required this.onPickFile,
     required this.onDrop,
@@ -644,6 +675,7 @@ class _LeftPanel extends StatelessWidget {
                   : Icons.unarchive_rounded,
               color: c.accent,
               enabled: hasArchive &&
+                  hasSelectedEntries &&
                   !isExtracting &&
                   status != ExtractionStatus.previewing,
               onPressed: onExtract,
@@ -844,21 +876,25 @@ class _ActionButton extends StatelessWidget {
 
 class _RightPanel extends StatelessWidget {
   final List<ArchiveEntry> entries;
+  final Set<String> selectedEntryPaths;
   final List<LogEntry> logs;
   final ExtractionStatus status;
   final double progress;
   final String currentFile;
   final String? error;
   final void Function(ArchiveEntry)? onFileOpen;
+  final ValueChanged<Set<String>>? onSelectionChanged;
 
   const _RightPanel({
     required this.entries,
+    required this.selectedEntryPaths,
     required this.logs,
     required this.status,
     required this.progress,
     required this.currentFile,
     required this.error,
     this.onFileOpen,
+    this.onSelectionChanged,
   });
 
   @override
@@ -870,9 +906,11 @@ class _RightPanel extends StatelessWidget {
           flex: 7,
           child: FileTreeWidget(
             entries: entries,
+            selectedEntryPaths: selectedEntryPaths,
             status: status,
             error: error,
             onFileOpen: onFileOpen,
+            onSelectionChanged: onSelectionChanged,
           ),
         ),
         Divider(height: 1, color: Theme.of(context).dividerColor),
