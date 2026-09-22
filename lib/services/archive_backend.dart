@@ -41,6 +41,7 @@ abstract class ArchiveBackend {
     String archivePath,
     String outputDir, {
     String? password,
+    List<String>? entryPaths,
     void Function(String)? onLog,
   });
 

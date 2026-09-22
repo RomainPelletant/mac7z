@@ -176,8 +176,12 @@ class SevenZipService implements ArchiveBackend {
 
     if (outer != null) {
       final outerArgs = [
-        'e', archivePath, '-t$outer',
-        '-o${tempDir.path}', '-y', '-p${password ?? ""}',
+        'e',
+        archivePath,
+        '-t$outer',
+        '-o${tempDir.path}',
+        '-y',
+        '-p${password ?? ""}',
       ];
       final outerResult = await Process.run(bin, outerArgs);
       final outerStderr = outerResult.stderr.toString();
@@ -197,7 +201,11 @@ class SevenZipService implements ArchiveBackend {
         throw Exception('Inner .tar not found after outer extraction.');
 
       final innerArgs = [
-        'e', tarFiles.first.path, '-o${tempDir.path}', '-y', entryPath,
+        'e',
+        tarFiles.first.path,
+        '-o${tempDir.path}',
+        '-y',
+        entryPath,
       ];
       final innerResult = await Process.run(bin, innerArgs);
       if (innerResult.exitCode != 0 && innerResult.exitCode != 1) {
@@ -207,8 +215,12 @@ class SevenZipService implements ArchiveBackend {
       await tarFiles.first.delete();
     } else {
       final args = [
-        'e', archivePath, '-o${tempDir.path}', '-y',
-        '-p${password ?? ""}', entryPath,
+        'e',
+        archivePath,
+        '-o${tempDir.path}',
+        '-y',
+        '-p${password ?? ""}',
+        entryPath,
       ];
       final result = await Process.run(bin, args);
       final stderr = result.stderr.toString();
@@ -242,14 +254,25 @@ class SevenZipService implements ArchiveBackend {
     String archivePath,
     String outputDir, {
     String? password,
+    List<String>? entryPaths,
     void Function(String)? onLog,
   }) async* {
     final bin = await findBinary();
     if (bin == null) throw Exception('7zip binary not found.');
+    if (entryPaths != null && entryPaths.isEmpty) {
+      yield ExtractionProgress(percent: 100, currentFile: '', done: true);
+      return;
+    }
 
     final extractArgs = [
-      'x', archivePath, '-o$outputDir', '-y',
+      'x',
+      archivePath,
+      '-o$outputDir',
+      '-y',
       if (password != null) '-p$password',
+      if (entryPaths != null) '-spd',
+      if (entryPaths != null) '--',
+      if (entryPaths != null) ...entryPaths,
     ];
 
     final process =
@@ -457,9 +480,11 @@ class SevenZipService implements ArchiveBackend {
       final outer = SevenZipService.outerType(archivePath);
 
       final extractArgs = [
-        'e', archivePath,
+        'e',
+        archivePath,
         if (outer != null) '-t$outer',
-        '-o${tempDir.path}', '-y',
+        '-o${tempDir.path}',
+        '-y',
         if (password != null) '-p$password',
       ];
       final extractResult = await Process.run(bin, extractArgs);
@@ -529,4 +554,3 @@ class SevenZipService implements ArchiveBackend {
     return entries;
   }
 }
-

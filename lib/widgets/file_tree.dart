@@ -7,6 +7,8 @@ class FileTreeWidget extends StatefulWidget {
   final List<ArchiveEntry> entries;
   final ExtractionStatus status;
   final String? error;
+  final Set<String> selectedEntryPaths;
+  final ValueChanged<Set<String>>? onSelectionChanged;
 
   /// Called when the user double-clicks a non-directory entry.
   final void Function(ArchiveEntry)? onFileOpen;
@@ -16,6 +18,8 @@ class FileTreeWidget extends StatefulWidget {
     required this.entries,
     required this.status,
     required this.error,
+    required this.selectedEntryPaths,
+    this.onSelectionChanged,
     this.onFileOpen,
   });
 
@@ -124,6 +128,49 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
         .toList();
   }
 
+  String _normalisePath(String path) =>
+      path.replaceAll('\\', '/').replaceAll(RegExp(r'/+$'), '');
+
+  List<ArchiveEntry> _entryAndDescendants(ArchiveEntry entry) {
+    final path = _normalisePath(entry.path);
+    return widget.entries.where((candidate) {
+      if (candidate.isDirectory) return false;
+      final candidatePath = _normalisePath(candidate.path);
+      return candidatePath == path || candidatePath.startsWith('$path/');
+    }).toList();
+  }
+
+  bool? _selectionValue(ArchiveEntry entry) {
+    final affected = _entryAndDescendants(entry);
+    if (affected.isEmpty) return false;
+    final selected = affected
+        .where(
+            (candidate) => widget.selectedEntryPaths.contains(candidate.path))
+        .length;
+    if (selected == 0) return false;
+    if (selected == affected.length) return true;
+    return null;
+  }
+
+  void _toggleEntry(ArchiveEntry entry, bool selected) {
+    final updated = Set<String>.from(widget.selectedEntryPaths);
+    final paths =
+        _entryAndDescendants(entry).map((candidate) => candidate.path);
+    selected ? updated.addAll(paths) : updated.removeAll(paths);
+    widget.onSelectionChanged?.call(updated);
+  }
+
+  void _toggleAll(bool selected) {
+    widget.onSelectionChanged?.call(
+      selected
+          ? widget.entries
+              .where((entry) => !entry.isDirectory)
+              .map((entry) => entry.path)
+              .toSet()
+          : <String>{},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -183,6 +230,11 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
 
     final filtered = _filtered;
     final totalSize = widget.entries.fold<int>(0, (s, e) => s + e.size);
+    final selectableCount =
+        widget.entries.where((entry) => !entry.isDirectory).length;
+    final allSelected = selectableCount > 0 &&
+        widget.selectedEntryPaths.length == selectableCount;
+    final someSelected = widget.selectedEntryPaths.isNotEmpty && !allSelected;
 
     return Column(
       children: [
@@ -240,6 +292,15 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
               Expanded(flex: 5, child: _ColHeader(l10n.treeColName)),
               Expanded(flex: 2, child: _ColHeader(l10n.treeColSize)),
               Expanded(flex: 3, child: _ColHeader(l10n.treeColModified)),
+              SizedBox(
+                width: 32,
+                child: _SelectionCheckbox(
+                  value: someSelected ? null : allSelected,
+                  onChanged: widget.onSelectionChanged == null
+                      ? null
+                      : (value) => _toggleAll(value),
+                ),
+              ),
             ],
           ),
         ),
@@ -254,6 +315,10 @@ class _FileTreeWidgetState extends State<FileTreeWidget> {
                 entry: entry,
                 index: i,
                 onFileOpen: widget.onFileOpen,
+                selectionValue: _selectionValue(entry),
+                onSelectionChanged: widget.onSelectionChanged == null
+                    ? null
+                    : (selected) => _toggleEntry(entry, selected),
               );
             },
           ),
@@ -293,11 +358,15 @@ class _EntryRow extends StatefulWidget {
   final ArchiveEntry entry;
   final int index;
   final void Function(ArchiveEntry)? onFileOpen;
+  final bool? selectionValue;
+  final ValueChanged<bool>? onSelectionChanged;
 
   const _EntryRow({
     required this.entry,
     required this.index,
     this.onFileOpen,
+    required this.selectionValue,
+    this.onSelectionChanged,
   });
 
   @override
@@ -307,6 +376,7 @@ class _EntryRow extends StatefulWidget {
 class _EntryRowState extends State<_EntryRow> {
   bool _hovered = false;
   bool _opening = false;
+  bool _doubleTapOnSelection = false;
 
   void _handleDoubleTap() {
     final e = widget.entry;
@@ -336,7 +406,16 @@ class _EntryRowState extends State<_EntryRow> {
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: GestureDetector(
-        onDoubleTap: canOpen ? _handleDoubleTap : null,
+        onDoubleTapDown: (details) {
+          final width = context.size?.width ?? 0;
+          _doubleTapOnSelection = details.localPosition.dx >= width - 48;
+        },
+        onDoubleTap: canOpen
+            ? () {
+                if (!_doubleTapOnSelection) _handleDoubleTap();
+                _doubleTapOnSelection = false;
+              }
+            : null,
         child: Tooltip(
           message: canOpen ? l10n.treeOpenTooltip : '',
           waitDuration: const Duration(milliseconds: 600),
@@ -400,8 +479,50 @@ class _EntryRowState extends State<_EntryRow> {
                     style: TextStyle(fontSize: 11, color: c.textTertiary),
                   ),
                 ),
+                SizedBox(
+                  width: 32,
+                  child: _SelectionCheckbox(
+                    value: widget.selectionValue,
+                    onChanged: widget.onSelectionChanged == null
+                        ? null
+                        : widget.onSelectionChanged,
+                  ),
+                ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Uses raw pointer events so the row's double-click recognizer cannot consume
+/// checkbox clicks on desktop platforms.
+class _SelectionCheckbox extends StatelessWidget {
+  final bool? value;
+  final ValueChanged<bool>? onChanged;
+
+  const _SelectionCheckbox({required this.value, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    final enabled = onChanged != null;
+    void toggle() => onChanged?.call(value != true);
+
+    return Semantics(
+      checked: value,
+      enabled: enabled,
+      onTap: enabled ? toggle : null,
+      child: Listener(
+        behavior: HitTestBehavior.opaque,
+        onPointerUp: enabled ? (_) => toggle() : null,
+        child: IgnorePointer(
+          child: Checkbox(
+            value: value,
+            tristate: true,
+            onChanged: enabled ? (_) {} : null,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
         ),
       ),

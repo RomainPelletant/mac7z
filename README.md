@@ -5,7 +5,8 @@
 <h1 align="center">mac7z</h1>
 
 <p align="center">
-  Archive manager for macOS &amp; Linux, powered by 7-Zip
+  Open source rchive manager for macOS &amp; Linux, powered by 7-Zip
+  File preview support.
 </p>
 
 <p align="center">
@@ -16,12 +17,11 @@
   <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter" alt="Flutter" />
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" alt="Platform" />
   <img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License" />
-  <img src="https://img.shields.io/badge/vibe%20coded-%F0%9F%A4%96-orange" alt="Vibe coded" />
 </p>
 
 ---
 
-> **mac7z** is a native-feeling desktop archive manager built entirely with Flutter and Claude AI — a fully **vibe-coded** project. It wraps the battle-tested 7-Zip engine with a clean, dark-first UI for macOS and Linux.
+> **mac7z** is a native-feeling desktop archive manager built entirely with Flutter. It wraps the battle-tested 7-Zip engine with a clean, dark-first UI for macOS and Linux.
 
 ---
 
@@ -82,16 +82,20 @@ brew install --cask mac7z
 ### macOS — DMG
 
 Download the latest `.dmg` from [Releases](https://github.com/romainpelletant/mac7z/releases), open it and drag mac7z to Applications.
-First launch: right-click → Open (ad-hoc signature).
+mac7z is now signed and notarized according to Apple rules.
 
-### Linux — .deb (not implemented)
+### Linux — .deb
 
+Install with your prefered installation manager
 
 ---
 
 ## Build from source
 
 ```bash
+# Download 7z binary for your platform
+bash scripts/setup.sh
+
 # macOS
 flutter build macos --release
 
